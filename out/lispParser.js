@@ -1,0 +1,376 @@
+
+    /*** Main ***/
+
+    /* Error Defination */
+    class ReferenceError extends Error {
+        constructor(message) {
+            super('Reference Error: ' + message)
+        }
+    }
+
+    /* Type Defination */
+    class Meta {
+        constructor(value) {
+            this.value = value
+        }
+    }
+    class Sym extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class Ann extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class Literal extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class LineAnn extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class InlineAnn extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class Str extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class Procedure {
+        constructor(parms, body, env) {
+            this.parms = parms
+            this.body = body
+            this.env = env
+        }
+        execute(args) {
+            return eval(this.body, new Env(this.parms, args, this.env))
+        }
+    }
+
+    /* Environments */
+    class Env {
+        constructor(parms=[], args=[], outer=null) {
+            this.e = new Object()
+            this.init(parms, args)
+            this.outer = outer
+        }
+        find(vari) {
+            if ((! (vari in this.e)) && (! this.outer)) {
+                throw new ReferenceError('variable ' + vari + ' is undefined.')
+            }
+            return vari in this.e ? this.e : this.outer.find(vari)
+        }
+        init(keys, values) {
+            keys.forEach((key, index) => {
+                this.e[key.value] = values[index]
+            })
+        }
+        assign(subEnv) {
+            Object.assign(this.e, subEnv)
+        }
+        add(key, value) {
+            this.e[key] = value
+        }
+    }
+
+    const baseEnv = {
+            'abs': Math.abs,
+            'max': Math.max,
+            'min': Math.min,
+            'pi': Math.PI,
+            'round': Math.round,
+            'floor': Math.floor,
+            'ceil': Math.ceil,
+            '+': (x, y) => x + y,
+            '-': (x, y) => x - y,
+            '*': (x, y) => x * y,
+            '/': (x, y) => x / y,
+            '>': (x, y) => x > y,
+            '<': (x, y) => x < y,
+            '>=': (x, y) => x >= y,
+            '<=': (x, y) => x <= y,
+            '=': (x, y) => x == y,
+            'car': x => x[0],
+            'cdr': x => x.slice(1),
+            'cons': (x, y) => [x, ...y],
+            'eq?': (x, y) => x === y,
+            'equal?': (x, y) => x instanceof Sym ? x.value == y.value : x == y,
+            'length': x => x.length,
+            'list': function(...e){return e},
+            'list?': x => x instanceof Array,
+            'not': x => ! x,
+            'null?': x => x instanceof Array && x.length == 0,
+            'number?': x => x instanceof Number,
+            'begin': function(){ return Array.prototype.slice(arguments, 1) },
+    }
+    // append, apply, equal?, list, map, procedure?, symbol?
+    let global_env = new Env()
+    global_env.assign(baseEnv)
+    let annotation={};
+    let string0={};
+    let random=0;
+    /* Abstraction Syntax Tree */
+    function parse(program) {
+        let tokens=tokenize(program)
+        let L=[];
+        L.childrenCount=0
+        while(tokens.length>0){
+            let r=read_from_tokens(tokens)
+            if(r===undefined||(!(r instanceof Array) &&r.value===undefined))break;
+            L.push(r)
+            if(typeof r.childrenCount=='undefined'){
+                r.childrenCount=1
+            }
+            L.childrenCount+=r.childrenCount;
+        }
+        return L;
+    }
+    function getRandomToken(program){
+        let m=parseInt(Math.random()*100000);
+        while(program.indexOf(''+m)>=0){
+            m=Math.random()*100000;
+        }
+        return ''+m;
+    }
+    function processAnnotation(program){
+        random=getRandomToken(program);
+        let i=0;
+        let reg=/(\;\|[\s\S]*?\|\;)|(\;.*)/g;
+        program=program.replace(reg,(match1,match2,match3, pos, originalText)=>{
+            let key="a"+random+"_"+(i++)
+            //program=program.replace(reg," "+key+' ')
+            annotation[key]=match1;
+            return " "+key+' ';
+        })
+        
+        return program;
+    }
+    function processStr(program){
+        
+        let i=0;
+        let random2=getRandomToken(program)
+        program=program.replace(/\\\\/g,"s"+random2+"s");
+        random=getRandomToken(program);
+        let reg=/((?<!\\)\"[\s\S]*?(?<!\\)\")/g;
+        program=program.replace(reg,(match1,match2,match3, pos, originalText)=>{
+            let key="s"+random+"_"+(i++)
+            //program=program.replace(reg," "+key+' ')
+            let origin=match1.replace(new RegExp("s"+random2+"s","g"),'\\\\')
+            string0[key]=origin;
+            return " "+key+' ';
+        })
+        program=program.replace(new RegExp("s"+random2+"s","g"),'\\\\')
+        return program;
+    }
+    function tokenize(program) {
+        program=processAnnotation(program)
+        program=processStr(program)
+        return program.replace(/(\'\(|\()/g, ' $1 ').replace(/\)/g, ' ) ').replace(/\r\n/g,' ').replace(/\s{1,}/g,' ').split(' ')
+    }
+    function read_from_tokens(tokens) {//只处理一个列表
+        if (tokens.length === 0) {
+            throw new Error('unexpected EOF while reading')
+        }
+        let token = tokens.shift()
+        while (token === '') {
+            token = tokens.shift()
+        }
+        if ('(' === token||"'("===token) {
+            let L = []
+            if('('===token){
+                L.type='normal'
+            }else{
+                L.type='quote'
+            }
+            L.childrenCount=0
+            while (tokens[0] === ''||tokens[0]==='\r\n') {
+                tokens.shift()
+            }
+            while (tokens[0] !== ')') {
+                let r=read_from_tokens(tokens)
+                L.push(r)
+                if(tokens.length==88){
+                    console.log('aa')
+                }
+                
+                if(typeof r.childrenCount=='undefined'){
+                    r.childrenCount=1
+                    
+                }
+                if(isNaN(r.childrenCount)){
+                    console.log('aa'+r.childrenCount)
+                }
+                L.childrenCount+=r.childrenCount;
+                while (tokens[0] === '') {
+                    tokens.shift()
+                }
+            }
+            tokens.shift()
+            return L
+        } else if (')' === token) {
+            throw new Error('unexpected )')
+        } else {
+            return atom(token)
+        }
+    }
+    function atom(token) {
+        let temp = parseInt(token)
+        if (isNaN(temp)) { 
+            if(typeof annotation[token]!='undefined'){
+                if(annotation[token].startsWith(';|')){
+                    return new InlineAnn(annotation[token])
+                }else {
+                    return new LineAnn(annotation[token])
+                }
+                
+            }else if(typeof string0[token]!='undefined'){                
+                return new Str(string0[token])
+            }else{
+                return new Sym(token)
+            }
+            
+        } else if (token - temp === 0) {
+            return new Literal( temp)
+        } else {
+            return new Literal(parseFloat(token))
+        }
+    }
+
+    function format(program){        
+        function getIndent(indent,arrangement){
+            let r='';
+            if(arrangement===0){
+                r+=' ';
+            }else{
+                r+='\r\n'
+                while(indent-->0){
+                    r+='\t'
+                }
+            }
+            return r;
+        }
+        function printList(list,indent,arrangement){
+            let resultCode='';
+            //indent=indent+1;
+            if(!(list instanceof Array)){
+                resultCode+=print(list,indent,arrangement)
+                return resultCode;
+            }
+            resultCode+=getIndent(indent,arrangement);
+            if(list.length==0){
+                resultCode+='()'
+                return resultCode;
+            } 
+            if(list.type==='normal'){
+                resultCode+='(';
+            }else{
+                resultCode+="'("
+            }
+            
+            if(list.childrenCount>6){
+                arrangement=1;
+            }else {
+                arrangement=0;
+            }
+            
+            //resultCode+=getIndent(indent,arrangement)
+            for(let i=0;i<list.length;i++){
+                if(i==0){                    
+                    if(list[0] instanceof Array){
+                        resultCode+=printList(list[0],indent+1,arrangement)
+                        
+                    }else{
+                        resultCode+=list[0].value
+                    }
+                    
+                }else{
+                    resultCode+=printList(list[i],indent+1,arrangement)
+
+                }
+                
+            }
+            if(arrangement==0){
+                resultCode+=')';
+            }else{
+                resultCode+=getIndent(indent,arrangement)+')';
+            }
+            
+            return resultCode;
+        }
+        function print(p,indent,arrangement){
+            let resultCode='';
+            if(p instanceof Array){
+                resultCode+=printList(p,indent,arrangement)
+            }else if(p instanceof LineAnn){
+                resultCode+=p.value+'\r\n';
+            }else if(p instanceof InlineAnn){
+                resultCode+=" "+p.value;
+            }else{
+
+                resultCode+=getIndent(indent,arrangement)+p.value;
+            }
+            return resultCode;
+        }
+        let ast=parse(program);
+        let resultCode='';
+        for(let i=0;i<ast.length;i++){
+            resultCode+=printList(ast[i],0,0)+'\r\n'
+        }
+        return resultCode;
+    }
+
+    /* Eval */
+    function eval(x, env=global_env) {
+        if (x instanceof Sym) {
+            return env.find(x.value)[x.value]
+        } else if (! (x instanceof Array)) {
+            return x
+        } else if (x[0].value == 'if') {
+            let [sym, test, conseq, alt] = x
+            let exp = (eval(test, env) ? conseq : alt)
+            return eval(exp, env)
+        } else if (x[0].value == 'define') {
+            let [vari, exp] = x.slice(1)
+            env.add(vari.value, eval(exp, env))
+        } else if (x[0].value == 'lambda') {
+            let [parms, body] = x.slice(1)
+            return new Procedure(parms, body, env)
+        } else if (x[0].value == 'quote') {
+            let [sym, exp] = x
+            return exp
+        } else {
+            let proc = eval(x[0], env)
+            let args = []
+            x.slice(1).forEach(function(arg) {
+                args.push(eval(arg, env))
+            })
+            if (proc instanceof Procedure) {
+                return proc.execute.call(proc, args)
+            }
+            return proc.apply(this, args)
+        }
+    }
+
+   /* process.stdin.setEncoding( 'utf8' );
+    process.stdin.on( 'readable', function() {
+        var chunk = process.stdin.read();
+        if (chunk) {
+            try {
+                console.log(eval(parse(chunk)))
+            } catch(err) {
+                console.log(err.message)
+            }
+        }
+        console.log('lispy>')
+    } );*/
+
+module.exports={parse:parse,ann:annotation,format:format};
+//export {"parse":parse};

@@ -1,0 +1,193 @@
+{
+    "name": "autolisp",
+    "displayName": "autolisp助手",
+    "description": "为autolisp&dcl提供的代码提示和自动完成功能",
+    "version": "0.0.2",
+    "publisher": "niaoge",
+    "icon": "images/autocad-dev.jpg",
+    "author": {
+        "name": "niaoge"
+    },
+    "keywords": [
+        "autolisp",
+        "lisp",
+        "lsp",
+        "autocad",
+        "dcl",
+        "visuallisp"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/1833183060/autolisp"
+    },
+    "license": "https://github.com/1833183060/autolisp/blob/master/LICENSE",
+    "engines": {
+        "vscode": "^1.29.0"
+    },
+    "categories": [
+        "Snippets",
+        "Programming Languages",
+        "Themes"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello",
+        "*"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "configurationDefaults": {
+            "[autolisp]": {
+                "editor.tabCompletion": "on",
+                "editor.quickSuggestions": {
+                    "comments": false,
+                    "other": true,
+                    "strings": false
+                },
+                "editor.acceptSuggestionOnEnter": "off",
+                "editor.wordWrap": "on",
+                "editor.wordBasedSuggestions": false,
+                "editor.insertSpaces": false,
+                "editor.tabSize": 4,
+                "files.encoding": "gbk"
+            },
+            "[csharp]": {
+                "editor.acceptSuggestionOnEnter": "off",
+                "editor.wordWrap": "on",
+                "editor.wordBasedSuggestions": false,
+                "editor.quickSuggestions": true,
+                "editor.insertSpaces": false,
+                "editor.tabSize": 4,
+                "files.encoding": "utf8"
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "title": "autolisp",
+            "properties": {
+                "autocaddev.exceptionOptions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "never",
+                            "always",
+                            "unhandled"
+                        ],
+                        "enumDescriptions": [
+                            "%breakMode.never%",
+                            "%breakMode.always%",
+                            "%breakMode.unhandled%"
+                        ],
+                        "description": "%configuration.exceptionOptions.description2%",
+                        "default": "never"
+                    },
+                    "description": "%configuration.exceptionOptions.description%",
+                    "default": {
+                        "System.Exception": "never",
+                        "System.SystemException": "never",
+                        "System.ArithmeticException": "never",
+                        "System.ArrayTypeMismatchException": "never",
+                        "System.DivideByZeroException": "never",
+                        "System.IndexOutOfRangeException": "never",
+                        "System.InvalidCastException": "never",
+                        "System.NullReferenceException": "never",
+                        "System.OutOfMemoryException": "never",
+                        "System.OverflowException": "never",
+                        "System.StackOverflowException": "never",
+                        "System.TypeInitializationException": "never"
+                    }
+                }
+            }
+        },
+        "languages": [
+            {
+                "id": "autolisp",
+                "aliases": [
+                    "autolisp"
+                ],
+                "extensions": [
+                    ".lsp"
+                ],
+                "configuration": "./lsp.language-configuration.json"
+            },
+            {
+                "id": "dcl",
+                "aliases": [
+                    "DCL",
+                    "dcl"
+                ],
+                "extensions": [
+                    ".dcl"
+                ],
+                "configuration": "./language-configuration-dcl.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "autolisp",
+                "scopeName": "source.list",
+                "path": "./syntaxes/lisp.tmLanguage.json"
+            },
+            {
+                "language": "dcl",
+                "scopeName": "source.dcl",
+                "path": "./syntaxes/dcl.tmLanguage.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "autolisp主题",
+                "uiTheme": "vs",
+                "path": "./themes/theme-color-theme.json",
+                "extensions": [
+                    ".lsp"
+                ]
+            }
+        ],
+        "snippets": [
+            {
+                "language": "autolisp",
+                "path": "./snippets/autolisp.json"
+            },
+            {
+                "language": "autolisp",
+                "path": "./snippets/autolisp1.json"
+            },
+            {
+                "language": "autolisp",
+                "path": "./snippets/autolisp3.json"
+            },
+            {
+                "language": "dcl",
+                "path": "./snippets/snippets-dcl.json"
+            }
+        ],
+        "menus": {"editor/context": 
+            [
+               
+                {
+                    "command": "autolisp.format2",
+                    "when": "resourceLangId==autolisp"
+                }
+            ]
+        },
+        "commands":[
+            {
+                "command": "autolisp.format",
+                "title": "格式化lisp"
+            },
+            {
+                "command": "autolisp.format2",
+                "title": "格式化lisp2"
+            }
+        ]
+    },
+    
+    "devDependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.43",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.36"
+    }
+}

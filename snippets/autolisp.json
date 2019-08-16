@@ -1,0 +1,74 @@
+{
+
+    "cuowu": {
+        "prefix": "cuowu",
+        "body": [
+            "function (${param}) {  }"
+        ],
+        "description": "错误处理函数."
+    },
+    "+":{
+        "prefix":["+","add","jia","m:add","m-add","m_add"],
+        "body":["(+ ${1:a} ${0:b})"],
+        "description":"加法"
+    },
+    "-":{
+        "prefix":["-","jian","sub"],
+        "body":["(- ${1:a} ${0:b})"],
+        "description":"减法"
+    },
+    "*":{
+        "prefix":["*","cheng","mul"],
+        "body":["(* ${1:a} ${0:b})"],
+        "description":"乘法"
+    },
+    "/":{
+        "prefix":["","chu","div"],
+        "body":["(/ ${1:a} ${0:b})"],
+        "description":"除法"
+    },
+    "=":{
+        "prefix":["=","eq0","xiangdeng"],
+        "body":["(= ${1:a} ${0:b})"],
+        "description":"相等"
+    },
+    "setq": {
+        "scope":"keyword.control.lisp",
+        "prefix": "setq",
+        "body": [
+            "(setq ${symbol} ${value})"
+        ],
+        "description": "Insert content, specified by the parameter, after each element in the set of matched elements."
+    },
+    "jqAjax": {
+        "prefix": "jqAjax",
+        "body": [
+            "$.ajax({",
+            "\ttype: \"${method}\",",
+            "\turl: \"${url}\",",
+            "\tdata: \"${data}\",",
+            "\tdataType: \"${dataType}\",",
+            "\tsuccess: function (response) {",
+            "\t\t$0",
+            "\t}",
+            "});"
+        ],
+        "description": "Perform an asynchronous HTTP (Ajax) request."
+    },
+    "jqAjaxAspNetWebService": {
+        "prefix": "jqAjaxAspNetWebService",
+        "body": [
+            "$.ajax({",
+            "\ttype: \"POST\",",
+            "\tcontentType: \"application/json; charset=utf-8\",",
+            "\tdataType: \"${dataType}\",",
+            "\turl: \"${url}\",",
+            "\tdata: \"${data}\",",
+            "\tsuccess: function (response) {",
+            "\t\t$0",
+            "\t}",
+            "});"
+        ],
+        "description": "Perform an asynchronous HTTP (Ajax) request to a ASP.NET web service."
+    }
+}

@@ -1,0 +1,223 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "lisp",
+    "patterns": [{
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comment"
+        },
+        {
+            "match": "\\b(?i:null|nil)\\b\\b",
+            "name": "constant.language.lisp"
+        },
+        {
+            "match": "(?<![^\\s\\(\\)\\\"])\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b(?![^\\s\\)\\(\\'\\\"])",
+            "name": "constant.numeric.lisp"
+        },
+        {
+            "match": "(#)(\\w|\\+-=&lt;&gt;'\"&amp;#])+",
+            "name": "source.lisp",
+            "captures": {
+                "1": {
+                    "name": "source.lisp"
+                }
+            }
+        },
+        {
+            "match": "(\\*)(\\S*)(\\*)",
+            "name": "variable.other.global.lisp",
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.variable.lisp"
+                },
+                "3": {
+                    "name": "punctuation.definition.variable.lisp"
+                }
+            }
+        },
+        {
+            "match": "\\(|\\)",
+            "name": "Parentheses.lisp"
+        },
+        {
+            "match": "(\\b(?i:(defun|defmethod|defmacro))\\b)(\\s+)(([^\"|\\'|\\(|\\)|\\s+])*)",
+            "name": "meta.function.lisp",
+            "captures": {
+                "2": {
+                    "name": "storage.type.function-type.lisp"
+                },
+                "4": {
+                    "name": "entity.name.function"
+                }
+            }
+        }
+    ],
+    "repository": {
+        "keywords": {
+
+            "patterns": [
+
+                {
+                    "match": "\\B\\*error\\*\\B",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:acad_colordlg|acad_helpdlg|acad-pop-dbmod|acad-push-dbmod|acad_strlsort|acad_truecolorcli|acad_truecolordlg|acdimenableupdate|acet-layerp-mode|acet-layerpmarkacetlaytransacet-ms-to-ps|acet-ps-to-ms|action_tile|add_list|alert|alloc|angle|angtof|angtos|append|apply|arx|arxload|arxunload|ascii|assoc|atan|atof|atoi|atom|atoms-family|autoarxload|autoload|Boole|boundp|caddr|cadr|car|cdr|chr|client_data_tile|close|command|cond|cons|cos|cvunit)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:handent|help|initdia|initget|inters|itoa|lambda|last|layoutlist|length|list|listp|load_dialog|log|logand|logior|lsh|mapcar|max|mem|member|menucmd|menugroup|min|minusp|mode_tile|namedobjdict|nentsel|nentselp|new_dialog|not|nth|null|numberp|open|osnap|polar|prin1|princ|print|progn|prompt|quit|quote|read-char|read-line|read|redraw|regapp|rem|repeat|reverse|rtos)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:set|set_tile|setcfg|setenv|setfunhelp|setq|setvar|setview|sin|slide_image|snvalid|sqrt|ssadd|ssdel|ssget|ssgetfirst|sslength|ssmemb|ssname|ssnamex|sssetfirst|startapp|start_dialog|start_imagestart_list|strcase|strcat|strlen|subst|substr)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:tablet|tblnext|tblobjname|tblsearch|term_dialog|terpri|textbox|textpage|textscr|trace|trans|type)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:defun-q|defun-q-list-ref|defun-q-list-set|dictadd|dictnextdictremovedictrenamedictsearchdimx_tiledimy_tile|distance|distof|done_dialog|end_image|end_list|entdel|entget|entlast|entmake|entmakex|entmod|entnext|entsel|entupd|equal|eval|exit|expt|expand|exp|fill_image|findfile|fix|float|foreach|function|gc|gcd|get_attr|get_tile|getangle|getcfg|getcname|getcorner|getdist|getenv|getfiled|getint|getkword|getorient|getpoint|getreal|getstring|getvar|graphscr|grclear|grdraw|grread|grtext|grvecs)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:unload_dialog|untrace|vector_image|ver|vl-acad-defun|vl-acad-undefun|vl-arx-import|vl-bb-ref|vl-bb-set|vl-catch-all-apply|vl-catch-all-error-message|vl-catch-all-error-p|vl-cmdf|vl-consp|vl-directory-files|vl-doc-export|vl-doc-import|vl-doc-ref|vl-doc-set|vl-every|vl-exit-with-error|vl-exit-with-value|vl-file-copy|vl-file-delete|vl-file-directory-p|vl-file-rename|vl-file-size|vl-file-systime|vl-filename-base|vl-filename-directory|vl-filename-extension|vl-filename-mktemp|vl-get-resource|vl-list*|vl-list->string|vl-list-exported-functions|vl-list-length|vl-list-loaded-vlx|vl-load-all|vl-load-com|vl-load-reactors|vl-mkdir|vl-member-if|vl-member-if-not|vl-position|vl-prin1-to-string|vl-princ-to-string|vl-propagate|vl-registry-delete|vl-registry-descendents)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:vlax-3D-point|vlax-add-cmd|vlax-create-object|vlax-curve-getArea|vlax-curve-getClosestPointTo|vlax-curve-getClosestPointToProjection|vlax-curve-getDistAtParam|vlax-curve-getDistAtPoint|vlax-curve-getEndParam|vlax-curve-getEndPoint|vlax-curve-getFirstDeriv|vlax-curve-getParamAtDist|vlax-curve-getParamAtPoint|vlax-curve-getPointAtDist|vlax-curve-getPointAtParam|vlax-curve-getSecondDeriv|vlax-curve-getStartParam|vlax-curve-getStartPoint|vlax-curve-isClosed|vlax-curve-isPeriodic| vlax-curve-isPlanar|vlax-dump-object|vlax-ename->vla-object|vlax-erased-p|vlax-for|vlax-get-acad-object|vlax-get-object|vlax-get-or-create-object|vlax-get-property|vlax-import-type-library|vlax-invoke-method|vlax-ldata-delete|vlax-ldata-get|vlax-ldata-list|vlax-ldata-put|vlax-ldata-test)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:vlax-invoke|vlax-get|vlax-put|vlax-make-safearray|vlax-make-variant|vlax-map-collection|vlax-method-applicable-p|vlax-object-released-p|vlax-product-key|vlax-property-available-p|vlax-put-property|vlax-read-enabled-p|vlax-release-object|vlax-remove-cmd|vlax-safearray-fill|vlax-safearray-get-dim|vlax-safearray-get-element|vlax-safearray-get-l-bound|vlax-safearray-get-u-bound|vlax-safearray-put-element|vlax-safearray-type|vlax-safearray->list|vlax-tmatrix|vlax-typeinfo-available-p|vlax-variant-change-type|vlax-variant-type|vlax-variant-value|vlax-vla-object->ename|vlax-write-enabled-p|vl-registry-read|vl-registry-write|vl-remove|vl-remove-if|vl-remove-if-not|vl-some|vl-sort|vl-sort-i|vl-string->list|vl-string-elt|vl-string-left-trim|vl-string-mismatch|vl-string-position|vl-string-right-trim)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:vlisp-compile|vlr-acdb-reactor|vlr-add|vlr-added-p|vlr-beep-reaction|vlr-command-reactor|vlr-current-reaction-name|vlr-data|vlr-data-set|vlr-deepclone-reactor|vlr-docmanager-reactor|vlr-dwg-reactor|vlr-dxf-reactor|vlr-editor-reactor|vlr-insert-reactor|vlr-linker-reactor|vlr-lisp-reactor|vlr-miscellaneous-reactor|vlr-mouse-reactor|vlr-notification|vlr-object-reactor|vlr-owner-add|vlr-owner-remove|vlr-owners|vlr-pers|vlr-pers-list|vlr-pers-p|vlr-pers-release|vlr-reaction-name|vlr-reaction-set|vlr-reactions|vlr-reactors|vlr-remove|vlr-remove-all|vlr-set-notification|vlr-sysvar-reactor|vlr-toolbar-reactor|vlr-trace-reaction|vlr-type|vlr-types|vlr-undo-reactor|vlr-wblock-reactor|vlr-window-reactor|vlr-xref-reactor|vports|wcmatch|while|write-char|write-line|zerop)\\b(?![^\\s\\)\\(\\'\\\"])",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(?<![^\\s\\(\\)\\\"])\\b(?i:vl-string-search|vl-string-subst|vl-string-translate|vl-string-trim|vl-symbol-name|vl-symbol-value|vl-symbolp|vl-unload-vlx|vl-vbaload|vl-vbarun|vl-vlx-loaded-p|load)\\b(\\s+)",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "\\B(\\*|/|~|/=|\\-|\\+|<|>|<=|=|>=)\\B",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "1\\-|1\\+",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "\\b(?i:eq|neq|and|or)\\b",
+                    "name": "keyword.control.lisp"
+                },
+                {
+                    "match": "(\\b(?i:case|do|let|loop|if|else|when)\\b)",
+                    "name": "keyword.control.lisp"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [{
+                    "begin": "(u|u8|U|L)?\"",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "string.lisp"
+                        },
+                        "1": {
+                            "name": "string.lisp"
+                        }
+                    },
+                    "end": "\"",
+                    "endCaptures": {
+                        "0": {
+                            "name": "string.lisp"
+                        }
+                    },
+                    "name": "string.lisp",
+                    "patterns": [{
+                            "match": "\\\\u\\h{4}|\\\\U\\h{8}",
+                            "name": "string.lisp"
+                        },
+                        {
+                            "match": "\\\\['\"?\\\\abfnrtv]",
+                            "name": "string.lisp"
+                        },
+                        {
+                            "match": "\\\\[0-7]{1,3}",
+                            "name": "string.lisp"
+                        },
+                        {
+                            "match": "\\\\x\\h+",
+                            "name": "string.lisp"
+                        },
+                        {
+                            "include": "string.lisp"
+                        }
+                    ]
+
+                },
+                {
+                    "begin": "(u|u8|U|L)?R\"(?:([^ ()\\\\\\t]{0,16})|([^ ()\\\\\\t]*))\\(",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.begin.lisp"
+                        },
+                        "1": {
+                            "name": "meta.encoding.lisp"
+                        },
+                        "3": {
+                            "name": "invalid.illegal.delimiter-too-long.lisp"
+                        }
+                    },
+                    "end": "\\)\\2(\\3)\"",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.end.lisp"
+                        },
+                        "1": {
+                            "name": "invalid.illegal.delimiter-too-long.lisp"
+                        }
+                    },
+                    "name": "string.quoted.double.raw.lisp"
+                }
+            ]
+        },
+        "comment": {
+            "patterns": [{
+                    "name": "comment.block.lisp",
+                    "begin": ";\\|",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.lisp"
+                        }
+                    },
+                    "end": "\\|;",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.lisp"
+                        }
+                    }
+                },
+                {
+                    "match": "(;).*$\\n?",
+                    "name": "comment.line.semicolon.lisp",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.lisp"
+                        }
+                    }
+                }
+
+
+            ]
+        }
+    },
+    "scopeName": "source.list"
+}
