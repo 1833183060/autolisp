@@ -7,14 +7,22 @@ const fs=require("fs")
 const path=require('path')
 const parser=require('./lispParser.js')
 //import {parse} from "./lispParser"
-const snippetObj=require('../snippets/autolisp.json')
+let snippetObj=Object.assign(require('../snippets/autolisp.json'),require('../snippets/autolisp1.json'));
+snippetObj=Object.assign(snippetObj,require('../snippets/autolisp3.json'))
 
 function provideHover(document, position, token) {
 	const fileName	= document.fileName;
 	const workDir	 = path.dirname(fileName);
 	const word		= document.getText(document.getWordRangeAtPosition(position));
+	try {
+		let text=snippetObj[word].description
+		return new vscode.Hover(text)
+	} catch (error) {
+		return null;
+	}
 	
-return new vscode.Hover("[bbb](https://www.baidu.com)aa"+word)
+
+	
 	if (/\/package\.json$/.test(fileName)) {
 		console.log('进入provideHover方法');
 		const json = document.getText();
@@ -57,7 +65,7 @@ function activate(context) {
 	let format2 = vscode.commands.registerTextEditorCommand('autolisp.format2', (textEditor,edit,args) => {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
+		//vscode.window.showInformationMessage('Hello World!');
 		try {
 			let sel=textEditor.selection;
 		

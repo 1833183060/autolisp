@@ -1,12 +1,6 @@
 {
 
-    "cuowu": {
-        "prefix": "cuowu",
-        "body": [
-            "function (${param}) {  }"
-        ],
-        "description": "错误处理函数."
-    },
+    
     "+":{
         "prefix":["+","add","jia","m:add","m-add","m_add"],
         "body":["(+ ${1:a} ${0:b})"],

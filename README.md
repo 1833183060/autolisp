@@ -3,7 +3,10 @@
 
 
 ## Preview
+智能提示
 ![](images/autolisp.gif)
+格式化
+![](images/format-hover.gif)
 
 ## Introduction
 

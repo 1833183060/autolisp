@@ -240,7 +240,7 @@
         } else if (token - temp === 0) {
             return new Literal( temp)
         } else {
-            return new Literal(parseFloat(token))
+            return new Literal(token)
         }
     }
 
@@ -295,8 +295,11 @@
                     if(typeof list[0].value!='undefined'){
                         switch(list[0].value){
                             case 'setq':
-                            resultCode+=printSetq(i,list[i],indent+1,childArrangement)
-                            break;
+                                resultCode+=printSetq(i,list[i],indent+1,childArrangement)
+                                break;
+                            case 'defun':
+                                resultCode+=printDefun(i,list[i],indent+1,childArrangement)
+                                break;
                             default:
                                 resultCode+=printList(list[i],indent+1,childArrangement)
                         }
@@ -333,7 +336,7 @@
 
         function printSetq(i,p,indent,arrangement){
             let code='';
-            if(i%2==1){
+            if(i%2==0){
                 code+=printList(p,indent,0)
             }else{
                 code+=printList(p,indent,arrangement)
@@ -343,7 +346,7 @@
 
         function printDefun(i,p,indent,arrangement){
             let code='';
-            if(i%2==1){
+            if(i===1){
                 code+=printList(p,indent,0)
             }else{
                 code+=printList(p,indent,arrangement)
