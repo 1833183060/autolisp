@@ -3,7 +3,7 @@
 
 
 ## Preview
-(https://github.com/1833183060/autolisp/blob/master/images/autolisp.gif)
+![](images/autolisp.gif)
 
 ## Introduction
 
