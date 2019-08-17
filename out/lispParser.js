@@ -275,32 +275,43 @@
                 resultCode+="'("
             }
             
+            let childArrangement=0;
             if(list.childrenCount>6){
-                arrangement=1;
+                childArrangement=1;
             }else {
-                arrangement=0;
+                childArrangement=0;
             }
             
             //resultCode+=getIndent(indent,arrangement)
             for(let i=0;i<list.length;i++){
                 if(i==0){                    
                     if(list[0] instanceof Array){
-                        resultCode+=printList(list[0],indent+1,arrangement)
-                        
+                        resultCode+=printList(list[0],indent+1,childArrangement) 
                     }else{
                         resultCode+=list[0].value
                     }
                     
                 }else{
-                    resultCode+=printList(list[i],indent+1,arrangement)
-
+                    if(typeof list[0].value!='undefined'){
+                        switch(list[0].value){
+                            case 'setq':
+                            resultCode+=printSetq(i,list[i],indent+1,childArrangement)
+                            break;
+                            default:
+                                resultCode+=printList(list[i],indent+1,childArrangement)
+                        }
+                        
+                    }else{
+                        resultCode+=printList(list[i],indent+1,childArrangement)
+                    }
+                    
                 }
                 
             }
-            if(arrangement==0){
+            if(childArrangement==0){
                 resultCode+=')';
             }else{
-                resultCode+=getIndent(indent,arrangement)+')';
+                resultCode+=getIndent(indent,childArrangement)+')';
             }
             
             return resultCode;
@@ -318,6 +329,26 @@
                 resultCode+=getIndent(indent,arrangement)+p.value;
             }
             return resultCode;
+        }
+
+        function printSetq(i,p,indent,arrangement){
+            let code='';
+            if(i%2==1){
+                code+=printList(p,indent,0)
+            }else{
+                code+=printList(p,indent,arrangement)
+            }
+            return code;
+        }
+
+        function printDefun(i,p,indent,arrangement){
+            let code='';
+            if(i%2==1){
+                code+=printList(p,indent,0)
+            }else{
+                code+=printList(p,indent,arrangement)
+            }
+            return code;
         }
         let ast=parse(program);
         let resultCode='';
