@@ -26,14 +26,7 @@
         "body":["(= ${1:a} ${0:b})"],
         "description":"相等"
     },
-    "setq": {
-        "scope":"keyword.control.lisp",
-        "prefix": "setq",
-        "body": [
-            "(setq ${symbol} ${value})"
-        ],
-        "description": "Insert content, specified by the parameter, after each element in the set of matched elements."
-    },
+    
     "jqAjax": {
         "prefix": "jqAjax",
         "body": [
