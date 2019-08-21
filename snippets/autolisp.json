@@ -1,6 +1,6 @@
 {
 
-    
+    "command-s":{"prefix":["command-s"],"body":"(command-s cmdname arguments )","description":"(command-s [cmdname [arguments ...]])\n执行一条 AutoCAD 命令"},
     "+":{
         "prefix":["+","add","jia","m:add","m-add","m_add"],
         "body":["(+ ${1:a} ${0:b})"],

@@ -1,4 +1,19 @@
-
+class MyString  {
+    constructor(value){
+        if(typeof value=='undefined'){
+           value='';
+        }
+        this.s=value;
+    }
+    append(v){
+        this.s+=v;
+        MyString.lastString=v;
+    }
+    toString(){
+        if(typeof this.s=='undefined')return "";
+        return this.s;
+    }
+}
     /*** Main ***/
 
     /* Error Defination */
@@ -15,6 +30,11 @@
         }
     }
     class Sym extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class NewLine extends Meta {
         constructor(value) {
             super(value)
         }
@@ -173,7 +193,10 @@
     function tokenize(program) {
         program=processAnnotation(program)
         program=processStr(program)
-        return program.replace(/(\'\(|\()/g, ' $1 ').replace(/\)/g, ' ) ').replace(/\r\n/g,' ').replace(/\s{1,}/g,' ').split(' ')
+        program= program.replace(/(\'\(|\()/g, ' $1 ').replace(/\)/g, ' ) ').replace(/\r\n/g,' ');
+        program=program.replace(/\s*\n\s*/g,' \n ')
+        program=program.replace(/[\t ]{1,}/g,' ')
+        return program.split(' ')
     }
     function read_from_tokens(tokens) {//只处理一个列表
         if (tokens.length === 0) {
@@ -191,7 +214,7 @@
                 L.type='quote'
             }
             L.childrenCount=0
-            while (tokens[0] === ''||tokens[0]==='\r\n') {
+            while (tokens[0] === '') {
                 tokens.shift()
             }
             while (tokens[0] !== ')') {
@@ -233,6 +256,8 @@
                 
             }else if(typeof string0[token]!='undefined'){                
                 return new Str(string0[token])
+            }else if(token==='\n'){
+                return new NewLine('\n');
             }else{
                 return new Sym(token)
             }
@@ -244,35 +269,48 @@
         }
     }
 
-    function format(program){        
+    function format(program,formatType){ 
+        let resultCode="";
         function getIndent(indent,arrangement){
             let r='';
-            if(arrangement===0){
-                r+=' ';
-            }else{
-                r+='\r\n'
-                while(indent-->0){
-                    r+='\t'
+            if(formatType==='all'){
+                if(arrangement===0){
+                    r+=' ';
+                }else{
+                    r+='\r\n'
+                    while(indent-->0){
+                        r+='\t'
+                    }
                 }
+            }else{
+                if(typeof MyString.lastString!='undefined'&&MyString.lastString.endWith('\n')){
+                    r+='\n'
+                    while(indent-->0){
+                        r+='\t'
+                    }
+                }else{
+                    r+=' '
+                }
+                
             }
             return r;
         }
         function printList(list,indent,arrangement){
-            let resultCode='';
+            let result=new MyString();
             //indent=indent+1;
             if(!(list instanceof Array)){
-                resultCode+=print(list,indent,arrangement)
-                return resultCode;
+                result.append(print(list,indent,arrangement))
+                return result;
             }
-            resultCode+=getIndent(indent,arrangement);
+            result.append(getIndent(indent,arrangement));
             if(list.length==0){
-                resultCode+='()'
-                return resultCode;
+                result.append('()')
+                return result;
             } 
             if(list.type==='normal'){
-                resultCode+='(';
+                result.append('(');
             }else{
-                resultCode+="'("
+                result.append("'(")
             }
             
             let childArrangement=0;
@@ -282,79 +320,78 @@
                 childArrangement=0;
             }
             
-            //resultCode+=getIndent(indent,arrangement)
+            //result+=getIndent(indent,arrangement)
             for(let i=0;i<list.length;i++){
                 if(i==0){                    
                     if(list[0] instanceof Array){
-                        resultCode+=printList(list[0],indent+1,childArrangement) 
+                        result.append(printList(list[0],indent+1,childArrangement) )
                     }else{
-                        resultCode+=list[0].value
+                        result.append(list[0].value)
                     }
                     
                 }else{
                     if(typeof list[0].value!='undefined'){
                         switch(list[0].value){
                             case 'setq':
-                                resultCode+=printSetq(i,list[i],indent+1,childArrangement)
+                                result.append(printSetq(i,list[i],indent+1,childArrangement))
                                 break;
                             case 'defun':
-                                resultCode+=printDefun(i,list[i],indent+1,childArrangement)
+                                result.append(printDefun(i,list[i],indent+1,childArrangement))
                                 break;
                             default:
-                                resultCode+=printList(list[i],indent+1,childArrangement)
+                                result.append(printList(list[i],indent+1,childArrangement))
                         }
                         
                     }else{
-                        resultCode+=printList(list[i],indent+1,childArrangement)
-                    }
-                    
-                }
-                
+                        result.append(printList(list[i],indent+1,childArrangement))
+                    }                    
+                }                
             }
             if(childArrangement==0){
-                resultCode+=')';
+                result.append(')');
             }else{
-                resultCode+=getIndent(indent,childArrangement)+')';
+                result.append(getIndent(indent,childArrangement));
+                result.append(')');
             }
             
-            return resultCode;
+            return result;
         }
         function print(p,indent,arrangement){
-            let resultCode='';
+            let result=new MyString();
             if(p instanceof Array){
-                resultCode+=printList(p,indent,arrangement)
+                result.append(printList(p,indent,arrangement))
             }else if(p instanceof LineAnn){
-                resultCode+=p.value+'\r\n';
+                result.append(p.value+'\r\n');
             }else if(p instanceof InlineAnn){
-                resultCode+=" "+p.value;
+                result.append(" "+p.value);
             }else{
 
-                resultCode+=getIndent(indent,arrangement)+p.value;
+                result.append(getIndent(indent,arrangement)+p.value);
             }
-            return resultCode;
+            return result;
         }
 
         function printSetq(i,p,indent,arrangement){
-            let code='';
+            let code=new MyString();
             if(i%2==0){
-                code+=printList(p,indent,0)
+                code.append(printList(p,indent,0))
             }else{
-                code+=printList(p,indent,arrangement)
+                code.append(printList(p,indent,arrangement))
             }
             return code;
         }
 
         function printDefun(i,p,indent,arrangement){
-            let code='';
+            let code=new MyString();
             if(i===1){
-                code+=printList(p,indent,0)
+                code.append(printList(p,indent,0))
             }else{
-                code+=printList(p,indent,arrangement)
+                code.append(printList(p,indent,arrangement))
             }
             return code;
         }
         let ast=parse(program);
-        let resultCode='';
+        
         for(let i=0;i<ast.length;i++){
             resultCode+=printList(ast[i],0,0)+'\r\n'
         }

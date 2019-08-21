@@ -62,7 +62,15 @@ function activate(context) {
 		let ret=parser.parse(content)
     });
 	context.subscriptions.push(format);
-	let format2 = vscode.commands.registerTextEditorCommand('autolisp.format2', (textEditor,edit,args) => {
+	function formatCommandAll(textEditor,edit,args)
+	{
+		formatCommand_(textEditor,edit,args,"all");
+	}
+	function formatCommandIndent(textEditor,edit,args)
+	{
+		formatCommand_(textEditor,edit,args,"indent");
+	}
+	function formatCommand_(textEditor,edit,args,type){
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
 		//vscode.window.showInformationMessage('Hello World!');
@@ -74,21 +82,24 @@ function activate(context) {
 			let program=textEditor.document.getText(range)
 			if(program===''){
 				program=textEditor.document.getText();
-				let ret=parser.format(program);
+				let ret=parser.format(program,type);
 				const end = new vscode.Position(textEditor.document.lineCount + 1, 0);
 	
 				edit.replace(new vscode.Range(new vscode.Position(0, 0), end), ret);
 				
 			}else{
-				let ret=parser.format(program);
+				let ret=parser.format(program,type);
 				edit.replace(range,ret);
 			}
 			
 		} catch (error) {
 			console(error)
 		}
-    });
-    context.subscriptions.push(format2);
+    }
+	let format2 = vscode.commands.registerTextEditorCommand('autolisp.format2', formatCommandAll);
+	context.subscriptions.push(format2);
+	let format3 = vscode.commands.registerTextEditorCommand('autolisp.formatIndent', formatCommandIndent);
+    context.subscriptions.push(format3);
 
 	let dis2= vscode.languages.registerHoverProvider({language:"autolisp"},{provideHover})
 	context.subscriptions.push(dis2)

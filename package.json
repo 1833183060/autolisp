@@ -163,10 +163,13 @@
             }
         ],
         "menus": {"editor/context": 
-            [
-               
+            [               
                 {
                     "command": "autolisp.format2",
+                    "when": "resourceLangId==autolisp"
+                },
+                {
+                    "command": "autolisp.formatIndent",
                     "when": "resourceLangId==autolisp"
                 }
             ]
@@ -178,7 +181,11 @@
             },
             {
                 "command": "autolisp.format2",
-                "title": "格式化lisp2"
+                "title": "lisp:格式化"
+            },
+            {
+                "command": "autolisp.formatIndent",
+                "title": "lisp:格式化(仅缩进)"
             }
         ]
     },
