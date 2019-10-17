@@ -1,3 +1,6 @@
+//已被lispParser2.lsp代替 （niaoge 2019-08-23）
+//
+
 class MyString  {
     constructor(value){
         if(typeof value=='undefined'){
@@ -7,7 +10,7 @@ class MyString  {
     }
     append(v){
         this.s+=v;
-        MyString.lastString=v;
+        MyString.lastString=v.toString();
     }
     toString(){
         if(typeof this.s=='undefined')return "";
@@ -23,6 +26,11 @@ class MyString  {
         }
     }
 
+    class ParseError{
+        constructor(v){
+            this.message=v;
+        }
+    }
     /* Type Defination */
     class Meta {
         constructor(value) {
@@ -193,8 +201,8 @@ class MyString  {
     function tokenize(program) {
         program=processAnnotation(program)
         program=processStr(program)
-        program= program.replace(/(\'\(|\()/g, ' $1 ').replace(/\)/g, ' ) ').replace(/\r\n/g,' ');
-        program=program.replace(/\s*\n\s*/g,' \n ')
+        program= program.replace(/(\'\(|\()/g, ' $1 ').replace(/\)/g, ' ) ');
+        program=program.replace(/[\t ]*\n[\t ]*/g,' \n ')
         program=program.replace(/[\t ]{1,}/g,' ')
         return program.split(' ')
     }
@@ -239,7 +247,8 @@ class MyString  {
             tokens.shift()
             return L
         } else if (')' === token) {
-            throw new Error('unexpected )')
+            return new ParseError('unexpected )')
+            ;;throw new Error('unexpected )')
         } else {
             return atom(token)
         }
@@ -277,14 +286,14 @@ class MyString  {
                 if(arrangement===0){
                     r+=' ';
                 }else{
-                    r+='\r\n'
+                    r+='\n'
                     while(indent-->0){
                         r+='\t'
                     }
                 }
             }else{
-                if(typeof MyString.lastString!='undefined'&&MyString.lastString.endWith('\n')){
-                    r+='\n'
+                if(typeof MyString.lastString!='undefined'&&MyString.lastString.endsWith('\n')){
+                    //r+='\n'
                     while(indent-->0){
                         r+='\t'
                     }
@@ -361,9 +370,15 @@ class MyString  {
             if(p instanceof Array){
                 result.append(printList(p,indent,arrangement))
             }else if(p instanceof LineAnn){
-                result.append(p.value+'\r\n');
+                //result.append(p.value+'\r\n');
+                result.append(p.value);
             }else if(p instanceof InlineAnn){
                 result.append(" "+p.value);
+            }else if(p instanceof NewLine){
+                if(formatType=='indent'){
+                    result.append(p.value);
+                }
+                
             }else{
 
                 result.append(getIndent(indent,arrangement)+p.value);
@@ -393,11 +408,14 @@ class MyString  {
         let ast=parse(program);
         
         for(let i=0;i<ast.length;i++){
-            resultCode+=printList(ast[i],0,0)+'\r\n'
+            //resultCode+=printList(ast[i],0,0)+'\r\n'
+            resultCode+=printList(ast[i],0,0);
         }
         return resultCode;
     }
-
+    function lint(program){
+        let ast=parse(program);
+    }
     /* Eval */
     function eval(x, env=global_env) {
         if (x instanceof Sym) {

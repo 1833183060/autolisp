@@ -1,0 +1,2337 @@
+-,(- [数值 数值] ...),将第一个数减去其他数的和并返回差值,33,1,-1
+~,(~ int),返回参数的按位非（即 1 的补码）,33,1,1
++,(+ [number number] ...),返回所有数的和,33,1,-1
+=,(= numstr [numstr] ...),比较参数是否相等,33,1,-1
+*,(* [number number] ...),返回所有数的乘积,33,1,-1
+/,(/ [number number] ...),将第一个数除以其他数的乘积并返回商,33,1,-1
+1+,(1+ number),将参数加 1,33,1,1
+<,(< numstr [numstr] ...),如果每个参数值都小于它右边的参数则返回 T，否则返回 nil,33,2,-1
+<=,(<= numstr [numstr] ...),如果每个参数值都小于或等于它右边的参数则返回 T，否则返回 nil,33,2,-1
+>,(> numstr [numstr] ...),如果每个参数值都大于它右边的参数则返回 T，否则返回 nil,33,2,-1
+>=,(>= numstr [numstr] ...),如果每个参数值都大于或等于它右边的参数则返回 T，否则返回 nil,33,2,-1
+abs,(abs number),返回参数的绝对值,33,1,1
+acad_colordlg,(acad_colordlg colornum [flag]),显示标准的 AutoCAD 颜色选择对话框,33,1,2
+acad_helpdlg,(acad_helpdlg helpfile topic),启动帮助工具（已废弃）,33,2,2
+acad_strlsort,(acad_strlsort list),以ASCII码字母顺序对字符串表进行排序,33,1,1
+action_tile,(action_tile key action-expression),为某一对话框控件指定一个动作表达式，用户在对话框中选中这个控件时，就会执行该动作表达式,33,2,2
+add_list,(add_list string),在当前激活的对话框的列表框中增加一个字符串或修改其中的一个字符串,33,1,1
+ads,(ads),此函数将返回一串目前装入的AutoCAD高级开发系统(ADS)应用程序。每一个应用程序和它的路径在这个表中都是一个以引号括起来的字符串。,33,0,0
+alert,(alert string),显示一个警告框，其中显示一条出错或警告信息,33,1,1
+alloc,(alloc n-alloc),设置段长度以供 expand 函数使用,33,1,1
+and,(and [expr ...]),返回表达式的逻辑与 (AND) 运算结果,33,-1,-1
+angle,(angle pt1 pt2),以弧度为单位返回两点之间连线与当前 UCS 下 X 轴之间的夹角,33,2,2
+angtof,(angtof string [units]),将表示角度的字符串转换为实数（浮点数）形式的弧度值,33,1,2
+angtos,(angtos angle [unit [precision]]),将一个以弧度为单位的角度值转换成字符串,33,1,3
+append,(append [list ...]),将任意多个表组合成一个表,33,1,-1
+apply,(apply 'function list),传递一个列表作为指定函数的参数，并执行该函数,33,2,2
+arxload,(arxload application [onfailure]),加载 ObjectARX 应用程序,33,1,2
+arxunload,(arxunload application [onfailure]),卸载 ObjectARX 应用程序,33,1,2
+ascii,(ascii string),将字符串中的第一个字符转换成其 ASCII 码(整数)后返回,33,1,1
+assoc,(assoc element alist),从关联表中搜索一个元素，如果找到则返回该关联表条目,33,2,2
+atan,(atan num1 [num2]),返回一个数的反正切值（以弧度为单位）,33,1,2
+atof,(atof string),将一个字符串转换成实数,33,1,1
+atoi,(atoi string),将一个字符串转换成整数,33,1,1
+atom,(atom item),验证一个项是否是原子,33,1,1
+autoarxload,(autoarxload filename cmdlist),预定义可自动加载某相关 ObjectARX 应用程序的命令名,33,2,2
+autoload,(autoload filename cmdlist),预定义可自动加载某相关 AutoLISP 应用程序的命令名,33,2,2
+autoxload,(autoxload filename cmdlist),此函数是事先定义命令名称来装入一已连接的 ADS 应用程序。,33,2,2
+/=,(/= numstr [numstr] ...),比较参数是否值不相等,33,2,-1
+boole,(Boole operator int1 [int2 ...]),用作一个通用的按位逻辑运算函数,33,2,4
+boundp,(boundp sym),检验符号是否被设置为某个值,33,1,1
+car,(car list),返回表的第一个元素,33,1,1
+cdr,(cdr list),返回去掉了第一个元素的表或点对表的第二个元素,33,1,1
+chr,(chr integer),将代表字符 ASCII 码的整数转换成包含相应的单一字符的字符串,33,1,1
+client_data_tile,(client_data_tile key clientdata),将特定应用数据与一个对话框控件相关联,33,2,2
+close,(close file-desc),关闭一个已打开的文件,33,1,1
+command,(command [arguments] ...),执行一条 AutoCAD 命令,33,0,-1
+cond,(cond [(test result ...) ...]),多条件、多处理结果函数,33,1,-1
+cons,(cons new-first-element list-or-atom),向表的头部添加一个元素，或构造一个点对,33,2,2
+cos,(cos ang),返回弧度角度的余弦值,33,1,1
+cvunit,(cvunit value from-unit to-unit),在不同测量单位之间进行换算,33,3,3
+defun,(defun sym ([arguments] [/ variables...]) expr...),定义函数,33,-1,-1
+dictadd,(dictadd ename symbol newobj),在指定词典内添加非图形对象,33,3,3
+dictnext,(dictnext ename [rewind]),查找词典中的下一个条目,33,1,2
+dictremove,(dictremove ename symbol),从指定词典中删除一个条目,33,2,2
+dictrename,(dictrename ename oldsym newsym),重命名词典条目,33,3,3
+dictsearch,(dictsearch ename symbol [setnext]),在词典中搜索某个项,33,2,3
+dimx_tile,(dimx_tile key),返回控件的宽度,33,1,1
+dimy_tile,(dimy_tile key),返回控件的高度,33,1,1
+distance,(distance pt1 pt2),返回两个点之间的距离,33,2,2
+distof,(distof string [mode]),将一个表示实（浮点）数的字符串转换成一个实数,33,1,2
+done_dialog,(done_dialog [status]),中断对话框,33,0,1
+end_image,(end_image),结束当前激活的对话框图像控件的操作,33,0,0
+end_list,(end_list),结束对当前激活的对话框列表的操作,33,0,0
+entdel,(entdel  ename),删除对象（图元）或恢复先前删除的对象,33,1,1
+entget,(entget ename [applist]),获得对象（图元）的定义数据,33,1,2
+entlast,(entlast),返回图形中最后那个未删除的主对象（图元）名称,33,0,0
+entmake,(entmake [elist]),在图形中创建一个新图元,33,0,1
+entmakex,(entmakex [elist]),创建一个新对象或图元，赋给它一个句柄和图元名（但不指定所有者），并返回新图元的名称,33,0,1
+entmod,(entmod elist),修改对象（图元）的定义数据,33,1,1
+entnext,(entnext [ename]),返回图形中的下一个对象（图元）名,33,0,1
+entsel,(entsel [msg]),提示用户通过指定一个点来选择单个对象（图元）,33,0,1
+entupd,(entupd ename),更新对象（图元）的屏幕显示,33,1,1
+eq,(eq expr1 expr2),确定两个表达式是否具有相同的约束条件,33,2,2
+equal,(equal expr1 expr2 [fuzz]),确定两个表达式的值是否相等,33,2,3
+*error*,(*error* string),可由用户定义的错误处理函数,33,1,1
+eval,(eval expr),返回 AutoLISP 表达式的求值结果,33,1,1
+exit,(exit),强行使当前应用程序退出,33,0,0
+exp,(exp num),返回常数 e (2.718282...) 的指定次幂（自然反对数）,33,1,1
+expand,(expand n-expand),为 AutoLISP 分配附加空间,33,1,1
+expt,(expt number power),返回以某指定数为底数的若干次幂的值,33,2,2
+fill_image,(fill_image x1 y1 width height color),在当前激活的对话框图像控件中画一个填充矩形,33,5,5
+findfile,(findfile filename),在 AutoCAD 库路径中搜索指定文件或目录,33,1,1
+fix,(fix number),截去实数的小数部分，将它转换成整数后返回该整数,33,1,1
+float,(float number),将一个数转换为实数后返回,33,1,1
+foreach,(foreach name list [expr...]),将表中的所有成员以指定变量的身份带入表达式求值,33,3,-1
+gc,(gc),强制收集无用数据，释放不再使用的节点,33,0,0
+gcd,(gcd int1 int2),返回两个整数的最大公约数,33,2,2
+getangle,(getangle [pt] [msg]),暂停以等待用户输入角度，然后以弧度形式返回该角度,33,0,2
+get_attr,(get_attr key attribute),获取对话框指定控件的某个属性值,33,2,2
+getcfg,(getcfg cfgname),从 acad.cfg 文件的 AppData 段中检索应用数据,33,1,1
+getcname,(getcname cname),获取 AutoCAD 命令的本地化名或英文名,33,1,1
+getcorner,(getcorner pt [msg]),暂停等待用户输入矩形第二个角点的坐标,33,1,2
+getdist,(getdist [pt] [msg]),暂停以等待用户输入距离,33,0,2
+getenv,(getenv variable-name),以字符串方式返回指定的环境变量的值,33,1,1
+getfiled,(getfiled title default ext flags),用标准的 AutoCAD 文件对话框提示用户输入一个文件名，并返回该文件名,33,4,4
+getint,(getint [msg]),暂停以等待用户输入一个整数并返回该整数,33,0,1
+getkword,(getkword [msg]),暂停以等待用户输入一个关键字并返回该关键字,33,0,1
+getorient,(getorient [pt] [msg]),暂停以等待用户输入角度，并返回该角度,33,0,3
+getpoint,(getpoint [pt] [msg]),暂停以等待用户输入点，并返回该点,33,0,3
+getreal,(getreal [msg]),暂停以让用户输入一个实数并返回该实数,33,0,1
+getstring,(getstring [cr] [msg]),暂停以等待用户输入字符串，并返回该字符串,33,0,3
+get_tile,(get_tile key),获取对话框指定控件的当前运行时的值,33,1,1
+getvar,(getvar varname),获取一个 AutoCAD 系统变量的值,33,1,1
+graphscr,(graphscr),显示 AutoCAD 图形屏幕,33,0,0
+grclear,(grclear),清除当前视口（已废弃）,33,0,0
+grdraw,(grdraw from to color [highlight]),在当前视口中的两个点之间显示一条矢量线,33,3,4
+grread,(grread [track] [allkeys [curtype]]),从 AutoCAD 的任何一种输入设备中读取数值,33,0,3
+grtext,(grtext [box text [highlight]]),将文本写到状态行或屏幕菜单区,33,0,4
+grvecs,(grvecs vlist [trans]),在图形屏幕上绘制多个矢量,33,1,2
+handent,(handent handle),根据对象（图元）的句柄返回它的对象（图元）名,33,1,1
+if,(if testexpr thenexpr [elseexpr]),根据对条件的判断结果，对两个表达式求值,33,2,3
+initget,(initget [bits] [string]),为随后的用户输入函数调用创建关键字,33,0,2
+inters,(inters pt1 pt2 pt3 pt4 [onseg]),求两条直线的交点,33,4,5
+itoa,(itoa int),将整数转换成字符串，并返回转换结果,33,1,1
+lambda,(lambda arguments expr...),定义无名函数,33,2,-1
+last,(last lst),返回表的最后一个元素,33,1,1
+length,(length lst),以整数形式返回表中元素的数目,33,1,1
+list,(list [expr...]),将任意数目的表达式组合成一个表,33,-1,-1
+listp,(listp item),检查某个项是否是表,33,1,1
+load,(load filename [onfailure]),"此函数将装入一个包含AutoLISP表达式的文件, 同时判别这些表达式。filename是一个代表文件名称的字符串, 而且不须加上扩展名(因为扩展名.lsp是自动设定)。",33,-1,-1
+load_dialog,(load_dialog dclfile),加载 DCL 文件,33,1,1
+log,(log num),返回一个实数的自然对数,33,1,1
+logand,(logand [int int...]),返回一个整数表中的各数按位逻辑与 (AND) 的结果,33,0,-1
+logior,(logior [intint...]),返回一个整数表中的各数按位逻辑或 (OR) 的结果,33,0,-1
+lsh,(lsh int numbits),返回某整数作指定次逻辑移位后的结果,33,2,2
+mapcar,(mapcar 'function list1... listn),循环取list1至listn相同位置的元素同时作为function的参数进行求值，并将求值结果构成的表返回,33,2,-1
+max,(max [number number...]),返回给定各数中的最大者,33,1,-1
+mem,(mem),显示 AutoLISP 内存的当前状态,33,0,0
+member,(member expr lst),搜索表中是否包含某表达式，并从该表达式的第一次出现处返回表的其余部分,33,2,2
+menucmd,(menucmd string),发出菜单命令，或设置并检索菜单项状态,33,1,1
+menugroup,(menugroup groupname),检查是否加载了指定的菜单组,33,1,1
+min,(min [number number...]),返回给定各数中的最小者,33,1,-1
+minusp,(minusp num),检查某个数是否是负数,33,1,1
+mode_tile,(mode_tile key mode),设置对话框控件的状态,33,2,2
+namedobjdict,(namedobjdict),返回当前图形的命名对象词典的图元名，它是所有非图形对象的根,33,0,0
+nentsel,(nentsel [msg]),提示用户指定点来选择对象（图元），得到这个对象所指片段的对象名,33,0,1
+nentselp,(nentselp [msg] [pt]),在没有用户输入的情况下，本函数的功能与 nentsel 函数类似,33,0,2
+new_dialog,(new_dialog dlgname dcl_id [action [screen-pt]]),开始一个新的对话框并显示该对话框，而且能指定一个缺省操作,33,2,4
+not,(not item),检查一个项的求值结果是否为 nil,33,1,1
+nth,(nth n lst),返回表中的第 n+1 个元素,33,2,2
+null,(null item),检查某项的值是否设置为 nil,33,1,1
+numberp,(numberp item),检查某个项是否是实数或整数,33,1,1
+open,(open filename mode),打开一个文件，供其他 AutoLISP I/O 函数访问,33,2,2
+or,(or [expr...]),返回对表达式进行逻辑或 (OR) 运算的结果,33,1,-1
+osnap,(osnap pt mode),将某种对象捕捉模式作用于指定点而获得一个点，并返回该点,33,2,2
+polar,(polar pt ang dist),在 UCS 坐标系下，求某点的指定角度和指定距离处的点，并返回该点,33,3,3
+princ,(princ [expr [file-desc]]),在命令行打印表达式，或将表达式写入已打开的文件中,33,0,2
+print,(print [expr [file-desc]]),在命令行打印表达式，或将表达式写入已打开的文件中,33,0,2
+progn,(progn [expr]...),顺序地对每一个表达式进行求值，并返回最后那个表达式的值,33,-1,-1
+prompt,(prompt msg),在屏幕提示区显示一个字符串,33,1,1
+quit,(quit),强制退出当前应用程序,33,0,0
+quote,(quote expr),返回表达式而不对其求值,33,1,1
+read,(read [string]),返回字符串中的第一个表或第一个原子,33,0,1
+read-line,(read-line [file-desc]),从键盘或已打开文件中读取行结束符前的字符串,33,0,1
+redraw,(redraw [ename [mode]]),重画当前视口或当前视口中的一个指定对象（图元）,33,0,2
+regapp,(regapp application),为当前 AutoCAD 图形注册一个应用名，为使用扩展对象数据作准备,33,1,1
+rem,(rem [number number...]),将第一个数除以第二个数，并返回余数,33,2,-1
+repeat,(repeat int [expr...]),对循环体中的每一个表达式进行指定次数的求值计算，并返回最后一个表达式的值,33,2,-1
+reverse,(reverse lst),将表的元素顺序倒置后返回,33,1,1
+rtos,(rtos number [mode [precision]]),将数字转换成字符串,33,1,3
+set,(set sym expr),将引号中的符号名的值设置成一个表达式的值,33,2,2
+setcfg,(setcfg cfgname cfgval),将应用数据写到 acad.cfg 文件的 AppData 段中,33,2,2
+setfunhelp,(setfunhelp c:fname [helpfile [topic [command]]]),给帮助工具注册一个用户定义函数，这样，用户在请求该命令的帮助时，就会调用正确的帮助文件和主题,33,1,4
+setq,(setq sym expr [sym expr]...),将一个或多个符号的值设置为相应表达式的值,33,-1,-1
+set_tile,(set_tile key value),设置对话框控件的值,33,2,2
+setvar,(setvar varname value),设置 AutoCAD 系统变量为指定值,33,2,2
+setview,(setview view_descriptor [vport_id]),为指定视口建立一个视图,33,1,2
+sin,(sin ang),以实数形式返回角度的正弦值（以弧度为单位）,33,1,1
+slide_image,(slide_image x1 y1 width height sldname),在当前激活的对话框图像控件中显示 AutoCAD 幻灯片,33,5,5
+snvalid,(snvalid sym_name [flag]),检查组成符号表名的各字符的有效性,33,1,2
+sqrt,(sqrt num),以实数形式返回一个数的平方根,33,1,1
+ssadd,(ssadd [ename [ss]]),将对象（图元）加入到选择集中，或创建新的选择集,33,0,2
+ssdel,(ssdel ename ss),从选择集中撤消对象（图元）,33,2,2
+ssget,(ssget [sel-method] [pt1 [pt2]] [pt-list] [filter-list]),根据选定对象创建选择集,33,0,5
+ssgetfirst,(ssgetfirst),判断哪些对象是被选取的和被夹取的,33,0,0
+sslength,(sslength ss),求出一个选择集中的对象（图元）数目，并将其作为一个整数返回,33,1,1
+ssmemb,(ssmemb ename ss),测试某对象（图元）是否是选择集的成员,33,2,2
+ssname,(ssname ss index),返回选择集中由序号指定的那个对象（图元）的图元名,33,2,2
+ssnamex,(ssnamex ss [index]),获取关于选择集创建方式的信息,33,1,2
+sssetfirst,(sssetfirst gripset [pickset]),设置哪些对象既是被选取的又是被夹取的,33,0,2
+startapp,(startapp appcmd [file]),启动 Windows 应用程序,33,1,2
+start_dialog,(start_dialog),显示对话框并将控制交给对话框,33,0,0
+start_image,(start_image key),开始对对话框控件中的一个图像控件进行操作,33,1,1
+start_list,(start_list key [operation [index]]),开始处理对话框中的列表框或弹出式列表框中的列表,33,1,3
+strcase,(strcase string [which]),将字符串中的所有字母转换成大写或小写后返回,33,1,2
+strcat,(strcat [string[string]...]),将多个字符串拼接成一个长字符串后返回,33,1,-1
+strlen,(strlen [string]...),以整数形式返回一个字符串中字符的个数,33,1,-1
+subst,(subst newitem olditem lst),在表中搜索某旧项，并将表中出现的每一个旧项用新项代替，然后返回修改后所得的表,33,3,3
+substr,(substr string start [length]),返回字符串中的一个子字符串,33,2,3
+tablet,(tablet code [row1 row2 row3 direction]),获取和设置数字化仪校准,33,1,5
+tblnext,(tblnext table-name [rewind]),在符号表中查找下一项,33,1,2
+tblobjname,(tblobjname table-name symbol),返回指定符号表条目的图元名,33,2,2
+tblsearch,(tblsearch table-name symbol [setnext]),在指定的符号表中搜索符号名,33,2,3
+term_dialog,(term_dialog),终止当前所有的对话框，就象用户取消了它们一样,33,0,0
+terpri,(terpri),在命令行上输出一个换行符,33,0,0
+textbox,(textbox elist),测量一个指定文本对象的尺寸，并返回围住该文本的一个矩形框的对角坐标,33,1,1
+textpage,(textpage),从图形屏幕切换至文本屏幕,33,0,0
+textscr,(textscr),切换至文本屏幕（相当于 AutoCAD Flip Screen 功能键）,33,0,0
+trace,(trace [function...]),调试 AutoLISP 程序时的辅助函数,33,1,-1
+trans,(trans pt from to [disp]),"将一个点（或位移量）从一个坐标系转换成另一个坐标系
+0 世界坐标系（WCS）
+1 用户坐标系（当前 UCS）
+2 与代码 0 或代码 1 一起使用时，表示当前视口的显示坐标系 (DCS)。
+    与代码 3 一起使用时，表示当前模型空间视口的 DCS。
+3 图纸空间 DCS（仅用于代码 2）",33,3,4
+type,(type item),返回指定项的数据类型,33,1,1
+unload_dialog,(unload_dialog dcl_id),卸载 DCL 文件,33,1,1
+untrace,(untrace [function...]),清除指定函数的跟踪标志,33,-1,-1
+vector_image,(vector_image x1 y1 x2 y2 color),在当前激活的对话框图像控件上显示一个矢量线,33,5,5
+ver,(ver),返回当前 AutoLISP 版本号的字符串,33,0,0
+vports,(vports),返回表示当前视口配置的视口描述符表,33,0,0
+wcmatch,(wcmatch string pattern),将模式字符串与某指定的字符串进行匹配比较,33,2,2
+while,(while testexpr [expr...]),对测试表达式进行求值，如果它不是 nil，则执行循环体中的表达式，重复这个过程，直到测试表达式的求值结果为 nil,33,1,-1
+write-char,(write-char num [file-desc]),将一个字符写到屏幕上或一个已打开的文件中,33,1,2
+write-line,(write-line string [file-desc]),将字符串写到屏幕上或一个已打开的文件中,33,1,2
+xdroom,(xdroom ename),返回对象可供使用的扩展数据 (Xdata) 空间的大小,33,1,1
+xdsize,(xdsize lst),返回一个表作为扩展数据连接到对象（图元）上时所占用的空间大小（以字节表示）,33,1,1
+xload,(xload application [onfailure]),这个函数将装入一个AutoCAD高级开发系统(ADS)的应用程序。,33,1,2
+xunload,(xunload application [onfailure]),"此函数将卸载一个ADS应用程序。如果应用程序被成功地卸下。那么, 应用程序的名称将被返回。否则, 一个错误信息将被发出。",33,1,2
+zerop,(zerop number),检查一个数的值是否为 0,33,1,1
+vl-acad-defun,(vl-acad-defun 'symbol),将 Visual LISP 函数符号定义为外部子例程,33,1,1
+vl-acad-undefun,(vl-acad-undefun 'symbol),取消对 Visual LISP 函数符号的定义，使 ObjectARX 应用程序不能再使用它。,33,1,1
+vl-arx-import,(vl-arx-import ['function | "application"]),将 ObjectARX/ADSRX 函数输入到独立名称空间 VLX,33,1,1
+vl-bb-ref,(vl-bb-ref 'variable),返回黑板名称空间中变量的值,33,1,1
+vl-bb-set,(vl-bb-set 'symbol value),设置黑板名称空间中的变量,33,2,2
+vl-catch-all-apply,(vl-catch-all-apply 'function list),将参数表传递给指定函数并截取错误,33,1,2
+vl-catch-all-error-message,(vl-catch-all-error-message error-obj),从错误对象返回字符串,33,1,1
+vl-catch-all-error-p,(vl-catch-all-error-p arg),确定参数是否是 vl-catch-all-apply 返回的错误对象,33,1,1
+vl-cmdf,(vl-cmdf  [arguments] ...),执行 AutoCAD 命令,33,0,-1
+vl-consp,(vl-consp list-variable),确定表是否为 nil,33,1,1
+vl-directory-files,(vl-directory-files [directory pattern directories]),列出给定目录中的所有文件,33,0,3
+vl-doc-export,(vl-doc-export 'function),使函数在当前文档中可用,33,1,1
+vl-doc-import,(vl-doc-import application [’function...]),将早先输出的函数输入到 VLX 名称空间,33,1,-1
+vl-doc-ref,(vl-doc-ref 'symbol),从当前文档名称空间中获取变量的值,33,1,1
+vl-doc-set,(vl-doc-set 'symbol value),设置当前文档名称空间中变量的值,33,2,2
+vl-every,(vl-every  predicate-function list [list]...),检查论断结合每个元素后是否均为真,33,2,-1
+vl-exit-with-error,(vl-exit-with-error msg),将控制从 VLX 错误处理器传递给调用它的名称空间的 *error* 函数,33,1,1
+vl-exit-with-value,(vl-exit-with-value value),将值返回到从其他名称空间调用 VLX 的函数,33,1,1
+vl-file-copy,(vl-file-copy  source-file destination-file [append]),将一个文件的内容复制或附加到另一个文件,33,2,3
+vl-file-delete,(vl-file-delete  filename),删除文件,33,1,1
+vl-file-directory-p,(vl-file-directory-p filename),确定文件名是否为路径名,33,1,1
+vl-filename-base,(vl-filename-base  filename),去掉文件的路径和扩展名，返回文件的名称,33,-1,-1
+vl-filename-extension,(vl-filename-extension  filename),返回文件的扩展名，而去掉文件名中的其他部分,33,-1,-1
+vl-filename-mktemp,(vl-filename-mktemp [pattern directory extension]),为临时文件计算唯一的文件名,33,0,3
+vl-file-rename,(vl-file-rename  old-filename new-filename),重命名文件,33,2,2
+vl-file-size,(vl-file-size  filename),确定文件的大小（字节）,33,1,1
+vl-file-systime,(vl-file-systime filename),返回指定文件的上一次修改时间,33,1,1
+vl-get-resource,(vl-get-resource text-file),返回 VLX 中保存的 .txt 文件中的文字,33,1,1
+vl-list-exported-functions,(vl-list-exported-functions [appname]),列出输出的函数,33,0,1
+vl-list-length,(vl-list-length  list-or-cons-object),计算表的长度,33,1,1
+vl-list->string,(vl-list->string char-codes-list),将一系列与整数表相关联的字符组合成字符串 。,33,1,1
+vl-load-all,(vl-load-all filename),"将文件加载到所有打开的 AutoCAD 文档中,以及在当前 AutoCAD 任务中后续打开的任何文档中",33,1,1
+vl-load-com,(vl-load-com),将 Visual LISP 扩展功能加载到 AutoLISP,33,0,0
+vl-load-reactors,(vl-load-reactors),加载反应器支持函数,33,0,0
+vl-member-if,(vl-member-if  predicate-function list),确定论断是否对每一个表成员都正确,33,2,2
+vl-member-if-not,(vl-member-if-not predicate-function list),确定论断是否对表成员中的一个为 nil,33,2,2
+vl-owner-add,(vlr-owner-add reactor owner),将对象添加到对象反应器的所有者列表。,33,2,2
+vl-owners,(vlr-owners reactor),返回对象反应器的所有者列表。,33,1,1
+vl-pers,(vlr-pers reactor),使反应器成为永久反应器。,33,1,1
+vl-pers-list,(vlr-pers-list [reactor]),返回由当前图形文件中永久反应器组成的表。,33,0,1
+vl-pers-p,(vlr-pers-p reactor),判断反应器是否是永久反应器。,33,-1,-1
+vl-pers-release,(vlr-pers-release reactor),使反应器成为临时反应器。,33,-1,-1
+vl-position,(vl-position  symbol list),返回指定表项目的索引,33,-1,-1
+vl-prin1-to-string,(vl-prin1-to-string  data),返回 LISP 数据的字符串表示，就象它是由 prin1 函数输出的一样,33,-1,-1
+vl-propagate,(vl-propagate 'symbol),将变量的值复制到所有打开的文档名称空间（并在当前 AutoCAD 任务中打开的所有后续图形中设置它的值）,33,-1,-1
+vl-reaction-names,(vlr-reaction-names reactor-type),返回由该类型反应器所有可能回调条件组成的表。,33,-1,-1
+vl-reaction-set,(vlr-reaction-set reactor event function),添加或替换反应器中的一个回调函数。,33,3,3
+vl-registry-delete,(vl-registry-delete reg-key [val-name]),从 Winows 注册表中删除指定的主键或值,33,1,2
+vl-registry-descendents,(vl-registry-descendents reg-key [val-names]),返回指定注册表键的子键或值名称的列表,33,1,2
+vl-registry-read,(vl-registry-read reg-key [val-name]),对于指定的主键/值对，返回 Winodws 注册表存储的数据,33,1,2
+vl-registry-write,(vl-registry-write reg-key [val-name val-data]),在 Windows 注册表中创建主键,33,1,3
+vl-remove,(vl-remove  element-to-remove list),删除表中的元素,33,2,2
+vl-remove-if,(vl-remove-if  predicate-function list),返回由所提供表中的所有不满足测试函数的元素组成的表,33,2,2
+vl-remove-if-not,(vl-remove-if-not  predicate-function list),返回由所提供表中的所有能通过测试函数的元素组成的表,33,2,2
+vl-some,(vl-some  predicate-functionlist [list]...),检查论断是否对某个元素组合不为 nil,33,-1,-1
+vl-sort,(vl-sort  list comparison-function),根据给定的比较函数来对表中的元素排序,33,2,2
+vl-sort-i,(vl-sort-i  list comparison-function),根据给定的比较函数对表中的元素排序，并返回元素的索引号,33,2,2
+vl-string-elt,(vl-string-elt string position),返回字符串中指定位置字符的 ASCII 表示,33,2,2
+vl-string-left-trim,(vl-string-left-trim character-set string),从字符串的开始删除指定字符,33,2,2
+vl-string-mismatch,(vl-string-mismatch str1 str2 [pos1 pos2 ignore-case-p]),返回两个字符串中从指定位置开始，最长的共同前缀的长度,33,-1,-1
+vl-string-position,(vl-string-position char-code str [start-pos [from-end-p]]),在字符串中查找具有指定 ASCII 码的字符,33,-1,-1
+vl-string-right-trim,(vl-string-right-trim character-set string),从字符串结尾删除指定字符,33,-1,-1
+vl-string-search,(vl-string-search pattern string [start-pos]),在字符串中搜索指定子串,33,-1,-1
+vl-string-subst,(vl-string-subst new-str pattern string [start-pos]),在字符串中进行字符串替换,33,-1,-1
+vl-string-translate,(vl-string-translate source-set dest-set str),在字符串中替换字符,33,-1,-1
+vl-string-trim,(vl-string-trim char-set str),从字符串的开始和结束删除指定字符,33,2,2
+vl-symbol-name,(vl-symbol-name  symbol),返回包含某符号名的字符串,33,-1,-1
+vl-symbolp,(vl-symbolp object),确定指定对象是否为符号,33,1,1
+vl-symbol-value,(vl-symbol-value symbol),返回当前绑定到符号的值,33,-1,-1
+vl-unload-vlx,(vl-unload-vlx appname),卸载已经加载到自己的名称空间的 VLX 应用程序,33,-1,-1
+vl-vbaload,(vl-vbaload filename),加载 Visual Basic 工程,33,1,1
+vl-vbarun,(vl-vbarun  macroname),运行 Visual Basic 宏,33,-1,-1
+vl-vlx-loaded-p,(vl-vlx-loaded-p appname),确定某独立名称空间当前是否加载,33,-1,-1
+vla-get-ActiveDimStyle,(vla-get-ActiveDimStyle Object),取得激活的标注样式。,33,-1,-1
+vla-get-ActiveDocument,(vla-get-ActiveDocument Object),取得激活的文件（图形文件）。,33,-1,-1
+vla-get-ActiveLayer,(vla-get-ActiveLayer Object),取得激活的图层。,33,-1,-1
+vla-get-ActiveLayout,(vla-get-ActiveLayout Object),取得激活的布局。,33,-1,-1
+vla-get-ActiveLinetype,(vla-get-ActiveLinetype Object),取得图形的激活的线型。,33,-1,-1
+vla-get-ActiveProfile,(vla-get-ActiveProfile Object),取得AutoCAD工作任务的激活配置。,33,-1,-1
+vla-get-ActivePViewport,(vla-get-ActivePViewport Object),取得图形的激活的图纸空间的视口。,33,-1,-1
+vla-get-ActiveSelectionSet,(vla-get-ActiveSelectionSet Object),取得图形激活的选择集。,33,-1,-1
+vla-get-ActiveSpace,(vla-get-ActiveSpace Object),在图纸空间与模型空间之间切换激活的空间。,33,-1,-1
+vla-get-ActiveTextStyle,(vla-get-ActiveTextStyle Object),取得图形激活的 文字样式。,33,-1,-1
+vla-get-ActiveUCS,(vla-get-ActiveUCS Object),取得图形激活的UCS。,33,-1,-1
+vla-get-ActiveViewport,(vla-get-ActiveViewport Object),取得图形激活的视口。,33,-1,-1
+vla-get-ADCInsertUnitsDefaultSource,(vla-get-ADCInsertUnitsDefaultSource Object),判断自动用于AutoCAD DesignCenter中未指定插入单位的源图形的对象的单位。,33,-1,-1
+vla-get-ADCInsertUnitsDefaultTarget,(vla-get-ADCInsertUnitsDefaultTarget Object),判断自动用于AutoCAD DesignCenter中未指定插入单位的目标图形的对象的单位。,33,-1,-1
+vla-get-Alignment,(vla-get-Alignment Object),取得属性、属性参考、或文字的水平与垂直对齐。,33,-1,-1
+vla-get-AlignmentPointAcquisition,(vla-get-AlignmentPointAcquisition Object),取得AutoAlignment点的 获取方式。,33,-1,-1
+vla-get-AllowLongSymbolNames,(vla-get-AllowLongSymbolNames Object),判断符号集是否包含扩展字符集或超过31个字符。,33,-1,-1
+vla-get-AltFontFile,(vla-get-AltFontFile Object),当AutoCAD找不到原始字体，而且字体映射文件中未指定 替代字体时，取得使用的字体文件的位置。,33,-1,-1
+vla-get-AltRoundDistance,(vla-get-AltRoundDistance Object),取得替代单位的四舍五入。,33,-1,-1
+vla-get-AltSuppressLeadingZeros,(vla-get-AltSuppressLeadingZeros Object),判断是否在替代标注值中禁止前导零。,33,-1,-1
+vla-get-AltSuppressTrailingZeros,(vla-get-AltSuppressTrailingZeros Object),判断是否在替代标注值中禁止结尾零。,33,-1,-1
+vla-get-AltSuppressZeroFeet,(vla-get-AltSuppressZeroFeet Object),判断是否在替代标注值中 禁止零英尺测量单位。,33,-1,-1
+vla-get-AltSuppressZeroInches,(vla-get-AltSuppressZeroInches Object),判断是否在替代标注值中 禁止的零英寸测量单位。,33,-1,-1
+vla-get-AltTabletMenuFile,(vla-get-AltTabletMenuFile Object),取得替代菜单的路径，用于标准AutoCAD数字化仪菜单的交换。,33,-1,-1
+vla-get-AltTextPrefix,(vla-get-AltTextPrefix Object),取得所有标注类型（不包括角度）的替代标注测量单位的 文字前缀。,33,-1,-1
+vla-get-AltTextSuffix,(vla-get-AltTextSuffix Object),取得所有标注类型（不包括角度）的替代标注测量单位的 文字后缀。,33,-1,-1
+vla-get-AltTolerancePrecision,(vla-get-AltTolerancePrecision Object),取得所有标注中的公差值 精度。,33,-1,-1
+vla-get-AltToleranceSuppressLeadingZeros,(vla-get-AltToleranceSuppressLeadingZeros Object),判断是否在替代标注值中禁止前导零。,33,-1,-1
+vla-get-AltToleranceSuppressTrailingZeros,(vla-get-AltToleranceSuppressTrailingZeros Object),判断是否在替代公差值中 禁止结尾零。,33,-1,-1
+vla-get-AltToleranceSuppressZeroFeet,(vla-get-AltToleranceSuppressZeroFeet Object),取得禁止替代公差值中的零英尺测量单位。,33,-1,-1
+vla-get-AltToleranceSuppressZeroInches,(vla-get-AltToleranceSuppressZeroInches Object),判断是否在替代公差值中 禁止零英寸测量单位。,33,-1,-1
+vla-get-AltUnits,(vla-get-AltUnits Object),取得替代单位标注。,33,-1,-1
+vla-get-AltUnitsFormat,(vla-get-AltUnitsFormat Object),取得所有标注（不包括角度）的替代单位的单位格式。,33,-1,-1
+vla-get-AltUnitsPrecision,(vla-get-AltUnitsPrecision Object),取得替代单位中的小数位数。,33,-1,-1
+vla-get-AltUnitsScale,(vla-get-AltUnitsScale Object),取得替代单位的比例系数。,33,-1,-1
+vla-get-Angle,(vla-get-Angle Object),取得线的角度。,33,-1,-1
+vla-get-AngleFormat,(vla-get-AngleFormat Object),取得角度标注的单位格式。,33,-1,-1
+vla-get-AngleVertex,(vla-get-AngleVertex Object),取得三点角度标注的角度顶点。,33,-1,-1
+vla-get-Annotation,(vla-get-Annotation Object),取得引线的注释对象。,33,-1,-1
+vla-get-Application,(vla-get-Application Object),取得Application对象。,33,-1,-1
+vla-get-ArcLength,(vla-get-ArcLength Object),取得弧的长度。,33,-1,-1
+vla-get-ArcSmoothness,(vla-get-ArcSmoothness Object),取得圆、弧以及椭圆的平滑度。,33,-1,-1
+vla-get-Area,(vla-get-Area Object),取得圆、弧、椭圆、轻 型多段线、多段线、面域、或平面封闭样条曲线构成的封闭面积。,33,-1,-1
+vla-get-Arrowhead1Block,(vla-get-Arrowhead1Block Object),取得要作为标注线第一个端点的自定义箭头的图块。,33,-1,-1
+vla-get-Arrowhead1Type,(vla-get-Arrowhead1Type Object),取得标注线第一个端点的箭头类型。,33,-1,-1
+vla-get-Arrowhead2Block,(vla-get-Arrowhead2Block Object),取得要作为标注线第二个端点的自定义箭头的图块。,33,-1,-1
+vla-get-Arrowhead2Type,(vla-get-Arrowhead2Type Object),取得标注线第二个端点的箭头类型。,33,-1,-1
+vla-get-ArrowheadBlock,(vla-get-ArrowheadBlock Object),取得要作为径向标注或引线的自定义箭头的图块。,33,-1,-1
+vla-get-ArrowheadSize,(vla-get-ArrowheadSize Object),取得标注箭头、引线箭头、以及 勾钱的尺寸。,33,-1,-1
+vla-get-ArrowheadType,(vla-get-ArrowheadType Object),取得径向标注或引线的箭头类型。,33,-1,-1
+vla-get-AssociativeHatch,(vla-get-AssociativeHatch Object),判断剖面线是否为 关联的。,33,-1,-1
+vla-get-AttachmentPoint,(vla-get-AttachmentPoint Object),取得MText对象的贴附点。,33,-1,-1
+vla-get-AutoAudit,(vla-get-AutoAudit Object),取得在进行DXFIN或DXBIN交换命令的着色后是否要执行 核查。,33,-1,-1
+vla-get-AutoSaveInterval,(vla-get-AutoSaveInterval Object),以分钟数指定自动储存的间隔时间。,33,-1,-1
+vla-get-AutoSavePath,(vla-get-AutoSavePath Object),取得在使用AutoSaveInterval属性打开自动储存时建立 的文件的路径。,33,-1,-1
+vla-get-AutoSnapAperture,(vla-get-AutoSnapAperture Object),切换AutoSnap锁点框的显示。,33,-1,-1
+vla-get-AutoSnapApertureSize,(vla-get-AutoSnapApertureSize Object),切换AutoSnap捕捉点框的尺寸。,33,-1,-1
+vla-get-AutoSnapMagnet,(vla-get-AutoSnapMagnet Object),切换AutoSnap磁吸。,33,-1,-1
+vla-get-AutoSnapMarker,(vla-get-AutoSnapMarker Object),切换AutoSnap标记。,33,-1,-1
+vla-get-AutoSnapMarkerColor,(vla-get-AutoSnapMarkerColor Object),取得AutoSnap标记的颜色。,33,-1,-1
+vla-get-AutoSnapMarkerSize,(vla-get-AutoSnapMarkerSize Object),取得AutoSnap标记的尺寸。,33,-1,-1
+vla-get-AutoSnapToolTip,(vla-get-AutoSnapToolTip Object),切换AutoSnap工具提示 。,33,-1,-1
+vla-get-AutoTrackingVecColor,(vla-get-AutoTrackingVecColor Object),取得自动追踪矢量颜色。,33,-1,-1
+vla-get-AutoTrackTooltip,(vla-get-AutoTrackTooltip Object),切换AutoTrack工具提示的显示。,33,-1,-1
+vla-get-Backward,(vla-get-Backward Object),取得文字的方向。,33,-1,-1
+vla-get-BasePoint,(vla-get-BasePoint Object),取得射线或 构造线通过的点。,33,-1,-1
+vla-get-BatchPlotProgress,(vla-get-BatchPlotProgress Object),取得当前批处理打印的状态或结束批处理打印。,33,-1,-1
+vla-get-BeepOnError,(vla-get-BeepOnError Object),取得当AutoCAD检测到无效的项目时是否发出 警告。,33,-1,-1
+vla-get-BigFontFile,(vla-get-BigFontFile Object),取得与文字或属性关联的大字体文件的名称。,33,-1,-1
+vla-get-Block,(vla-get-Block Object),取得与布局关联的图块。,33,-1,-1
+vla-get-Blocks,(vla-get-Blocks Object),取得图形的Blocks集合。,33,-1,-1
+vla-get-Brightness,(vla-get-Brightness Object),取得图像当前的亮度值。,33,-1,-1
+vla-get-CanonicalMediaName,(vla-get-CanonicalMediaName Object),以名称取得图纸大小。,33,-1,-1
+vla-get-Caption,(vla-get-Caption Object),取得用户所看到 的应用程序或菜单项目显示的文字。,33,-1,-1
+vla-get-Center,(vla-get-Center Object),取得弧、圆、椭圆、视图或视口的中心。,33,-1,-1
+vla-get-CenterMarkSize,(vla-get-CenterMarkSize Object),取得径向与直径标注的中点标记尺寸。,33,-1,-1
+vla-get-CenterPlot,(vla-get-CenterPlot Object),取得介质是否 在布局的中心打印。,33,-1,-1
+vla-get-CenterType,(vla-get-CenterType Object),取得半径与直径标注的中点标记的类型。,33,-1,-1
+vla-get-Centroid,(vla-get-Centroid Object),取得面域或实体的面积或质量的中点。,33,-1,-1
+vla-get-Check,(vla-get-Check Object),取得弹出菜单项目的复选框状态。,33,-1,-1
+vla-get-Circumference,(vla-get-Circumference Object),取得圆的周长。,33,-1,-1
+vla-get-Clipped,(vla-get-Clipped Object),判断视口是否已经剪裁。,33,-1,-1
+vla-get-ClippingEnabled,(vla-get-ClippingEnabled Object),取得启用或停用剪裁边界。,33,-1,-1
+vla-get-Closed,(vla-get-Closed Object),取得3D多段线、轻型多段线、多段线或样条曲线的开放或关闭的状态。,33,-1,-1
+vla-get-Color,(vla-get-Color Object),取得图元或图层的颜色。,33,-1,-1
+vla-get-Columns,(vla-get-Columns Object),取得图块阵列中的行数。,33,-1,-1
+vla-get-ColumnSpacing,(vla-get-ColumnSpacing Object),取得图块阵列中的行的间距。,33,-1,-1
+vla-get-ConfigFile,(vla-get-ConfigFile Object),取得用于储存硬件设备驱动程序信息的配置文件的位置。,33,-1,-1
+vla-get-ConfigName,(vla-get-ConfigName Object),取得打印机配置名称。,33,-1,-1
+vla-get-Constant,(vla-get-Constant Object),取得属性或属性参照是否为固定的。,33,-1,-1
+vla-get-ConstantWidth,(vla-get-ConstantWidth Object),取得多段线中所有线段的整体宽度。,33,-1,-1
+vla-get-ContourLinesPerSurface,(vla-get-ContourLinesPerSurface Object),取得对象上每一个面的索线（isoline）的数目。,33,-1,-1
+vla-get-Contrast,(vla-get-Contrast Object),取得图像当前的对比度。,33,-1,-1
+vla-get-ControlPoints,(vla-get-ControlPoints Object),取得样条曲线的控制点。,33,-1,-1
+vla-get-Coordinate,(vla-get-Coordinate Object index),取得对象中一个顶点的坐标。,33,-1,-1
+vla-get-Coordinates,(vla-get-Coordinates Object),取得对象中每一个顶点的坐标。,33,-1,-1
+vla-get-Count,(vla-get-Count Object),取得集合、词典、组或选择集中的项目的个数。,33,-1,-1
+vla-get-CreateBackup,(vla-get-CreateBackup Object),取得使用备份文件。,33,-1,-1
+vla-get-CursorSize,(vla-get-CursorSize Object),以屏幕尺寸的百分比取得十字光标的尺寸。,33,-1,-1
+vla-get-CustomDictionary,(vla-get-CustomDictionary Object),取得使用自定义词典（如果有）。,33,-1,-1
+vla-get-CustomScale,(vla-get-CustomScale Object),取得视口的自定义比例系数。,33,-1,-1
+vla-get-Database,(vla-get-Database Object),取得对象所属的数据库。,33,-1,-1
+vla-get-DecimalSeparator,(vla-get-DecimalSeparator Object),取得在十进制标注以及公差值中作为小数值的分割符的字符。,33,-1,-1
+vla-get-DefaultInternetURL,(vla-get-DefaultInternetURL Object),取得默认的Internet地址。,33,-1,-1
+vla-get-DefaultOutputDevice,(vla-get-DefaultOutputDevice Object),取得新布局与模型空间的默认输出设备。,33,-1,-1
+vla-get-DefaultPlotStyleForLayer,(vla-get-DefaultPlotStyleForLayer Object),取得Layer 0、新图形或由旧版AutoCAD建立但未以AutoCAD2000格式储存的图形的默认打印样式。,33,-1,-1
+vla-get-DefaultPlotStyleForObjects,(vla-get-DefaultPlotStyleForObjects Object),取得新建立的对象的默认打印样式名称。,33,-1,-1
+vla-get-DefaultPlotStyleTable,(vla-get-DefaultPlotStyleTable Object),取得要贴附到新图形的默认打印样式表格。,33,-1,-1
+vla-get-Degree,(vla-get-Degree Object),取得样条曲线的多项式表示的次数。,33,-1,-1
+vla-get-Delta,(vla-get-Delta Object),取得某些线的增量。,33,-1,-1
+vla-get-DemandLoadARXApp,(vla-get-DemandLoadARXApp Object),取得当图形含有以某应用程序建立的自定义对象时，AutoCAD是否以及何时以需求加载的方式加载第三方厂商的应用程序。,33,-1,-1
+vla-get-Description,(vla-get-Description Object),取得线型的说明。,33,-1,-1
+vla-get-Diameter,(vla-get-Diameter Object),取得圆的直径。,33,-1,-1
+vla-get-Dictionaries,(vla-get-Dictionaries Object),取得文件的Dictionaries集合。,33,-1,-1
+vla-get-DimensionLineColor,(vla-get-DimensionLineColor Object),取得标注、引线或公差对象的标注线的颜色。,33,-1,-1
+vla-get-DimensionLineExtend,(vla-get-DimensionLineExtend Object),取得当绘制短斜线而不是箭头时，标注线扩展超出界线的距离。,33,-1,-1
+vla-get-DimensionLineWeight,(vla-get-DimensionLineWeight Object),取得标注线的线宽。,33,-1,-1
+vla-get-DimLine1Suppress,(vla-get-DimLine1Suppress Object),判断是否第一条标注线被禁止。,33,-1,-1
+vla-get-DimLine2Suppress,(vla-get-DimLine2Suppress Object),判断是否第二条标注线被禁止。,33,-1,-1
+vla-get-DimLineInside,(vla-get-DimLineInside Object),取得只显示在界线之内的标注线。,33,-1,-1
+vla-get-DimLineSuppress,(vla-get-DimLineSuppress Object),判断是否禁止半径标注的标注线。,33,-1,-1
+vla-get-DimStyles,(vla-get-DimStyles Object),取得文件的DimStyles集合。,33,-1,-1
+vla-get-Direction,(vla-get-Direction Object),取得图形中3D视觉化的观测方向。,33,-1,-1
+vla-get-DirectionVector,(vla-get-DirectionVector Object),透过矢量来取得射线、公差、或建构线的方向。,33,-1,-1
+vla-get-Display,(vla-get-Display Object),取得PreferencesDisplay对象。,33,-1,-1
+vla-get-DisplayGrips,(vla-get-DisplayGrips Object),控制用于拉伸、移动、旋转、调整比例与镜像夹点模式的选择集的显示。,33,-1,-1
+vla-get-DisplayGripsWithinBlocks,(vla-get-DisplayGripsWithinBlocks Object),取得控制图块内夹点的指定。,33,-1,-1
+vla-get-DisplayLayoutTabs,(vla-get-DisplayLayoutTabs Object),判断是否在图形编辑器中显示[模型]（Model）与[布局]（Layout）标签。,33,-1,-1
+vla-get-DisplayLocked,(vla-get-DisplayLocked Object),取得视口是否被锁定。,33,-1,-1
+vla-get-DisplayOLEScale,(vla-get-DisplayOLEScale Object),判断OLE对象插入到图形时，是否显示OLE调整比例对话框。,33,-1,-1
+vla-get-DisplayScreenMenu,(vla-get-DisplayScreenMenu Object),判断是否将屏幕菜单显示在图形窗口的右端。,33,-1,-1
+vla-get-DisplayScrollBars,(vla-get-DisplayScrollBars Object),判断是否在屏幕窗口的底端及右边显示滚动条。,33,-1,-1
+vla-get-DisplaySilhouette,(vla-get-DisplaySilhouette Object),控制在线框模式下是否显示实体对象的轮廓曲线。,33,-1,-1
+vla-get-DockedVisibleLines,(vla-get-DockedVisibleLines Object),取得命令窗口中显示的行数。,33,-1,-1
+vla-get-DockStatus,(vla-get-DockStatus Object),取得工具栏为固定或浮动。,33,-1,-1
+vla-get-Document,(vla-get-Document Object),取得对象所属的文件（图形）。,33,-1,-1
+vla-get-Documents,(vla-get-Documents Object),取得Documents集合。,33,-1,-1
+vla-get-Drafting,(vla-get-Drafting Object),取得PreferencesDrafting对象。,33,-1,-1
+vla-get-DrawingDirection,(vla-get-DrawingDirection Object),取得多行文字段落的阅读方向。,33,-1,-1
+vla-get-DriversPath,(vla-get-DriversPath Object),取得用于AutoCAD查找视频显示，定位设备、打印机、及绘图仪的ADI设备驱动程序的目录。,33,-1,-1
+vla-get-Elevation,(vla-get-Elevation Object),取得图案填充或多段线当前的标高。,33,-1,-1
+vla-get-ElevationModelSpace,(vla-get-ElevationModelSpace Object),取得模型空间中的标高设定。,33,-1,-1
+vla-get-ElevationPaperSpace,(vla-get-ElevationPaperSpace Object),取得图纸空间中的标高设定。,33,-1,-1
+vla-get-Enable,(vla-get-Enable Object),使弹出式菜单项 生效，取得对象的名称。,33,-1,-1
+vla-get-EnableStartupDialog,(vla-get-EnableStartupDialog Object),取得当启动AutoCAD时是否显示[开始]对话框。,33,-1,-1
+vla-get-EndAngle,(vla-get-EndAngle Object),取得弧或椭圆的 终止角度。,33,-1,-1
+vla-get-EndParameter,(vla-get-EndParameter Object),取得椭圆的 终止参数。,33,-1,-1
+vla-get-EndPoint,(vla-get-EndPoint Object),取得弧、线或椭圆的端点。,33,-1,-1
+vla-get-EndSubMenuLevel,(vla-get-EndSubMenuLevel Object),取得子菜单中的最后一个项目。,33,-1,-1
+vla-get-EndTangent,(vla-get-EndTangent Object),取得样条曲线的结束相切点 作为方向矢量。,33,-1,-1
+vla-get-ExtensionLineColor,(vla-get-ExtensionLineColor Object),取得标注界线的颜色。,33,-1,-1
+vla-get-ExtensionLineExtend,(vla-get-ExtensionLineExtend Object),取得界线超过 标注线的距离。,33,-1,-1
+vla-get-ExtensionLineOffset,(vla-get-ExtensionLineOffset Object),取得界线偏移原点的距离。,33,-1,-1
+vla-get-ExtensionLineWeight,(vla-get-ExtensionLineWeight Object),取得界线的线宽。,33,-1,-1
+vla-get-ExtLine1EndPoint,(vla-get-ExtLine1EndPoint Object),取得第一条界线的端点。,33,-1,-1
+vla-get-ExtLine1Point,(vla-get-ExtLine1Point Object),取得第一条界线的原点。,33,-1,-1
+vla-get-ExtLine1StartPoint,(vla-get-ExtLine1StartPoint Object),取得第一条界线的起点。,33,-1,-1
+vla-get-ExtLine1Suppress,(vla-get-ExtLine1Suppress Object),判断是否禁止第一条界线。,33,-1,-1
+vla-get-ExtLine2EndPoint,(vla-get-ExtLine2EndPoint Object),取得第二条界线的端点。,33,-1,-1
+vla-get-ExtLine2Point,(vla-get-ExtLine2Point Object),取得第二条界线的原点。,33,-1,-1
+vla-get-ExtLine2StartPoint,(vla-get-ExtLine2StartPoint Object),取得第二条界线的起点。,33,-1,-1
+vla-get-ExtLine2Suppress,(vla-get-ExtLine2Suppress Object),取得禁止第二条界线。,33,-1,-1
+vla-get-Fade,(vla-get-Fade Object),取得图像当前的褪色度。,33,-1,-1
+vla-get-FieldLength,(vla-get-FieldLength Object),取得属性的字段长度。,33,-1,-1
+vla-get-Files,(vla-get-Files Object),取得PreferencesFiles对象。,33,-1,-1
+vla-get-Fit,(vla-get-Fit Object),取得根据界线之间的可用空间将文字与箭头放置在界线之内或之外。,33,-1,-1
+vla-get-FitPoints,(vla-get-FitPoints Object),取得样条曲线的拟合点。,33,-1,-1
+vla-get-FitTolerance,(vla-get-FitTolerance Object),以新的公差值在已有的点重新拟合样条曲线。,33,-1,-1
+vla-get-FloatingRows,(vla-get-FloatingRows Object),取得浮动工具栏的列数。,33,-1,-1
+vla-get-Flyout,(vla-get-Flyout Object),取得与弹出工具栏项目关联的工具栏。,33,-1,-1
+vla-get-FontFile,(vla-get-FontFile Object),取得主要字体的路径与名称。,33,-1,-1
+vla-get-FontFileMap,(vla-get-FontFileMap Object),当AutoCAD找不到字体时，取得定义AutoCAD字体转换 的方法的文件位置。,33,-1,-1
+vla-get-ForceLineInside,(vla-get-ForceLineInside Object),取得当文字放置在界线之外时是否要在界线之间画一条标注线。,33,-1,-1
+vla-get-FractionFormat,(vla-get-FractionFormat Object),取得标注与公差中的分数值的格式。,33,-1,-1
+vla-get-Freeze,(vla-get-Freeze Object),取得图层的冻结状态。,33,-1,-1
+vla-get-FullCRCValidation,(vla-get-FullCRCValidation Object),取得每次读取对象到图形时是否执行循环冗余检查（CRC）。,33,-1,-1
+vla-get-FullName,(vla-get-FullName Object),取得应用程序或文件的名称，包括路径在内。,33,-1,-1
+vla-get-FullScreenTrackingVector,(vla-get-FullScreenTrackingVector Object),切换全屏幕追踪矢量的显示。,33,-1,-1
+vla-get-GraphicsWinLayoutBackgrndColor,(vla-get-GraphicsWinLayoutBackgrndColor Object),取得图纸空间布局的背景颜色。,33,-1,-1
+vla-get-GraphicsWinModelBackgrndColor,(vla-get-GraphicsWinModelBackgrndColor Object),取得模型空间窗口的背景颜色。,33,-1,-1
+vla-get-GridOn,(vla-get-GridOn Object),取得视口网格状态。,33,-1,-1
+vla-get-GripColorSelected,(vla-get-GripColorSelected Object),取得选择的夹点的颜色。,33,-1,-1
+vla-get-GripColorUnselected,(vla-get-GripColorUnselected Object),取得未选择的夹点的颜色。,33,-1,-1
+vla-get-GripSize,(vla-get-GripSize Object),取得夹点的尺寸。,33,-1,-1
+vla-get-Groups,(vla-get-Groups Object),取得文件的Groups集合。,33,-1,-1
+vla-get-Handle,(vla-get-Handle Object),取得对象的句柄。,33,-1,-1
+vla-get-HasAttributes,(vla-get-HasAttributes Object),"取得图块中是否含有任何属性 。
+:vlax-true :  图块参照具有属性
+:vlax-false : 图块参照不具有属性",33,-1,-1
+vla-get-HasExtensionDictionary,(vla-get-HasExtensionDictionary Object),判断对象是否有关联扩展词典。,33,-1,-1
+vla-get-HatchStyle,(vla-get-HatchStyle Object),取得图案填充样式。,33,-1,-1
+vla-get-Height,(vla-get-Height Object),取得属性、 形、文字、视图工具栏或主应用程序视口的高度。,33,-1,-1
+vla-get-HelpFilePath,(vla-get-HelpFilePath Object),取得AutoCAD帮助文件的位置。,33,-1,-1
+vla-get-HelpString,(vla-get-HelpString Object),取得工具栏、工具栏项目、或菜单项目的 帮助字符串。,33,-1,-1
+vla-get-HistoryLines,(vla-get-HistoryLines Object),取得文字窗口中要 储存在内存中的文字行数。,33,-1,-1
+vla-get-HorizontalTextPosition,(vla-get-HorizontalTextPosition Object),取得标注文字的水平对正方式。,33,-1,-1
+vla-get-HWND,(vla-get-HWND Object),取得文件窗口框的窗口句柄。,33,-1,-1
+vla-get-HyperlinkDisplayCursor,(vla-get-HyperlinkDisplayCursor Object),切换超链接光标快捷键菜单的显示。,33,-1,-1
+vla-get-HyperlinkDisplayTooltip,(vla-get-HyperlinkDisplayTooltip Object),切换超链接工具提示的显示。,33,-1,-1
+vla-get-Hyperlinks,(vla-get-Hyperlinks Object),取得图元的Hyperlinks集合。,33,-1,-1
+vla-get-ImageFile,(vla-get-ImageFile Object),取得光栅图像的完整路径与文件名。,33,-1,-1
+vla-get-ImageFrameHighlight,(vla-get-ImageFrameHighlight Object),在选择时控制光栅图像的显示。,33,-1,-1
+vla-get-ImageHeight,(vla-get-ImageHeight Object),取得光栅图像的 高度。,33,-1,-1
+vla-get-ImageVisibility,(vla-get-ImageVisibility Object),取得打开或关闭图像的可见性。,33,-1,-1
+vla-get-ImageWidth,(vla-get-ImageWidth Object),取得光栅图像的宽度。,33,-1,-1
+vla-get-IncrementalSavePercent,(vla-get-IncrementalSavePercent Object),取得图形文件中允许的使用空间百分比。,33,-1,-1
+vla-get-Index,(vla-get-Index Object),取得菜单或工具栏项的索引。,33,-1,-1
+vla-get-InsertionPoint,(vla-get-InsertionPoint Object),取得公差、文字、图块或 形的插入点。,33,-1,-1
+vla-get-Invisible,(vla-get-Invisible Object),取得属性或属性参照 的可见性。,33,-1,-1
+vla-get-IsCloned,(vla-get-IsCloned Object),判断源对象是否会在CopyObjects任务中被复制。,33,-1,-1
+vla-get-IsLayout,(vla-get-IsLayout Object),判断给定的图块是否为布局图块。,33,-1,-1
+vla-get-ISOPenWidth,(vla-get-ISOPenWidth Object),取得ISO图案填充样式的ISO笔宽度。,33,-1,-1
+vla-get-IsOwnerXlated,(vla-get-IsOwnerXlated Object),判断源在CopyObjects任务中是否已经平移 所拥有的对象。,33,-1,-1
+vla-get-IsPeriodic,(vla-get-IsPeriodic Object),判断给定的样条曲线是否为周期性的。,33,-1,-1
+vla-get-IsPlanar,(vla-get-IsPlanar Object),判断给定的样条曲线是否为平面。,33,-1,-1
+vla-get-IsPrimary,(vla-get-IsPrimary Object),判断一个CopyObjects操作中的源对象是否 为被复制的对象主要集合的一部分，或者只是被主要集合中的成员所有拥有。,33,-1,-1
+vla-get-IsQuiescent,(vla-get-IsQuiescent Object),检查AutoCAD是否为空闲且可以接受外部处理应用程序（out-of-process application）的自动调用。,33,-1,-1
+vla-get-IsRational,(vla-get-IsRational Object),判断给定的样条曲线是否为有理的。,33,-1,-1
+vla-get-IsXRef,(vla-get-IsXRef Object),判断给定的图块是否为XRef图块。,33,-1,-1
+vla-get-Key,(vla-get-Key Object),在CopyObjects操作中源对象的对象 标识码（ID）。,33,-1,-1
+vla-get-KeyboardAccelerator,(vla-get-KeyboardAccelerator Object),取得Windows标准键盘或AutoCAD典型键盘。,33,-1,-1
+vla-get-KeyboardPriority,(vla-get-KeyboardPriority Object),取得控制AutoCAD如何响应坐标数据的输入。,33,-1,-1
+vla-get-Knots,(vla-get-Knots Object),取得样条曲线的节点矢量。,33,-1,-1
+vla-get-Label,(vla-get-Label Object),取得菜单项的内容与格式。,33,-1,-1
+vla-get-LargeButtons,(vla-get-LargeButtons Object),取得使用大或小的工具栏按钮。,33,-1,-1
+vla-get-LastHeight,(vla-get-LastHeight Object),取得最后一次使用的文字高度。,33,-1,-1
+vla-get-Layer,(vla-get-Layer Object),取得图元的图层。,33,-1,-1
+vla-get-LayerOn,(vla-get-LayerOn Object),取得图层的状态。,33,-1,-1
+vla-get-Layers,(vla-get-Layers Object),取得文件的Layers集合。,33,-1,-1
+vla-get-Layout,(vla-get-Layout Object),取得与模型空间、图纸空间或图层对象相关的布局。,33,-1,-1
+vla-get-LayoutCreateViewport,(vla-get-LayoutCreateViewport Object),判断是否自动建立新布局的视口。,33,-1,-1
+vla-get-LayoutCrosshairColor,(vla-get-LayoutCrosshairColor Object),取得图纸空间布局的十字光标与文字的颜色。,33,-1,-1
+vla-get-LayoutDisplayMargins,(vla-get-LayoutDisplayMargins Object),判断是否在布局中显示边界。,33,-1,-1
+vla-get-LayoutDisplayPaper,(vla-get-LayoutDisplayPaper Object),判断是否在布局中显示图纸空间背景。,33,-1,-1
+vla-get-LayoutDisplayPaperShadow,(vla-get-LayoutDisplayPaperShadow Object),判断是否在布局中显示图纸空间背景阴影。,33,-1,-1
+vla-get-Layouts,(vla-get-Layouts Object),取得文件的Layouts集合。,33,-1,-1
+vla-get-LayoutShowPlotSetup,(vla-get-LayoutShowPlotSetup Object),判断是否在建立新布局中显示[打印设定]对话框。,33,-1,-1
+vla-get-Left,(vla-get-Left Object),取得工具栏的左边线。,33,-1,-1
+vla-get-Length,(vla-get-Length Object),取得线的长度。,33,-1,-1
+vla-get-LensLength,(vla-get-LensLength Object),取得在透视图中使用的镜头长度。,33,-1,-1
+vla-get-LicenseServer,(vla-get-LicenseServer Object),取得当前网络管理员程序可使用的 一个用户端授权服务器表。,33,-1,-1
+vla-get-Limits,(vla-get-Limits Object),取得图形范围。,33,-1,-1
+vla-get-LinearScaleFactor,(vla-get-LinearScaleFactor Object),取得线性标注测量单位的全局比例系数。,33,-1,-1
+vla-get-LineSpacingFactor,(vla-get-LineSpacingFactor Object),取得多行文字对象的相对行间距系数。,33,-1,-1
+vla-get-LineSpacingStyle,(vla-get-LineSpacingStyle Object),取得MText对象的间距的样式。,33,-1,-1
+vla-get-Linetype,(vla-get-Linetype Object),取得图元的线型。,33,-1,-1
+vla-get-LinetypeGeneration,(vla-get-LinetypeGeneration Object),取得2D多段线或轻型多段线的线型生成。,33,-1,-1
+vla-get-Linetypes,(vla-get-Linetypes Object),取得文件的Linetypes集合。,33,-1,-1
+vla-get-LinetypeScale,(vla-get-LinetypeScale Object),取得图元的线型比例。,33,-1,-1
+vla-get-Lineweight,(vla-get-Lineweight Object),取得图元的线宽或图形的默认线宽。,33,-1,-1
+vla-get-LineweightDisplay,(vla-get-LineweightDisplay Object),取得线宽是否显示在图形的模型空间中。,33,-1,-1
+vla-get-LoadAcadLspInAllDocuments,(vla-get-LoadAcadLspInAllDocuments Object),"取得在启动时加载acad.lsp ,或者在每个图形中加载。",33,-1,-1
+vla-get-LocaleID,(vla-get-LocaleID Object),取得当前的AutoCAD工作任务中的语言环境标识码（ID）。,33,-1,-1
+vla-get-Lock,(vla-get-Lock Object ),取得图层锁定状态。,33,-1,-1
+vla-get-LogFileOn,(vla-get-LogFileOn Object ),判断是否将文字窗口内容写入到日志文件。,33,-1,-1
+vla-get-LogFilePath,(vla-get-LogFilePath Object ),取得日志文件的位置。,33,-1,-1
+vla-get-LowerLeftCorner,(vla-get-LowerLeftCorner Object ),取得当前激活视口的左下角点。,33,-1,-1
+vla-get-Macro,(vla-get-Macro Object ),取得菜单或工具栏项的宏。,33,-1,-1
+vla-get-MainDictionary,(vla-get-MainDictionary Object ),取得拼字检查使用的当前的词典。,33,-1,-1
+vla-get-MajorAxis,(vla-get-MajorAxis Object ),取得椭圆长轴的方向。,33,-1,-1
+vla-get-MajorRadius,(vla-get-MajorRadius Object ),取得椭圆长轴的长度。,33,-1,-1
+vla-get-Mask,(vla-get-Mask Object ),取得要恢复的层属性。,33,-1,-1
+vla-get-MaxActiveViewports,(vla-get-MaxActiveViewports Object ),取得激活视口的最大数目。,33,-1,-1
+vla-get-MaxAutoCADWindow,(vla-get-MaxAutoCADWindow Object ),判断当AutoCAD启动时是否要充满整个屏幕。,33,-1,-1
+vla-get-MClose,(vla-get-MClose Object ),取得PolygonMesh在M方向是否为封闭的。,33,-1,-1
+vla-get-MDensity,(vla-get-MDensity Object ),取得PolygonMesh在M方向的面密度。,33,-1,-1
+vla-get-Measurement,(vla-get-Measurement Object ),取得标注的测量单位。,33,-1,-1
+vla-get-MenuBar,(vla-get-MenuFile Object ),取得工作任务的MenuBar对象,33,-1,-1
+vla-get-MenuFile,(vla-get-MenuFile Object ),取得工作任务使用的AutoCAD菜单文件的位置。,33,-1,-1
+vla-get-MenuFileName,(vla-get-MenuFileName Object ),取得菜单组所在的菜单文件名称。,33,-1,-1
+vla-get-MenuGroups,(vla-get-MenuGroups Object ),取得工作任务使用的MenuGroups集合。,33,-1,-1
+vla-get-Menus,(vla-get-Menus Object ),取得PopupMenus集合。,33,-1,-1
+vla-get-MinorAxis,(vla-get-MinorAxis Object ),取得椭圆短轴的方向。,33,-1,-1
+vla-get-MinorRadius,(vla-get-MinorRadius Object ),取得椭圆短轴的长度。,33,-1,-1
+vla-get-Mode,(vla-get-Mode Object ),取得属性定义的模式。,33,-1,-1
+vla-get-ModelCrosshairColor,(vla-get-ModelCrosshairColor Object ),取得模型空间的十字光标与文字的颜色。,33,-1,-1
+vla-get-ModelSpace,(vla-get-ModelSpace Object ),取得文件的ModelSpace集合。,33,-1,-1
+vla-get-ModelType,(vla-get-ModelType Object ),取得布局或打印配置适用的配置、模型或模型空间的类型,33,-1,-1
+vla-get-MomentOfInertia,(vla-get-MomentOfInertia Object ),取得实体的惯性矩。,33,-1,-1
+vla-get-MRUNumber,(vla-get-MRUNumber Object ),取得要出现在[文件]菜单中的最近使用的文件的数目。,33,-1,-1
+vla-get-MSpace,(vla-get-MSpace Object ),允许从浮动图纸空间视口编辑模型。,33,-1,-1
+vla-get-MVertexCount,(vla-get-MVertexCount Object ),取得PolygonMesh在M方向的顶点。,33,-1,-1
+vla-get-Name,(vla-get-Name Object ),取得没有下划线符号的弹出菜单名称。,33,-1,-1
+vla-get-NameNoMnemonic,(vla-get-NameNoMnemonic Object ),取得没有下划线符号的弹出菜单名称。,33,-1,-1
+vla-get-NClose,(vla-get-NClose Object ),取得PolygonMesh在N方向是否为封闭的。,33,-1,-1
+vla-get-NDensity,(vla-get-NDensity Object ),取得PolygonMesh在N方向的面密度。,33,-1,-1
+vla-get-Normal,(vla-get-Normal Object ),取得图元的三维法向单位矢量。,33,-1,-1
+vla-get-NumberOfControlPoints,(vla-get-NumberOfCopies Object ),取得样条曲线的控制点数目。,33,-1,-1
+vla-get-NumberOfCopies,(vla-get-NumberOfCopies Object ),取得要打印的数量。,33,-1,-1
+vla-get-NumberOfFaces,(vla-get-NumberOfFaces Object ),取得PolyFaceMesh的面数。,33,-1,-1
+vla-get-NumberOfFitPoints,(vla-get-NumberOfFitPoints Object ),取得样条曲线的拟合点数目。,33,-1,-1
+vla-get-NumberOfLoops,(vla-get-NumberOfLoops Object ),取得图案填充中的环数目。,33,-1,-1
+vla-get-NumberOfVertices,(vla-get-NumberOfVertices Object ),取得PolyFaceMesh的顶点数目。,33,-1,-1
+vla-get-NVertexCount,(vla-get-NVertexCount Object ),取得PolygonMesh在N方向的顶点总数。,33,-1,-1
+vla-get-ObjectARXPath,(vla-get-ObjectARXPath Object ),取得ObjectARX应用程序的位置。,33,-1,-1
+vla-get-ObjectID,(vla-get-ObjectID Object ),取得对象的对象标识码（ID）。,33,-1,-1
+vla-get-ObjectName,(vla-get-ObjectName Object ),取得对象的AutoCAD类名称。,33,-1,-1
+vla-get-ObjectSnapMode,(vla-get-ObjectSnapMode Object ),取得对象捕捉模式的设置。,33,-1,-1
+vla-get-ObjectSortByPlotting,(vla-get-ObjectSortByPlotting Object ),判断图形对象是否按PostScript打印顺序排序。,33,-1,-1
+vla-get-ObjectSortByPSOutput,(vla-get-ObjectSortByPSOutput Object ),判断图形对象是否按PostScript输出顺序排序。,33,-1,-1
+vla-get-ObjectSortByRedraws,(vla-get-ObjectSortByRedraws Object ),判断图形对象是否按重画顺序排序。,33,-1,-1
+vla-get-ObjectSortByRegens,(vla-get-ObjectSortByRegens Object ),判断图形对象是否按重生成顺序排序。,33,-1,-1
+vla-get-ObjectSortBySelection,(vla-get-ObjectSortBySelection Object ),取得图形对象是否按对象选择排序。,33,-1,-1
+vla-get-ObjectSortBySnap,(vla-get-ObjectSortBySnap Object ),判断图形对象是否按对象捕捉排序。,33,-1,-1
+vla-get-ObliqueAngle,(vla-get-ObliqueAngle Object ),取得对象的倾斜角。,33,-1,-1
+vla-get-OLELaunch,(vla-get-OLELaunch Object ),判断当进行OLE对象打印时是否启动父应用程序，,33,-1,-1
+vla-get-OLEQuality,(vla-get-OLEQuality Object ),取得OLE对象的打印质量。,33,-1,-1
+vla-get-OnMenuBar,(vla-get-OnMenuBar Object ),判断指定的弹出菜单是否在菜单表上。,33,-1,-1
+vla-get-OpenSave,(vla-get-OpenSave Object ),取得PreferencesOpenSave对象。,33,-1,-1
+vla-get-Origin,(vla-get-Origin Object ),取得WCS坐标值指定UCS、图块、配置或光栅图像的原点。,33,-1,-1
+vla-get-OrthoOn,(vla-get-OrthoOn Object ),取得视口的Ortho模式的状态。,33,-1,-1
+vla-get-Output,(vla-get-Output Object ),取得PreferencesOutput对象。,33,-1,-1
+vla-get-OwnerID,(vla-get-OwnerID Object ),取得拥有者（上级）对象的对象识别码（ID）。,33,-1,-1
+vla-get-PaperSpace,(vla-get-PaperSpace Object ),取得文件的PaperSpace集合。,33,-1,-1
+vla-get-PaperUnits,(vla-get-PaperUnits Object ),取得文件、应用程序、或外部参考的路径。,33,-1,-1
+vla-get-Parent,(vla-get-Parent Object ),取得对象的来源。,33,-1,-1
+vla-get-Path,(vla-get-Path Object ),取得文件、应用程序、或外部参考的路径。,33,-1,-1
+vla-get-PatternAngle,(vla-get-PatternAngle Object ),取得剖面线样式的角度。,33,-1,-1
+vla-get-PatternDouble,(vla-get-PatternDouble Object ),判断用户定义的剖面线是否为double-hatched。,33,-1,-1
+vla-get-PatternName,(vla-get-PatternName Object ),取得剖面线样式名称。,33,-1,-1
+vla-get-PatternScale,(vla-get-PatternScale Object ),取得剖面线样式比例。,33,-1,-1
+vla-get-PatternSpace,(vla-get-PatternSpace Object ),取得用户定义的剖面线样式间距。,33,-1,-1
+vla-get-PatternType,(vla-get-PatternType Object ),取得用于剖面线的样式类型。,33,-1,-1
+vla-get-Perimeter,(vla-get-Perimeter Object ),取得内部与外部面域环路的总长度。,33,-1,-1
+vla-get-PickAdd,(vla-get-PickAdd Object ),判断对象是否要使用Shift键加入选集中。,33,-1,-1
+vla-get-PickAuto,(vla-get-PickAuto Object ),在[对象选择]提示下控制自动视窗。,33,-1,-1
+vla-get-PickBoxSize,(vla-get-PickBoxSize Object ),取得对象选择目标的大小。,33,-1,-1
+vla-get-PickDrag,(vla-get-PickDrag Object ),取得选取视窗的绘图方式。,33,-1,-1
+vla-get-PickFirst,(vla-get-PickFirst Object ),判断是在发生命令之前（先选取再执行）或之后选取对象。,33,-1,-1
+vla-get-PickfirstSelectionSet,(vla-get-PickfirstSelectionSet Object ),取得选择优先选集。,33,-1,-1
+vla-get-PickGroup,(vla-get-PickGroup Object ),判断点选群组中的单一对象是否将选取整个群组。,33,-1,-1
+vla-get-Plot,(vla-get-Plot Object ),取得文件的Plot对象。,33,-1,-1
+vla-get-PlotConfigurations,(vla-get-PlotConfigurations Object ),取得文件的PlotConfigurations集合。,33,-1,-1
+vla-get-PlotHidden,(vla-get-PlotHidden Object ),判断打印期间是否隐藏对象。,33,-1,-1
+vla-get-PlotLegacy,(vla-get-PlotLegacy Object ),判断是否允许执行遗传打印脚本。,33,-1,-1
+vla-get-PlotOrigin,(vla-get-PlotOrigin Object ),取得以WCS坐标值指定UCS、图块、配置或光栅图像的原点。,33,-1,-1
+vla-get-PlotPolicy,(vla-get-PlotPolicy Object ),判断当建立新的图形时，对象的颜色属性是否要和它的打印样式名称相关。,33,-1,-1
+vla-get-PlotRotation,(vla-get-PlotRotation Object ),取得配置或打印配置的旋转角度。,33,-1,-1
+vla-get-PlotStyleName,(vla-get-PlotStyleName Object ),取得对象、对象组或层的打印样式名。,33,-1,-1
+vla-get-Plottable,(vla-get-Plottable Object ),判断图层是否可以打印。,33,-1,-1
+vla-get-PlotType,(vla-get-PlotType Object ),取得布局或打印配置的类型。,33,-1,-1
+vla-get-PlotViewportBorders,(vla-get-PlotViewportBorders Object ),取得视口边界是否能被打印。,33,-1,-1
+vla-get-PlotViewportsFirst,(vla-get-PlotViewportsFirst Object ),判断图纸空间视口中的所有几何图形是否要先打印。,33,-1,-1
+vla-get-PlotWithLineweights,(vla-get-PlotWithLineweights Object ),取得对象是以打印文件中指定的线宽打印，还是以图形文件中的线宽打印。,33,-1,-1
+vla-get-PlotWithPlotStyles,(vla-get-PlotWithPlotStyles Object ),取得对象是否以应用至对象的和绘图样式表中定义的绘图样式进行绘制。,33,-1,-1
+vla-get-PolarTrackingVector,(vla-get-PolarTrackingVector Object ),取得极轴追踪向量的显示。,33,-1,-1
+vla-get-PostScriptPrologFile,(vla-get-PostScriptPrologFile Object ),取得acad.psf文件中自定义的prolog段的名称。,33,-1,-1
+vla-get-Preferences,(vla-get-Preferences Object ),取得Preferences对象。,33,-1,-1
+vla-get-Preset,(vla-get-Preset Object ),判断是否要重设属性或属性参考。,33,-1,-1
+vla-get-PrimaryUnitsPrecision,(vla-get-PrimaryUnitsPrecision Object ),取得标注或公差的主要单位的小数位数的数目。,33,-1,-1
+vla-get-PrincipalDirections,(vla-get-PrincipalDirections Object ),取得实体或面域的主方向。,33,-1,-1
+vla-get-PrincipalMoments,(vla-get-PrincipalMoments Object ),取得实体或面域的主力矩。,33,-1,-1
+vla-get-PrinterConfigPath,(vla-get-PrinterConfigPath Object ),取得打印机配置文件的位置。,33,-1,-1
+vla-get-PrinterDescPath,(vla-get-PrinterDescPath Object ),取得打印机描述文件的位置。,33,-1,-1
+vla-get-PrinterPaperSizeAlert,(vla-get-PrinterPaperSizeAlert Object ),判断当布局的配置图纸尺寸和PC3文件的预设值不一样时是否警告用户。,33,-1,-1
+vla-get-PrinterSpoolAlert,(vla-get-PrinterSpoolAlert Object ),取得当输出到设备时因I/O端口冲突而必须由系统打印机进行后台要求时，是否警告用户。,33,-1,-1
+vla-get-PrinterStyleSheetPath,(vla-get-PrinterStyleSheetPath Object ),取得打印机型式表文件的位置。,33,-1,-1
+vla-get-PrintFile,(vla-get-PrintFile Object ),取得作为临时绘图文件名的替代名称。,33,-1,-1
+vla-get-PrintSpoolerPath,(vla-get-PrintSpoolerPath Object ),取得后台打印文件名称的目录。AutoCAD将打印写入这个位置。,33,-1,-1
+vla-get-PrintSpoolExecutable,(vla-get-PrintSpoolExecutable Object ),取得后台打印处理的应用程序.,33,-1,-1
+vla-get-ProductOfInertia,(vla-get-ProductOfInertia Object ),取得实体或面域的惯性积。,33,-1,-1
+vla-get-Profiles,(vla-get-Profiles Object value),取得PreferencesProfiles对象。,33,-1,-1
+vla-get-PromptString,(vla-get-PromptString Object ),取得属性的提示字符串。,33,-1,-1
+vla-get-ProxyImage,(vla-get-ProxyImage Object ),取得图形中第三方应用程序建立的对象的显示方式。,33,-1,-1
+vla-get-QuietErrorMode,(vla-get-QuietErrorMode Object ),取得打印出错报告的静止错误模式。,33,-1,-1
+vla-get-RadiiOfGyration,(vla-get-RadiiOfGyration Object ),取得实体或面域的旋转半径。,33,-1,-1
+vla-get-Radius,(vla-get-Radius Object ),取得弧或圆的半径。,33,-1,-1
+vla-get-RadiusRatio,(vla-get-RadiusRatio Object ),取得椭圆的主轴与次轴的比。,33,-1,-1
+vla-get-ReadOnly,(vla-get-ReadOnly Object ),判断文件是否为只读或可读/写。,33,-1,-1
+vla-get-RegisteredApplications,(vla-get-RegisteredApplications Object ),取得隐藏线是否要打印到图纸空间视口。,33,-1,-1
+vla-get-RemoveHiddenLines,(vla-get-RemoveHiddenLines Object ),判断隐藏线是否要打印到图纸空间视口。,33,-1,-1
+vla-get-RenderSmoothness,(vla-get-RenderSmoothness Object ),取得着色、渲染、以及隐藏线对象的平滑度。,33,-1,-1
+vla-get-Rotation,(vla-get-Rotation Object ),取得对象的旋转角度。,33,-1,-1
+vla-get-RoundDistance,(vla-get-RoundDistance Object ),取得标注型式单位的舍入。,33,-1,-1
+vla-get-Rows,(vla-get-Rows Object ),取得图块阵列中的行数。,33,-1,-1
+vla-get-RowSpacing,(vla-get-RowSpacing Object ),取得一个块阵列中的行间距。,33,-1,-1
+vla-get-SaveAsType,(vla-get-SaveAsType Object ),取得图形的储存类型。,33,-1,-1
+vla-get-Saved,(vla-get-Saved Object ),判断文件是否有任何未储存的改变。,33,-1,-1
+vla-get-SavePreviewThumbnail,(vla-get-SavePreviewThumbnail Object ),判断是否要与图形一起储存BMP预览图形。,33,-1,-1
+vla-get-ScaleFactor,(vla-get-ScaleFactor Object ),取得对象的比例系数。,33,-1,-1
+vla-get-ScaleLineweights,(vla-get-ScaleLineweights Object ),取得当打印布局时线宽是否要和其余的元素一起调整比例。,33,-1,-1
+vla-get-SCMCommandMode,(vla-get-SCMCommandMode Object ),判断命令模式下（正在执行命令）在绘图区中按一下鼠标右键的功能。,33,-1,-1
+vla-get-SCMDefaultMode,(vla-get-SCMDefaultMode Object ),取得[默认]模式（未选择任何对象以及没有任何命令在执行中）下在绘图区中按一下鼠标右键的功能。,33,-1,-1
+vla-get-SCMEditMode,(vla-get-SCMEditMode Object ),取得[编辑]模式（已选择一个或多个对象以及没有执行中命令）下在绘图区中按下鼠标右键的功能。,33,-1,-1
+vla-get-SecondPoint,(vla-get-SecondPoint Object ),取得射线或建构线的第二点。,33,-1,-1
+vla-get-SegmentPerPolyline,(vla-get-SegmentPerPolyline Object ),取得每一个多段线曲线产生的线段数目。,33,-1,-1
+vla-get-Selection,(vla-get-SelectionSets Object ),取得PreferencesSelection对象。,33,-1,-1
+vla-get-SelectionSets,(vla-get-SelectionSets Object ),取得文件的SelectionSets对象。,33,-1,-1
+vla-get-ShortcutMenu,(vla-get-ShortcutMenu Object ),判断弹出式菜单是否为快捷菜单。,33,-1,-1
+vla-get-ShortCutMenuDisplay,(vla-get-ShortCutMenuDisplay Object ),取得当在绘图区中按一下鼠标右键是否显示快捷菜单还是发生ENTER的功能。,33,-1,-1
+vla-get-ShowPlotStyles,(vla-get-ShowPlotStyles Object ),判断是否在打印中使用打印样式。,33,-1,-1
+vla-get-ShowProxyDialogBox,(vla-get-ShowProxyDialogBox Object ),取得在打开的图形含有自定对象时，AutoCAD是否显示警告信息。,33,-1,-1
+vla-get-ShowRasterImage,(vla-get-ShowRasterImage Object ),取得在实时平移及缩放期间光栅图像的显示方式。,33,-1,-1
+vla-get-ShowRotation,(vla-get-ShowRotation Object ),判断光栅图像是否以旋转值显示。,33,-1,-1
+vla-get-ShowWarningMessages,(vla-get-ShowWarningMessages Object ),取得重设所有含有"不要再显示这个警告" 复选框的对话框，使它们再显示一次。,33,-1,-1
+vla-get-SingleDocumentMode,(vla-get-SingleDocumentMode Object ),取得AutoCAD是否在单一或多重文件格式下执行。,33,-1,-1
+vla-get-SnapBasePoint,(vla-get-SnapBasePoint Object ),取得视口的捕捉点基准点。,33,-1,-1
+vla-get-SnapOn,(vla-get-SnapOn Object ),取得捕捉点的状态。,33,-1,-1
+vla-get-SnapRotationAngle,(vla-get-SnapRotationAngle Object ),取得与当前的UCS对应的视口的捕捉点旋转角度。,33,-1,-1
+vla-get-SolidFill,(vla-get-SolidFill Object ),取得多行文字、等线宽、实体、所有的剖面线（含有实体填充）以及宽多段线是否要填充。,33,-1,-1
+vla-get-StandardScale,(vla-get-StandardScale Object ),取得弧与椭圆的起始角度。,33,-1,-1
+vla-get-StartAngle,(vla-get-StartParameter Object ),取得弧与椭圆的起始角度。,33,-1,-1
+vla-get-StartParameter,(vla-get-StartParameter Object ),取得弧、线、或椭圆的起始点。,33,-1,-1
+vla-get-StartPoint,(vla-get-StartPoint Object ),取得弧、线、或椭圆的起始点。,33,-1,-1
+vla-get-StartTangent,(vla-get-StartTangent Object ),取得样条曲线的起始相切点。,33,-1,-1
+vla-get-StatusId,(setq RetVal(vla-get-StatusID Object ),取得视口当前激活的状态。,33,-1,-1
+vla-get-StoreSQLIndex,(vla-get-StoreSQLIndex Object ),取得用于对象样式。,33,-1,-1
+vla-get-StyleName,(vla-get-StyleName Object ),取得用于对象样式的名称。,33,-1,-1
+vla-get-StyleSheet,(vla-get-StyleSheet Object ),取得布局或打印布局的样式图纸。,33,-1,-1
+vla-get-SubMenu,(vla-get-SubMenu Object ),取得与子菜单关联的弹出菜单。,33,-1,-1
+vla-get-SupportPath,(vla-get-SupportPath Object ),取得AutoCAD搜寻支持文件的目录。,33,-1,-1
+vla-get-SuppressLeadingZeros,(vla-get-SuppressLeadingZeros Object ),判断是否禁止标注值中的前导零。,33,-1,-1
+vla-get-SuppressTrailingZeros,(vla-get-SuppressTrailingZeros Object ),判断是否禁止标注值中的结尾零。,33,-1,-1
+vla-get-SuppressZeroFeet,(vla-get-SuppressZeroFeet Object ),判断是否禁止标注值中的零英寸测量单位。,33,-1,-1
+vla-get-SuppressZeroInches,(vla-get-SuppressZeroInches Object ),判断是否禁止标注值中的零英寸测量单位。,33,-1,-1
+vla-get-System,(vla-get-System Object ),取得PreferencesSystem对象。,33,-1,-1
+vla-get-TablesReadOnly,(vla-get-TablesReadOnly Object ),判断是否要以只读方式打开数据库表格。,33,-1,-1
+vla-get-TabOrder,(vla-get-TabOrder Object ),取得布局的tab顺序。,33,-1,-1
+vla-get-TagString,(vla-get-TagString Object ),取得对象的标签字符串。,33,-1,-1
+vla-get-Target,(vla-get-Target Object),取得视口或视口的目标点。,33,-1,-1
+vla-get-TempFileExtension,(vla-get-TempFileExtension Object ),取得临时文件的扩展文件名。,33,-1,-1
+vla-get-TempFilePath,(vla-get-TempFilePath Object ),取得供AutoCAD储存临时文件的目录,33,-1,-1
+vla-get-TemplateDwgPath,(vla-get-TemplateDwgPath Object ),取得起始精度使用的模板文件的路径,33,-1,-1
+vla-get-TempXrefPath,(vla-get-TempXrefPath Object ),取得外部参照文件的存放位置。,33,-1,-1
+vla-get-TextAlignmentPoint,(vla-get-TextAlignmentPoint Object ),取得文字与属性的对齐点。,33,-1,-1
+vla-get-TextColor,(vla-get-TextColor Object ),取得标注与公差的文字的颜色。,33,-1,-1
+vla-get-TextEditor,(vla-get-ZScaleFactor Object ),取得MTEXT命令的文字编辑器名称。,33,-1,-1
+vla-get-TextFont,(vla-get-TextFont Object ),取得新建文字的字体。,33,-1,-1
+vla-get-TextFontSize,(vla-get-TextFontSize Object ),取得新建文字的字体大小。,33,-1,-1
+vla-get-TextFontStyle,(vla-get-TextFontStyle Object ),取得新建文字的字型。,33,-1,-1
+vla-get-TextFrameDisplay,(vla-get-TextFrameDisplay Object ),判断是否显示文字对象的框而不是显示文字本身。,33,-1,-1
+vla-get-TextGap,(vla-get-TextGap Object ),取得当载断标注线来调节标注文字时标注文字与标注线之间的距离。,33,-1,-1
+vla-get-TextGenerationFlag,(vla-get-TextGenerationFlag Object ),取得属性文字生成标记。,33,-1,-1
+vla-get-TextInside,(vla-get-TextHeight Object ),取得标注或公差文字的高度。,33,-1,-1
+vla-get-TextInsideAlign,(vla-get-TextInsideAlign Object ),判断是否所有标注类型（不含有坐标式）的标注文字位置在界线之内。,33,-1,-1
+vla-get-TextMovement,(vla-get-TextMovement Object ),取得当文字移动时标注文字的绘出方式。,33,-1,-1
+vla-get-TextOutsideAlign,(vla-get-TextOutsideAlign Object ),判断是否所有标注类型（不含有坐标式）的标注文字位置在界线之外。,33,-1,-1
+vla-get-TextOverride,(vla-get-TextOverride Object ),取得标注的文字字符串。,33,-1,-1
+vla-get-TextPosition,(vla-get-TextPosition Object ),取得标注文字位置。,33,-1,-1
+vla-get-TextPrecision,(vla-get-TextPrecision Object ),取得标注文字精度。,33,-1,-1
+vla-get-TextPrefix,(vla-get-TextPrefix Object),取得标注值前缀。,33,-1,-1
+vla-get-TextRotation,(vla-get-TextRotation Object),取得标注文字的旋转角度。,33,-1,-1
+vla-get-TextString,(vla-get-TextString Object ),取得图元的文字字符串。,33,-1,-1
+vla-get-TextStyle,(vla-get-TextStyle Object ),取得标注或公差文字的文字样式。,33,-1,-1
+vla-get-TextStyles,(vla-get-TextStyles Object ),取得文件的TextStyles集合。,33,-1,-1
+vla-get-TextSuffix,(vla-get-TextSuffix Object ),取得标注值后缀。,33,-1,-1
+vla-get-TextureMapPath,(vla-get-TextureMapPath Object ),取得供AutoCAD搜寻纹理贴图的路径。,33,-1,-1
+vla-get-TextWinBackgrndColor,(vla-get-TextWinBackgrndColor Object ),取得文字窗口的背景颜色。,33,-1,-1
+vla-get-TextWinTextColor,(vla-get-TextWinTextColor Object ),取得文字窗口的文字颜色。,33,-1,-1
+vla-get-Thickness,(vla-get-Thickness Object ),取得2D的AutoCAD对象要在自身标高方向上或下拉伸的距离。,33,-1,-1
+vla-get-ToleranceDisplay,(vla-get-ToleranceDisplay Object ),判断公差是否要在标注文字一起显示。,33,-1,-1
+vla-get-ToleranceHeightScale,(vla-get-ToleranceHeightScale Object ),取得相对于标注文字高度的公差值文字高度的比例系数。,33,-1,-1
+vla-get-ToleranceJustification,(vla-get-ToleranceJustification Object ),取得公差值相对于名义标注文字的垂直对正方式。,33,-1,-1
+vla-get-ToleranceLowerLimit,(vla-get-ToleranceLowerLimit Object ),取得指定标注文字的最小公差上下限。,33,-1,-1
+vla-get-TolerancePrecision,(vla-get-TolerancePrecision Object ),取得主要标注中公差值的精度。,33,-1,-1
+vla-get-ToleranceSuppressLeadingZeros,(vla-get-ToleranceSuppressLeadingZeros Object ),判断是否输出公差值中的前导零。,33,-1,-1
+vla-get-ToleranceSuppressTrailingZeros,(vla-get-ToleranceSuppressTrailingZeros Object ),判断是否输出公差值中的前导零。,33,-1,-1
+vla-get-ToleranceSuppressZeroFeet,(vla-get-ToleranceSuppressZeroFeet Object ),判断是否输出公差值中的零英寸测量单位。,33,-1,-1
+vla-get-ToleranceSuppressZeroInches,(vla-get-ToleranceSuppressZeroInches Object ),判断是否输出公差值中的零英寸测量单位。,33,-1,-1
+vla-get-ToleranceUpperLimit,(vla-get-ToleranceUpperLimit Object ),取得标注文字的最大公差上限。,33,-1,-1
+vla-get-Toolbars,(vla-get-Toolbars Object ),取得Toolbars集合。,33,-1,-1
+vla-get-Top,(vla-get-Top Object ),指定工具栏的上边。,33,-1,-1
+vla-get-TotalAngle,(vla-get-TotalAngle Object ),取得弧的总角度。,33,-1,-1
+vla-get-TranslateIDs,(vla-get-TranslateIDs Object ),取得deepClone与wblockClone运行期间任何含有的对象标识码（ID）。,33,-1,-1
+vla-get-Transparency,(vla-get-Transparency Object ),判断是否打开或关闭特殊二值图像的透明性。,33,-1,-1
+vla-get-TrueColorImages,(vla-get-TrueColorImages Object ),判断光栅与渲染图象以真彩或调色板颜色显示。,33,-1,-1
+vla-get-TwistAngle,(vla-get-TwistAngle Object ),取得视口的扭角。,33,-1,-1
+vla-get-Type,(vla-get-Type Object ),取得Leader、MenuGroup、PopupMenuItem、ToolbarItem、Polyline或PolygonMesh 对象的类型。,33,-1,-1
+vla-get-UCSIconAtOrigin,(vla-get-UCSIconAtOrigin Object ),判断UCS图标是否在原点显示。,33,-1,-1
+vla-get-UCSIconOn,(vla-get-UCSIconOn Object ),判断UCS图标是否为打开。,33,-1,-1
+vla-get-UCSPerViewport,(vla-get-UCSPerViewport Object ),判断UCS是否与视口一起储存。,33,-1,-1
+vla-get-UnitsFormat,(vla-get-UnitsFormat Object ),取得所有标注（不含角度）的所有单位格式。,33,-1,-1
+vla-get-UpperRightCorner,(vla-get-UnitsFormat Object ),取得当前激活视口的右上角。,33,-1,-1
+vla-get-UpsideDown,(vla-get-UpsideDown Object ),取得文字的方向。,33,-1,-1
+vla-get-URL,(vla-get-URL Object ),取得Hyperlink对象的URL。,33,-1,-1
+vla-get-URLDescription,(vla-get-URLDescription Object ),取得Hyperlink 对象的URL说明。,33,-1,-1
+vla-get-URLNamedLocation,(vla-get-URLNamedLocation Object ),取得Hyperlink对象的命名位置。,33,-1,-1
+vla-get-UseLastPlotSettings,(vla-get-UseLastPlotSettings Object ),取得最后一次打印成功的打印设置值。,33,-1,-1
+vla-get-User,(vla-get-User Object ),取得PreferencesUser对象。,33,-1,-1
+vla-get-UserCoordinateSystems,(vla-get-UserCoordinateSystems Object ),取得文档的UCSs集合。,33,-1,-1
+vla-get-UseStandardScale,(vla-get-UseStandardScale Object ),判断打印是否使用标准或自定义的比例。,33,-1,-1
+vla-get-Utility,(vla-get-Utility Object ),取得文档的Utility对象。,33,-1,-1
+vla-get-Value,(vla-get-Value Object ),取得CopyObjects运行中新建之复制对象的对象标识码（ID）。,33,-1,-1
+vla-get-Verify,(vla-get-Verify Object ),判断是否将属性或属性参照设为要校验。,33,-1,-1
+vla-get-Version,(vla-get-Version Object ),取得使用中的AutoCAD应用程序的版本。,33,-1,-1
+vla-get-VerticalTextPosition,(vla-get-VerticalTextPosition Object ),取得文字相对于标注线的垂直位置。,33,-1,-1
+vla-get-ViewportDefault,(vla-get-ViewportDefault Object ),取得图层在新视口中是否冻结。,33,-1,-1
+vla-get-ViewportOn,(vla-get-ViewportOn Object ),取得视口的显示状态。,33,-1,-1
+vla-get-Viewports,(vla-get-Viewports Object ),取得文档的Viewports集合。,33,-1,-1
+vla-get-Views,(vla-get-Views Object ),取得文档的Views集合。,33,-1,-1
+vla-get-ViewToPlot,(vla-get-ViewToPlot Object ),取得要打印视图的名称。,33,-1,-1
+vla-get-VisibilityEdge1,(vla-get-VisibilityEdge1 Object ),取得3DFace边界1的可见性。,33,-1,-1
+vla-get-VisibilityEdge2,(vla-get-VisibilityEdge1 Object ),取得3DFace边界2的可见性。,33,-1,-1
+vla-get-VisibilityEdge3,(vla-get-VisibilityEdge3 Object ),取得3DFace边界3的可见性。,33,-1,-1
+vla-get-VisibilityEdge4,(vla-get-VisibilityEdge4 Object ),取得3DFace边界4的可见性。,33,-1,-1
+vla-get-Visible,(vla-get-Visible Object ),取得对象或应用程序的可见性。,33,-1,-1
+vla-get-Volume,(vla-get-Volume Object ),取得实体的体积。,33,-1,-1
+vla-get-Weights,(vla-get-Weights Object ),取得样条曲线的权值矢量。,33,-1,-1
+vla-get-Width,(vla-get-Width Object ),"取得文字边界, 视图, 图象, 工具栏, 或主应用程序窗口的宽度。",33,-1,-1
+vla-get-WindowLeft,(vla-get-WindowLeft Object ),取得应用程序窗口的左边界。,33,-1,-1
+vla-get-WindowState,(vla-get-WindowState Object ),取得应用程序或文档窗口的状态。,33,-1,-1
+vla-get-WindowTitle,(vla-get-WindowTitle Object ),取得文档窗口的标题。,33,-1,-1
+vla-get-WindowTop,(vla-get-WindowTop Object ),取得应用程序窗口的上边界。,33,-1,-1
+vla-get-WorkspacePath,(vla-get-WorkspacePath Object ),取得数据库工作区文件的路径。,33,-1,-1
+vla-get-XRefDatabase,(vla-get-XRefDatabase Object ),取得定义块的内容的Database对象。,33,-1,-1
+vla-get-XRefDemandLoad,(vla-get-XRefDemandLoad Object ),取得外部参照的加载需求。,33,-1,-1
+vla-get-XRefEdit,(vla-get-XRefEdit Object ),判断当前的图形被其它用户参照时是否仍可以立即编辑。,33,-1,-1
+vla-get-XRefFadeIntensity,(vla-get-XRefFadeIntensity Object ),取得XRefs的褪色度。,33,-1,-1
+vla-get-XRefLayerVisibility,(vla-get-XRefLayerVisibility Object ),判断外部参照相关图层的可见性以及指定是否储存嵌套外部参照路径的修改。,33,-1,-1
+vla-get-XScaleFactor,(vla-get-XScaleFactor Object ),取得块或XRef的X比例系数。,33,-1,-1
+vla-get-XVector,(vla-get-XVector Object ),取得给定UCS的X方向。,33,-1,-1
+vla-get-YScaleFactor,(vla-get-YScaleFactor Object ),取得块或XRef的Y比例系数。,33,-1,-1
+vla-get-YVector,(vla-get-YVector Object ),取得给定UCS的Y方向。,33,-1,-1
+vla-get-ZScaleFactor,(vla-get-ZScaleFactor Object ),取得块或XRef的Z比例系数。,33,-1,-1
+vla-put-ActiveDimStyle,(vla-put-ActiveDimStyle Object Value),设定激活的标注样式。,33,-1,-1
+vla-put-ActiveLayer,(vla-put-ActiveLayer Object Value),设定激活的图层。,33,-1,-1
+vla-put-ActiveLayout,(vla-put-ActiveLayout Object Value),设定激活的布局。,33,-1,-1
+vla-put-ActiveLinetype,(vla-put-ActiveLinetype Object Value),设定图形的激活的线型。,33,-1,-1
+vla-put-ActiveProfile,(vla-put-ActiveProfile Object Value),设定AutoCAD任务的激活配置。,33,-1,-1
+vla-put-ActivePViewport,(vla-put-ActivePViewport Object Value),设定图形的激活的图纸空间的视口。,33,-1,-1
+vla-put-ActiveSpace,(vla-put-ActiveSpace Object Value),在图纸空间与模型空间之间切换激活的空间。,33,-1,-1
+vla-put-ActiveTextStyle,(vla-put-ActiveTextStyle Object Value),设定图形激活的字型。,33,-1,-1
+vla-put-ActiveUCS,(vla-put-ActiveUCS Object Value),设定图形激活的UCS。,33,-1,-1
+vla-put-ActiveViewport,(vla-put-ActiveViewport Object Value),设定图形激活的视口。,33,-1,-1
+vla-put-ADCInsertUnitsDefaultSource,(vla-put-ADCInsertUnitsDefaultSource Object Value),判断自动用于AutoCAD的DesignCenter中而未指定插入单位的源图形的对象的单位。,33,-1,-1
+vla-put-ADCInsertUnitsDefaultTarget,(vla-put-ADCInsertUnitsDefaultTarget Object Value),判断自动用于AutoCAD DesignCenter中而未指定插入单位的目标图形的对象的单位。,33,-1,-1
+vla-put-Alignment,(vla-put-Alignment Object Value),设定属性、属性参考、或文字的水平与垂直对齐。,33,-1,-1
+vla-put-AlignmentPointAcquisition,(vla-put-AlignmentPointAcquisition Object Value),设定AutoAlignment点的要求方式。,33,-1,-1
+vla-put-AllowLongSymbolNames,(vla-put-AllowLongSymbolNames Object Value),判断符号集是否可以包含扩展字符集或超过31个字符。,33,-1,-1
+vla-put-AltFontFile,(vla-put-AltFontFile Object Value),设定当AutoCAD找不到原始字体，而且字体映射文件中未指定替代字体时，使用的字体文件的位置。,33,-1,-1
+vla-put-AltRoundDistance,(vla-put-AltRoundDistance Object Value),设定替代单位的四舍五入。,33,-1,-1
+vla-put-AltSuppressLeadingZeros,(vla-put-AltSuppressLeadingZeros Object Value),设定是否禁止替代标注值中的前导零。,33,-1,-1
+vla-put-AltSuppressTrailingZeros,(vla-put-AltSuppressTrailingZeros Object Value),设定是否禁止替代标注值中的结尾零。,33,-1,-1
+vla-put-AltSuppressZeroFeet,(vla-put-AltSuppressZeroFeet Object Value),设定是否禁止替代标注值中的零英尺测量单位。,33,-1,-1
+vla-put-AltSuppressZeroInches,(vla-put-AltSuppressZeroInches Object Value),设定是否禁止替代标注值中的零英寸测量单位。,33,-1,-1
+vla-put-AltTabletMenuFile,(vla-put-AltTabletMenuFile Object value),设定替代菜单的路径，用于标准AutoCAD数字化仪菜单的交换。,33,-1,-1
+vla-put-AltTextPrefix,(vla-put-AltTextPrefix Object value),设定所有标注类型（不包括角度）的替代标注测量单位的前缀。,33,-1,-1
+vla-put-AltTextSuffix,(vla-put-AltTextSuffix Object Value),设定所有标注类型（不包括角度）的替代标注测量单位的后缀。,33,-1,-1
+vla-put-AltTolerancePrecision,(vla-put-AltTolerancePrecision Object Value),设定所有标注中的公差值 精度。,33,-1,-1
+vla-put-AltToleranceSuppressLeadingZeros,(vla-put-AltToleranceSuppressLeadingZeros Object Value),设定是否禁止替代标注值中的前导零。,33,-1,-1
+vla-put-AltToleranceSuppressTrailingZeros,(vla-put-AltToleranceSuppressTrailingZeros Object Value),设定是否禁止替代公差值中的结尾零。,33,-1,-1
+vla-put-AltToleranceSuppressZeroFeet,(vla-put-AltToleranceSuppressZeroFeet Object Value),设定是否禁止替代公差值中的零英尺测量单位。,33,-1,-1
+vla-put-AltToleranceSuppressZeroInches,(vla-put-AltToleranceSuppressZeroInches Object Value),设定是否禁止替代公差值中的零英寸测量单位。,33,-1,-1
+vla-put-AltUnits,(vla-put-AltUnits Object Value),设定替代单位标注。,33,-1,-1
+vla-put-AltUnitsFormat,(vla-put-AltUnitsFormat Object Value),设定所有标注（不包括角度）的替代单位的单位格式。,33,-1,-1
+vla-put-AltUnitsPrecision,(vla-put-AltUnitsPrecision Object Value),设定替代单位中的小数位数。,33,-1,-1
+vla-put-AltUnitsScale,(vla-put-AltUnitsScale Object Value),设定替代单位的比例系数。,33,-1,-1
+vla-put-AngleFormat,(vla-put-AngleFormat Object Value),设定角度标注的单位格式。,33,-1,-1
+vla-put-AngleVertex,(vla-put-AngleVertex Object Value),设定三点角度标注的角度顶点。,33,-1,-1
+vla-put-ArcSmoothness,(vla-put-ArcSmoothness Object Value),设定圆、弧以及椭圆的平滑度。,33,-1,-1
+vla-put-Area,(vla-put-Area Object Value),设定圆、弧、椭圆、轻型多段线、多段线、面域、或平面封闭样条曲线构成的封闭区域。,33,-1,-1
+vla-put-Arrowhead1Block,(vla-put-Arrowhead1Block Object Value),设定要作为标注线第一个端点的自定义箭头的图块。,33,-1,-1
+vla-put-Arrowhead1Type,(vla-put-Arrowhead1Type Object Value),设定标注线第一个端点的箭头类型。,33,-1,-1
+vla-put-Arrowhead2Block,(vla-put-Arrowhead2Block Object Value),设定要作为标注线第二个端点的自定义箭头的图块。,33,-1,-1
+vla-put-Arrowhead2Type,(vla-put-Arrowhead2Type Object Value),设定标注线第二个端点的箭头类型。,33,-1,-1
+vla-put-ArrowheadBlock,(vla-put-ArrowheadBlock Object Value),设定要作为径向标注或引线的自定义箭头的图块。,33,-1,-1
+vla-put-ArrowheadSize,(vla-put-ArrowheadSize Object Value),设定标注箭头、引线箭头、以及勾线的尺寸。,33,-1,-1
+vla-put-ArrowheadType,(vla-put-ArrowheadType Object Value),设定径向标注或引线的箭头类型。,33,-1,-1
+vla-put-AttachmentPoint,(vla-put-AttachmentPoint Object Value),设定MText对象的贴附点。,33,-1,-1
+vla-put-AutoAudit,(vla-put-AutoAudit Object Value),设定当您进行DXFIN或DXBIN交换命令的着色后是否要执行 核查。,33,-1,-1
+vla-put-AutoSaveInterval,(vla-put-AutoSaveInterval Object Value),以分钟数指定自动储存的间隔时间。,33,-1,-1
+vla-put-AutoSavePath,(vla-put-AutoSavePath Object Value),设定当使用AutoSaveInterval属性打开自动储存时建立文件的路径。,33,-1,-1
+vla-put-AutoSnapAperture,(vla-put-AutoSnapAperture Object Value),切换AutoSnap捕捉框的显示。,33,-1,-1
+vla-put-AutoSnapApertureSize,(vla-put-AutoSnapApertureSize Object Value),切换AutoSnap捕捉点框的尺寸。,33,-1,-1
+vla-put-AutoSnapMagnet,(vla-put-AutoSnapMagnet Object Value),设置是否使用AutoSnap磁吸。,33,-1,-1
+vla-put-AutoSnapMarker,(vla-put-AutoSnapMarker Object Value),设置是否使用AutoSnap标记。,33,-1,-1
+vla-put-AutoSnapMarkerColor,(vla-put-AutoSnapMarkerColor Object Value),设定AutoSnap标记的颜色。,33,-1,-1
+vla-put-AutoSnapMarkerSize,(vla-put-AutoSnapMarkerSize Object Value),设定AutoSnap标记的尺寸。,33,-1,-1
+vla-put-AutoSnapToolTip,(vla-put-AutoSnapToolTip Object Value),设置是否使用AutoSnap工具提示。,33,-1,-1
+vla-put-AutoTrackingVecColor,(vla-put-AutoTrackingVecColor Object Value),设定自动追踪矢量颜色。,33,-1,-1
+vla-put-AutoTrackTooltip,(vla-put-AutoTrackTooltip Object Value),设置是否显示AutoTrack工具提示的显示。,33,-1,-1
+vla-put-Backward,(vla-put-Backward Object Value),设定文字的方向。,33,-1,-1
+vla-put-BasePoint,(vla-put-BasePoint Object Value),设定射线或 建构线通过的点。,33,-1,-1
+vla-put-BatchPlotProgress,(vla-put-BatchPlotProgress Object Value),设定当前批处理打印的状态或结束批处理打印。,33,-1,-1
+vla-put-BeepOnError,(vla-put-BeepOnError Object Value),设定当AutoCAD检测到无效的项目时是否发出警示。,33,-1,-1
+vla-put-BigFontFile,(vla-put-BigFontFile Object Value),设定与文字或属性关联的大字体文件的名称。,33,-1,-1
+vla-put-Brightness,(vla-put-Brightness Object Value),设定图像当前的亮度值。,33,-1,-1
+vla-put-CanonicalMediaName,(vla-put-CanonicalMediaName Object Value),以名称设定图纸大小。,33,-1,-1
+vla-put-Center,(vla-put-Center Object Value),设定弧、圆、椭圆、视图或视口的中心。,33,-1,-1
+vla-put-CenterMarkSize,(vla-put-CenterMarkSize Object Value),设定径向与直径标注的中点标记尺寸。,33,-1,-1
+vla-put-CenterPlot,(vla-put-CenterPlot Object Value),设定是否在介质中央打印。,33,-1,-1
+vla-put-CenterType,(vla-put-CenterType Object Value),设定径向与直径标注的中点标记的类型。,33,-1,-1
+vla-put-Check,(vla-put-Check Object Value),设定弹出菜单项目的复选框状态。,33,-1,-1
+vla-put-Circumference,(vla-put-Circumference Object Value),设定圆的周长。,33,-1,-1
+vla-put-ClippingEnabled,(vla-put-ClippingEnabled Object Value),设定启用或停用剪裁边界。,33,-1,-1
+vla-put-Closed,(vla-put-Closed Object Value),设定3D多段线、轻型多段线、多段线或样条曲线为开放或关闭。,33,-1,-1
+vla-put-Color,(vla-put-Color Object Value),设定图元或图层的颜色。,33,-1,-1
+vla-put-Columns,(vla-put-Columns Object Value),设定图块阵列中的行数。,33,-1,-1
+vla-put-ColumnSpacing,(vla-put-ColumnSpacing Object Value),设定图块阵列中的行的间距。,33,-1,-1
+vla-put-ConfigName,(vla-put-ConfigName Object Value),设定打印机配置名称。,33,-1,-1
+vla-put-Constant,(vla-put-Constant Object Value),设定属性或属性参照是否为固定的。,33,-1,-1
+vla-put-ConstantWidth,(vla-put-ConstantWidth Object Value),设定多段线中所有线段的整体宽度。,33,-1,-1
+vla-put-ContourLinesPerSurface,(vla-put-ContourLinesPerSurface Object Value),设定对象上每一个面的索线（isolines）数目。,33,-1,-1
+vla-put-Contrast,(vla-put-Contrast Object Value),设定图像当前的对比度。,33,-1,-1
+vla-put-ControlPoints,(vla-put-ControlPoints Object Value),设定样条曲线的控制点。,33,-1,-1
+vla-put-Coordinate,(vla-put-Coordinate Object index Value),设定对象中单一个顶点的坐标。,33,-1,-1
+vla-put-Coordinates,(vla-put-Coordinates Object Coordinates),设定对象中每一个顶点的坐标。,33,2,2
+vla-put-CreateBackup,(vla-put-CreateBackup Object Value),设定使用备份文件。,33,-1,-1
+vla-put-CursorSize,(vla-put-CursorSize Object Value),以屏幕尺寸的百分比设定十字光标的尺寸。,33,-1,-1
+vla-put-CustomDictionary,(vla-put-CustomDictionary Object Value),设定使用自定义词典（如果有）。,33,-1,-1
+vla-put-CustomScale,(vla-put-CustomScale Object Value),设定视口的自定义比例系数。,33,-1,-1
+vla-put-DecimalSeparator,(vla-put-DecimalSeparator Object Value),设定十进制标注以及公差值当作小数点的分割符号的字符。,33,-1,-1
+vla-put-DefaultInternetURL,(vla-put-DefaultInternetURL Object Value),设定默认的Internet地址。,33,-1,-1
+vla-put-DefaultOutputDevice,(vla-put-DefaultOutputDevice Object Value),设定新布局与模型空间的默认输出设备。,33,-1,-1
+vla-put-DefaultPlotStyleForLayer,(vla-put-DefaultPlotStyleForLayer Object Value),设定层0、新图形或由旧版AutoCAD建立的但未以AutoCAD2000格式储存的图形的默认打印样式。,33,-1,-1
+vla-put-DefaultPlotStyleForObjects,(vla-put-DefaultPlotStyleForObjects Object Value),设定新建立的对象的默认打印样式名称。,33,-1,-1
+vla-put-DefaultPlotStyleTable,(vla-put-DefaultPlotStyleTable Object Value),设定要贴附到新图形的默认打印样式表格。,33,-1,-1
+vla-put-DemandLoadARXApp,(vla-put-DemandLoadARXApp Object Value),设定当图形含有以某应用程序建立的自定义对象时，AutoCAD是否以及何时以需求加载的方式加载 第三方厂商的应用程序。,33,-1,-1
+vla-put-Description,(vla-put-Description Object Value),设定线型的说明。,33,-1,-1
+vla-put-Diameter,(vla-put-Diameter Object Value),设定圆的直径。,33,-1,-1
+vla-put-DimensionLineColor,(vla-put-DimensionLineColor Object Value),设定标注、引线或公差对象的标注线的颜色。,33,-1,-1
+vla-put-DimensionLineExtend,(vla-put-DimensionLineExtend Object Value),设定当绘制的是短斜线而不是箭头时，标注线扩展超出界线的距离。,33,-1,-1
+vla-put-DimensionLineWeight,(vla-put-DimensionLineWeight Object Value),设定标注线的线宽。,33,-1,-1
+vla-put-DimLine1Suppress,(vla-put-DimLine1Suppress Object Value),设定是否禁止第一条标注线。,33,-1,-1
+vla-put-DimLine2Suppress,(vla-put-DimLine2Suppress Object Value),设定是否禁止第二条标注线。,33,-1,-1
+vla-put-DimLineInside,(vla-put-DimLineInside Object Value),设定只显示在界线之内的标注线。,33,-1,-1
+vla-put-DimLineSuppress,(vla-put-DimLineSuppress Object Value),设定是否禁止径向标注的标注线。,33,-1,-1
+vla-put-Direction,(vla-put-Direction Object Value),设定图形中3D视觉化的观测方向。,33,-1,-1
+vla-put-DirectionVector,(vla-put-DirectionVector Object Value),通过矢量来设定射线、公差、或建构线的方向。,33,-1,-1
+vla-put-DisplayGrips,(vla-put-DisplayGrips Object Value),控制在拉伸、移动、旋转、调整比例与镜像等夹点模式的选择集夹点的显示。,33,-1,-1
+vla-put-DisplayGripsWithinBlocks,(vla-put-DisplayGripsWithinBlocks Object Value),控制图块内夹点的设定。,33,-1,-1
+vla-put-DisplayLayoutTabs,(vla-put-DisplayLayoutTabs Object Value),设定是否在图形编辑器中显示[模型]（Model）与[布局]（Layout）标签。,33,-1,-1
+vla-put-DisplayLocked,(vla-put-DisplayLocked Object Value),设定视口是否被锁定。,33,-1,-1
+vla-put-DisplayOLEScale,(vla-put-DisplayOLEScale Object Value),判断OLE对象插入到图形时，是否显示OLE调整比例对话框。,33,-1,-1
+vla-put-DisplayScreenMenu,(vla-put-DisplayScreenMenu Object Value),设定是否将屏幕菜单显示在图形窗口的右端。,33,-1,-1
+vla-put-DisplayScrollBars,(vla-put-DisplayScrollBars Object Value),设定是否将屏幕窗口的底端及右边显示滚动条。,33,-1,-1
+vla-put-DisplaySilhouette,(vla-put-DisplaySilhouette Object Value),控制在线框模式下是否显示实体对象的轮廓曲线。,33,-1,-1
+vla-put-DockedVisibleLines,(vla-put-DockedVisibleLines Object Value),设定命令窗口中所显示的行数。,33,-1,-1
+vla-put-DrawingDirection,(vla-put-DrawingDirection Object Value),设定多行文字段落的阅读方向。,33,-1,-1
+vla-put-DriversPath,(vla-put-DriversPath Object Value),设定AutoCAD寻找视频显示器，指向设备、打印机、及 绘图仪的ADI设备驱动程序的目录。,33,-1,-1
+vla-put-Elevation,(vla-put-Elevation Object Value),设定图案填充或多段线当前的标高。,33,-1,-1
+vla-put-ElevationModelSpace,(vla-put-ElevationModelSpace Object Value),设定模型空间中的标高设定。,33,-1,-1
+vla-put-ElevationPaperSpace,(vla-put-ElevationPaperSpace Object Value),设定图纸空间中的标高设定。,33,-1,-1
+vla-put-Enable,(vla-put-Enable Object Value),启用弹出式菜单项目，设定对象的名称。,33,-1,-1
+vla-put-EnableStartupDialog,(vla-put-EnableStartupDialog Object Value),设定当启动AutoCAD时是否显示[开始]对话框。,33,-1,-1
+vla-put-EndAngle,(vla-put-EndAngle Object Value),设定弧或椭圆的结束角度。,33,-1,-1
+vla-put-EndParameter,(vla-put-EndParameter Object Value),设定椭圆的结束参数。,33,-1,-1
+vla-put-EndPoint,(vla-put-EndPoint Object Value),设定弧、线或椭圆的端点。,33,-1,-1
+vla-put-EndSubMenuLevel,(vla-put-EndSubMenuLevel Object),设定子菜单中的最后一个项目。,33,-1,-1
+vla-put-EndTangent,(vla-put-EndTangent Object),设定样条曲线的结束相切点当作方向矢量。,33,-1,-1
+vla-put-ExtensionLineColor,(vla-put-ExtensionLineColor Object Value),设定标注界线的颜色。,33,-1,-1
+vla-put-ExtensionLineExtend,(vla-put-ExtensionLineExtend Object Value),设定延长线超过标注线的距离。,33,-1,-1
+vla-put-ExtensionLineOffset,(vla-put-ExtensionLineOffset Object Value),设定界线偏移原点的距离。,33,-1,-1
+vla-put-ExtensionLineWeight,(vla-put-ExtensionLineWeight Object Value),设定界线的线宽。,33,-1,-1
+vla-put-ExtLine1EndPoint,(vla-put-ExtLine1EndPoint Object Value),设定第一条界线的端点。,33,-1,-1
+vla-put-ExtLine1Point,(vla-put-ExtLine1Point Object Value),设定第一条界线的原点。,33,-1,-1
+vla-put-ExtLine1StartPoint,(vla-put-ExtLine1StartPoint Object Value),设定第一条界线的起点。,33,-1,-1
+vla-put-ExtLine1Suppress,(vla-put-ExtLine1Suppress Object Value),设定是否禁止第一条界线。,33,-1,-1
+vla-put-ExtLine2EndPoint,(vla-put-ExtLine2EndPoint Object Value),设定第二条界线的端点。,33,-1,-1
+vla-put-ExtLine2Point,(vla-put-ExtLine2Point Object Value),设定第二条界线的原点。,33,-1,-1
+vla-put-ExtLine2StartPoint,(vla-put-ExtLine2StartPoint Object Value),设定第二条界线的起点。,33,-1,-1
+vla-put-ExtLine2Suppress,(vla-put-ExtLine2Suppress Object Value),设定是否禁止第二条界线。,33,-1,-1
+vla-put-Fade,(vla-put-Fade Object Value),设定图像当前的褪色度。,33,-1,-1
+vla-put-FieldLength,(vla-put-FieldLength Object Value),设定属性的字段长度。,33,-1,-1
+vla-put-Fit,(vla-put-Fit Object Value),设定根据界线之间的可用空间将文字与箭头放置在界线之内或之外。,33,-1,-1
+vla-put-FitPoints,(vla-put-FitPoints Object),设定样条曲线的拟合点。,33,-1,-1
+vla-put-FitTolerance,(vla-put-FitTolerance Object Value),以新的公差值在已有的点重新拟合样条曲线。,33,-1,-1
+vla-put-FloatingRows,(vla-put-FloatingRows Object Value),设定浮动工具栏的列数。,33,-1,-1
+vla-put-FontFile,(vla-put-FontFile Object),设定主要字体的路径与名称。,33,-1,-1
+vla-put-FontFileMap,(vla-put-FontFileMap Object Value),设定定义AutoCAD如何转换找不到的字体方法的文件位置。,33,-1,-1
+vla-put-ForceLineInside,(vla-put-ForceLineInside Object),设定当文字是放置在界线之外时是否仍要在界线之间画一条标线。,33,-1,-1
+vla-put-FractionFormat,(vla-put-FractionFormat Object Value),设定标注与公差中的分数值的格式。,33,-1,-1
+vla-put-Freeze,(vla-put-Freeze Object),设定图层的冻结状态。,33,-1,-1
+vla-put-FullCRCValidation,(vla-put-FullCRCValidation Object),设定每次读取对象到图形时是否执行循环冗余检查（CRC）。,33,-1,-1
+vla-put-FullScreenTrackingVector,(vla-put-FullScreenTrackingVector Object Value),切换全屏幕追踪矢量的显示。,33,-1,-1
+vla-put-GraphicsWinLayoutBackgrndColor,(vla-put-GraphicsWinLayoutBackgrndColor Object Value),设定图纸空间布局的背景颜色。,33,-1,-1
+vla-put-GraphicsWinModelBackgrndColor,(vla-put-GraphicsWinModelBackgrndColor Object Value),设定模型空间窗口的背景颜色。,33,-1,-1
+vla-put-GridOn,(vla-put-GridOn Object Value),设定视口网格状态。,33,-1,-1
+vla-put-GripColorSelected,(vla-put-GripColorSelected Object Value),设定选择的夹点的颜色。,33,-1,-1
+vla-put-GripColorUnselected,(vla-put-GripColorUnselected Object Value),设定未选择的夹点的颜色。,33,-1,-1
+vla-put-GripSize,(vla-put-GripSize Object Value),设定夹点的尺寸。,33,-1,-1
+vla-put-HatchStyle,(vla-put-HatchStyle Object Value),设定图案填充样式。,33,-1,-1
+vla-put-Height,(vla-put-Height Object Value),设定属性、 形、文字、视图工具栏或主应用程序视口的高度。,33,-1,-1
+vla-put-HelpFilePath,(vla-put-HelpFilePath Object Value),设定AutoCAD说明文件的位置。,33,-1,-1
+vla-put-HelpString,(vla-put-HelpString Object Value),设定工具栏、工具栏项目、或菜单项目的说明字串。,33,-1,-1
+vla-put-HistoryLines,(vla-put-HistoryLines Object Value),设定文字窗口中要保留在内存中的文字行数。,33,-1,-1
+vla-put-HorizontalTextPosition,(vla-put-HorizontalTextPosition Object Value),设定标注文字的水平对正方式。,33,-1,-1
+vla-put-HyperlinkDisplayCursor,(vla-put-HyperlinkDisplayCursor Object Value),切换超链接光标快捷键菜单的显示。,33,-1,-1
+vla-put-HyperlinkDisplayTooltip,(vla-put-HyperlinkDisplayTooltip Object Value),切换超链连工具提示的显示。,33,-1,-1
+vla-put-ImageFile,(vla-put-ImageFile Object Value),设定光栅图像的完整路径与文件名。,33,-1,-1
+vla-put-ImageFrameHighlight,(vla-put-ImageFrameHighlight Object Value),控制选择光栅图像时的显示方式。,33,-1,-1
+vla-put-ImageHeight,(vla-put-ImageHeight Object Value),设定位图图像的 高度。,33,-1,-1
+vla-put-ImageVisibility,(vla-put-ImageVisibility Object Value),设定打开或关闭图像的可见性。,33,-1,-1
+vla-put-ImageWidth,(vla-put-ImageWidth Object Value),设定光栅图像的宽度。,33,-1,-1
+vla-put-IncrementalSavePercent,(vla-put-IncrementalSavePercent Object Value),设定图形文件中允许的使用空间百分比。,33,-1,-1
+vla-put-InsertionPoint,(vla-put-InsertionPoint Object Value),设定公差、文字、图块或型的插入点。,33,-1,-1
+vla-put-Invisible,(vla-put-Invisible Object Value),设定属性或属性参照是否可见或不可见。,33,-1,-1
+vla-put-ISOPenWidth,(vla-put-ISOPenWidth Object Value),设定ISO图案填充样式的ISO笔宽度。,33,-1,-1
+vla-put-KeyboardAccelerator,(vla-put-KeyboardAccelerator Object Value),设定 Windows标准键盘或AutoCAD典型键盘。,33,-1,-1
+vla-put-KeyboardPriority,(vla-put-KeyboardPriority Object Value),设定控制AutoCAD如何响应坐标数据的输入。,33,-1,-1
+vla-put-Knots,(vla-put-Knots Object Value),设定样条曲线的节点矢量。,33,-1,-1
+vla-put-Label,(vla-put-Label Object Value),设定菜单项的内容与格式。,33,-1,-1
+vla-put-LargeButtons,(vla-put-LargeButtons Object Value),设定使用大或小的工具栏按钮。,33,-1,-1
+vla-put-LastHeight,(vla-put-LastHeight Object Value),设定最后一次使用的文字 高度。,33,-1,-1
+vla-put-Layer,(vla-put-Layer Object Value),设定图元的图层。,33,-1,-1
+vla-put-LayerOn,(vla-put-LayerOn Object Value),设定图层的状态。,33,-1,-1
+vla-put-LayoutCreateViewport,(vla-put-LayoutCreateViewport Object Value),设置是否自动建立新布局的视口。,33,-1,-1
+vla-put-LayoutCrosshairColor,(vla-put-LayoutCrosshairColor Object Value),设定图纸空间布局的十字光标与文字的颜色。,33,-1,-1
+vla-put-LayoutDisplayMargins,(vla-put-LayoutDisplayMargins Object Value),设置是否在布局中显示边界。,33,-1,-1
+vla-put-LayoutDisplayPaper,(vla-put-LayoutDisplayPaper Object Value),设置是否在布局中显示图纸空间背景。,33,-1,-1
+vla-put-LayoutDisplayPaperShadow,(vla-put-LayoutDisplayPaperShadow Object Value),设置是否在布局中显示图纸空间背景阴影。,33,-1,-1
+vla-put-LayoutShowPlotSetup,(vla-put-LayoutShowPlotSetup Object Value),设置是否在建立新布局中显示[打印设定]对话框。,33,-1,-1
+vla-put-Left,(vla-put-Left Object Value),设定工具栏的左边线。,33,-1,-1
+vla-put-LensLength,(vla-put-LensLength Object Value),设定通过视口使用的镜头长度。,33,-1,-1
+vla-put-Limits,(vla-put-Limits Object Value),设定图形范围。,33,-1,-1
+vla-put-LinearScaleFactor,(vla-put-LinearScaleFactor Object Value),设定线性标注测量单位的整体比例系数。,33,-1,-1
+vla-put-LineSpacingFactor,(vla-put-LineSpacingFactor Object Value),设定多行文字对象的相对行间距系数。,33,-1,-1
+vla-put-LineSpacingStyle,(vla-put-LineSpacingStyle Object Value),设定MText对象的间距的样式。,33,-1,-1
+vla-put-Linetype,(vla-put-Linetype Object Value),设定图元的线型。,33,-1,-1
+vla-put-LinetypeGeneration,(vla-put-LinetypeGeneration Object Value),设定2D多段线或轻型多段线的线型生成。,33,-1,-1
+vla-put-LinetypeScale,(vla-put-LinetypeScale Object Value),设定图元的线型比例。,33,-1,-1
+vla-put-Lineweight,(vla-put-Lineweight Object Value),设定个别图元的线宽或图形的默认线宽。,33,-1,-1
+vla-put-LineweightDisplay,(vla-put-LineweightDisplay Object Value),设定线宽是否显示在图形的模型空间中。,33,-1,-1
+vla-put-LoadAcadLspInAllDocuments,(vla-put-LoadAcadLspInAllDocuments Object Value),"设定是否在启动时加载acad.lsp ,还是和第一个图形一起加载。",33,-1,-1
+vla-put-Lock,(vla-put-Lock Object value),设定图层锁写或解锁。,33,-1,-1
+vla-put-LogFileOn,(vla-put-LogFileOn Object value),设定是否将文字窗口内容写入到日志文件。,33,-1,-1
+vla-put-LogFilePath,(vla-put-LogFilePath Object value),设定日志文件的位置,33,-1,-1
+vla-put-Macro,(vla-put-Macro Object value),设定菜单或工具栏项目的宏,33,-1,-1
+vla-put-MainDictionary,(vla-put-MainDictionary Object value),设定拼字检查用的当前的词典,33,-1,-1
+vla-put-MajorAxis,(vla-put-MajorAxis Object value),设定椭圆长轴的方向。,33,-1,-1
+vla-put-MajorRadius,(vla-put-MajorRadius Object value),设定椭圆长轴的长度。,33,-1,-1
+vla-put-Mask,(vla-put-Mask Object value),设定要恢复的层属性。,33,-1,-1
+vla-put-MaxActiveViewports,(vla-put-MaxActiveViewports Object value),设定激活视口的最大数目。,33,-1,-1
+vla-put-MClose,(vla-put-MClose Object value),设定PolygonMesh在M方向是否为封闭的。,33,-1,-1
+vla-put-MDensity,(vla-put-MDensity Object value),设定PolygonMesh在M方向的面密度。,33,-1,-1
+vla-put-MenuFile,(vla-put-MenuFile Object value),设定工作任务使用的AutoCAD菜单文件的位置。,33,-1,-1
+vla-put-MinorRadius,(vla-put-MinorRadius Object value),设定椭圆短轴的长度。,33,-1,-1
+vla-put-Mode,(vla-put-Mode Object value),设定属性定义的模式。,33,-1,-1
+vla-put-ModelCrosshairColor,(vla-put-ModelCrosshairColor Object value),设定模型空间的十字光标与文字的颜色。,33,-1,-1
+vla-put-MSpace,(vla-put-MSpace Object value),允许从浮动图纸空间视口编辑模型。,33,-1,-1
+vla-put-Name,(vla-put-Name Object value),设定没有下划线符号的弹出菜单名称。,33,-1,-1
+vla-put-NClose,(vla-put-NClose Object value),设定PolygonMesh在N方向是否为封闭的。,33,-1,-1
+vla-put-NDensity,(vla-put-NDensity Object value),设定PolygonMesh在N方向的面密度。,33,-1,-1
+vla-put-Normal,(vla-put-Normal Object value),设定图元的三维法向单位矢量。,33,-1,-1
+vla-put-NumberOfCopies,(vla-put-NumberOfCopies Object value),设定要打印的份数。,33,-1,-1
+vla-put-ObjectARXPath,(vla-put-ObjectARXPath Object value),设定ObjectARX应用程序的位置。,33,-1,-1
+vla-put-ObjectSnapMode,(vla-put-ObjectSnapMode Object value),设定对象捕捉模式的设定状况。,33,-1,-1
+vla-put-ObjectSortByPlotting,(vla-put-ObjectSortByPlotting Object value),设定图形对象是否按PostScript打印顺序排序。,33,-1,-1
+vla-put-ObjectSortByPSOutput,(vla-put-ObjectSortByPSOutput Object value),设定图形对象是否按PostScript输出顺序排序。,33,-1,-1
+vla-put-ObjectSortByRedraws,(vla-put-ObjectSortByRedraws Object value),设定图形对象是否按重画顺序排序。,33,-1,-1
+vla-put-ObjectSortByRegens,(vla-put-ObjectSortByRegens Object value),设定图形对象是否按重生成顺序排序。,33,-1,-1
+vla-put-ObjectSortBySelection,(vla-put-ObjectSortBySelection Object value),设定图形对象是否按对象选择排序。,33,-1,-1
+vla-put-ObjectSortBySnap,(vla-put-ObjectSortBySnap Object value),设定图形对象是否依对象捕捉排序,33,-1,-1
+vla-put-ObliqueAngle,(vla-put-ObliqueAngle Object value),设定对象的倾斜角。,33,-1,-1
+vla-put-OLELaunch,(vla-put-OLELaunch Object value),设定当进行OLE对象打印时是否启动来源应用程序，,33,-1,-1
+vla-put-OLEQuality,(vla-put-OLEQuality Object value),设定OLE对象的打印质量。,33,-1,-1
+vla-put-Origin,(vla-put-Origin Object value),WCS坐标值指定UCS、图块、配置或光栅图像的原点。,33,-1,-1
+vla-put-OrthoOn,(vla-put-OrthoOn Object value),设定视口的Ortho模式的状态。,33,-1,-1
+vla-put-PaperUnits,(vla-put-PaperUnits Object value),设定文件、应用程序、或外部参考的路径。,33,-1,-1
+vla-put-PatternAngle,(vla-put-PatternAngle Object value),设定剖面线样式的角度。,33,-1,-1
+vla-put-PatternDouble,(vla-put-PatternDouble Object value),设定用户定义的剖面线是否为double-hatched。,33,-1,-1
+vla-put-PatternScale,(vla-put-PatternScale Object value),设定剖面线样式比例。,33,-1,-1
+vla-put-PatternSpace,(vla-put-PatternSpace Object value),设定用户定义的剖面线样式间距,33,-1,-1
+vla-put-PickAdd,(vla-put-PickAdd Object value),设定对象是否要使用Shift键加入选集中。,33,-1,-1
+vla-put-PickAuto,(vla-put-PickAuto Object value),在[对象选择]提示下控制自动视窗。,33,-1,-1
+vla-put-PickBoxSize,(vla-put-PickBoxSize Object value),设定对象选择目标的大小。,33,-1,-1
+vla-put-PickDrag,(vla-put-PickDrag Object value),设定选取视窗的绘图方式,33,-1,-1
+vla-put-PickFirst,(vla-put-PickFirst Object value),设定你是在发生命令之前（先选取再执行）或之后选取对象。,33,-1,-1
+vla-put-PlotHidden,(vla-put-PlotHidden Object value),设定打印期间是否隐藏对象。,33,-1,-1
+vla-put-PlotLegacy,(vla-put-PlotLegacy Object value),设定是否允许执行遗传打印脚本。,33,-1,-1
+vla-put-PlotOrigin,(vla-put-PlotOrigin Object value),设定以WCS坐标值指定UCS、图块、配置或光栅图像的原点。,33,-1,-1
+vla-put-PlotPolicy,(vla-put-PlotPolicy Object value),设定当建立新的图形时，对象的颜色属性是否要和它的打印型式名称相关。,33,-1,-1
+vla-put-PlotRotation,(vla-put-PlotRotation Object value),设定配置或打印配置的旋转角度。,33,-1,-1
+vla-put-PlotStyleName,(vla-put-PlotStyleName Object value),设定对象、对象组或层的打印样式名。,33,-1,-1
+vla-put-Plottable,(vla-put-Plottable Object value),设定图层是否可以打印。,33,-1,-1
+vla-put-PlotType,(vla-put-PlotType Object value),设定布局或打印配置的类型。,33,-1,-1
+vla-put-PlotViewportBorders,(vla-put-PlotViewportBorders Object value),设定视口边界是否能被打印。,33,-1,-1
+vla-put-PlotViewportsFirst,(vla-put-PlotViewportsFirst Object value),设定图纸空间视口中的所有几何图形是否要先打印。,33,-1,-1
+vla-put-PlotWithLineweights,(vla-put-PlotWithLineweights Object value),设定对象是以打印文件中指定的线宽打印，还是以图形文件中的线宽打印。,33,-1,-1
+vla-put-PlotWithPlotStyles,(vla-put-PlotWithPlotStyles Object value),设定对象是否以应用至对象的和绘图样式表中定义的绘图样式进行绘制。,33,-1,-1
+vla-put-PolarTrackingVector,(vla-put-PolarTrackingVector Object value),设定极轴追踪向量的显示。,33,-1,-1
+vla-put-PostScriptPrologFile,(vla-put-PostScriptPrologFile Object value),设定acad.psf文件中自定义文件头节的名称。,33,-1,-1
+vla-put-Preset,(vla-put-Preset Object value),设定是否要重设属性或属性参考。,33,-1,-1
+vla-put-PrimaryUnitsPrecision,(vla-put-PrimaryUnitsPrecision Object value),设定标注或公差的主要单位的小数位数的数目。,33,-1,-1
+vla-put-PrinterConfigPath,(vla-put-PrinterConfigPath Object value),设定打印机配置文件的位置。,33,-1,-1
+vla-put-PrinterDescPath,(vla-put-PrinterDescPath Object value),设定打印机描述文件的位置。,33,-1,-1
+vla-put-PrinterPaperSizeAlert,(vla-put-PrinterPaperSizeAlert Object value),设定当布局的配置图纸尺寸和PC3文件的预设值不一样是否警告用户。,33,-1,-1
+vla-put-PrinterSpoolAlert,(vla-put-PrinterSpoolAlert Object value),设定当输出到设备时因I/O端口冲突而必须由系统打印机进行后台要求的情况，是否警告用户。,33,-1,-1
+vla-put-PrinterStyleSheetPath,(vla-put-PrinterStyleSheetPath Object value),设定打印机型式表文件的位置。,33,-1,-1
+vla-put-PrintFile,(vla-put-PrintFile Object value),设定传统打印脚本的打印文件名称的替代名称。,33,-1,-1
+vla-put-PrintSpoolerPath,(vla-put-PrintSpoolerPath Object value),设定后台打印文件名称的目录。AutoCAD将打印写入这个位置。,33,-1,-1
+vla-put-PrintSpoolExecutable,(vla-put-PrintSpoolExecutable Object value),设定后台打印处理的应用程序。,33,-1,-1
+vla-put-PromptString,(vla-put-PromptString Object value),设定属性的提示字符串。,33,-1,-1
+vla-put-ProxyImage,(vla-put-ProxyImage Object value),设定图形中第三方应用程序建立的对象的显示方式。,33,-1,-1
+vla-put-QuietErrorMode,(vla-put-QuietErrorMode Object value),切换打印出错报告的静止错误模式。,33,-1,-1
+vla-put-Radius,(vla-put-Radius Object value),设定弧或圆的半径。,33,-1,-1
+vla-put-RadiusRatio,(vla-get-RadiusRatio Object value),设定椭圆的主要轴与次轴的比。,33,-1,-1
+vla-put-RegisteredApplications,(vla-put-RegisteredApplications Object value),设定隐藏线是否要打印到图纸空间视口。,33,-1,-1
+vla-PutRemoteFile,(vla-PutRemoteFile Object URL LocalFile),将文件上传到URL指定的远端位置。,33,-1,-1
+vla-put-RemoveHiddenLines,(vla-put-RemoveHiddenLines Object value),设定隐藏线是否要打印到图纸空间视口。,33,-1,-1
+vla-put-RenderSmoothness,(vla-put-RenderSmoothness Object value),设定着色、渲染、以及隐藏线对象的平滑度。,33,-1,-1
+vla-put-Rotation,(vla-put-Rotation Object value),设定对象的旋转角度。,33,-1,-1
+vla-put-RoundDistance,(vla-put-RoundDistance Object value),设定标注型式单位的舍入。,33,-1,-1
+vla-put-Rows,(vla-put-Rows Object value),设定图块阵列中的行数。,33,-1,-1
+vla-put-RowSpacing,(vla-put-RowSpacing Object value),设定一个块阵列中的行间距。,33,-1,-1
+vla-put-SaveAsType,(vla-put-SaveAsType Object value),设定图形的储存类型。,33,-1,-1
+vla-put-SavePreviewThumbnail,(vla-put-SavePreviewThumbnail Object value),设定是否要和图形一起储存BMP预览图形。,33,-1,-1
+vla-put-ScaleFactor,(vla-put-ScaleFactor Object value),设定对象的比例系数。,33,-1,-1
+vla-put-ScaleLineweights,(vla-put-ScaleLineweights Object value),设定当打印布局时线宽是否要和其余的元素一起调整比例。,33,-1,-1
+vla-put-SCMCommandMode,(vla-put-SCMCommandMode Object value),判断命令模式下（正在执行命令）在绘图区中按一下鼠标右键的功能。,33,-1,-1
+vla-put-SCMDefaultMode,(vla-put-SCMDefaultMode Object value),设定[默认]模式（未选择任何对象以及没有任何命令在执行中）下在绘图区中按一下鼠标右键的功能。,33,-1,-1
+vla-put-SCMEditMode,(vla-put-SCMEditMode Object value),设定[编辑]模式（已选择一个或多个对象以及没有执行中命令）下在绘图区中按一下鼠标右键的功能,33,-1,-1
+vla-put-SecondPoint,(vla-put-SecondPoint Object value),设定射线或建构线的第二点。,33,-1,-1
+vla-put-SegmentPerPolyline,(vla-put-SegmentPerPolyline Object value),设定每一个多段线曲线产生的线段数目。,33,-1,-1
+vla-put-ShortCutMenuDisplay,(vla-put-ShortCutMenuDisplay Object value),设定在绘图区中按一下鼠标右键时显示快捷菜单或产生ENTER。,33,-1,-1
+vla-put-ShowPlotStyles,(vla-put-ShowPlotStyles Object value),设定是否在打印中使用打印样式。,33,-1,-1
+vla-put-ShowProxyDialogBox,(vla-put-ShowProxyDialogBox Object value),设定当打开的图形含有自定对象时，AutoCAD是否显示警告信息。,33,-1,-1
+vla-put-ShowRasterImage,(vla-put-ShowRasterImage Object value),设定控制光栅图像在实时平移及缩放期间的显示方式。,33,-1,-1
+vla-put-ShowRotation,(vla-put-ShowRotation Object value),设定点阵图像是否以旋转值显示。,33,-1,-1
+vla-put-ShowWarningMessages,(vla-put-ShowWarningMessages Object value),设定重设所有含有"不要再显示这个警告" 复选框的对话框，使它们再显示一次。,33,-1,-1
+vla-put-SingleDocumentMode,(vla-put-SingleDocumentMode Object value),设定AutoCAD是否在单一或多重文件格式下执行。,33,-1,-1
+vla-put-SnapBasePoint,(vla-put-SnapBasePoint Object value),设定视口的捕捉点基准点。,33,-1,-1
+vla-put-SnapOn,(vla-put-SnapOn Object value),设定捕捉点的状态。,33,-1,-1
+vla-put-SnapRotationAngle,(vla-put-SnapRotationAngle Object value),设定与当前的UCS相对的视口的捕捉点旋转角度。,33,-1,-1
+vla-put-SolidFill,(vla-put-SolidFill Object value),设定多行文字、等线宽、实体、所有的剖面线（含有实体填充）以及宽多段线是否要填充。,33,-1,-1
+vla-put-StandardScale,(vla-put-StandardScale Object value),设定弧与椭圆的起始角度。,33,-1,-1
+vla-put-StartAngle,(vla-put-StartParameter Object value),设定弧与椭圆的起始角度。,33,-1,-1
+vla-put-StartParameter,(vla-put-StartParameter Object value),设定弧、线、或椭圆的起始点。,33,-1,-1
+vla-put-StartPoint,(vla-put-StartPoint Object value ),设定弧、线、或椭圆的起始点。,33,-1,-1
+vla-put-StartTangent,(vla-put-StartTangent Object value ),设定样条曲线的起始相切点。,33,-1,-1
+vla-put-StoreSQLIndex,(vla-put-StoreSQLIndex Object value),设定用于对象样式。,33,-1,-1
+vla-put-StyleName,(vla-put-StyleName Object value),设定用于对象样式。,33,-1,-1
+vla-put-StyleSheet,(vla-put-StyleSheet Object value),设定布局或打印布局的样式图纸。,33,-1,-1
+vla-put-SubMenu,(vla-put-SubMenu Object value),设定与子菜单关联的弹出菜单。,33,-1,-1
+vla-put-SupportPath,(vla-put-SupportPath Object value),设定AutoCAD搜寻支持文件的目录。,33,-1,-1
+vla-put-SuppressLeadingZeros,(vla-put-SuppressLeadingZeros Object value),设定是否禁止标注值中的前导零。,33,-1,-1
+vla-put-SuppressTrailingZeros,(vla-put-SuppressTrailingZeros Object value),设定是否禁止标注值中的结尾零。,33,-1,-1
+vla-put-SuppressZeroFeet,(vla-put-SuppressZeroFeet Object value),设定是否禁止标注值中的零英寸测量单位。,33,-1,-1
+vla-put-SuppressZeroInches,(vla-put-SuppressZeroInches Object value),设定是否禁止标注值中的零英寸测量单位。,33,-1,-1
+vla-put-TablesReadOnly,(vla-put-TablesReadOnly Object value),设定是否要以只读方式打开数据库表格。,33,-1,-1
+vla-put-TabOrder,(vla-put-TabOrder Object value),设定布局的tab顺序。,33,-1,-1
+vla-put-TagString,(vla-put-TagString Object value),设定对象的标签字符串。,33,-1,-1
+vla-put-Target,(vla-put-Target Object value),设定视口或视口的目标点。,33,-1,-1
+vla-put-TempFileExtension,(vla-put-TempFileExtension Object value),设定临时文件的扩展文件名。,33,-1,-1
+vla-put-TempFilePath,(vla-put-TempFilePath Object value),设定供AutoCAD储存临时文件的目录。,33,-1,-1
+vla-put-TemplateDwgPath,(vla-put-TemplateDwgPath Object value),设定起始精度使用的模板文件的路径。,33,-1,-1
+vla-put-TempXrefPath,(vla-put-TempXrefPath Object value),设定外部参照文件的存放位置。,33,-1,-1
+vla-put-TextAlignmentPoint,(vla-put-TextAlignmentPoint Object value),设定文字与属性的对齐点。,33,-1,-1
+vla-put-TextColor,(vla-put-TextColor Object value),设定标注与公差的文字的颜色。,33,-1,-1
+vla-put-TextEditor,(vla-put-ZScaleFactor Object value),设定MTEXT命令的文字编辑器名称。,33,-1,-1
+vla-put-TextFont,(vla-put-TextFont Object value),设定新建文字的字体。,33,-1,-1
+vla-put-TextFontSize,(vla-put-TextFontSize Object value),设定新建文字的字体大小。,33,-1,-1
+vla-put-TextFontStyle,(vla-put-TextFontStyle Object value),设定新建文字的字型。,33,-1,-1
+vla-put-TextFrameDisplay,(vla-put-TextFrameDisplay Object value),设定设置是否显示文字对象的框而不显示文字本身。,33,-1,-1
+vla-put-TextGap,(vla-put-TextGap Object value),设定当载断标注线来调节标注文字时标注文字与标注线之间的距离。,33,-1,-1
+vla-put-TextGenerationFlag,(vla-put-TextGenerationFlag Object value),设定属性文字生成标记。,33,-1,-1
+vla-put-TextInside,(vla-put-TextHeight Object value),设定标注或公差文字的高度。,33,-1,-1
+vla-put-TextInsideAlign,(vla-put-TextInsideAlign Object value),设定是否所有标注类型（不含有坐标式）的标注文字位置在界线之内。,33,-1,-1
+vla-put-TextMovement,(vla-put-TextMovement Object value),设定当文字移动时标注文字的绘出方式。,33,-1,-1
+vla-put-TextOutsideAlign,(vla-put-TextOutsideAlign Object value),设定是否所有标注类型（不含有坐标式）的标注文字位置在界线之外。,33,-1,-1
+vla-put-TextOverride,(vla-put-TextOverride Object value ),设定标注的文字字符串。,33,-1,-1
+vla-put-TextPosition,(vla-put-TextPosition Object value ),设定标注文字位置。,33,-1,-1
+vla-put-TextPrecision,(vla-put-TextPrecision Object value),设定标注文字精度。,33,-1,-1
+vla-put-TextPrefix,(vla-put-TextPrefix Object value),设定标注值前缀。,33,-1,-1
+vla-put-TextRotation,(vla-put-TextRotation Object value),设定标注文字的旋转角度。,33,-1,-1
+vla-put-TextString,(vla-put-TextString Object value),设定图元的文字字符串。,33,-1,-1
+vla-put-TextStyle,(vla-put-TextStyle Object value),设定标注或公差文字的文字样式。,33,-1,-1
+vla-put-TextSuffix,(vla-put-TextSuffix Object value),设定标注值后缀。,33,-1,-1
+vla-put-TextureMapPath,(vla-put-TextureMapPath Object value),设定供AutoCAD搜寻纹理贴图的目录。,33,-1,-1
+vla-put-TextWinBackgrndColor,(vla-put-TextWinBackgrndColor Object value),设定文字窗口的背景颜色。,33,-1,-1
+vla-put-TextWinTextColor,(vla-put-TextWinTextColor Object value),设定文字窗口的文字颜色。,33,-1,-1
+vla-put-Thickness,(vla-put-Thickness Object value),设定2D的AutoCAD对象要在自身标高方向上或下拉伸的距离。,33,-1,-1
+vla-put-ToleranceDisplay,(vla-put-ToleranceDisplay Object value),设定公差是否要在标注文字一起显示。,33,-1,-1
+vla-put-ToleranceHeightScale,(vla-put-ToleranceHeightScale Object value),设定相对于标注文字标高的公差值文字标高的比例系数。,33,-1,-1
+vla-put-ToleranceJustification,(vla-put-ToleranceJustification Object value),设定公差值相对于名义标注文字的垂直对正方式。,33,-1,-1
+vla-put-ToleranceLowerLimit,(vla-put-ToleranceLowerLimit Object value),设定指定标注文字的最小公差上下限。,33,-1,-1
+vla-put-TolerancePrecision,(vla-put-TolerancePrecision Object value),设定主要标注中公差值的精度。,33,-1,-1
+vla-put-ToleranceSuppressLeadingZeros,(vla-put-ToleranceSuppressLeadingZeros Object value),设定不输出公差值中的前导零。,33,-1,-1
+vla-put-ToleranceSuppressTrailingZeros,(vla-put-ToleranceSuppressTrailingZeros Object value),设定不输出标注值中的结尾零。,33,-1,-1
+vla-put-ToleranceSuppressZeroFeet,(vla-put-ToleranceSuppressZeroFeet Object value),设定不输出公差值中的零英寸测量单位。,33,-1,-1
+vla-put-ToleranceSuppressZeroInches,(vla-put-ToleranceSuppressZeroInches Object value),设定不输出公差值中的零英寸测量单位。,33,-1,-1
+vla-put-ToleranceUpperLimit,(vla-put-ToleranceUpperLimit Object value),设定标注文字的最大公差上限。,33,-1,-1
+vla-put-Top,(vla-put-Top Object value),设定工具栏的上边。,33,-1,-1
+vla-put-TranslateIDs,(vla-put-TranslateIDs Object value),设定deepClone与wblockClone运行期间任何含有的对象标识码（ID）。,33,-1,-1
+vla-put-Transparency,(vla-put-Transparency Object value),设定是否打开或关闭特殊二值图像的透明性。,33,-1,-1
+vla-put-TrueColorImages,(vla-put-TrueColorImages Object value),设定光栅与渲染图象以真彩或调色板颜色显示。,33,-1,-1
+vla-put-TwistAngle,(vla-put-TwistAngle Object value),设定视口的扭曲角度。,33,-1,-1
+vla-put-Type,(vla-put-Type Object value),设定Leader、MenuGroup、PopupMenuItem、ToolbarItem、Polyline、或 PolygonMesh 对象的类型。,33,-1,-1
+vla-put-UCSIconAtOrigin,(vla-put-UCSIconAtOrigin Object value),设定UCS图标是否显示在原点。,33,-1,-1
+vla-put-UCSIconOn,(vla-put-UCSIconOn Object value),设定UCS图标是否为打开。,33,-1,-1
+vla-put-UCSPerViewport,(vla-put-UCSPerViewport Object value),设定UCS是否与视口一起储存。,33,-1,-1
+vla-put-UnitsFormat,(vla-put-UnitsFormat Object value),设定所有标注（不含角度）的所有单位格式。,33,-1,-1
+vla-put-UpsideDown,(vla-put-UpsideDown Object value ),设定文字的方向。,33,-1,-1
+vla-put-URL,(vla-put-URL Object value ),设定Hyperlink对象的URL。,33,-1,-1
+vla-put-URLDescription,(vla-put-URLDescription Object value),设定Hyperlink对象的URL说明。,33,-1,-1
+vla-put-URLNamedLocation,(vla-put-URLNamedLocation Object value),设定Hyperlink对象的命名位置。,33,-1,-1
+vla-put-UseLastPlotSettings,(vla-put-UseLastPlotSettings Object value),设定最后一次打印成功的打印设置值。,33,-1,-1
+vla-put-UseStandardScale,(vla-put-UseStandardScale Object value),设定打印是否使用标准或自定义的比例。,33,-1,-1
+vla-put-Verify,(vla-put-Verify Object value),设定是否将属性或属性参照设成要校验。,33,-1,-1
+vla-put-VerticalTextPosition,(vla-put-VerticalTextPosition Object value),设定文字相对于标注线的垂直位置。,33,-1,-1
+vla-put-ViewportDefault,(vla-put-ViewportDefault Object value),设定图层在新视口中是否冻结。,33,-1,-1
+vla-put-ViewportOn,(vla-put-ViewportOn Object value),设定视口的显示状态。,33,-1,-1
+vla-put-ViewToPlot,(vla-put-ViewToPlot Object value),设定要打印视图的名称。,33,-1,-1
+vla-put-VisibilityEdge1,(vla-put-VisibilityEdge1 Object value),设定3DFace边界1的可见性。,33,-1,-1
+vla-put-VisibilityEdge2,(vla-put-VisibilityEdge1 Object value),设定3DFace边界2的可见性。,33,-1,-1
+vla-put-VisibilityEdge3,(vla-put-VisibilityEdge3 Object value),设定3DFace边界3的可见性。,33,-1,-1
+vla-put-VisibilityEdge4,(vla-put-VisibilityEdge4 Object value),设定3DFace边界4的可见性。,33,-1,-1
+vla-put-Visible,(vla-put-Visible Object value),设定对象或应用程序的可见性。,33,-1,-1
+vla-put-Weights,(vla-put-Weights Object value),设定样条曲线的权值矢量。,33,-1,-1
+vla-put-Width,(vla-put-Width Object value),"设定文字边界, 视图, 图象, 工具栏, 或主应用程序窗口的宽度。",33,-1,-1
+vla-put-WindowLeft,(vla-put-WindowLeft Object value),设定应用程序窗口的左边界。,33,-1,-1
+vla-put-WindowState,(vla-put-WindowState Object value),设定应用程序或文档窗口的状态。,33,-1,-1
+vla-put-WindowTop,(vla-put-WindowTop Object value),设定应用程序窗口的上边界。,33,-1,-1
+vla-put-WorkspacePath,(vla-put-WorkspacePath Object value),设定数据库工作区文件的路径。,33,-1,-1
+vla-put-XRefDemandLoad,(vla-put-XRefDemandLoad Object value),设定外部参照的加载需求。,33,-1,-1
+vla-put-XRefEdit,(vla-put-XRefEdit Object value),设定当前的图形被其它用户参照时是否仍可以立即编辑。,33,-1,-1
+vla-put-XRefFadeIntensity,(vla-put-XRefFadeIntensity Object value),控制XRefs的褪色度。,33,-1,-1
+vla-put-XRefLayerVisibility,(vla-put-XRefLayerVisibility Object value),设定外部参照相关图层的可见性以及指定是否储存嵌套外部参照路径的修改。,33,-1,-1
+vla-put-XScaleFactor,(vla-put-XScaleFactor Object value),设定块或XRef的X比例系数。,33,-1,-1
+vla-put-XVector,(vla-put-XVector Object value),设定给定UCS的X方向。,33,-1,-1
+vla-put-YScaleFactor,(vla-put-YScaleFactor Object value ),设定块或XRef的Y比例系数。,33,-1,-1
+vla-put-YVector,(vla-put-YVector Object value ),设定给定UCS的Y方向。,33,-1,-1
+vla-put-ZScaleFactor,(vla-put-ZScaleFactor Object value),设定块或XRef的Z比例系数。,33,-1,-1
+vlax-3D-point,(vlax-3D-point list|[x y [z]]),创建与 ActiveX 兼容的（变体）三维点结构,33,1,3
+vlax-add-cmd,(vlax-add-cmd global-name func-sym [local-name cmd-flags]),将命令添加到 AutoCAD 内置命令集中,33,-1,-1
+vlax-create-object,(vlax-create-object prog-id),创建应用程序对象的新实例,33,1,1
+vlax-curve-getArea,(vlax-curve-getArea curve-obj),返回曲线的面积,33,-1,-1
+vlax-curve-getDistAtParam,(vlax-curve-getDistAtParam curve-obj param),返回曲线从开始到指定参数的曲线段的长度,33,-1,-1
+vlax-curve-getDistAtPoint,(vlax-curve-getDistAtPoint curve-obj point),返回曲线从开始点到指定点的曲线段的长度,33,-1,-1
+vlax-curve-getEndParam,(vlax-curve-getEndParam curve-obj),返回曲线端点的参数,33,-1,-1
+vlax-curve-getEndPoint,(vlax-curve-getEndPoint curve-obj),返回曲线的端点（按 WCS 表示）,33,-1,-1
+vlax-curve-getFirstDeriv,(vlax-curve-getFirstDeriv curve-obj param),返回曲线在指定位置的一阶导数（在 WCS 中）,33,-1,-1
+vlax-curve-getParamAtDist,(vlax-curve-getParamAtDist curve-obj dist),返回距曲线开始点为指定距离的曲线参数,33,-1,-1
+vlax-curve-getPointAtDist,(vlax-curve-getPointAtDist curve-objdist),返回曲线上距开始点为指定距离的点（在 WCS 中）,33,-1,-1
+vlax-curve-getPointAtParam,(vlax-curve-getPointAtParam curve-obj param),返回曲线上具有指定参数值的点,33,-1,-1
+vlax-curve-getsecondDeriv,(vlax-curve-getSecondDeriv curve-obj param),返回曲线在指定位置的二阶导数（在 WCS 中）,33,-1,-1
+vlax-curve-getStartParam,(vlax-curve-getStartParam curve-obj),返回曲线的开始参数,33,-1,-1
+vlax-curve-getStartPoint,(vlax-curve-getStartPoint curve-obj),返回曲线的开始点（在 WCS 中）,33,-1,-1
+vlax-curve-isClosed,(vlax-curve-isClosed curve-obj),确定指定曲线是否闭合（即起点与端点是否重合）,33,-1,-1
+vlax-curve-isClosePointToProjection,(vlax-curve-getClosestPointToProjection curve-obj givenPnt normal [extend]),在将曲线投影到平面上之后，返回曲线上的最近点（在 WCS 上）,33,-1,-1
+vlax-curve-isPeriodic,(vlax-curve-isPeriodic curve-obj),确定指定曲线是否在各个方向上都是无限的，同时存在一个周期值 dT，使得对于任何参数 u，都有曲线上的点 (u + dT) = 点 (u) 成立,33,-1,-1
+vlax-curve-isPlanar,(vlax-curve-isPlanar curve-obj),确定是否存在包含曲线的平面,33,-1,-1
+vlax-dump-object,(vlax-dump-object obj [T]),列出对象特性，也可选择列出对象的方法,33,-1,-1
+vlax-ename->vla-object,(vlax-ename->vla-object entname),将 AutoLISP 类型的对象名转换为 VLA 对象。,33,1,1
+vlax-erased-p,(vlax-erased-p obj),确定对象是否被删除,33,-1,-1
+vlax-for,(vlax-for symbol collection [expression1 [expression2 ...]]),遍历对象集，对每个表达式进行求值,33,3,-1
+vlax-get-acad-object,(vlax-get-acad-object),检索当前 AutoCAD 任务中的顶层 AutoCAD 应用程序对象,33,-1,-1
+vlax-get-object,(vlax-get-object prog-id),返回应用程序对象的运行实例,33,-1,-1
+vlax-get-or-create-object,(vlax-get-or-create-object prog-id),返回应用程序对象的运行实例。如果应用程序当前未运行，则创建新实例,33,-1,-1
+vlax-get-property,(vlax-get-property object property),检索 VLA 对象的特性,33,2,-1
+vlax-import-type-library,(vlax-import-type-library :tlb-filename filename [:methods-prefix mprefix  :properties-prefix pprefix :constants-prefix cprefix]),从类型库中输出信息,33,-1,-1
+vlax-invoke-method,(vlax-invoke-method obj method arg [arg...]),调用指定的 ActiveX 方法,33,-1,-1
+vlax-ldata-delete,(vlax-ldata-delete dict key [private]),从图形词典中删除 LISP 数据,33,-1,-1
+vlax-ldata-get,(vlax-ldata-get dict key [default-data] [private]),在图形词典或对象中检索 LISP 数据,33,-1,-1
+vlax-ldata-list,(vlax-ldata-list dict [private]),列出图形词典中的 LISP 数据,33,-1,-1
+vlax-ldata-put,(vlax-ldata-put dict key data [private]),存储图形词典或对象中的 LISP 数据,33,-1,-1
+vlax-ldata-test,(vlax-ldata-test data),确定数据是否能越任务边界保存,33,1,1
+vlax-make-safearray,(vlax-make-safearray type ’(l-bound . u-bound) [’(l-bound . u-bound)...)],创建 SafeArray,33,-1,-1
+vlax-safearray-get-dim,(vlax-safearray-get-dim var),返回 SafeArray 对象的维数,33,-1,-1
+vlax-safearray-get-element,(vlax-safearray-get-element var element...),返回 Safearray 中的元素,33,-1,-1
+vlax-safearray-get-l-bound,(vlax-safearray-get-l-bound var dim),返回 Safearray 某一维的下界（开始索引）,33,-1,-1
+vlax-safearray-get-u-bound,(vlax-safearray-get-u-bound var dim),返回 Safearray 某一维的上界（结束索引）,33,-1,-1
+vlax-safearray-put-element,(vlax-safearray-put-element var index... value),给 Safearray 中的某元素赋值,33,-1,-1
+vlax-safearray-type,(vlax-safearray-type var),返回 SafeArray 的数据类型,33,-1,-1
+vlax-tmatrix,(vlax-tmatrix list),返回 VLA 方法可用的 4x4 转换矩阵的适当表示,33,-1,-1
+vlax-typeinfo-available-p,(vlax-typeinfo-available-p obj),确定在指定类型的对象中是否存在 TypeLib 信息,33,-1,-1
+vlax-variant-change-type,(vlax-variant-change-type var type),在改变变体的数据类型后返回该变体的值,33,-1,-1
+vlax-variant-type,(vlax-variant-type var),确定变体的数据类型,33,-1,-1
+vlax-variant-value,(vlax-variant-value var),返回变体的值,33,-1,-1
+vlax-vla-object->ename,(vlax-vla-object->ename obj),将 VLA 对象转换为 AutoLISP 对象名。,33,-1,-1
+vlax-write-enabled-p,(vlax-write-enabled-p obj),确定是否能够修改 AutoCAD 图形,33,-1,-1
+vlr-acdb-reactor,(vlr-acdb-reactor data callbacks),构造 AutoCAD 数据库反应器对象，在从图形数据库中加入、修改或删除对象时通知应用程序,33,-1,-1
+vlr-add,(vlr-add obj),启动当前禁用的反应器对象,33,-1,-1
+vlr-added-p,(vlr-added-p obj),测试以确定是否已启用反应器对象,33,-1,-1
+vlr-beep-reaction,(vlr-beep-reaction [args]),产生声音提示的回调函数,33,-1,-1
+vlr-command-reactor,(vlr-command-reactor data callbacks),构造 AutoCAD 命令反应器，对命令事件给出通知,33,-1,-1
+vlr-current-reaction-name,(vlr-current-reaction-name),如果在反应器回调函数中调用该函数，它返回当前事件的名称（符号）,33,-1,-1
+vlr-data,(vlr-data obj),返回与反应器相关的应用程序特定数据,33,-1,-1
+vlr-deepclone-reactor,(vlr-deepclone-reactor datacallbacks),构造编辑器反应器对象，在发生 deepclone 事件时给出通知,33,-1,-1
+vlr-docmanager-reactor,(vlr-docmanager-reactor data callbacks),构造反应器对象，通知与图形文档相关的事件,33,-1,-1
+vlr-dwg-reactor,(vlr-dwg-reactor data callbacks),构造反应器对象，通知图形事件（如打开或关闭图形文件）,33,-1,-1
+vlr-dxf-reactor,(vlr-dxf-reactor datacallbacks),构造编辑器反应器对象，通知与读写 DXF 文件相关的事件,33,-1,-1
+vlr-editor-reactor,(vlr-editor-reactor data callbacks),构造编辑器反应器对象,33,-1,-1
+vlr-insert-reactor,(vlr-insert-reactor data callbacks),构造反应器对象，通知与块插入相关的事件,33,-1,-1
+vlr-linker-reactor,(vlr-linker-reactor data callbacks),构造反应器对象，在每次应用程序加载或卸载 ObjectARX 应用程序时通知应用程序,33,-1,-1
+vlr-lisp-reactor,(vlr-lisp-reactor data callbacks),构造编辑器反应器对象，通知 LISP 事件,33,-1,-1
+vlr-miscellaneous-reactor,(vlr-miscellaneous-reactor data callbacks),构造编辑器反应器对象，它不属于任何其他编辑器反应器类型,33,-1,-1
+vlr-mouse-reactor,(vlr-mouse-reactor data callbacks),构造编辑器反应器对象，通知鼠标事件（如双击）,33,-1,-1
+vlr-notification,(vlr-notification reactor),确定当反应器相关联的名称空间不在活动状态时是否激发反应器,33,-1,-1
+vlr-object-reaction,(vlr-object-reactor owners data callbacks),构造对象反应器对象 。,33,-1,-1
+vlr-reactions,(vlr-reactions reactor),返回反应器的形如 (event-name . callback_function) 的点对表,33,-1,-1
+vlr-remove,(vlr-remove reactor),禁用反应器,33,-1,-1
+vlr-remove-all,(vlr-remove-all [reactor-type]),禁用指定类型的所有反应器,33,-1,-1
+vlr-set-notification,(vlr-set-notification reactor 'range),确定当相关联的名称空间不在活动状态时是否执行反应器回调函数,33,-1,-1
+vlr-sysvar-reactor,(vlr-sysvar-reactor data callbacks),构造编辑器反应器对象，在修改系统变量时通知应用程序,33,-1,-1
+vlr-toolbar-reactor,(vlr-toolbar-reactor data callbacks),构造编辑器反应器对象，在工具栏中的位图改变时通知应用程序,33,-1,-1
+vlr-trace-reaction,(vlr-trace-reaction),预定义回调函数，在“跟踪”窗口显示一个或多个回调参数,33,-1,-1
+vlr-type,(vlr-type reactor),返回代表反应器类型的符号,33,-1,-1
+vlr-types,(vlr-types),返回由所有反应器类型组成的表,33,-1,-1
+vlr-undo-reactor,(vlr-undo-reactor data callbacks),构造通知放弃操作的编辑器反应器,33,-1,-1
+vlr-wblock-reactor,(vlr-wblock-reactor data callbacks),构造编辑器反应器对象，在发生与写块相关的事件时通知应用程序,33,-1,-1
+vlr-window-reactor,(vlr-window-reactor data callbacks),构造编辑器反应器对象，在发生与移动或缩放 AutoCAD 窗口相关的事件时通知应用程序,33,-1,-1
+vlr-xref-reactor,(vlr-xref-reactor data callbacks),构造编辑器反应器对象，在发生附着或修改外部参照事件时通知应用程序,33,-1,-1
+vl-list*,(vl-list*  object [object] ...),构造并返回表,33,-1,-1
+1-,(1- number),将参数减 1,33,-1,-1
+vla-GetBoundingBox,(vla-GetBoundingBox obj 'Minp 'Maxp),返回图元对象边框的最大和最小点。,33,-1,-1
+acad-pop-dbmod,(acad-pop-dbmod),恢复 DBMOD 系统变量的值到最近用 acad-push-dbmod 保存的值,33,-1,-1
+acad-push-dbmod,(acad-push-dbmod),储存 DBMOD 系统变量的当前值,33,-1,-1
+acad_truecolorcli,(acad_truecolorcli color [allowbylayer] [alternatePrompt]),从命令行中选择 AutoCAD 真彩色,33,-1,-1
+acad_truecolordlg,(acad_truecolordlg color [allowbylayer] [currentlayercolor]),显示 AutoCAD 真彩色选择对话框,33,-1,-1
+acdimenableupdate,(acdimenableupdate nil | T),控制关联标注的自动更新,33,-1,-1
+acet-layerp-mode,(acet-layerp-mode [status]),查询和设置 LAYERPMODE 配置,33,-1,-1
+acet-layerp-mark,(acet-layerp-mark [status]),放置图层先前记录的开始和结束标记,33,-1,-1
+acet-laytrans,(acet-laytrans “filename” [settings]),转换图形中的图层为其它图形或标准文件中所定义的标准,33,-1,-1
+acet-ms-to-ps,(acet-ms-to-ps [value][viewport]),从模型空间单位转换实数值到图纸空间单位,33,-1,-1
+acet-ps-to-ms,(acet-ps-to-ms [value][viewport]),从图纸空间单位转换实数值到模型空间单位,33,-1,-1
+arx,(arx),返回当前已加载的 ObjectARX 应用程序名表,33,-1,-1
+atoms-family,(atoms-family format [symlist]),返回由当前已定义的符号组成的一个表,33,1,2
+caddr,(caddr list),返回表的第三个元素,33,-1,-1
+cadr,(cadr list),返回表的第二个元素,33,-1,-1
+defun-q,(defun-q sym ([arguments] [/ variables...]) expr...),将函数定义为表,33,-1,-1
+defun-q-list-ref,(defun-q-list-ref 'function ),返回用 defun-q 定义的函数的表结构,33,-1,-1
+defun-q-list-set,(defun-q-list-set 'sym list),将符号设置为以表形式定义的函数,33,-1,-1
+function,(function symbol | lambda-expr),通知 Visual LISP 编译器将参数作为内置函数进行链接和优化,33,-1,-1
+help,(help [helpfile [topic [command]]]),调用帮助工具,33,-1,-1
+initdia,(initdia [dialogflag]),强制显示下一个命令的对话框,33,-1,-1
+layoutlist,(layoutlist),返回当前图形中所有图纸空间布局组成的表,33,-1,-1
+prin1,(prin1 [expr [file-desc]]),在命令行打印一个表达式或将表达式写入已打开的文件中,33,-1,-1
+read-char,(read-char [file-desc]),从键盘输入缓冲区或打开文件中读入一个字符，并将该字符转换成十进制的 ASCII 码值后返回,33,-1,-1
+setenv,(setenv varname value),将系统环境变量设为指定值,33,-1,-1
+vl-filename-directory,(vl-filename-directory filename),去掉文件的名称和扩展名，返回文件的路径。,33,1,1
+vl-list-loaded-vlx,(vl-list-loaded-vlx),返回与当前文档相关联的所有独立名称空间 VLX 文件,33,-1,-1
+vl-mkdir,(vl-mkdir directoryname),创建目录,33,-1,-1
+vl-princ-to-string,(vl-princ-to-string  data),返回 LISP 数据的字符串表示，就象它是由 princ 函数输出的一样,33,-1,-1
+vl-string->list,(vl-string->list  string),将字符串转换为字符代码表,33,-1,-1
+vlax-curve-getClosestPointTo,(vlax-curve-getClosestPointTo curve-obj givenPnt [extend]),返回曲线上离指定点最近的点（在 WCS 上）,33,-1,-1
+vlax-curve-getClosestPointToProjection,(vlax-curve-getClosestPointToProjection curve-obj givenPnt normal[extend]),在将曲线投影到平面上之后，返回曲线上的最近点（在 WCS 上）,33,-1,-1
+vlax-curve-getParamAtPoint,(vlax-curve-getParamAtPoint curve-obj point),返回曲线在指定点的参数,33,-1,-1
+vlax-make-variant,(vlax-make-variant [value] [type]),创建变体数据类型,33,-1,-1
+vlax-map-collection,(vlax-map-collection obj function),将函数应用到集合中的所有对象,33,2,2
+vlax-method-applicable-p,(vlax-method-applicable-p objmethod),确定对象是否支持某个方法,33,-1,-1
+vlax-object-released-p,(vlax-object-released-p obj),确定对象是否已被释放,33,-1,-1
+vlax-product-key,(vlax-product-key),返回 AutoCAD 的 Window 注册表路径,33,-1,-1
+vlax-property-available-p,(vlax-property-available-p obj prop [check-modify]),确定对象是否具有指定特性,33,-1,-1
+vlax-put-property,(vlax-put-property obj property arg),设置 ActiveX 对象的特性,33,3,-1
+vlax-read-enabled-p,(vlax-read-enabled-p obj),确定对象是否可读,33,-1,-1
+vlax-release-object,(vlax-release-object obj),释放图形对象,33,-1,-1
+vlax-remove-cmd,(vlax-remove-cmd global-name),删除一个命令或一组命令,33,-1,-1
+vlax-safearray-fill,(vlax-safearray-fill var 'element-values),在 SafeArray 的元素中存储数据,33,2,2
+vlisp-compile,(vlisp-compile 'mode filename [out-filename]),将 AutoLISP 源代码生成为 FAS 文件,33,-1,-1
+vlr-data-set,(vlr-data-set objdata),覆盖与反应器相关的应用程序特定数据,33,-1,-1
+vlr-object-reactor,(vlr-object-reactor owners data callbacks),构造对象反应器对象,33,-1,-1
+vlr-owner-add,(vlr-owner-add reactor owner),将对象添加到对象反应器的所有者列表,33,2,2
+vlr-owner-remove,(vlr-owner-remove reactor owner),从对象反应器的所有者列表中删除对象,33,2,2
+vlr-owners,(vlr-owners reactor),返回对象反应器的所有者列表,33,1,1
+vlr-pers,(vlr-pers reactor),使反应器成为永久反应器,33,1,1
+vlr-pers-list,(vlr-pers-list [reactor]),返回由当前图形文档中永久反应器组成的表,33,0,1
+vlr-pers-p,(vlr-pers-p reactor),确定反应器是否是永久反应器,33,1,1
+vlr-pers-release,(vlr-pers-release reactor),使反应器成为临时反应器,33,1,1
+vlr-reaction-name,(vlr-reaction-names reactor-type),返回由该类型反应器所有可能回调条件组成的表,33,1,1
+vlr-reaction-set,(vlr-reaction-set reactor event function),添加或替换反应器中的一个回调函数,33,3,3
+vlr-reactors,(vlr-reactors [reactor-type...]),返回由现有反应器组成的表,33,-1,-1
+align,(align arg1 arg2 ...),平移和旋转对象，使它们与其他对象对齐（外部定义：geom3d ARX 应用程序）,33,-1,-1
+cal,(c:cal expression),调用联机的几何图形计算器并返回表达式的值（外部定义：geomcal ARX 应用程序）,33,-1,-1
+fog,(c:fog enabled [color [near_dist [far_dist [near_percent [far_percent [background]]]]]]),加大对象与相机之间的距离（外部定义：render ARX 应用程序）,33,-1,-1
+light,(c:light mode [options]),创建、修改和删除光源和照明效果（外部定义：render ARX 应用程序）,33,-1,-1
+lsedit,(c:lsedit mode [options]),创建或修改配景对象（外部定义：render ARX 应用程序）,33,-1,-1
+lslib,(c:lslib mode [options]),管理配景库（外部定义：render ARX 应用程序）,33,-1,-1
+lsnew,(c:lsnew object-type height position alignment),创建配景对象（外部定义：render ARX 应用程序）,33,-1,-1
+matlib,(c:matlib mode name [file]),管理材质库（外部定义：render ARX 应用程序）,33,-1,-1
+mirror3d,(mirror3d arg1 arg2 ...),相对于用户指定的平面反射选定的对象（外部定义：geom3d ARX 应用程序）,33,-1,-1
+render,(c:render [filename|point1 point2]),用几何图形、光源和表面修饰信息创建三维线框模型的真实感着色图像（外部定义：render ARX 应用程序）,33,-1,-1
+renderupdate,(c:renderupdate [RU_value]),在下一次渲染时生成 en2face 文件（外部定义：render ARX 应用程序）,33,-1,-1
+replay,(c:replay filename type [xoff yoff xsize ysize]),显示 BMP、TGA 或 TIFF 图像（外部定义：render ARX 应用程序）,33,-1,-1
+rmat,(c:rmat mode options),创建、编辑、附着和拆离渲染材质（外部定义：render ARX 应用程序）,33,-1,-1
+rotate3d,(rotate3d args ...),绕任意三维轴旋转对象（外部定义：geom3d ARX 应用程序）,33,-1,-1
+rpref,(c:rpref mode option [setting]),设置渲染系统配置（外部定义：render ARX 应用程序）,33,2,-1
+saveimg,(c:saveimg filename type [portion] [xoff yoff xsize ysize] [compression]),将渲染图形保存到 BMP、TGA 或 TIFF 格式的文件中（外部定义：render ARX 应用程序）,33,2,-1
+scene,(c:scene mode [options]),（仅适用于图纸空间）创建新场景，修改或删除现有的场景（外部定义：render ARX 应用程序）,33,1,2
+setuv,(c:setuv modeoptions),向选定对象指定材质贴图坐标，此函数有两种模式，由字符串参数指定（外部定义：render ARX 应用程序）,33,1,1
+showmat,(c:showmat arg1),列出选定对象的材质类型和附着方法（外部定义：render ARX 应用程序）,33,1,1
+solprof,(c:solprof args ...),创建三维实体的剖面图像（外部定义：solids ARX 应用程序）,33,-1,-1
+stats,(c:stats [filename | nil]),显示上一次渲染的统计信息（外部定义：render ARX 应用程序）,33,0,3
+t,(t),真，对,13,-1,-1
+nil,(nil),假，错,13,-1,-1
+pause,(command "line" pause),"调用命令时暂停等待用户输入,值为""\\""",13,-1,-1
+seturl,(seturl ent url),为指定对象设置链接地址,33,2,2
+geturl,(geturl ent),获取图元上的链接地址,33,1,1
+fnsplitl,(fnsplitl path),将带路径的文件名拆分成路径、文件名及扩展名组成的表,33,1,1
+vla-AddBox,(vla-AddBox object Origin Length Width Height),创建边与WCS的轴相平行的三维实体长方体。,33,5,5
+vla-Add3DFace,(vla-Add3DFace object Point1 Point2 Point3 [Point4]),给定四个顶点创建 3DFace 对象。,33,4,5
+vla-Add3Dmesh,(vla-Add3Dmesh object M N PointsMatrix),给定M和N向的点数量和M和N向点坐标创建自由形式的三维网格。,33,4,4
+vla-Add3Dpoly,(vla-Add3Dpoly object list),给定坐标值数组创建三维多段线。,33,2,2
+vla-AddArc,(vla-AddArc object Center Radius StartAngle EndAngle),给定弧的圆心、半径、起始角和终止角来创建圆弧。,33,5,5
+vla-AddAttribute,(vla-AddAttribute object Height Mode Prompt InsertionPoint Tag Value),用指定属性在给定的位置创建属性定义。,33,7,7
+vla-AddCircle,(vla-AddCircle object Center Radius),给定中心点和半径创建圆。,33,3,3
+vla-AddCone,(vla-AddCone object Center BaseRadius Height),创建基底在WCS的XY平面的三维实体圆锥体。,33,4,4
+vla-AddCustomInfo,(vla-AddCustomInfo object key Value),添加自定义属性字段到字段现有列表的尾部。,33,3,3
+vla-AddCustomObject,(vla-AddCustomObject object ClassName),创建自定义对象。,33,2,2
+vla-Activate,(vla-Activate Document),激活指定图形。,33,1,1
+vla-Add,(vla-Add object [args...]),创建一个成员对象并将它添加到适当的集合中。,33,2,5
+vla-ZoomWindow,(vla-ZoomWindow Application LowerLeft UpperRight),通过指定矩形的两个对角点来缩放当前视图。,33,3,3
+vla-AddCylinder,(vla-AddCylinder object Center Radius Height),创建基底在WCS的XY平面的三维实体圆柱体。,33,4,4
+vla-ZoomScaled,(vla-ZoomScaled Application Scale ScaleType),按照指定的比例因子缩放当前视图。,33,3,4
+vlax-safearray->list,(vlax-safearray->list var),以表的形式返回 SafeArray 中的元素,33,1,1
+vla-ZoomPrevious,(vla-ZoomPrevious Application),"返回到最近使用过的缩放视图。
+
+该方法仅仅在当前活动视口(模型空间或图纸空间)有效。
+该方法返回到上一个使用过的缩放视图。你可以保存直到10个缩放视图。",33,1,1
+vla-ZoomPickWindow,(vla-ZoomPickWindow Application),由用户在绘图区域指定窗口缩放当前视图。,33,1,1
+vla-ZoomExtents,(vla-ZoomExtents Application),将当前视图缩放到图形界限。,33,1,1
+vla-AddHatch,(vla-AddHatch Object PatternType patternName Associativity),新创建的 Hatch 对象,33,4,4
+vla-ZoomCenter,(vla-ZoomCenter Application Center Magnify),通过指定缩放中心点和比例缩放当前视图 。,33,3,3
+vla-ZoomAll,(vla-ZoomAll Application),用于缩放当前视图，显示整个图形。,33,1,1
+vla-WBlock,(vla-WBlock Document FileName SelectionSet),将给定选择集写出为新的图形文件。 (写块),33,3,3
+vla-UpdateEntry,(vla-UpdateEntry object Index),在文件相关表中删除然后重新创建一个指定的实体。,33,2,2
+vla-AddMline,(vla-AddMline Object VertexList),通过点数组创建多线,33,2,2
+vla-Update,(vla-Update Object),更新图形屏幕的对象。,33,1,1
+vla-AddText,(vla-AddText object TextString InsertionPoint Height),创建单行文字,33,4,4
+vla-AddMtext,(vla-AddMText object InsertionPoint Width Text),在由插入点和边框宽度所定义的矩形中创建多行文字,33,4,4
+vla-AttachExternalReference,(vla-AttachExternalReference object PathName Name InsertionPoint XScale YScale ZScale Rotation bOverlay),将外部参照附着到图形,33,9,9
+vla-ArrayPolar,(vla-ArrayPolar Object NumberOfObjects AngleToFill CenterPoint),以给定的对象数量、填充角度和中心点创建对象的环形阵列。,33,4,4
+vla-ArrayRectangular,(vla-ArrayRectangular Object NumberOfRows NumberOfColumns NumberOfLevels DistBetweenRows DistBetweenColumns DistBetweenLevels),创建对象的二维或三维矩形阵列。,33,7,7
+vla-Bind,(vla-Bind objece bPrefixName),将外部引用（xref)并入到图形中,33,2,2
+vla-CopyObjects,(vla-CopyObjects Object Objects [Owner] [IDPairs]),复制多个对象(完全克隆)。,33,3,4
+vla-AddRegion,(vla-AddRegion object ObjectList),从一组图元创建面域。给定的图元必须构成闭合的共面区域。,33,2,2
+vla-AddRevolvedSolid,(vla-AddRevolvedSolid object Profile AxisPoint AxisDir Angle),以给定的面域绕轴创建旋转实体。,33,5,5
+vla-AddSeparator,(vla-AddSeparator object Index),向现有菜单或工具栏添加分隔符。,33,2,2
+vla-AddSolid,(vla-AddSolid object Point1 Point2 Point3 Point4),创建二维实心多边形。,33,5,5
+vla-AddEllipse,(vla-AddEllipse object Center MajorAxis RadiusRatio),以给定的中心点、主轴上的一点以及半径比在wcs的xy平面上建立一个椭圆,33,4,4
+vla-AddMInsertBlock,(vla-AddMInsertBlock object InsertionPoint Name XScale YScale ZScale Rotation NumRows NumColumns RowSpacing ColumnSpacing),插入图块的阵列,33,11,11
+vla-AddObject,(vla-AddObject object),添加对象到命名的词典中,33,1,1
+vla-addpviewport,(vla-AddPViewport object Center Width Height),以给定的中心点、高度及宽度加入图纸空间视口,33,4,4
+vla-AddRaster,(vla-AddRaster object ImageFileName InsertionPoint ScaleFactor RotationAngle),基于现有图像文件创建新的光栅图像,33,5,5
+vla-AddVertex,(vla-AddVertex LightweightPolyline Index Point),向优化多段线中添加顶点。,33,3,3
+vla-AddXRecord,(vla-AddXRecord Dictionary Keyword RetVal),在任何词典中创建扩展记录(XRecord)对象。,33,2,3
+vla-AppendItems,(vla-AppendItems GroupObject Objects),向指定的组中附加一个或多个图元。,33,2,2
+vla-Close,(vla-Close Object [SaveChanges] [FileName]),关闭指定的图形或所有打开的图形。,33,1,3
+vla-Boolean,(vla-Boolean object Operation Object),执行对象与其它三维实体或面域对象之间的布尔运算(并集、交集或差集)。,33,3,3
+vla-AddItems,(vla-AddItems object Items ),添加一个或多个对象到指定选择集。,33,2,2
+vla-Delete,(vla-Delete object),删除指定对象或一组保存了的图层设置,33,1,1
+vla-DeleteProfile,(vla-DeleteProfile Object ProfileName),删除指定的配置。,33,2,2
+vla-Eval,(vla-Eval object Expression),计算vlisp中的表达式,33,2,2
+vla-GetAngle,(vla-GetAngle object),获取指定的角度。考虑 ANGBASE 系统变量的设置。,33,1,1
+vla-getattributes,(vla-GetAttributes object),获取在块参照中的属性,33,1,1
+vla-GetCorner,(vla-GetCorner object Point),取得矩形的角点,33,2,2
+vla-GetExtensionDictionary,(vla-GetExtensionDictionary object),取得与对象关联的字典,33,1,1
+vla-TransformBy,(vla-TransformBy object TransformationMatrix),给定4×4转换矩阵移动、缩放或旋转对象。,33,2,2
+vla-SetXData,(vla-SetXData object XDataType XData),设置与对象关联的扩展数据 (外部数据) 。,33,3,3
+vla-Split,(vla-Split object NumWins),将视口拆分成指定数目的视图,33,2,2
+vla-SetControlPoint,(vla-SetControlPoint object Index Value),设置样条曲线在给定索引的控制点。,33,3,3
+vla-SaveAs,(vla-SaveAs object FileName FileType),将文档或菜单组保存到指定的文件，2006版不再支持菜单组。(2004修改)(2006修改),33,2,4
+vla-SetFitPoint,(vla-SetFitPoint object Index Value),设定样条曲线的拟合点,33,3,3
+vla-SelectByPolygon,(vla-SelectByPolygon object Mode PointsList FilterType FilterData),选择栏选内的图元并添加到选择集中,33,5,5
+vla-SendCommand,(vla-SendCommand Document Command),向文档发送命令字符串以进行处理。,33,2,2
+vla-AddTorus,(vla-AddTorus Object Center TorusRadius TubeRadius),在给定位置创建圆环。,33,4,4
+vla-AddTrace,(vla-AddTrace Object PointsArray RetVal),从一组点创建宽线对象。,33,3,3
+vla-AddWedge,(vla-AddWedge Object Center Length Width Height),给定长度、宽度和高度创建边与轴平行的楔体。,33,5,5
+vla-AddXLine,(vla-AddXLine Object Point1 Point2),创建通过两个指定点构造线(无限长线)。,33,3,3
+vla-AngleFromXAxis,(vla-AngleFromXAxis Utility Point1 Point2),获取直线与 X 坐标轴的夹角。,33,3,3
+vla-AngleToReal,(vla-AngleToReal Utility Angle Unit),将角度从字符串转换为双精度实数值。,33,3,3
+vla-AngleToString,(vla-AngleToString Utility Angle Unit Precision),将角度从双精度实数值转换为字符串。,33,4,4
+vla-AppendInnerLoop,(vla-AppendInnerLoop Object Loop),向图案填充中附加内边界。,33,2,2
+vla-AppendVertex,(vla-AppendVertex Object Point),向三维多段线、多段线或多段面网格对象的最后附加顶点。,33,2,2
+vla-AttachToolbarToFlyout,(vla-AttachToolbarToFlyout Object MenuGroupName ToolbarName),将工具栏附着到定义为弹出式的工具栏按钮。,33,3,3
+vla-AuditInfo,(vla-AuditInfo Document FixError),评估图形的完整性。,33,2,2
+vla-Block,(vla-Block SortentsTable),返回 SortentsTable 对象的块。,33,1,1
+vla-CheckInterference,(vla-CheckInterference Object CreateInterferenceSolid),检查两实体间的干涉，如果指定创建干涉实体，则由干涉部分创建实体。,33,2,2
+vla-Clear,(vla-Clear Object),清除指定选择集中的所有项目。,33,1,1
+vla-ClearSubSelection,(vla-ClearSubSelection Object),移去表格中单元格的子选择集。,33,1,1
+vla-ClearTableStyleOverrides,(vla-ClearTableStyleOverrides Table  flag),清除表格样式替换。,33,2,2
+vla-ClipBoundary,(vla-ClipBoundary Object PointsArray),为光栅图像指定剪裁边界。,33,2,2
+vla-ConvertToAnonymousBlock,(vla-ConvertToAnonymousBlock object),转换动态块为常规的匿名块。,33,1,1
+vla-ConvertToStaticBlock,(vla-ConvertToStaticBlock object newBlockName),转换动态块为常规的命名块。,33,2,2
+vla-CopyFrom,(vla-CopyFrom Object SourceObject),从给定的标注样式、布局或打印配置中复制设置。,33,2,2
+vla-CopyProfile,(vla-CopyProfile PreferencesProfiles oldProfileName newProfileName),复制指定的配置。,33,3,3
+vla-CreateEntry,(vla-CreateEntry  object Feature FullFileName AffectsGraphics noIncrement),在文件相关表中创建新的条目。(2004新增),33,5,5
+vla-CreateTypedArray,"(vla-CreateTypedArray Utility VarArr Type Value1[value2, value3, ...valueN])",创建包含一组各种参数的变体。,33,4,-1
+vla-DeleteCellContent,(vla-DeleteCellContent Table row col),删除指定行和列的单元格内容。,33,3,3
+vla-DeleteColumns,(vla-DeleteColumns Table col cols),删除表格中的列。,33,3,3
+vla-DeleteFitPoint,(vla-DeleteFitPoint Object Index),删除样条曲线上给定索引位置的拟合点。,33,2,2
+vla-Detach,(vla-Detach Object),从图形中分离外部参照(xref)。,33,1,1
+vla-Display,(vla-Display PViewport Status),切换PViewport对象的显示控制为打开或关闭。,33,2,2
+vla-ReselectSubRegion,(vla-ReselectSubRegion Table),返回表格中选择集的子图元。,33,1,1
+vla-Name,(vla-Name object Name),指定对象的名称。,33,2,2
+vla-LoadDVB,(vla-LoadDVB Application Name),加载指定的 AutoCAD VBA 工程文件。,33,2,2
+vla-TranslateCoordinates,(vla-TranslateCoordinates Object OriginalPoint  From  To  Disp [OCSNormal]),"将点从一个坐标系转换到另一个坐标系。
+返回值：Variant[变体] (三元素双精度数组)转化后的三维坐标",33,5,6
+vla-Unload,(vla-Unload object),卸载菜单组或者外部参照。,33,1,1
+vla-ResetBlock,(vla-ResetBlock object),重置动态块的默认状态。,33,1,1
+vla-UnloadARX,(vla-UnloadARX object Name),卸载指定的AutoCAD ARX应用程序。,33,2,2
+vla-UnloadDVB,(vla-UnloadDVB Object Name),卸载指定的AutoCAD VBA工程文件。,33,2,2
+vla-SetCellGridVisibility,(vla-SetCellGridVisibility Table row col edge bValue),设置指定行和列的一个边的格线可见性值。,33,5,5
+vla-GetCanonicalMediaNames,(vla-GetCanonicalMediaNames Object),获取指定打印设备的所有可用标准介质的名称。,33,1,1
+vla-UnmergeCells,(vla-UnmergeCells object minRow maxRow minCol maxCol),拆散表格中的合并单元格。,33,5,5
+vla-InsertColumns,(vla-InsertColumns Table col Width cols),在表格中插入列。,33,4,4
+vla-AddLightweightPolyline,(vla-AddLightweightPolyline Object List),由顶点列表创建优化多段线。,33,2,2
+vla-IsMergedCell,(vla-IsMergedCell Table row col minRow maxRow minCol maxCol),返回单元格的合并状态。,33,7,7
+vla-Rename,(vla-Rename Object OldName NewName),重新命名词典中的项目或保存的图层设置。,33,3,3
+vla-RemoveCustomByKey,(vla-RemoveCustomByKey SummaryInfo key),删除与名称(键)值关联的自定义属性值。,33,2,2
+vla-SetText,(vla-SetText Object row col pStr),设置指定行和列的文字值。,33,4,4
+vla-GetProjectFilePath,(vla-GetProjectFilePath PreferencesFiles ProjectName),获取 AutoCAD 查找外部参照文件的目录。,33,2,2
+vla-GetTextHeight,(vla-GetTextHeight Object rowType),返回指定行类型的文字高度。,33,2,2
+vla-SetDatabase,(vla-SetDatabase LayerStateManager Database),设置图层状态管理器的工作数据库。,33,2,2
+vla-Evaluate,(vla-Evaluate Object),计算给定的图案填充或引线。,33,1,1
+vla-ImportProfile,(vla-ImportProfile PreferencesProfiles Profile RegFile IncludePathInfo),输入由其它用户创建的配置。,33,4,4
+vla-Open,(vla-Open object Name [ReadOnly][Password]),打开现有图形文件(DWG)并将其设为活动的文档。,33,2,4
+vla-SetBlockScale,(vla-SetBlockScale Table row col blkScale),设置指定行和列的块的比例因子。,33,4,4
+vla-GetTextRotation,(vla-GetTextRotation Table row col),指定行和列的文字旋转角度。,33,3,3
+vla-GetKeyword,(vla-GetKeyword Object [Prompt]),从用户处获取关键词字符串。,33,1,2
+vla-Offset,(vla-Offset Object Distance),创建由现有对象偏移指定距离的新对象,33,2,2
+vla-Highlight,(vla-Highlight Object HighlightFlag),设置给定对象或给定选择集中所有对象的亮显状态。,33,2,2
+vla-Regen,(vla-Regen object WhichViewports),重生成整个图形并重计算所有对象的屏幕坐标和显示精度。,33,2,2
+vla-Remove,(vla-Remove object Name),从词典中删除命名对象。,33,2,2
+vla-SetVariable,(vla-SetVariable Document Name Value),设置 AutoCAD 系统变量的值。,33,3,3
+vla-SetPattern,(vla-SetPattern object PatternType PatternName),设置图案填充的图案类型和名称。,33,3,3
+vla-AddRay,(vla-AddRay object (Point1 Point2)),创建通过两个唯一点的射线。,33,3,3
+vla-ResetProfile,(vla-ResetProfile PreferencesProfiles Profile),将指定配置中的值重置为默认值。,33,2,2
+vla-GetFitPoint,(vla-GetFitPoint Spline Index),获取样条曲线上给定索引位置的拟合点。,33,2,2
+vla-AddLine,(vla-AddLine Object StartPoint EndPoint),通过两个点创建直线。,33,3,3
+vla-LoadARX,(vla-LoadARX Application Name),加载指定的 AutoCAD ARX 应用程序。,33,2,2
+vla-RemoveEntry,(vla-RemoveEntry FileDependencies Index forceRemove),从文件相关表中移除识别条目。,33,3,3
+vla-RealToString,(vla-RealToString Utility Value Unit Precision),将实数值转换为字符串。,33,4,4
+vla-MoveBelow,(vla-MoveBelow SortentsTable Objects Target),将对象移动到绘图顺序中目标的下面。,33,3,3
+vla-AddShape,(vla-AddShape Object Name InsertionPoint ScaleFactor Rotation),基于给定名称的样板，给定插入点、比例因子和旋转角度创建形对象。,33,5,5
+vla-GetWidth,(vla-GetWidth Object Index StartWidth EndWidth),返回多段线的起始和终止宽度。,33,4,4
+vla-Import,(vla-Import Document FileName InsertionPoint ScaleFactor),从文件输入图形或一组保存的图层设置。,33,4,4
+vla-ElevateOrder,(vla-ElevateOrder Spline Order),提高样条曲线的阶数到给定阶数,33,2,2
+vla-PlotToFile,(vla-PlotToFile Plot plotFile [plotConfig]),打印布局到指定文件。,33,2,3
+vla-IsURL,(vla-IsURL Object URL),验证给定的URL。,33,2,2
+vla-AppendOuterLoop,(vla-AppendOuterLoop Hatch Loop),向图案填充中附加外边界。,33,2,2
+vla-Replace,(vla-Replace Dictionary Name NewObject),用给定项目替换词典中的项目。,33,3,3
+vla-GetSubEntity,(vla-GetSubEntity Utility Object PickedPoint TransMatrix ContextData [Prompt]),以交互方式获取对象或子图元。,33,5,6
+vla-Item,(vla-Item Object Item),获取集合、组或选择集中给定索引的成员对象。,33,2,2
+vla-InsertLoopAt,(vla-InsertLoopAt Hatch Index LoopType Loop),按给定索引在图案填充中插入边界。,33,4,4
+vla-GetVariable,(vla-GetVariable Document Name),获取 AutoCAD 系统变量的当前设置。,33,2,2
+vla-GetInteger,(vla-GetInteger Utility [Prompt]),从用户处获取整数值。,33,1,2
+vla-GetName,(vla-GetName Dictionary Object),获取词典中对象的名称(关键字)。,33,2,2
+vla-Dock,(vla-Dock Toolbar Side),将工具栏固定在其所在的框窗口。,33,2,2
+vla-Prompt,(vla-Prompt Utility Message),向命令行发送提示。,33,2,2
+vla-Float,(vla-Float Toolbar Top Left NumberFloatRows),将工具栏设为浮动。,33,4,4
+vla-AddSpline,(vla-AddSpline Object PointsArray StartTangent EndTangent),创建二次或三次NURBS(非一致有理B样条)曲线。,33,4,4
+vla-GetXRecordData,(vla-GetXRecordData Object XRecordDataType XRecordDataValue),获取与词典相关联的扩展记录数据 (XRecordData),33,3,3
+vla-PolarPoint,(vla-PolarPoint Utility Point Angle Distance),获取与给定点指定角度和距离的点。,33,4,4
+vla-GetSnapSpacing,(vla-GetSnapSpacing Object XSpacing YSpacing),获取视口的捕捉间距。,33,3,3
+vla-GetLoopAt,(vla-GetLoopAt Hatch Index Loop),获取给定索引位置的图案填充边界,33,3,3
+vla-SetBulge,(vla-SetBulge Object Index Value),设置多段线在给定索引位置的凸度。,33,3,3
+vla-New,(vla-New Document TemplateFileName),在SDI(单文档)模式中创建新文档。,33,2,2
+vla-GetEntity,(vla-GetEntity Utility Object PickedPoint [Prompt]),以交互方式获取对象。,33,3,4
+vla-Quit,(vla-Quit Application),关闭图形文件并退出 AutoCAD 应用程序。,33,1,1
+vla-AddTolerance,(vla-AddTolerance Object Text InsertionPoint Direction),创建公差图元。,33,4,4
+vla-AddPoint,(vla-AddPoint Object Point),在给定位置创建点对象。,33,2,2
+vla-Mirror,(vla-Mirror Object Point1 Point2),围绕轴创建平面对象的镜像图像副本。,33,3,3
+vla-SetFont,(vla-SetFont TextStyle Typeface Bold Italic CharSet PitchAndFamily),设置文字样式中字体的定义数据。,33,6,6
+vla-PlotToDevice,(vla-PlotToDevice Plot [plotConfig]),打印布局到设备。,33,1,2
+vla-Move,(vla-Move object Point1 Point2),将图元对象从源向目标移动。,33,3,3
+vla-SetView,(vla-SetView Viewport View),将视口中的视图设置为保存在 Views 集合对象中的视图。,33,2,2
+vla-GetCustomScale,(vla-GetCustomScale object Numerator Denominator),获取布局或打印配置的自定义比例。,33,3,3
+vla-GetBulge,(vla-GetBulge object Index),获取多段线上给定索引位置的凸度值。,33,2,2
+vla-AddFitPoint,(vla-AddFitPoint object Index FitPoint),按给定索引位置添加拟合点到样条曲线上,33,3,3
+vla-AddLeader,(vla-AddLeader object PointsArray Annotation Type),以给定的点坐标值建立引线,33,4,4
+vla-AddMenuItem,(vla-AddMenuItem object Index Label Macro),加入菜单选项到弹出菜单中,33,4,4
+vla-addpolyfacemesh,(vla-AddPolyfaceMesh object VerticesList FaceList),从顶点列表创建多面网格,33,3,3
+vla-AddSubMenu,(vla-AddSubMenu object Index Label),向现有菜单添加子菜单,33,3,3
+vla-AddToolbarButton,(vla-AddToolbarButton object Index Name HelpString Macro),添加工具栏项目到工具栏的指定位置,33,5,5
+vla-GetAllProfileNames,(vla-GetAllProfileNames object pNames),获取系统所有可用配置的名称,33,2,2
+vla-getcontrolpoint,(vla-GetControlPoint object Index),返回给定索引的样条曲线控制点,33,2,2
+vla-GetInterfaceObject,(vla-GetInterfaceObject object ProgID),接收程序ID并试图将其作为进程内服务器加载到 AutoCAD 中,33,2,2
+vla-GetInvisibleEdge,(vla-GetInvisibleEdge object Index),获取 3DFace 对象上给定索引位置的边的可见性设置,33,2,2
+vla-GetLocaleMediaName,(vla-GetLocaleMediaName object Name),获取标准介质名称的本地版本,33,2,2
+vla-IsRemoteFile,(vla-IsRemoteFile object LocalFile URL),返回下载远程文件的源 URL,33,3,3
+vla-ListArx,(vla-ListArx object),获取当前加载的 AutoCAD ARX 应用程序,33,1,1
+vla-LoadShapeFile,(vla-LoadShapeFile object FullName),加载形文件(SHX),33,2,2
+vla-ObjectIDToObject,(vla-ObjectIDToObject object ID),获取与给定对象ID相对应的对象,33,2,2
+vla-AddDimAligned,(vla-AddDimAligned Object ExtLine1Point ExtLine2Point TextPosition),创建对齐标注对象。,33,4,4
+vla-GetBitmaps,(vla-GetBitmaps ToolbarItem SmallIconName LargeIconName),获取用作工具栏项目图标的大或小位图。,33,3,3
+vla-GetUCSMatrix,(vla-GetUCSMatrix UCS),获取由 UCS 坐标系数据组成的转换矩阵。,33,1,1
+vla-GetFullDrawOrder,(vla-GetFullDrawOrder SortentsTable Objects honor SortentsSysvar),返回块中的所有对象，按最底下的对象为第一个的绘图顺序排序。,33,3,3
+vla-InsertBlock,(vla-InsertBlock Object InsertionPoint Name Xscale Yscale ZScale Rotation [Password]),插入图形文件或当前图形中已定义的命名块。,33,7,8
+vla-SelectAtPoint,(vla-SelectAtPoint SelectionSet Point [FilterType] [FilterData]),选择通过给定点的对象并将其添加到选择集中。,33,2,4
+vla-Select,(vla-Select SelectionSet Mode [Point1] [Point2] [FilterType] [FilterData]),选择对象并将其添加到选择集中。,33,2,6
+vla-Erase,(vla-Erase object),删除选择集中的所有对象。,33,1,1
+vla-Copy,(vla-Copy object),在同一位置复制给定对象。,33,1,1
+vla-Save,(vla-Save Document),保存文档、菜单或图层属性设置，2006版不再支持菜单组。,33,1,3
+vla-DistanceToReal,(vla-DistanceToReal Utility Distance Unit),将距离由字符串转换为实数(双精度)值,33,3,3
+vla-AddDimRadial,(vla-AddDimRadial Object Center ChordPoint LeaderLength),在给定位置创建选定对象的半径标注。,33,4,4
+vla-ExportProfile,(vla-ExportProfile PreferencesProfiles Profile RegFile),输出当前配置以便与其它用户共享。,33,3,3
+vla-StartBatchMode,(vla-StartBatchMode Plot entryCount),调用批处理打印模式。,33,2,2
+vla-SetSnapSpacing,(vla-SetSnapSpacing Object XSpacing YSpacing),设置视口的捕捉间距。,33,3,3
+vla-Export,(vla-Export Document FileName Extension SelectionSet),将图形或一组保存的图层设置输出到文件,33,4,4
+vla-Rotate,(vla-Rotate Object BasePoint RotationAngle),绕一点旋转图元对象。,33,3,3
+vla-InitializeUserInput,(vla-InitializeUserInput Utility  Bits[Keyword]),初始化 GetKeyword 方法。,33,2,3
+vla-GetInput,(vla-GetInput Utility),将用户输入的字符串转换为关键词索引。,33,1,1
+vla-GetRemoteFile,(vla-GetRemoteFile Utility URL LocalFile IgnoreCache ),下载由URL指定的文件。,33,4,4
+vla-GetFont,(vla-GetFont TextStyle Typeface Bold Italic CharSet PitchAndFamily),获取 TextStyle 的字体定义数据。,33,6,6
+vla-GetPoint,(vla-GetPoint Utility [Point][Prompt]),获取 AutoCAD 中选定的点。,33,1,3
+vla-Mirror3d,(vla-Mirror3d Object Point1 Point2 Point3),绕由三点定义的平面镜像选定的对象。,33,4,4
+vla-PurgeFitData,(vla-PurgeFitData Spline),清理样条曲线的拟合数据。,33,1,1
+vla-ScaleEntity,(vla-ScaleEntity Object BasePoint ScaleFactor),按指定的基点和比例因子来缩放图元对象。,33,3,3
+vla-GetXdata,(vla-GetXdata Object AppName XDataType XDataValue),获取与对象关联的扩展数据(XData) 。,33,4,4
+vla-Reload,(vla-Reload Block),重载外部参照。,33,1,1
+vla-RemoveItems,(vla-RemoveItems Object Objects),从组或选择集中删除指定的项目。,33,2,2
+vla-SetRGB,(vla-SetRGB AcCmColor Red Green Blue),指定真彩色的 RGB 值。,33,4,4
+vla-Reverse,(vla-Reverse Spline),反转样条曲线的方向。,33,1,1
+vla-FieldCode,(vla-FieldCode object),返回包含字段代码的文字字符串。,33,1,1
+vla-SetSubSelection,(SetSubSelection object rowMin rowMax colMin colMax),"设置在子选择集中单元格的行和列索引,参数5",33,5,5
+vla-SetCellContentColor,(vla-SetCellContentColor object row col pColor),"设置指定行和列中内容的真彩色值,参数4",33,4,4
+vla-GetCellBackgroundColorNone,(vla-GetCellBackgroundColorNone object row col),"返回指定的行和列是否无背景颜色,参数3",33,3,3
+vla-GetRowHeight,(vla-GetRowHeight object row),"返回表格中指定行索引所在的行的行高,参数2",33,2,2
+vla-GetCellTextStyle,(vla-GetCellTextStyle object row col),"返回指定行和列的文字样式名称,参数3",33,3,3
+vla-GetCellExtents,(vla-GetCellExtents object row col bOuterCell),"返回指行和列的单元格区域,参数4",33,4,4
+vla-SetGridLineWeight,(vla-SetGridLineWeight object gridLineTypes rowTypes Lineweight),"设置指定格线类型和行类型的格线线宽值,参数4",33,4,4
+vla-GetCustomByKey,(vla-GetCustomByKey object key pValue),"返回与名称(键)值对应的自定义属性值,参数3",33,3,3
+vla-GetMinimumColumnWidth,(vla-GetMinimumColumnWidth object col),"获取表格中指定列索引所在的列的最小列宽,参数2",33,2,2
+vla-DeleteRows,(vla-DeleteRows object row Rows),"删除表格中的行,参数3",33,3,3
+vla-SelectSubRegion,(vla-SelectSubRegion object wpt1 wpt2 wvwVec wvwxVec seltype bIncludeCurrentSelection rowMin rowMax colMin colMax),选择表格中一些单元格。 参数11,33,11,11
+vla-SetBlockRotation,(vla-SetBlockRotation object row col blkRotation),设置指定行和列的块的旋转角度。参数4,33,4,4
+vla-SetAutoScale,(vla-SetAutoScale object row col vValue),设置指定的行和列是否使用自动缩放比例的值。参数4,33,4,4
+vla-GetAttachmentPoint,(vla-GetAttachmentPoint object row col),返回指定行和列的附着点。参数3,33,3,3
+vla-GetBlockTableRecordId,(vla-GetBlockTableRecordId object row col),返回单元格的块表格记录 ID 。 参数3,33,3,3
+vla-GetCellBackgroundColor,(vla-GetCellBackgroundColor object row col),返回指定行和列的单元格的背景真彩色值。 参数3,33,3,3
+vla-GetGridLineWeight,(vla-GetGridLineWeight object gridLineType rowType),返回指定格线类型和行类型的格线线宽值。参数3,33,3,3
+vla-SetColumnWidth,(vla-SetColumnWidth object col Width),设置表格中指定列索引所在的列的列宽。参数3,33,3,3
+vla-GetObject,(vla-GetObject object Name),获取词典中给定名称 (关键字) 的对象。参数2,33,2,2
+vla-SetGridColor,(vla-SetGridColor object gridLineTypes rowTypes pColor),设置指定格线类型和行类型的格线颜色值。参数4,33,4,4
+vla-AddDimDiametric,(vla-AddDimDiametric object ChordPoint FarChordPoint LeaderLength),给定直径上的两点和引线长度创建圆或弧的直径标注。参数4,33,4,4
+vla-HitTest,(vla-HitTest object wpt wviewVec resultRowIndex resultColumnIndex),返回指定位置的单元格。 参数5,33,5,5
+vla-GetFieldId,(vla-GetFieldId object row col),返回指定单元格的字段对象 ID。 参数3,33,3,3
+vla-SetCellBackgroundColorNone,(vla-SetCellBackgroundColorNone object row col bValue),设置指定的行和列是否无背景颜色。参数4,33,4,4
+vla-SetCustomScale,(vla-SetCustomScale object Numerator Denominator),设置布局或打印配置的自定义比例。参数3,33,3,3
+vla-SetLayoutsToPlot,(vla-SetLayoutsToPlot object layoutList),指定要打印的布局。参数2,33,3,3
+vla-GetBlockAttributeValue,(vla-GetBlockAttributeValue object row col attdefId),返回指定单元格的块中所包含的属性定义对象的属性值。 参数4,33,4,4
+vla-MoveToBottom,(vla-MoveToBottom object Objects),将对象移动到绘图顺序的最下面。参数2,33,2,2
+vla-SetCellBackgroundColor,(vla-SetCellBackgroundColor object row col pColor),设置指定行和列的单元格的背景真彩色值。参数4,33,4,4
+vla-GetAutoScale,(vla-GetAutoScale object row col),返回指定的行和列是否使用自动缩放比例的值。参数3,33,3,3
+vla-InsertInMenuBar,(vla-InsertInMenuBar object Index),将弹出菜单插入 AutoCAD 菜单栏的指定位置。参数2,33,2,2
+vla-HandleToObject,(vla-HandleToObject object Handle),获取与给定句柄对应的对象。参数2,33,2,2
+vla-GetAlignment,(vla-GetAlignment object rowType),返回行类型的单元格对齐方式。 参数2,33,2,2
+vla-GetBackgroundColorNone,(vla-GetBackgroundColorNone object rowType),返回指定的行类型是否没有背景颜色的值。 参数2,33,2,2
+vla-GetPaperSize,(vla-GetPaperSize object Width Height),获取配置的图纸的宽度和高度。参数3,33,3,3
+vla-SetBackgroundColorNone,(vla-SetBackgroundColorNone object rowTypes bValue),否没有背景颜色的值。参数3,33,3,3
+vla-MergeCells,(vla-MergeCells object minRow maxRow minCol maxCol),合并表格中的单元格。 参数5,33,5,5
+vla-SendModelessOperationEnded,(vla-SendModelessOperationEnded object Context),指出非模态操作已经结束。 参数2,33,2,2
+vla-StartUndoMark,(vla-StartUndoMark object),标记操作块的开始。参数1,33,1,1
+vla-EndUndoMark,(vla-EndUndoMark object),标识组块操作的结束。参数1,33,1,1
+vla-GetBlockScale,(vla-GetBlockScale object row col),返回指定行和列的块的比例因子。 参数3,33,3,3
+vla-GetRowType,(vla-GetRowType object row),返回指定行的行类型。 参数2,33,2,2
+vla-MoveToTop,(vla-MoveToTop object Objects),将对象移动到绘图顺序的最上面。参数2,33,2,2
+vla-SliceSolid,(vla-SliceSolid object Point1 Point2 Point3 Negative),以给定三点创建三维实体的剖切面。参数5,33,5,5
+vla-GetWindowToPlot,(vla-GetWindowToPlot object LowerLeft UpperRight),获取定义要打印的布局范围的坐标。参数3,33,3,3
+vla-GenerateLayout,(vla-GenerateLayout object),生成表格的布局。 参数1,33,1,1
+vla-MoveAbove,(vla-MoveAbove object Objects Target),将对象移动到绘图顺序中目标的上面。参数3,33,3,3
+vla-SetCellGridLineWeight,(vla-SetCellGridLineWeight object row col edges Lineweight),设置指定行和列的一个边的格线线宽。参数5,33,5,5
+vla-RecomputeTableBlock,(vla-RecomputeTableBlock object bForceUpdate),更新表格块。 参数2,33,2,2
+vla-IntersectWith,(Vla-IntersectWith Object IntersectObject ExtendOption),获取对象与图形中其它对象的相交点。,33,3,3
+vla-SetWindowToPlot,(Vla-SetWindowToPlot Object LowerLeft UpperRight),设置定义要打印的布局范围的坐标。,33,3,3
+vla-AddDimAngular,(Vla-AddDimAngular Object AngleVertex FirstEndPoint SecondEndPoint TextPoint),创建弧、两条线或圆的角度标注。,33,5,5
+vla-SetColor,(Vla-SetColor TableStyle owTypes AcCmColor),设置指定行类型的真彩色值。,33,3,3
+vla-SetCellAlignment,(Vla-SetCellAlignment Table row col cellAlignment),设置指定行和列的单元格的对齐方式。,33,4,4
+vla-InsertMenuInMenuBar,(Vla-InsertMenuInMenuBar PopupMenus MenuName Index),将菜单插入 AutoCAD 菜单栏中。,33,3,3
+vla-LaunchBrowserDialog,(Vla-LaunchBrowserDialog Utility SelectedURL DialogTitle OpenButtonCaption StartPageURL ReigstryRootKey OpenButtonAlwaysEnabled),启动 Web 浏览器窗口，允许用户导航到任意 URL 并可指定 URL。,33,7,7
+vla-SetWidth,(Vla-SetWidth Object SegmentIndex StartWidth EndWidth),设置多段线上给定段索引的起始和终止宽度。,33,4,4
+vla-GetCellType,(Vla-GetCellType Table row col ),返回指定行和列的单元格类型。,33,3,3
+vla-GetBackgroundColor,(Vla-GetBackgroundColor Object rowType),返回指定行类型的背景颜色值。,33,2,2
+vla-GetDistance,(Vla-GetDistance Utility Point Prompt),获取由提示行或由屏幕上选定的一组点的距离,33,3,3
+vla-GetCellAlignment,(Vla-GetCellAlignment Table row col),返回指定行和列的单元格的对齐方式。,33,3,3
+vla-GetString,(Vla-GetString Utility HasSpaces Prompt),从用户获取字符串。,33,3,3
+vla-Restore,(Vla-Restore LayerStateManager Name),恢复一组图层属性设置。(2002新增),33,2,2
+vla-RenameProfile,(Vla-RenameProfile PreferencesProfiles origProfileName newProfileName),重命名指定的配置。,33,3,3
+vla-SetNames,(vla-SetNames object ColorName ColorBook),指定颜色的颜色名和配色系统名称。,33,3,3
+vla-SetXRecordData,(vla-SetXRecordData object XRecordDataType XRecordData),设置与词典相关联的扩展记录数据 (XRecordData) 。,33,3,3
+vla-RunMacro,(vla-RunMacro object MacroPath),从 Application 对象中运行 VBA 宏。,33,2,2
+vla-GetReal,(vla-GetReal Object [Prompt]),从用户获取双精度实数值。,33,1,2
+vla-Explode,(vla-Explode object),将复合对象分解为子图元。,33,1,1
+vla-IndexOf,(vla-IndexOf object Feature FullFileName),提供文件相关表中条目的索引。(2004新增),33,3,3
+vla-SetWeight,(vla-SetWeight object Index Weight),设置给定控制点索引的样条曲线权值。,33,3,3
+vla-AddPolyline,(vla-AddPolyline object VerticesList),从顶点列表创建多段线。,33,2,2
+vla-GetTextStyle,(vla-GetTextStyle object rowType),返回指定行类型的文字样式名称。,33,2,2
+vla-DeleteConfiguration,(vla-DeleteConfiguration object Name),删除视口配置。,33,2,2
+vla-PurgeAll,(vla-PurgeAll Object),从文档中删除未使用的命名参照，例如未使用的块或图层。,33,1,1
+vla-Load,(vla-Load Linetypes LineTypeName FileName),从菜单或自定义(CUI)文件中加载菜单组或从库 (LIN) 文件中加载线型定义。,33,2,3
+vla-SetCellTextStyle,(vla-SetCellTextStyle object row col bstrName),设置指定行和列的文字样式名称。,33,4,4
+vla-Rotate3d,(vla-Rotate3d Object Point1 Point2 RotationAngle),绕三维直线旋转图元对象。,33,4,4
+vla-AddTable,(vla-AddTable object InsertionPoint NumRows NumColumns RowHeight ColWidth),"数据库中没有收录这个函数!请帮助录入,谢谢",33,6,6
+vla-AddSphere,(vla-AddSphere object Center Radius),以给定的球心和半径创建球体。,33,3,3
+vla-SetBitmaps,(vla-SetBitmaps object SmallIconName LargeIconName),设置用作工具栏项目图标的大和小位图。,33,3,3
+vla-SetRowHeight,(vla-SetRowHeight object row Height),设置表格中指定行索引所在的行的行高。,33,3,3
+vla-AddDimArc,(vla-AddDimArc Object ArcCenter FirstEndPoint SecondEndPoint ArcPoint),创建圆弧的弧长标注。,33,5,5
+vla-RefreshPlotDeviceInfo,(vla-RefreshPlotDeviceInfo Object),更新打印机、规范介质和打印样式表信息，以反映当前系统状态。,33,1,1
+vla-GetPaperMargins,(vla-GetPaperMargins Object LowerLeft UpperRight),获取布局或打印配置的页边距。,33,3,3
+vla-AddDimRotated,(vla-AddDimRotated Object XLine1Point XLine2Point DimLineLocation RotationAngle),创建旋转的线性标注。,33,5,5
+vla-AddDimOrdinate,(vla-AddDimOrdinate Object DefinitionPoint LeaderEndPoint UseXAxis),给定定义点和引线终点创建坐标标注。,33,4,4
+vla-GetGridSpacing,(vla-GetGridSpacing Object XSpacing YSpacing),获取视口的栅格间距。,33,3,3
+vla-GenerateUsageData,(vla-GenerateUsageData Layers),生成数据指出图层是否在使用中。,33,1,1
+vla-SetInvisibleEdge,(vla-SetInvisibleEdge 3DFace Index State),设置给定索引位置边的可见状态。,33,3,3
+vla-AddEllipticalCone,(vla-AddEllipticalCone Object Center MajorRadius MinorRadius Height),给定圆心、长轴半径、短轴半径和高度在WCS的XY平面上创建三维实体椭圆锥体。,33,5,5
+vla-SetColorBookColor,(vla-SetColorBookColor AcCmColor ColorName ColorBook),将颜色设置为配色系统中的颜色。,33,3,3
+vla-SendModelessOperationStart,(vla-SendModelessOperationStart Utility Context),指出非模态操作即将开始。,33,2,2
+vla-GetAcadState,(vla-GetAcadState Application),获取 AcadState 对象以便外部进程应用程序监视 AutoCAD 的状态。,33,1,1
+vla-DisplayPlotPreview,(vla-DisplayPlotPreview Plot Preview),按局部或完整视图预览方式显示打印预览对话框。,33,2,2
+vla-SwapOrder,(vla-SwapOrder SortentsTable Object1 Object2),交换两个对象的绘图顺序位置。,33,3,3
+vla-GetMinimumRowHeight,(vla-GetMinimumRowHeight Object row),返回指定行的最小行高。,33,2,2
+vla-GetCellGridColor,(vla-GetCellGridColor Object row col edge),返回指定行和列的一个边的格线颜色值。,33,4,4
+vla-GetOrientation,(vla-GetOrientation Utility Point Prompt),获取指定角度。忽略 ANGBASE 系统变量的设置。,33,3,3
+vla-SetFieldId,(vla-SetFieldId Table row col fieldId),设置指定单元格的字段对象 ID。,33,4,4
+vla-SetProjectFilePath,(vla-SetProjectFilePath Object ProjectName ProjectFilePath),设置 AutoCAD 查找外部参照文件的目录。,33,3,3
+vla-SectionSolid,(vla-SectionSolid 3DSolid Point1 Point2 Point3),以给定三点创建三维实体对象的截面，将该截面返回为面域对象。,33,4,4
+vla-GetWeight,(vla-GetWeight Spline Index),返回给定控制点索引的样条曲线权值。,33,2,2
+vla-SelectOnScreen,(vla-SelectOnScreen Object FilterType FilterData),提示用户从屏幕上拾取对象。,33,3,3
+vla-GetRelativeDrawOrder,(vla-GetRelativeDrawOrder object Objects honorSortentsSysvar),返回指定的对象，它按最底下的对象为第一个的绘图顺序排序。,33,3,3
+vla-GetColumnWidth,(vla-GetColumnWidth Object col),返回表格中指定列索引所在的列的列宽。,33,2,2
+vla-GetText,(vla-GetText Object row col),返回指定行和列的文字值。,33,3,3
+vla-NumCustomInfo,(vla-NumCustomInfo Object),返回已设置的自定义属性字段的数量。,33,1,1
+vla-AddExtrudedSolid,(vla-AddExtrudedSolid Object Profile Height TaperAngle),给定轮廓、高度和倾斜角度创建拉伸实体。,33,4,4
+vla-SetCustomByKey,(vla-SetCustomByKey SummaryInfo key pValue),设置与名称(键)值对应的自定义属性值。,33,3,3
+vla-SetGridVisibility,(vla-SetGridVisibility Object gridLineType rowType bValue),设置指定格线类型和行类型的格线可见性值。,33,4,4
+vla-SetGridSpacing,(vla-SetGridSpacing Object XSpacing YSpacing),设置视口的栅格间距。,33,3,3
+vla-GetCellStyleOverrides,(vla-GetCellStyleOverrides Object row col),返回单元格样式替换。,33,3,3
+vla-GetDynamicBlockProperties,(vla-GetDynamicBlockProperties object),获取动态块的属性。,33,1,1
+vla-GetSubSelection,(vla-GetSubSelection Object rowMin rowMax colMin colMax),返回在子选择集中单元格的行和列索引。,33,5,5
+vla-GetGridVisibility,(vla-GetGridVisibility Object gridLineType rowType),返回指定格线类型和行类型的格线可见性值。,33,3,3
+vla-RemoveFromMenuBar,(vla-RemoveFromMenuBar Object),从 AutoCAD 菜单栏中删除弹出菜单。,33,1,1
+vla-GetGridColor,(vla-GetGridColor Object gridLineType rowType),返回指定格线类型和行类型的格线颜色值。,33,3,3
+vla-GetCellTextHeight,(vla-GetCellTextHeight Object row col),返回指定行和列的文字高度。,33,3,3
+vla-AddDimRadialLarge,(vla-AddDimRadialLarge Object Center ChordPoint OverrideCenter JogPoint JogAngle),创建圆弧、圆或多段线弧段的折角半径标注。,33,6,6
+vla-SetAlignment,(vla-SetAlignment Object rowTypes cellAlignment),设置指定行类型的单元格对齐方式。,33,3,3
+vla-SetRelativeDrawOrder,(vla-SetRelativeDrawOrder SortentsTable Objects),设置要指定相对绘图顺序的对象，最底下的对象为第一个。,33,2,2
+vla-RemoveMenuFromMenuBar,(vla-RemoveMenuFromMenuBar Object Index),从 AutoCAD 菜单栏中删除集合中所指定的弹出菜单。,33,2,2
+vla-SetContentColor,(vla-SetContentColor Object rowTypes pColor),设置指定行类型的真颜色值。,33,3,3
+vla-SetCellTextHeight,(vla-SetCellTextHeight Object row col TextHeight),设置指定行和列的文字高度。,33,4,4
+vla-SetCustomByIndex,(vla-SetCustomByIndex Object Index key Value),设置与索引值对应的自定义属性名称(键)。,33,4,4
+vla-AddExtrudedSolidAlongPath,(vla-AddExtrudedSolidAlongPath Object Profile Path),给定轮廓和拉伸路径创建拉伸实体。,33,3,3
+vla-GetConstantAttributes,(vla-GetConstantAttributes Object),获取块或外部参照中的固定属性。,33,1,1
+vla-GetPlotDeviceNames,(vla-GetPlotDeviceNames Object),获取所有可用的打印设备名称。,33,1,1
+vla-SetBlockAttributeValue,(vla-SetBlockAttributeValue Object row col attdefId bstrValue),设置指定单元格的块中所包含的属性定义对象的属性值。,33,5,5
+vla-GetBlockRotation,(vla-GetBlockRotation Object row col),返回指定行和列的块的旋转角度。,33,3,3
+vla-SetTextHeight,(vla-SetTextHeight Object rowTypes TextHeight),设置指定行类型的文字高度。,33,3,3
+vla-GetCellContentColor,(vla-GetCellContentColor Object row col),返回指定行和列中内容的真彩色值。,33,3,3
+vla-AddDim3PointAngular,(vla-AddDim3PointAngular Object AngleVertex FirstEndPoint SecondEndPoint TextPoint),使用三点创建角度标注。,33,5,5
+vla-SetBlockTableRecordId,(vla-SetBlockTableRecordId Object row col blkId bAutoFit),设置单元格的块表格记录 ID 。,33,5,5
+vla-GetCellGridVisibility,(vla-GetCellGridVisibility Object row col edge),返回指定行和列的一个边的格线可见性值。,33,4,4
+vla-AddEllipticalCylinder,(vla-AddEllipticalCylinder object Center MajorRadius MinorRadius Height),给定圆心、长轴半径、短轴半径和高度创建基底在WCS的XY平面上的三维实体椭圆柱体。参数5,33,5,5
+vla-GetCellGridLineWeight,(vla-GetCellGridLineWeight object row col edge),返回指定行和列的一个边的格线线宽 参数4,33,4,4
+vla-GetColor,(vla-GetColor object rowType),返回指定行类型的真彩色值。参数2,33,2,2
+vla-RemoveCustomByIndex,(vla-RemoveCustomByIndex object Index),删除与索引值对应的自定义属性名称(键)和值。参数2,33,2,2
+vla-SetCellGridColor,(vla-SetCellGridColor object row col edges pColor),设置指定行和列的一个边的格线颜色值。参数4,33,5,5
+vla-SetTextStyle,(vla-SetTextStyle object rowTypes bstrName),设置指定行类型的文字样式名称。参数3,33,3,3
+vla-SetTextRotation,(vla-SetTextRotation object row col TextRotation),设置行和列的文字旋转角度。参数4,33,4,4
+vla-GetContentColor,(vla-GetContentColor object rowType),返回指定行类型的真颜色值。参数2,33,2,2
+vla-SetBackgroundColor,(vla-GetContentColor object rowTypes pColor),设置指定行类型的背景颜色值。,33,3,3
+vla-GetPlotStyleTableNames,(vla-GetPlotStyleTableNames object),获取所有可用的打印样式表名称。,33,1,1
+vla-InsertRows,(vla-GetPlotStyleTableNames object row Height Rows),在表格中插入行。,33,4,4
+vla-SetCellType,(vla-SetCellType object row col CellType),设置指定行和列的单元格类型。,33,4,4
+vla-GetCustomByIndex,(vla-GetCustomByIndex object Index pKey pValue),返回与索引值对应的自定义属性的名称(键)和值。,33,4,4
+caaaar,(caaaar lst),第4级子表的第一个元素,33,1,1
+caaadr,(caaadr lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+caaar,(caaar lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+caadar,(caadar lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+caaddr,(caaddr lst),反回表内第三个表的第一个值,33,1,1
+caadr,(caadr lst),反回表内第二个表的第一个值,33,1,1
+caar,(caar lst),返回表内的第一个子表的第一个值,33,1,1
+cadaar,(cadaar lst),返回第三个内表里面的第一个值,33,1,1
+cadadr,(cadadr lst),返回表内第二个表的第二个值,33,1,1
+cadar,(cadar lst),返回表内第一个表的第二个值,33,1,1
+caddar,(caddar lst),返回表内第一个表的第三个元素。,33,1,1
+cadddr,(cadddr lst),返回表的第四个元素（易云网络）,33,1,1
+cdaaar,(cdaaar lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cdaadr,(cdaadr lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cdaar,(cdaar lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cdadar,(cdadar lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cdaddr,(cdaddr lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cdadr,(cdadr lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cdar,(cdar list),返回表内第一个表中去掉了第一个元素的表,33,1,1
+cddaar,(cddaar lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cddadr,(cddadr lst),"数据库中没有收录这个函数!请帮助录入,谢谢",33,1,1
+cddar,(cddar lst),返回表内第一个表，并去掉前两个元素,33,1,1
+cdddar,(cdddar lst),返回表内第一个表，并去掉前三个元素。,33,1,1
+cddddr,(cddddr lst),返回去掉了前四个元素的表,33,1,-1
+cdddr,(cdddr lst),返回去掉了前三个元素的表,33,1,1
+cddr,(cddr lst),返回去掉了前两个元素的表,33,1,1
+vlax-get,(vlax-get object property),检索 VLA 对象的特性,33,2,-1
+vlax-put,(vlax-put obj property arg),设置 ActiveX 对象的特性,33,3,-1
+vlax-invoke,(vlax-invoke obj method [arg...]),调用指定的 ActiveX 方法。,33,2,-1
+bpoly,(bpoly pt [ss vector]),"搜索点附近曲线,生成最小边界",33,1,3
+pi,3.14159,圆周率,13,-1,-1
+:vlax-true,TRUE,"com接口(true,真,-1)",13,-1,-1
+:vlax-false,FALSE,"com接口(false,假,0)",13,-1,-1
+vla-put-TextHeight,(vla-put-TextHeight Object Height_Real),修改标注文字的高度.该属性将覆盖给定标注对象的 DIMTXT 系统变量。,33,2,2
+variant-value,(variant-value Varint),获得Variant的值.,33,1,1
+safearray-value,(safearray-value Saf),和Safearray->list差不多一个意思.,33,1,1
+vla-object,(= 'vla-object (type obj)),vla对象(= 'vla-object (type obj)),13,-1,-1
+:vlax-null,null,com接口(null),13,-1,-1
+vla-get-EffectiveName,(vla-get-EffectiveName obj),获取动态块的块名,33,1,1
+vla-get-IsDynamicBlock,(vla-get-IsDynamicBlock obj),"判断图块是否为动态块
+返回:vlax-true或者:vlax-false",33,1,1
+vla-put-TrueColor,(vla-put-TrueColor object AcCmColor),设置对象的真彩色,33,2,2
+vla-get-colorIndex,(vla-get-colorIndex object),获取AcCmColor 对象颜色索引。,33,1,1
+acAlignmentLeft,0,基准线左端,13,-1,-1
+acAlignmentCenter,-1,基准线中心,13,-1,-1
+acAlignmentRight,-2,基准线右端,13,-1,-1
+acAlignmentMiddle,-4,中间,13,-1,-1
+acAlignmentTopLeft,-6,左上,13,-1,-1
+acAlignmentTopCenter,-7,中上,13,-1,-1
+acAlignmentTopRight,-8,右上,13,-1,-1
+acAlignmentMiddleLeft,-9,左中,13,-1,-1
+acAlignmentMiddleCenter,-10,正中,13,-1,-1
+acAlignmentMiddleRight,-11,右中,13,-1,-1
+acAlignmentBottomLeft,-12,左下,13,-1,-1
+acAlignmentBottomCenter,-13,中下,13,-1,-1
+acAlignmentBottomRight,-14,右下,13,-1,-1
+acAlignmentAligned,-3,对齐,13,-1,-1
+acAlignmentFit,-5,拟合,13,-1,-1
+acByBlock,0,颜色随块,13,-1,-1
+acByLayer,-256,颜色随层,13,-1,-1
+acRed,-1,红色,13,-1,-1
+acYellow,-2,黄色,13,-1,-1
+acGreen,-3,绿色,13,-1,-1
+acCyan,-4,青色,13,-1,-1
+acBlue,-5,蓝色,13,-1,-1
+acMagenta,-6,洋红,13,-1,-1
+acWhite,-7,白色,13,-1,-1
+acLineNoArrow,0,不带箭头的线（Leader对象）,13,-1,-1
+acLineWithArrow,-2,带箭头的线（Leader对象）,13,-1,-1
+acSplineNoArrow,-1,不带箭头的样条曲线（Leader对象）,13,-1,-1
+acSplineWithArrow,-3,带箭头的样条曲线（Leader对象）,13,-1,-1
+acBaseMenuGroup,0,基本菜单组（MenuGroup使用）,13,-1,-1
+acPartialMenuGroup,-1,局部菜单组（MenuGroup使用）,13,-1,-1
+acMenuItem,0,菜单项（PopupMenuItem使用）,13,-1,-1
+acMenuSeparator,-1,菜单分隔符（PopupMenuItem 使用）,13,-1,-1
+acMenuSubMenu,-2,子菜单（PopupMenuItem 使用）,13,-1,-1
+acToolbarButton,0,常规按钮（ToolbarItem 使用）,13,-1,-1
+acToolbarFlyout,-3,弹出式按钮（ToolbarItem 使用）,13,-1,-1
+acToolbarControl,-2,控制按钮（ToolbarItem 使用）,13,-1,-1
+acToolbarSeparator,-1,分隔符（ToolbarItem 使用）,13,-1,-1
+acSimple3DPoly,0,简单多段线（3DPolyline 使用）,13,-1,-1
+acQuadSpline3DPoly,-1,二次B样条线（3DPolyline 使用）,13,-1,-1
+acCubicSpline3DPoly,-2,三次B样条线（3DPolyline 使用）,13,-1,-1
+acSimplePoly,0,简单多段线（Polyline 使用）,13,-1,-1
+acFitCurvePoly,-1,拟合曲线多段线（Polyline 使用）,13,-1,-1
+acQuadSplinePoly,-2,二次B样条曲线（Polyline使用）,13,-1,-1
+acCubicSplinePoly,-3,三次B样条曲线（Polyline使用）,13,-1,-1
+acSimpleMesh,0,简单的网络不带曲面拟合或平滑（PolygonMesh 使用）,13,-1,-1
+acQuadSurfaceMesh,-5,二次B样条曲面拟合（PolygonMesh 使用）,13,-1,-1
+acCubicSurfaceMesh,-6,三次B样条曲面拟合（PolygonMesh 使用）,13,-1,-1
+acBezierSurfaceMesh,-8,贝塞尔曲面拟合（PolygonMesh 使用）,13,-1,-1
+acDisplay,0,打印当前显示的所有内容（Layout 与 PlotConfiguration 使用）,13,-1,-1
+acExtents,-1,打印落在当前选择空间范围内的所有内容（Layout 与 PlotConfiguration 使用）,13,-1,-1
+acLimits,-2,打印在当前空间界限内的所有内容（Layout 与 PlotConfiguration 使用）,13,-1,-1
+acView,-3,打印由 ViewToPlot 属性指定的命名视口（Layout 与 PlotConfiguration 使用）,13,-1,-1
+acWindow,-4,打印由 SetWindowToPlot 方法指定的窗口内的所有内容（Layout 与 PlotConfiguration 使用）,13,-1,-1
+acLayout,-5,"打印落在指定图纸页边距内的所有内容，原点从布局选项卡中的0,0坐标算起。此选项在模型空间中打印时无效（Layout 与 PlotConfiguration 使用）",13,-1,-1
+acLsAll,-65535,所有图层属性（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsColor,-32,颜色（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsFrozen,-2,冻结或解冻（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsLineType,-64,线型（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsLineWeight,-128,线宽（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsLocked,-4,锁定或解锁（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsNewViewport,-16,新视口图层冻结或锁定（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsNone,0,无（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsOn,-1,"开或关（设置用于恢复指定图层状态的屏蔽,LayerStateManager 对象）",13,-1,-1
+acLsPlot,-8,打印开或关（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acLsPlotStyle,-256,打印样式（设置用于恢复指定图层状态的屏蔽，LayerStateManager 对象）,13,-1,-1
+acTextAndArrows,0,"该选项将文字和箭头均放到尺寸界线间（确定要移动哪个元素以使文字和箭头在尺寸界线间布局合适，Dim3PointAngular, DimAligned, DimAngular, DimArcLength, DimDiametric, DimRadial, DimRadialLarge, DimRotated
+使用该属性的对象。 ）",13,-1,-1
+acArrowsOnly,-1,该选项只将箭头放到尺寸界线间。文字放到箭头外面。,13,-1,-1
+acTextOnly,-2,该选项只将文字放到尺寸界线间。箭头放到尺寸界线外面。,13,-1,-1
+acBestFit,-3,该选项按照可用的空间的大小自动确定怎样放置文字和箭头。,13,-1,-1
+acDimPrecisionZero,0,指定换算单位中小数位数精度为0位小数,13,-1,-1
+acDimPrecisionOne,-1,指定换算单位中小数位数精度为1位小数,13,-1,-1
+acDimPrecisionTwo,-2,指定换算单位中小数位数精度为2位小数,13,-1,-1
+acDimPrecisionThree,-3,指定换算单位中小数位数精度为3位,13,-1,-1
+acDimPrecisionFour,-4,指定换算单位中小数位数精度为4位,13,-1,-1
+acDimPrecisionFive,-5,指定换算单位中小数位数精度为5位,13,-1,-1
+acDimPrecisionSix,-6,指定换算单位中小数位数精度为6位,13,-1,-1
+acDimPrecisionSeven,-7,指定换算单位中小数位数精度为7位,13,-1,-1
+acDimPrecisionEight,-8,指定换算单位中小数位数精度为8位,13,-1,-1
+acModelSpace,-1,活动空间切换为模型空间,13,-1,-1
+acPaperSpace,0,活动空间切换为图纸空间,13,-1,-1
+acUnion,0,执行并集运算（Boolean方法）,13,-1,-1
+acIntersection,-1,执行交集运算（Boolean方法）,13,-1,-1
+acSubtraction,-2,执行差集运算（Boolean方法）,13,-1,-1
+acEdRepeatLastCommand,0,禁用编辑快捷菜单。结果是当选定了一个或多个对象并且不在命令过程中时在图形区域中右键为回车，即重复最后发出的命令。决定处于编辑模式 (选中一个或多个对象且无命令在执行) 时绘图区域中右键单击的功能。,13,-1,-1
+acEdSCM,-1,启用编辑快捷菜单。决定处于编辑模式 (选中一个或多个对象且无命令在执行) 时绘图区域中右键单击的功能。,13,-1,-1
+acSelectionSetFence,-2,选择穿过选定栅格的所有对象。该栅格由 PointsList 所列的坐标定义的。,13,-1,-1
+acSelectionSetWindowPolygon,-6,选择在多边形中的对象，多边形由 PointsList 定义。,13,-1,-1
+acSelectionSetCrossingPolygon,-7,选择在多边形内和穿过多边形区域的对象。使用 PointsList 定义多边形的顶点坐标。多边形的最后顶点由 AutoCAD 自动封闭。定义的多边形不能自身相交。,13,-1,-1
+acRepeatLastCommand,0,禁用默认快捷菜单。结果是未选择对象时或不在命令期间时在图形区域中按右键为回车，即重复最后发出的命令。,13,-1,-1
+acSCM,-1,启用默认快捷菜单。,13,-1,-1
+acAlignPntAcquisitionAutomatic,0,自动获取 AutoAlignment 点。,13,-1,-1
+acAlignPntAcquisitionShiftToAcquire,-1,用户必须使用 SHIFT 键来获取 AutoAlignment 点。,13,-1,-1
+acSymAbove,-1,指定弧长标注符号所放的位置,13,-1,-1
+acSymInFront,0,指定弧长标注符号所放的位置,13,-1,-1
+acSymNone,-2,指定弧长标注符号所放的位置。,13,-1,-1
+acBottom,-2,指定多线的对其方式,13,-1,-1
+acTop,0,指定多线的对其方式,13,-1,-1
+acZero,-1,指定多线的对其方式,13,-1,-1
+acBlockCell,-2,设置指定行和列的单元格类型,13,-1,-1
+acTextCell,-1,设置指定行和列的单元格类型,13,-1,-1
+acUnknownCell,0,设置指定行和列的单元格类型,13,-1,-1
+acBottomMask,-4,单元格的底边,13,-1,-1
+acTopMask,-1,单元格的顶边,13,-1,-1
+acLeftMask,-8,单元格的左边,13,-1,-1
+acRightMask,-2,单元格的右边,13,-1,-1
+acDataRow,-1,要更改的行类型。,13,-1,-1
+acHeaderRow,-4,要更改的行类型。,13,-1,-1
+acTitleRow,-2,需要更改的行类型,13,-1,-1
+acUnknownRow,0,需要更改的行类型,13,-1,-1
+acDegrees,0,角度格式,13,-1,-1
+acDegreeMinuteSeconds,-1,"枚举常数,角度格式,该值等于1,在某些vla函数里面调用",13,-1,-1
+acGrads,-2,角度格式,13,-1,-1
+acRadians,-3,角度格式,13,-1,-1
+acDimLineWithText,0,尺寸线跟随文字移动。,13,-1,-1
+acMoveTextAddLeader,-1,文字独立于尺寸线移动，但添加一条从文字到尺寸线的引线。,13,-1,-1
+acMoveTextNoLeader,-2,文字独立于尺寸线移动，不添加从文字到尺寸线的引线。,13,-1,-1
+acShadePlotAsDisplayed,0,与所显示的一样打印模型空间视图,13,-1,-1
+acShadePlotHidden,-2,不管显示，按去掉隐藏线打印模型空间视图,13,-1,-1
+acShadePlotRendered,-3,不管显示，按渲染打印模型空间视图,13,-1,-1
+acShadePlotWireframe,-1,不管显示，按线框打印模型空间视图,13,-1,-1
+acEnter,0,禁用命令快捷菜单。结果为当命令期间按右键为回车。,13,-1,-1
+acEnableSCM,-2,启用命令快捷菜单。,13,-1,-1
+acEnableSCMOptions,-1,只在命令行提示中选项当前有效时启用命令快捷菜单。在命令行提示中，选项是在方括号[]中。如果没有有效的选项，右键为回车。,13,-1,-1
+acProxyNotShow,0,不显示代理对象.,13,-1,-1
+acProxyShow,-1,显示所有代理对象的图形图像,13,-1,-1
+acProxyBoundingBox,-2,仅显示所有代理对象的边框,13,-1,-1
+ac0degrees,0,指定布局或打印配置的旋转角度。,13,-1,-1
+ac90degrees,-1,指定布局或打印配置的旋转角度。,13,-1,-1
+ac180degrees,-2,指定布局或打印配置的旋转角度。,13,-1,-1
+ac270degrees,-3,指定布局或打印配置的旋转角度。,13,-1,-1
+acNoUnits,0,指定用于属性的当前显示单位类型。,13,-1,-1
+acAngular,-1,指定用于属性的当前显示单位类型。,13,-1,-1
+acDistance,-2,指定用于属性的当前显示单位类型。,13,-1,-1
+acArea,-3,指定用于属性的当前显示单位类型。,13,-1,-1
+acToolbarDockTop,0,工具栏固定到上边,13,-1,-1
+acToolbarDockBottom,-1,工具栏固定到下边,13,-1,-1
+acToolbarDockLeft,-2,工具栏固定到左边,13,-1,-1
+acToolbarDockRight,-3,工具栏固定到右边,13,-1,-1
+acLineSpacingStyleAtLeast,-1,配置值根据一行文字中最大字符的高度自动调整行间距。,13,-1,-1
+acLineSpacingStyleExactly,-2,配置值强制 MText 对象中所有的行间距为相同尺寸，而不管格式替代。,13,-1,-1
+acHatchLoopTypeDefault,0,无,13,-1,-1
+acHatchLoopTypeExternal,-1,无,13,-1,-1
+acHatchLoopTypePolyline,-2,无,13,-1,-1
+acHatchLoopTypeDerived,-4,无,13,-1,-1
+acHatchLoopTypeTextbox,-8,无,13,-1,-1
+acVertCentered,0,文字位置在尺寸界线中心。,13,-1,-1
+acAbove,-1,除非尺寸线不是水平的或尺寸界线内的文本被强制设为水平(DIMTIH = 1)，否则将标注文字置于标线上方。尺寸线到最下行文字基线的距离是当前DIMGAP 值。,13,-1,-1
+acOutside,-2,将标注文字置于距定义点最远的基线一端。,13,-1,-1
+acJIS,-3,按日本工业标准方式标注文字(JIS)。,13,-1,-1
+acTolTop,-2,指定公差值相对于标注文字的垂直对正。,13,-1,-1
+acTolMiddle,-1,指定公差值相对于标注文字的垂直对正。,13,-1,-1
+acTolBottom,0,指定公差值相对于标注文字的垂直对正。,13,-1,-1
+AcHatchObject,0,标准的图案填充,13,-1,-1
+AcGradientObject,-1,渐变的图案填充,13,-1,-1
+acFontRegular,0,常规字体,13,-1,-1
+acFontItalic,-1,斜体,13,-1,-1
+acFontBold,-2,加粗,13,-1,-1
+acFontBoldItalic,-3,加粗斜体,13,-1,-1
+acCenterMark,0,指定半径和直径标注上圆心标记的类型。,13,-1,-1
+acCenterLine,-1,指定半径和直径标注上圆心标记的类型。,13,-1,-1
+acCenterNone,-2,指定半径和直径标注上圆心标记的类型。,13,-1,-1
+acSelectionSetWindow,0,选择完全在矩形区域内的所有对象，矩形对角由 Point1 和 Point2 定义。,13,-1,-1
+acSelectionSetCrossing,-1,选择在矩形区域内和与矩形区域相交的对象，矩形对角由 Point1 和 Point2 定义。,13,-1,-1
+acSelectionSetPrevious,-3,选择最近的选择集。如果用户在图纸空间和模型空间之间进行切换并试图使用选择集，该模式将被忽略。,13,-1,-1
+acSelectionSetLast,-4,选择最近生成的可见对象。,13,-1,-1
+acSelectionSetAll,-5,选择所有对象,13,-1,-1
+acHorizontal,0,标注和公差的分数类型。,13,-1,-1
+acDiagonal,-1,标注和公差的分数类型,13,-1,-1
+acNotStacked,-2,标注和公差的分数类型,13,-1,-1
+acPrinterAlwaysAlert,0,始终警告并创建错误日志。,13,-1,-1
+acPrinterAlertOnce,-1,仅第一次警告但创建所有错误日志。,13,-1,-1
+acPrinterNeverAlertLogOnce,-2,从不警告但创建所有错误日志。,13,-1,-1
+acPrinterNeverAlert,-3,从不警告也从不创建任何错误日志。,13,-1,-1
+acInches,0,英寸,13,-1,-1
+acMillimeters,-1,毫米,13,-1,-1
+acPixels,-2,像素,13,-1,-1
+acHatchPatternTypePreDefined,-1,预先定义,13,-1,-1
+acHatchPatternTypeUserDefined,0,用户定义,13,-1,-1
+acHatchPatternTypeCustomDefined,-2,自定义,13,-1,-1
+acToolbarFloating,-4,工具栏浮动,13,-1,-1
+acDegreesUnknown,(-1),未知,13,-1,-1
+acZoomScaledAbsolute,0,相对于图形界限。,13,-1,-1
+acZoomScaledRelative,-1,相对于当前视口。,13,-1,-1
+acZoomScaledRelativePSpace,-2,相对于图纸空间的单位设置。,13,-1,-1
+acTolNone,0,标注文字的标注公差显示模式,13,-1,-1
+acTolSymmetrical,-1,标注文字的标注公差显示模式,13,-1,-1
+acTolDeviation,-2,标注文字的标注公差显示模式,13,-1,-1
+acTolLimits,-3,标注文字的标注公差显示模式,13,-1,-1
+acTolBasic,-4,标注文字的标注公差显示模式,13,-1,-1
+acHatchStyleNormal,0,指定标准的样式，即普通。该选项从最外面的区域边界向内进行图案填充。如果 AutoCAD 遇到内部边界，则关闭填充，直到遇到另一个边界为止。,13,-1,-1
+acHatchStyleOuter,-1,仅填充最外面的区域。该样式也是从最外面的区域边界向内进行图案填充，但是遇到内部边界时会关闭图案填充并且不再打开。,13,-1,-1
+acHatchStyleIgnore,-2,忽略内部结构。该选项使图案填充通过所有的内部对象。,13,-1,-1
+acDefaultUnits,(-1),数值格式,13,-1,-1
+acScientific,-1,数值格式,13,-1,-1
+acDecimal,-2,数值格式,13,-1,-1
+acEngineering,-3,数值格式,13,-1,-1
+acArchitectural,-4,数值格式,13,-1,-1
+acFractional,-5,数值格式,13,-1,-1
+acOQLineArt,0,线条,13,-1,-1
+acOQText,-1,文字,13,-1,-1
+acOQGraphics,-2,图形,13,-1,-1
+acOQPhoto,-3,照片,13,-1,-1
+acOQHighPhoto,-4,高质量照片,13,-1,-1
+acKeyboardRunningObjSnap,0,当输入坐标时，严格遵照对象捕捉模式。,13,-1,-1
+acKeyboardEntry,-1,当输入坐标时，严格遵照键盘输入模式。,13,-1,-1
+acKeyboardEntryExceptScripts,-2,当输入坐标时，严格按照键盘输入模式。但当坐标是通过脚本输入时，遵照对象捕捉模式。,13,-1,-1
+acDemandLoadDisabled,0,关闭按需加载，加载整个参照图形。,13,-1,-1
+acDemandLoadEnabled,-1,打开按需加载来提高AutoCAD性能。其他用户不能编辑被参照引用的图形文件。,13,-1,-1
+acDemandLoadEnabledWithCopy,-2,打开按需加载但使用参照图形的临时副本。其他用户可以编辑被参照引用的原始图形文件。,13,-1,-1
+acColorMethodByACI,-195,颜色的设置方式,13,-1,-1
+acColorMethodByBlock,-193,颜色的设置方式,13,-1,-1
+acColorMethodByLayer,-192,颜色的设置方式,13,-1,-1
+acColorMethodByRGB,-194,颜色设置方式,13,-1,-1
+acColorMethodForeground,-197,颜色设置方式,13,-1,-1
+acDimLScientific,-1,科学,13,-1,-1
+acDimLDecimal,-2,小数,13,-1,-1
+acDimLEngineering,-3,工程,13,-1,-1
+acDimLArchitectural,-4,建筑,13,-1,-1
+acDimLFractional,-5,分数,13,-1,-1
+acDimLWindowsDesktop,-6,windows桌面,13,-1,-1
+acDimScientific,-1,科学,13,-1,-1
+acDimDecimal,-2,小数,13,-1,-1
+acDimArchitecturalStacked,-4,建筑**,13,-1,-1
+acDimFractionalStacked,-5,分数,13,-1,-1
+acDimArchitectural,-6,建筑,13,-1,-1
+acDimFractional,-7,分数,13,-1,-1
+acDimWindowsDesktop,-8,Windows桌面,13,-1,-1
+acDimEngineering,-3,工程,13,-1,-1
+acAttributeModeInvisible,1,指定属性定义的模式。,13,-1,-1
+acAttributeModeConstant,2,指定属性定义的模式。,13,-1,-1
+acAttributeModeVerify,4,指定属性定义的模式。,13,-1,-1
+acAttributeModePreset,8,指定属性定义的模式。,13,-1,-1
+acAttachmentPointTopLeft,-1,左上,13,-1,-1
+acAttachmentPointTopCenter,-2,中上,13,-1,-1
+acAttachmentPointTopRight,-3,右上,13,-1,-1
+acAttachmentPointMiddleLeft,-4,左中,13,-1,-1
+acAttachmentPointMiddleCenter,-5,居中,13,-1,-1
+acAttachmentPointMiddleRight,-6,右中,13,-1,-1
+acAttachmentPointBottomLeft,-7,左下,13,-1,-1
+acAttachmentPointBottomCenter,-8,中下,13,-1,-1
+acAttachmentPointBottomRight,-9,右下,13,-1,-1
+acHorzInside,-2,除了顶和底线外的所有水平格线。,13,-1,-1
+acHorzBottom,-4,底或顶水平格线，基于表格流向。,13,-1,-1
+acHorzTop,-1,顶或底水平格线，基于表格流向。,13,-1,-1
+acInvalidGridLine,0,无效的格线。,13,-1,-1
+acVertInside,-16,除是最左边和最右边格线外的氖垂直格线。,13,-1,-1
+acVertLeft,-8,最左边格线。,13,-1,-1
+acVertRight,-32,最右边格线。,13,-1,-1
+acLnWt000,0,CAD线宽0.00mm。,13,-1,-1
+acLnWt005,-5,CAD线宽0.05mm。,13,-1,-1
+acLnWt009,-9,CAD线宽0.09mm。,13,-1,-1
+acLnWt013,-13,CAD线宽0.13mm。,13,-1,-1
+acLnWt015,-15,CAD线宽0.15mm。,13,-1,-1
+acLnWt018,-18,CAD线宽0.18mm。,13,-1,-1
+acLnWt020,-20,CAD线宽0.20mm。,13,-1,-1
+acLnWt025,-25,CAD线宽0.25mm。,13,-1,-1
+acLnWt030,-30,CAD线宽0.30mm。,13,-1,-1
+acLnWt035,-35,CAD线宽0.35mm。,13,-1,-1
+acLnWt040,-40,CAD线宽0.40mm。,13,-1,-1
+acLnWt050,-50,CAD线宽0.50mm。,13,-1,-1
+acLnWt053,-53,CAD线宽0.53mm。,13,-1,-1
+acLnWt060,-60,CAD线宽0.60mm。,13,-1,-1
+acLnWt070,-70,CAD线宽0.70mm。,13,-1,-1
+acLnWt080,-80,CAD线宽0.80mm。,13,-1,-1
+acLnWt090,-90,CAD线宽0.90mm。,13,-1,-1
+acLnWt100,-100,CAD线宽1.00mm。,13,-1,-1
+acLnWt106,-106,CAD线宽1.06mm。,13,-1,-1
+acLnWt120,-120,CAD线宽1.20mm。,13,-1,-1
+acLnWt140,-140,CAD线宽1.40mm。,13,-1,-1
+acLnWt158,-158,CAD线宽1.58mm。,13,-1,-1
+acLnWt200,-200,CAD线宽2.00mm。,13,-1,-1
+acLnWt211,-211,CAD线宽2.11mm。,13,-1,-1
+acLnWtByLayer,-1,CAD线宽随层。,13,-1,-1
+acLnWtByBlock,(-3),CAD线宽默认。,13,-1,-1
+acLnWtByLwDefault,-3,CAD线宽默认。,13,-1,-1
+acBottomCenter,8,以文字的底边居中对齐文字。,13,-1,-1
+acBottomLeft,7,以文字的底边左对齐文字。,13,-1,-1
+acBottomRight,9,以文字的底边右对齐文字。,13,-1,-1
+acMiddleCenter,5,以文字的中间居中对齐文字。,13,-1,-1
+acMiddleLeft,4,以文字的中间左对齐文字。,13,-1,-1
+acMiddleRight,6,以文字的中间右对齐文字。,13,-1,-1
+acTopCenter,2,以文字的顶边居中对齐文字。,13,-1,-1
+acTopLeft,1,以文字的顶边左对齐文字。,13,-1,-1
+acTopRight,3,以文字的顶边右对齐文字。,13,-1,-1
+vlax-vbInteger,2,整数型（SafeArray 的类型）,13,-1,-1
+vlax-vbLong,3,长整数型（SafeArray的类型）,13,-1,-1
+vlax-vbSingle,4,单精度浮点数（SafeArray的类型）,13,-1,-1
+vlax-vbDouble,5,双精度浮点数（SafeArray的类型）,13,-1,-1
+vlax-vbString,8,字符串（SafeArray的类型）,13,-1,-1
+vlax-vbObject,9,对象（SafeArray的类型）,13,-1,-1
+vlax-vbBoolean,11,布尔值（SafeArray的类型）,13,-1,-1
+vlax-vbVariant,12,变体（SafeArray的类型）,13,-1,-1
+acMenuFileCompiled,0,编译的菜单文件 (MNC 文件类型)。,13,-1,-1
+acMenuFileSource,1,"数据库中没有收录这个函数!请帮助录入,谢谢",13,-1,-1
+ACADSECURITYPARAMS_ENCRYPT_DATA,1,图形加密,13,-1,-1
+ACADSECURITYPARAMS_ENCRYPT_PROPS,2,图形属性加密,13,-1,-1
+ACADSECURITYPARAMS_SIGN_DATA,16,数字签名,13,-1,-1
+ACADSECURITYPARAMS_ADD_TIMESTAMP,32,时间戳记,13,-1,-1
+ac2000_dwg,12,AutoCAD 2000 DWG (*.dwg),13,-1,-1
+ac2000_dxf,13,AutoCAD 2000 DXF (*.dxf),13,-1,-1
+ac2000_Template,14,AutoCAD 2000 图形样板文件 (*.dwt),13,-1,-1
+ac2004_dwg,24,AutoCAD 2004 DWG (*.dwg),13,-1,-1
+ac2004_dxf,25,AutoCAD 2004 DXF (*.dxf),13,-1,-1
+ac2004_Template,26,AutoCAD 2004 图形样板文件 (*.dwt),13,-1,-1
+acNative,60,与当前图形版本格式相同。如果需要应用程序保存图形为当前应用程序所运行在的 AutoCAD 版本，可使用 acNative 格式。,13,-1,-1
+ac2007_dwg,36,AutoCAD 2007 DWG (*.dwg),13,-1,-1
+ac2007_dxf,37,AutoCAD 2007 DXF (*.dxf),13,-1,-1
+ac2007_Template,38,AutoCAD 2007 图形样板文件 (*.dwt),13,-1,-1
+ac2010_Template,50,AutoCAD 2010 图形样板文件 (*.dwt),13,-1,-1
+ac2013_Template,62,AutoCAD 2013 图形样板文件 (*.dwt),13,-1,-1
+ac2010_dxf,49,AutoCAD 2010 DXF (*.dxf),13,-1,-1
+ac2013_dxf,61,AutoCAD 2013 DXF (*.dxf),13,-1,-1
+ac2010_dwg,48,AutoCAD 2010 DWG (*.dwg),13,-1,-1
+ac2013_dwg,60,AutoCAD 2013 DWG (*.dwg),13,-1,-1
+acVpCustomScale,1,视口比例,13,-1,-1
+acVpScaleToFit,0,视口比例,13,-1,-1
+acVp1_128in_1ft,19,视口比例,13,-1,-1
+acVp1_64in_1ft,20,视口比例,13,-1,-1
+acVp1_32in_1ft,21,视口比例,13,-1,-1
+acVp1_16in_1ft,22,视口比例,13,-1,-1
+acVp3_32in_1ft,23,视口比例,13,-1,-1
+acVp1_8in_1ft,24,视口比例,13,-1,-1
+acVp3_16in_1ft,25,视口比例,13,-1,-1
+acVp1_4in_1ft,26,视口比例,13,-1,-1
+acVp1in_1ft,30,视口比例,13,-1,-1
+acVp3_4in_1ft,29,视口比例,13,-1,-1
+acVp1_2in_1ft,28,视口比例,13,-1,-1
+acVp3_8in_1ft,27,视口比例,13,-1,-1
+acVp3in_1ft,32,视口比例,13,-1,-1
+acVp6in_1ft,33,视口比例,13,-1,-1
+acVp1ft_1ft,34,视口比例,13,-1,-1
+acVp1_1,2,视口比例,13,-1,-1
+acVp1_2,3,视口比例,13,-1,-1
+acVp1_4,4,视口比例,13,-1,-1
+acVp1_8,6,视口比例,13,-1,-1
+acVp1_10,7,视口比例,13,-1,-1
+acVp1_16,8,视口比例,13,-1,-1
+acVp1_20,9,视口比例,13,-1,-1
+acVp1_100,13,视口比例,13,-1,-1
+acVp1_50,12,视口比例,13,-1,-1
+acVp1_40,11,视口比例,13,-1,-1
+acVp1_30,10,视口比例,13,-1,-1
+acVp2_1,14,视口比例,13,-1,-1
+acVp4_1,15,视口比例,13,-1,-1
+acVp8_1,16,视口比例,13,-1,-1
+acVp10_1,17,视口比例,13,-1,-1
+acVp100_1,18,视口比例,13,-1,-1
+acScaleToFit,0,打印比例,13,-1,-1
+ac1_128in_1ft,1,打印比例,13,-1,-1
+ac1_64in_1ft,2,打印比例,13,-1,-1
+ac1_32in_1ft,3,打印比例,13,-1,-1
+ac1_16in_1ft,4,打印比例,13,-1,-1
+ac3_32in_1ft,5,打印比例,13,-1,-1
+ac3_4in_1ft,11,打印比例,13,-1,-1
+ac1_2in_1ft,10,打印比例,13,-1,-1
+ac3_8in_1ft,9,打印比例,13,-1,-1
+ac1_4in_1ft,8,打印比例,13,-1,-1
+ac3_16in_1ft,7,打印比例,13,-1,-1
+ac1_8in_1ft,6,打印比例,13,-1,-1
+ac1in_1ft,12,打印比例,13,-1,-1
+ac3in_1ft,13,打印比例,13,-1,-1
+ac1_1,16,打印比例,13,-1,-1
+ac1ft_1ft,15,打印比例,13,-1,-1
+ac6in_1ft,14,打印比例,13,-1,-1
+ac1_2,17,打印比例,13,-1,-1
+ac1_8,20,打印比例,13,-1,-1
+ac1_10,21,打印比例,13,-1,-1
+ac1_16,22,打印比例,13,-1,-1
+ac1_20,23,打印比例,13,-1,-1
+ac1_30,24,打印比例,13,-1,-1
+ac1_40,25,打印比例,13,-1,-1
+ac1_50,26,打印比例,13,-1,-1
+ac1_100,27,打印比例,13,-1,-1
+ac2_1,28,打印比例,13,-1,-1
+ac4_1,29,打印比例,13,-1,-1
+ac100_1,32,打印比例,13,-1,-1
+ac10_1,31,打印比例,13,-1,-1
+ac8_1,30,打印比例,13,-1,-1
+acPenWidth013,13,指定 ISO 填充图案的 ISO 笔宽。0.13mm。,13,-1,-1
+acPenWidth018,18,指定 ISO 填充图案的 ISO 笔宽。0.18mm。,13,-1,-1
+acPenWidth025,25,指定 ISO 填充图案的 ISO 笔宽。0.25mm。,13,-1,-1
+acPenWidth035,35,指定 ISO 填充图案的 ISO 笔宽。0.35mm。,13,-1,-1
+acPenWidth050,50,指定 ISO 填充图案的 ISO 笔宽。0.50mm。,13,-1,-1
+acPenWidth070,70,指定 ISO 填充图案的 ISO 笔宽。0.70mm。,13,-1,-1
+acPenWidth100,100,指定 ISO 填充图案的 ISO 笔宽。1.00mm。,13,-1,-1
+acPenWidth140,140,指定 ISO 填充图案的 ISO 笔宽。1.40mm。,13,-1,-1
+acPenWidth200,200,指定 ISO 填充图案的 ISO 笔宽。2.00mm。,13,-1,-1
+acPenWidthUnk,-1,指定 ISO 填充图案的 ISO 笔宽。,13,-1,-1
+acVerticalAlignmentBaseline,0,指定属性、属性参照或文字的垂直对齐方式。,13,-1,-1
+acVerticalAlignmentBottom,1,指定属性、属性参照或文字的垂直对齐方式。,13,-1,-1
+acVerticalAlignmentMiddle,2,指定属性、属性参照或文字的垂直对齐方式。,13,-1,-1
+acVerticalAlignmentTop,3,指定属性、属性参照或文字的垂直对齐方式。,13,-1,-1
+acFirstExtensionLine,1,指定标注文字的水平对齐。,13,-1,-1
+acHorzCentered,0,指定标注文字的水平对齐。文字是在尺寸界线之间的尺寸线中间。,13,-1,-1
+acSecondExtensionLine,2,指定标注文字的水平对齐。文字紧邻第二条尺寸界线。,13,-1,-1
+acOverFirstExtension,3,指定标注文字的水平对齐。文字在第一条尺寸界线上并与其对齐。,13,-1,-1
+acOverSecondExtension,4,指定标注文字的水平对齐。文字在第二条尺寸界线上并与其对齐。,13,-1,-1
+acHorizontalAlignmentLeft,0,指定属性、属性参照或文字的水平对齐。,13,-1,-1
+acHorizontalAlignmentCenter,1,指定属性、属性参照或文字的水平对齐。,13,-1,-1
+acHorizontalAlignmentRight,2,指定属性、属性参照或文字的水平对齐。,13,-1,-1
+acHorizontalAlignmentAligned,3,指定属性、属性参照或文字的水平对齐。,13,-1,-1
+acHorizontalAlignmentMiddle,4,指定属性、属性参照或文字的水平对齐。,13,-1,-1
+acHorizontalAlignmentFit,5,指定属性、属性参照或文字的水平对齐。,13,-1,-1
+acViewport2Horizontal,0,将视口分割为给定数目的视图。,13,-1,-1
+acViewport2Vertical,1,将视口分割为给定数目的视图。,13,-1,-1
+acViewport3Left,2,将视口分割为给定数目的视图。,13,-1,-1
+acViewport3Right,3,将视口分割为给定数目的视图。,13,-1,-1
+acViewport3Horizontal,4,将视口分割为给定数目的视图。,13,-1,-1
+acViewport3Vertical,5,将视口分割为给定数目的视图。,13,-1,-1
+acViewport3Above,6,将视口分割为给定数目的视图。,13,-1,-1
+acViewport3Below,7,将视口分割为给定数目的视图。,13,-1,-1
+acViewport4,8,将视口分割为给定数目的视图。,13,-1,-1
+acAny,0,指定块的允许比例。,13,-1,-1
+acUniform,1,指定块的允许比例。,13,-1,-1
+acPolicyLegacy,1,"确定在创建新图形时对象颜色属性是否与打印样式名称关联。
+对象的打印样式名称是通过 ACIx 命名规则与它的颜色相关联，其中 x 是按照AutoCAD 颜色索引中所规定的对象颜色号。",13,-1,-1
+acPolicyNamed,0,"确定在创建新图形时对象颜色属性是否与打印样式名称关联。
+打印样式与颜色之间没有任何关联。 每一个对象的打印样式名称将设置为在属性 DefaultPlotStyleForObjects中定义的名称。",13,-1,-1
+acPartialPreview,0,按局部或完整视图预览方式显示打印预览对话框。,13,-1,-1
+acFullPreview,1,按局部或完整视图预览方式显示打印预览对话框。,13,-1,-1
+acAttributeModeNormal,0,指定属性定义的模式。,13,-1,-1
+acArrowDefault,0,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowDot,3,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowDotSmall,11,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowDotBlank,12,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowOrigin,7,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowOrigin2,8,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowOpen,6,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowOpen90,9,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowOpen30,10,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowClosed,2,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowSmall,13,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowNone,19,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowOblique,5,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowBoxFilled,15,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowBoxBlank,14,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowClosedBlank,1,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowDatumFilled,17,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowDatumBlank,16,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowIntegral,18,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowArchTick,4,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acArrowUserDefined,20,指定半径标注箭头或引线箭头的类型。,13,-1,-1
+acLeftToRight,1,指定多行文字段落的的阅读方向。,13,-1,-1
+acTopToBottom,3,指定多行文字段落的的阅读方向。,13,-1,-1
+acRightToLeft,2,指定多行文字段落的的阅读方向。,13,-1,-1
+acBottomToTop,4,指定多行文字段落的的阅读方向。,13,-1,-1
+acByStyle,5,指定多行文字段落的的阅读方向。,13,-1,-1
+acR12_DXF,1,AutoCAD Release12/LT2 DXF (*.dxf),13,-1,-1
+AcUnknown,-1,只读。图形类型未知或无效。,13,-1,-1
+acInsertUnitsAngstroms,11,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsAstronomicalUnits,18,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsCentimeters,5,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsDecameters,15,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsDecimeters,14,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsFeet,2,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsGigameters,17,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsHectometers,16,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsInches,1,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsKilometers,7,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsLightYears,19,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsMeters,6,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsMicroinches,8,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsMicrons,13,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsMiles,3,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsMillimeters,4,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsMils,9,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsNanometers,12,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsParsecs,20,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsUnitless,0,指定块的本地测量单位。,13,-1,-1
+acInsertUnitsYards,10,指定块的本地测量单位。,13,-1,-1
+acExtendNone,0,vla-intersectwith函数的参数，指明两个对象不延伸来得到交点。,13,-1,-1
+acExtendThisEntity,1,vla-intersectwith函数的参数，指明延伸基本对象（函数中第一个对象obj1）来得到交点。,13,-1,-1
+acExtendOtherEntity,2,vla-intersectwith函数的参数，指明延伸作为参数传递的对象（函数中第二个对象obj2）来得到交点。,13,-1,-1
+acExtendBoth,3,vla-intersectwith函数的参数，指明延伸obj1、obj2两个对象来得到交点。,13,-1,-1
+vla-put-PageSetupOverridesTemplateFile,(vla-put-PageSetupOverridesTemplateFile dwgFiles dwtFile),用模板覆盖指定文件的页面设置,33,-1,-1
+vla-Get-PageSetupOverridesTemplateFile,(vla-Get-PageSetupOverridesTemplateFile MyFiles),获取替换页面设置的默认样板,33,1,1
+vla-put-TimeServer,(vla-put-TimeServer sp "NIST(time.nist.gov)"),指定用于数字签名的时间服务器名称,33,-1,-1
+vla-put-KeyLength,(vla-put-KeyLength SecurityParams int),指定加密密钥长度,33,-1,-1
+vla-put-Action,(vla-put-Action SecurityParams Action),指定在图形中要执行的与安全相关的操作,33,1,1
+vla-get-Active,(vla-get-Active SecurityParams),指定在图形中要执行的与安全相关的操作,33,1,1
+vla-put-HorzCellMargin,(vla-put-HorzCellMargin tableobj dist),设置表格水平单元格间距,33,-1,-1
+vla-put-VertCellMargin,(vla-put-VertCellMargin tableobj dist),设置表格垂直单元间距,33,-1,-1
+vla-get-explodable,(vla-get-exploable obj),判断块obj是否为可分解块，返回ture为可分解，返回false为不可分解,33,-1,-1
+vla-put-explodable,(vla-put-explodable obj true[false]),将块设置为可分解或不可分解块,33,2,-1
+c:cal,(c:cal str),"先执行(arxload ""geomcal"")
+将字符串中的算术表达式进行求值运算，如(c:cal ""3+2*(3+4)"")的返回值为17",33,-1,-1
+vla-get-summaryinfo,(vla-get-summaryinfo *activedocument*),获取Document对象的图形特性,33,1,1
+vla-put-Author,(vla-put-Author summaryInfo Author),为document文件设置作者信息,33,2,2
+vla-put-Comments,(vla-put-Comments summaryInfo Comments),为document文件设置注释信息,33,2,2
+vla-put-HyperlinkBase,(vla-put-HyperlinkBase summaryInfo link),为document文件设置链接地址,33,2,2
+vla-put-Keywords,(vla-put-Keywords summaryInfo Keywords),为document文件设置关键词,33,2,2
+vla-put-LastSavedBy,(vla-put-LastSavedBy summaryInfo Author),为document文件添加最后保存作者,33,2,2
+vla-put-RevisionNumber,(vla-put-RevisionNumber summaryInfo num),设置document的修订版次,33,2,2
+vla-put-Subject,(vla-put-Subject summaryInfo Subject),设置document文件的主题,33,2,2
+vla-put-Title,(vla-put-Title summaryInfo Title),设置document文件的标题,33,2,2
+vla-get-Author,(vla-get-Author summaryInfo),获取document的作者信息,33,1,1
+vla-get-Comments,(vla-get-Comments summaryInfo),获取document的注释信息,33,1,1
+vla-get-HyperlinkBase,(vla-get-HyperlinkBase summaryInfo),获取document的超链接信息,33,1,1
+vla-get-Keywords,(vla-get-Keywords summaryInfo),获取document的关键字信息,33,1,1
+vla-get-LastSavedBy,(vla-get-LastSavedBy summaryInfo),获取document的最终保存作者名,33,1,1
+vla-get-RevisionNumber,(vla-get-RevisionNumber summaryInfo),获取document的修订版次,33,1,1
+vla-get-Subject,(vla-get-Subject summaryInfo),获取document的主题信息,33,1,1
+vla-get-Title,(vla-get-Title summaryInfo),获取document的标题信息,33,1,1
+vl-bt,(vl-bt),错误跟踪,33,0,0
+vl-infp,(vl-infp num),判断一个数是否无穷大,33,1,1
+bherrs,(bherrs),取得 bhatch函数与bpoly函数失败所产生的错误信息,33,-1,-1
+vla-get-truecolor,(vla-get-truecolor vlaobj),获取对象的真彩色值，即RGB值,33,1,1
+vla-get-Red,(vla-get-Red retcolor),获取真彩色值的Red值,33,1,1
+vla-get-Green,(vla-get-Green retcolor),获取真彩色值的Green值,33,1,1
+vla-get-Blue,(vla-get-Blue retcolor),获取真彩色值的Blue值,33,1,1
+vla-put-ColorMethod,(vla-put-ColorMethod col acColorMethodByLayer),设置对象的ACI颜色索引值,33,2,2
+vla-get-ColorMethod,(vla-get-ColorMethod col),获取对象的ACI颜色索引值，返回为vla对象,33,1,1
+vla-get-TextHeight,(vla-get-TextHeight obj),获取标注或公差的文字高度(争对已标注的对像,33,1,1
+command-s,(command-s [arguments] ...),在不支持command下执行一条CAD调用命令,33,1,-1
+vla-put-regeneratetablesuppressed,(vla-put-regeneratetablesuppressed table logic),启用或禁用表格块的重新生成,33,2,2
+vlax-machine-product-key,(vlax-machine-product-key),"返回AutoCAD在HKEY_LOCAL_MACHINE下的Windows注册表路径。
+注：仅AutoCAD 2013以上版本支持。
+此函数用来替换vlax-product-key函数。",33,0,0
+findtrustedfile,(findtrustedfile file),在AutoCAD信任文件路径中搜索指定的文件,33,1,1
+vla-put-path,(vla-put-path blkdef path),指定外部参照路径,33,-1,-1
+vla-getcellvalue,(vla-getcellvalue tableobj i j),"获取cad自带表格特定单元格的值
+tableobj：CAD表格对象，vla类型
+i为行数，j为列数",33,3,3
+vla-setcellvalue,(vla-setcellvalue aTable row column value,设置CAD自带表格某个单元格的值,33,3,4
+_vl-times,(_vl-times),计时器函数，可用于计算程序运行效率,33,0,0
+:VLR-Linker-Reactor,:VLR-Linker-Reactor,链接反应器。,13,-1,-1
+:VLR-Editor-Reactor,:VLR-Editor-Reactor,一般的编辑器反应器。用于向后兼容。,13,-1,-1
+:VLR-AcDb-Reactor,:VLR-AcDb-Reactor,数据库反应器。,13,-1,-1
+:VLR-DocManager-Reactor,:VLR-DocManager-Reactor,文档管理反应器。,13,-1,-1
+:VLR-Command-Reactor,:VLR-Command-Reactor,通知命令事件的编辑器反应器。,13,-1,-1
+:VLR-Lisp-Reactor,:VLR-Lisp-Reactor,通知?LISP?事件的编辑器反应器。,13,-1,-1
+:VLR-DXF-Reactor,:VLR-DXF-Reactor,通知?DXF?文件读写操作相关事件的编辑器反应器。,13,-1,-1
+:VLR-DWG-Reactor,:VLR-DWG-Reactor,通知图形事件（如打开或关闭图形）的编辑器反应器。,13,-1,-1
+:VLR-Insert-Reactor,:VLR-Insert-Reactor,通知块插入相关事件的编辑器反应器。,13,-1,-1
+:VLR-Wblock-Reactor,:VLR-Wblock-Reactor,通知和写块相关的操作的编辑器反应器。,13,-1,-1
+:VLR-SysVar-Reactor,:VLR-SysVar-Reactor,通知系统变量变化的编辑器反应器。,13,-1,-1
+:VLR-DeepClone-Reactor,:VLR-DeepClone-Reactor,通知?deepclone?事件的编辑器反应器。,13,-1,-1
+:VLR-XREF-Reactor,:VLR-XREF-Reactor,通知与附着或修改外部参照相关的事件的编辑器反应器。,13,-1,-1
+:VLR-Undo-Reactor,:VLR-Undo-Reactor,通知放弃操作的编辑器反应器。,13,-1,-1
+:VLR-Window-Reactor,:VLR-Window-Reactor,通知移动或缩放?AutoCAD?窗口事件的编辑器反应器。,13,-1,-1
+:VLR-Toolbar-Reactor,:VLR-Toolbar-Reactor,通知工具栏位图变化的编辑器反应器。,13,-1,-1
+:VLR-Mouse-Reactor,:VLR-Mouse-Reactor,通知鼠标事件（如双击）的编辑器反应器。,13,-1,-1
+:VLR-Miscellaneous-Reactor,:VLR-Miscellaneous-Reactor,不属于其他反应器类型的编辑器反应器。,13,-1,-1
+:VLR-Object-Reactor,:VLR-Object-Reactor,对象反应器。,13,-1,-1
+:tlb-filename,:tlb-filename,定义导入库的文件路径,13,1,1
+:methods-prefix,:methods-prefix,定义导入库的方法前缀,13,-1,-1
+:properties-prefix,:properties-prefix,定义导入库的特性前缀,13,1,1
+:constants-prefix,:constants-prefix,定义导入库的常量前缀,13,1,1
+vla-put-QNewTemplateFile,(vla-put-QNewTemplateFile AcadPreferencesFiles filepath),设置DWT快速新建样板的文件路径,33,2,2
+vla-get-QNewTemplateFile,(vla-get-QNewTemplateFile AcadPreferencesFiles),获得快速新建DWT样板的路径,33,1,1
+vla-put-Textfill,(vla-put-Textfill dimobj color),设置标注文本遮罩是否为true，color设为0则关，大于0则开,33,1,-1
+vla-put-Textfillcolor,(vla-put-Textfillcolor dimobj color),设置标注文本背景遮罩颜色,33,1,-1
+vla-get-Textfillcolor,(vla-get-Textfillcolor dimobl),获得标注文本填充遮罩颜色号,33,1,1
+vla-get-Textfill,(vla-get-Textfill dimobj),"获取标注文本背景遮罩打开或关闭的状态,返回:vlax-true则为打开，返回:vlax-false则为关闭",33,1,1
+acActiveViewport,0,只重生成活动的视口,13,0,0
+acallviewports,1,重新生成文档上的所有视口,13,0,0

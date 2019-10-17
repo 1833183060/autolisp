@@ -2,7 +2,7 @@
     "name": "autolisp",
     "displayName": "autolisp助手",
     "description": "为autolisp&dcl提供的代码提示和自动完成功能",
-    "version": "0.0.6",
+    "version": "0.0.11",
     "publisher": "niaoge",
     "icon": "images/autocad-dev.jpg",
     "author": {
@@ -96,6 +96,11 @@
                         "System.StackOverflowException": "never",
                         "System.TypeInitializationException": "never"
                     }
+                },
+                "autolisp.userlibpath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "The user function lib path."
                 }
             }
         },
@@ -162,8 +167,8 @@
                 "path": "./snippets/snippets-dcl.json"
             }
         ],
-        "menus": {"editor/context": 
-            [               
+        "menus": {
+            "editor/context": [
                 {
                     "command": "autolisp.format2",
                     "when": "resourceLangId==autolisp"
@@ -174,7 +179,7 @@
                 }
             ]
         },
-        "commands":[
+        "commands": [
             {
                 "command": "autolisp.format",
                 "title": "格式化lisp"
@@ -189,12 +194,21 @@
             }
         ]
     },
-    
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
     "devDependencies": {
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
         "tslint": "^5.8.0",
-        "typescript": "^2.6.1",
+        "typescript": "^2.9.1",
         "vscode": "^1.1.36"
+    },
+    "dependencies": {
+        "iconv-lite": "^0.4.23"
     }
 }
