@@ -31,6 +31,8 @@
     ],
     "activationEvents": [
         "onCommand:extension.sayHello",
+        
+        "onLanguage:autolisp",
         "*"
     ],
     "main": "./out/extension",
