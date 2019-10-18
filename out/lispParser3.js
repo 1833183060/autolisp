@@ -39,41 +39,64 @@ class MyString  {
     
     let parser={}
     function parse(program){
+        try{
         parser=new Parser(program);
         parser.pos=0;
         let r=parseAny();
         return r;
+        }catch(ex){
+            showErrorMessage(ex)
+            return null;
+        }
     }
 
     function parseAny(){
         let nodes=[];
         let node={}
-        while(true){
-            let letter=program[pos++];
+        let br=false;
+        let letter=parser.program[parser.pos];
+        
+        while(br==false){
+            shiftEmpty();
+            letter=parser.program[parser.pos++];
+            
             switch(letter){
-                case '\t':
-                case '\n':
-                case "\r":
-                  continue;
-                  break;
+               
                 case ';':
                     node=parseAnno()
                     nodes.push(node);
+                    
                     break;
                 case '(':
                     node=parseExp();
                     nodes.push(node);
                     break;
-                case '\'':case '\"':                    
-                    node=parseStr(letter);
+
+                case '\'':case '\"': 
+                    if(letter=='\''&&parser.program[parser.pos]=='('){
+                        node=parseList();
+                    }else{
+                        node=parseStr(letter);
+                    }           
+                    
                     nodes.push(node);
                     break;
-                
-                default:
+                case ')':
+                    br=true;
+                    parser.pos--;
+                    break;
+                default:                    
                     parser.pos--;
                     node=parseAtom();
                     nodes.push(node);
                     break;
+            }
+            letter=parser.program[parser.pos++];
+            if(letter=='\t'||letter=='\n'||letter=="\r"){
+                br=false;
+            }else{
+                br=true;
+                parser.pos--;
             }
         }
         return nodes;
@@ -109,8 +132,6 @@ class MyString  {
                     throw new ParseError('非法的符号名',parser.pos-1)
                     break;
                 case '\r':case '\t':case '\n':case ' ':
-                    br=true;
-                    break;
                 case ';':
                     br=true;
                     parser.pos--;
@@ -118,12 +139,13 @@ class MyString  {
                 default:
                     if(letter<'0'||letter>'9'){
                         illegal=false;
+                        
                     }
                     content+=letter;
                     break;
             }
         }
-        if(illeage==true){
+        if(illegal==true){
             throw new ParseError('符号名不能全是数字',startPos);
         }
         let r=new Sym(content);
@@ -142,16 +164,11 @@ class MyString  {
                 case '(':case '\'':case '\"':
                     throw new ParseError('非法字符',parser.pos-1)
                     break;
-                case ')':case ';':
+                case ')':case ';':case '\r':case '\t':case '\n':case ' ':
                     br=true;
                     parser.pos--;
                     break;
-                case '\r':case '\t':case '\n':case ' ':
-                    br=true;
-                    break;
-                
-                default:
-                    
+                default:                    
                     content+=letter;
                     break;
             }
@@ -168,15 +185,87 @@ class MyString  {
 
         return r;
     }
+    function parseParamDif(){
+        let content='';
+        let startPos=parser.pos;
+        let letter='';
+        let br=false;
+        let r=new ParamDif();
+        r.array=[]
+        shiftEmpty();
+        letter=parser.program[parser.pos++];
+        while(br=false){
+            switch(letter){
+                
+                case '(':
+                    r.array.push(parseList());
+                    return r;
+                    break;
+                case ';':
+                    r.array.push(parseAnno());
+                    break;
+                default:
+                    throw new ParseError('非法字符',parser.pos);
+                    break;
+            }
+        }
+        
+        return r; 
+    }
     function parseExp(){
         let content='';
         let startPos=parser.pos;
-        let closeLetter=openLetter;
+        let letter='';
         let r=new Exp();
         r.funName=parseFunName();
-        r.param=parseAny();
+        if(r.funName.value=='defun'){
+            shiftEmpty();
+            letter=parser.program[parser.pos];
+            if(letter!='('){
+                throw new ParseError('缺少函数参数列表',parser.pos)
+            }
+            r.paramList=parseList();
+        }
+        letter=parser.program[parser.pos];
+        switch(letter){
+            case '\t':case '\r':case '\n':case ' ':
+                r.param=parseAny();
+                break;
+            case ')':
+                r.param=[];
+                return r;
+                break;
+            default:
+                throw new ParseError('非法字符',parser.pos);
+                break;
+        }
+        
         shiftEmpty();
-        let letter=parser.program[parser.pos++];
+        letter=parser.program[parser.pos++];
+        if(letter!=')'){
+            throw new ParseError('这里应该有个 )',parser.pos-1);
+        }
+        return r; 
+    }
+    function parseList(){
+        let content='';     
+        
+        let r=new List();
+        r.startPos=parser.pos;
+        let letter=parser.program[parser.pos];
+        switch(letter){
+            
+            case ')':
+                r.items=[];
+                return r;
+                break;
+            default:
+                r.items=parseAny();
+                break;
+        }
+        
+        shiftEmpty();
+        letter=parser.program[parser.pos++];
         if(letter!=')'){
             throw new ParseError('这里应该有个 )',parser.pos-1);
         }
@@ -185,11 +274,30 @@ class MyString  {
     function parseAnno(){
         let content='';
         let br=false;
+        let singleLine=true;
+        let letter=parser.program[parser.pos];
+        if(letter=='|'){
+            singleLine=false;
+            parser.pos++;
+        }
         while(br==false){
-            let letter=parser.program[parser.pos++];
+            letter=parser.program[parser.pos++];
             switch(letter){
                 case '\n':
-                    br=true;
+                    if(singleLine){
+                        br=true; 
+                        parser.pos--;                   
+                    }else{
+                        content+=letter;
+                    }
+                    break;
+                case '|':
+                    if(parser.program[parser.pos]==';'&&!singleLine){
+                        br=true;
+                        parser.pos++;
+                    }else{
+                        content+=letter;
+                    }
                     break;
                 default:
                     content+=letter;
@@ -276,6 +384,16 @@ class MyString  {
             super(value)
         }
     }
+    class ParamDif extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
+    class List extends Meta {
+        constructor(value) {
+            super(value)
+        }
+    }
     class Procedure {
         constructor(parms, body, env) {
             this.parms = parms
@@ -354,7 +472,7 @@ class MyString  {
     let string0={};
     let random=0;
     /* Abstraction Syntax Tree */
-    function parse(program) {
+    function parse_(program) {
         let tokens=tokenize(program)
         let L=[];
         L.childrenCount=0

@@ -1,4 +1,5 @@
 'use strict';
+const lispParser3=require('./lispParser3')
 Object.defineProperty(exports, "__esModule", { value: true });
 class SignatureHelpProvider {
     constructor() {
@@ -33,8 +34,16 @@ class SignatureHelpProvider {
         };
     }
     provideSignatureHelp(document, position, token) {
-        return this.item;
+        //return this.item;
+        let t=document.getText();
+        return genItem(t,position)
     }
+}
+
+function genItem(program,pos){
+    let a=0;
+    let ast=lispParser3.parse(program)
+    console.log(ast.value)
 }
 exports.SignatureHelpProvider = SignatureHelpProvider;
 //# sourceMappingURL=signatureHelper.js.map
