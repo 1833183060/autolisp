@@ -16,7 +16,10 @@ class MyString  {
 }
     /*** Main ***/
 
-
+const ListType={
+    NORMAL:0,
+    QUOTE:1
+}
     /* Error Defination */
     class ReferenceError extends Error {
         constructor(message) {
@@ -74,7 +77,7 @@ class MyString  {
 
                 case '\'':case '\"': 
                     if(letter=='\''&&parser.program[parser.pos]=='('){
-                        node=parseList();
+                        node=parseList(ListType.QUOTE);
                     }else{
                         node=parseStr(letter);
                     }           
@@ -91,12 +94,12 @@ class MyString  {
                     nodes.push(node);
                     break;
             }
-            letter=parser.program[parser.pos++];
-            if(letter=='\t'||letter=='\n'||letter=="\r"){
+            letter=parser.program[parser.pos];
+            if(letter=='\t'||letter=='\n'||letter=="\r"||letter==' '||letter=='('){
                 br=false;
             }else{
                 br=true;
-                parser.pos--;
+                
             }
         }
         return nodes;
@@ -123,16 +126,22 @@ class MyString  {
         let content='';
         shiftEmpty();
         let startPos=parser.pos;
+        let letter=parser.program[parser.pos];
+        switch(letter){
+            case '(':case ')':case '.':case '\'':case '\"':
+                return null;
+        }
         let illegal=true;
         let br=false;
         while(br==false){
-            let letter=parser.program[parser.pos++];
+            letter=parser.program[parser.pos++];
             switch(letter){
-                case '(':case ')':case '.':case '\'':case '\"':
-                    throw new ParseError('非法的符号名',parser.pos-1)
+                case '.':case '\'':case '\"':
+                    parser.pos=startPos;
+                    return null;
                     break;
-                case '\r':case '\t':case '\n':case ' ':
-                case ';':
+                case '\r':case '\t':case '\n':case ' ':case ')':
+                case ';':case '(':
                     br=true;
                     parser.pos--;
                     break;
@@ -161,10 +170,10 @@ class MyString  {
         while(br==false){
             let letter=parser.program[parser.pos++];
             switch(letter){
-                case '(':case '\'':case '\"':
+                case '\'':case '\"':
                     throw new ParseError('非法字符',parser.pos-1)
                     break;
-                case ')':case ';':case '\r':case '\t':case '\n':case ' ':
+                case ')':case ';':case '\r':case '\t':case '\n':case ' ':case '(':
                     br=true;
                     parser.pos--;
                     break;
@@ -185,20 +194,22 @@ class MyString  {
 
         return r;
     }
-    function parseParamDif(){
+    function parseParamDef(){
         let content='';
         let startPos=parser.pos;
         let letter='';
         let br=false;
-        let r=new ParamDif();
+        let temp;
+        let r=new ParamDef();
         r.array=[]
         shiftEmpty();
         letter=parser.program[parser.pos++];
-        while(br=false){
+        while(br==false){
             switch(letter){
                 
                 case '(':
-                    r.array.push(parseList());
+                    temp=parseList(ListType.NORMAL);
+                    r.array.push(temp);
                     return r;
                     break;
                 case ';':
@@ -218,22 +229,21 @@ class MyString  {
         let letter='';
         let r=new Exp();
         r.funName=parseFunName();
-        if(r.funName.value=='defun'){
-            shiftEmpty();
-            letter=parser.program[parser.pos];
-            if(letter!='('){
-                throw new ParseError('缺少函数参数列表',parser.pos)
+        if(r.funName!=null&&r.funName.value=='defun'){
+            r.funNameDef=parseSym();
+            if(r.funNameDef==null){
+                throw new ParseError('函数名不能为空',parser.pos)
             }
-            r.paramList=parseList();
+            r.paramDef=parseParamDef();
         }
         letter=parser.program[parser.pos];
         switch(letter){
-            case '\t':case '\r':case '\n':case ' ':
+            case '\t':case '\r':case '\n':case ' ':case ';':case '(':
                 r.param=parseAny();
                 break;
             case ')':
                 r.param=[];
-                return r;
+                
                 break;
             default:
                 throw new ParseError('非法字符',parser.pos);
@@ -247,20 +257,21 @@ class MyString  {
         }
         return r; 
     }
-    function parseList(){
+    function parseList(type){
         let content='';     
         
         let r=new List();
+        r.type=type;
         r.startPos=parser.pos;
         let letter=parser.program[parser.pos];
         switch(letter){
             
             case ')':
-                r.items=[];
+                r.value=[];
                 return r;
                 break;
             default:
-                r.items=parseAny();
+                r.value=parseAny();
                 break;
         }
         
@@ -283,7 +294,7 @@ class MyString  {
         while(br==false){
             letter=parser.program[parser.pos++];
             switch(letter){
-                case '\n':
+                case '\n':case '\r':
                     if(singleLine){
                         br=true; 
                         parser.pos--;                   
@@ -334,8 +345,11 @@ class MyString  {
     }
     /* Type Defination */
     class Meta {
-        constructor(value) {
+        constructor(value) {            
             this.value = value
+            if(typeof value=='undefined'){
+                this.value=null;
+            }
             this.startPos=0;
         }
     }
@@ -384,7 +398,7 @@ class MyString  {
             super(value)
         }
     }
-    class ParamDif extends Meta {
+    class ParamDef extends Meta {
         constructor(value) {
             super(value)
         }
