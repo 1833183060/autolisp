@@ -42,6 +42,7 @@ class SignatureHelpProvider {
 
 function genItem(program,pos){
     let a=0;
+    program+=String.fromCharCode(0);
     let ast=lispParser3.parse(program)
     console.log(ast.value)
 }

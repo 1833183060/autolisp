@@ -33,36 +33,64 @@ const ListType={
             this.pos=pos
         }
     }
+    class ParseEnd extends Error{
+        constructor(message,pos){
+            super('parseEnd:'+message)
+            this.pos=pos
+        }
+    }
     class Parser{
         constructor(p){
             this.program=p
             this.pos=0;
         }
+        ifEnd(){
+            this.end=(this.pos>=this.program.length);
+            return this.end;
+        }
+        ifEnd(letter){
+            if(letter.charCodeAt()==0){
+                throw new ParseEnd();
+            }
+            this.end=(letter.charCodeAt()==0);
+            return this.end;
+        }
     }
     
     let parser={}
+    
     function parse(program){
         try{
         parser=new Parser(program);
         parser.pos=0;
+        parser.end=false;
         let r=parseAny();
         return r;
         }catch(ex){
+            if(ex instanceof ParseEnd){
+                console.log('end')
+            }
             showErrorMessage(ex)
             return null;
         }
     }
+    function getChar(){
 
+    }
     function parseAny(){
         let nodes=[];
         let node={}
         let br=false;
         let letter=parser.program[parser.pos];
-        
+        if(parser.ifEnd(letter)){
+            return null;
+        }
         while(br==false){
-            shiftEmpty();
-            letter=parser.program[parser.pos++];
             
+            letter=parser.program[parser.pos++];
+            if(parser.ifEnd(letter)){
+                break;
+            }
             switch(letter){
                
                 case ';':
@@ -76,7 +104,11 @@ const ListType={
                     break;
 
                 case '\'':case '\"': 
-                    if(letter=='\''&&parser.program[parser.pos]=='('){
+                    let letter2=parser.program[parser.pos];
+                    if(parser.ifEnd(letter2)){
+                        throw new ParseError('非法的引号',parser.pos-1)
+                    }
+                    if(letter=='\''&&letter2=='('){
                         node=parseList(ListType.QUOTE);
                     }else{
                         node=parseStr(letter);
@@ -94,7 +126,11 @@ const ListType={
                     nodes.push(node);
                     break;
             }
+            if(parser.end)break;
             letter=parser.program[parser.pos];
+            if(parser.ifEnd(letter)){
+                break;
+            }
             if(letter=='\t'||letter=='\n'||letter=="\r"||letter==' '||letter=='('){
                 br=false;
             }else{
@@ -117,6 +153,7 @@ const ListType={
             parser.program[parser.pos]==' '
             ){
                 parser.pos++;
+                
             }else{
                 startPos=parser.pos;
             }
@@ -127,6 +164,9 @@ const ListType={
         shiftEmpty();
         let startPos=parser.pos;
         let letter=parser.program[parser.pos];
+        if(parser.ifEnd(letter)){
+            return null;
+        }
         switch(letter){
             case '(':case ')':case '.':case '\'':case '\"':
                 return null;
@@ -135,6 +175,9 @@ const ListType={
         let br=false;
         while(br==false){
             letter=parser.program[parser.pos++];
+            if(parser.ifEnd(letter)){
+                break;
+            }
             switch(letter){
                 case '.':case '\'':case '\"':
                     parser.pos=startPos;
@@ -169,9 +212,12 @@ const ListType={
         let br=false;
         while(br==false){
             let letter=parser.program[parser.pos++];
+            if(parser.ifEnd(letter)){
+                break;
+            }
             switch(letter){
                 case '\'':case '\"':
-                    throw new ParseError('非法字符',parser.pos-1)
+                    throw new ParseError('非法字符-220',parser.pos-1)
                     break;
                 case ')':case ';':case '\r':case '\t':case '\n':case ' ':case '(':
                     br=true;
@@ -203,8 +249,13 @@ const ListType={
         let r=new ParamDef();
         r.array=[]
         shiftEmpty();
-        letter=parser.program[parser.pos++];
+        
         while(br==false){
+            letter=parser.program[parser.pos++];
+            if(parser.ifEnd(letter)){
+                throw new ParseEnd('',parser.pos-1)
+                return null;
+            }
             switch(letter){
                 
                 case '(':
@@ -216,9 +267,10 @@ const ListType={
                     r.array.push(parseAnno());
                     break;
                 default:
-                    throw new ParseError('非法字符',parser.pos);
+                    throw new ParseError('非法字符-270',parser.pos);
                     break;
             }
+            if(parser.end)break;
         }
         
         return r; 
@@ -229,12 +281,14 @@ const ListType={
         let letter='';
         let r=new Exp();
         r.funName=parseFunName();
+        if(parser.end)throw new ParseError('缺少 )',parser.pos-1);
         if(r.funName!=null&&r.funName.value=='defun'){
             r.funNameDef=parseSym();
             if(r.funNameDef==null){
                 throw new ParseError('函数名不能为空',parser.pos)
             }
             r.paramDef=parseParamDef();
+            
         }
         letter=parser.program[parser.pos];
         switch(letter){
@@ -246,7 +300,7 @@ const ListType={
                 
                 break;
             default:
-                throw new ParseError('非法字符',parser.pos);
+                throw new ParseError('非法字符--303',parser.pos);
                 break;
         }
         
@@ -254,6 +308,9 @@ const ListType={
         letter=parser.program[parser.pos++];
         if(letter!=')'){
             throw new ParseError('这里应该有个 )',parser.pos-1);
+        }
+        if(parser.ifEnd(letter)){
+            throw new ParseError('缺少闭合的 )',parser.pos-1);
         }
         return r; 
     }
@@ -264,6 +321,9 @@ const ListType={
         r.type=type;
         r.startPos=parser.pos;
         let letter=parser.program[parser.pos];
+        if(parser.ifEnd(letter)){
+            throw new ParseError('缺少闭合的 )',parser.pos);
+        }
         switch(letter){
             
             case ')':
@@ -280,6 +340,9 @@ const ListType={
         if(letter!=')'){
             throw new ParseError('这里应该有个 )',parser.pos-1);
         }
+        if(parser.ifEnd(letter)){
+            throw new ParseError('缺少闭合的 )',parser.pos-1);
+        }
         return r; 
     }
     function parseAnno(){
@@ -287,12 +350,20 @@ const ListType={
         let br=false;
         let singleLine=true;
         let letter=parser.program[parser.pos];
+        if(parser.ifEnd(letter)){
+            throw new ParseEnd();
+            return null;
+        }
         if(letter=='|'){
             singleLine=false;
             parser.pos++;
         }
         while(br==false){
             letter=parser.program[parser.pos++];
+            if(parser.ifEnd(letter)){
+                throw new ParseEnd();
+                break;
+            }
             switch(letter){
                 case '\n':case '\r':
                     if(singleLine){
@@ -327,12 +398,19 @@ const ListType={
         let br=false;
         while(br==false){
             let letter=parser.program[parser.pos++];
+            if(parser.ifEnd(letter)){
+                break;
+            }
             switch(letter){
                 case closeLetter:
                     br=true;
                     break;
                 case '\\':
-                    content+=letter+parser.program[parser.pos++];
+                    let letter2=parser.program[parser.pos++]
+                    if(parser.ifEnd(letter2)){
+                        throw new ParseError('非法字符--411',parser.pos-1)
+                    }
+                    content+=letter+letter2;
                     break;
                 default:
                     content+=letter;
