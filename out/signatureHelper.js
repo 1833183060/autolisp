@@ -45,6 +45,7 @@ function genItem(program,pos){
     program+=String.fromCharCode(0);
     let ast=lispParser3.parse(program)
     console.log(ast.value)
+    return new SignatureHelpProvider().item
 }
 exports.SignatureHelpProvider = SignatureHelpProvider;
 //# sourceMappingURL=signatureHelper.js.map

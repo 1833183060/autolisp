@@ -15,7 +15,16 @@ class MyString  {
     }
 }
     /*** Main ***/
-
+    class Meta {
+        constructor(value) {            
+            this.value = value
+            if(typeof value=='undefined'){
+                this.value=null;
+            }
+            this.startPos=0;
+            this.items=[];
+        }
+    }
 const ListType={
     NORMAL:0,
     QUOTE:1
@@ -37,12 +46,14 @@ const ListType={
         constructor(message,pos){
             super('parseEnd:'+message)
             this.pos=pos
+            
         }
     }
     class Parser{
         constructor(p){
             this.program=p
             this.pos=0;
+            this.rootNode=new Meta();
         }
         ifEnd(){
             this.end=(this.pos>=this.program.length);
@@ -60,47 +71,53 @@ const ListType={
     let parser={}
     
     function parse(program){
+        let r;
         try{
         parser=new Parser(program);
         parser.pos=0;
         parser.end=false;
-        let r=parseAny();
-        return r;
+        
+        r=parseAny(parser.rootNode);
+        
         }catch(ex){
             if(ex instanceof ParseEnd){
                 console.log('end')
             }
-            showErrorMessage(ex)
-            return null;
+            //showErrorMessage(ex)
+            //return r;
         }
+        return parser.rootNode;
     }
     function getChar(){
 
     }
-    function parseAny(){
-        let nodes=[];
+    function parseAny(pnode){
+        
         let node={}
         let br=false;
         let letter=parser.program[parser.pos];
         if(parser.ifEnd(letter)){
+            throw new ParseEnd('',parser.pos);
             return null;
         }
         while(br==false){
-            
+            shiftEmpty();
             letter=parser.program[parser.pos++];
             if(parser.ifEnd(letter)){
+                //pnode.items.push(node)
+                throw new ParseEnd('',parser.pos);
                 break;
             }
             switch(letter){
                
                 case ';':
-                    node=parseAnno()
-                    nodes.push(node);
+                    parseAnno(pnode)
+                    //nodes.push(node);
                     
                     break;
                 case '(':
-                    node=parseExp();
-                    nodes.push(node);
+                    parseExp(pnode);
+                    //nodes.push(node);
                     break;
 
                 case '\'':case '\"': 
@@ -109,12 +126,12 @@ const ListType={
                         throw new ParseError('非法的引号',parser.pos-1)
                     }
                     if(letter=='\''&&letter2=='('){
-                        node=parseList(ListType.QUOTE);
+                        node=parseList(pnode,ListType.QUOTE);
                     }else{
-                        node=parseStr(letter);
+                        node=parseStr(pnode,letter);
                     }           
                     
-                    nodes.push(node);
+                    //nodes.push(node);
                     break;
                 case ')':
                     br=true;
@@ -122,13 +139,16 @@ const ListType={
                     break;
                 default:                    
                     parser.pos--;
-                    node=parseAtom();
-                    nodes.push(node);
+                    parseAtom(pnode);
+                    //nodes.push(node);
                     break;
             }
-            if(parser.end)break;
+            if(parser.end){
+                throw new ParseEnd('',parser.pos)
+            }
             letter=parser.program[parser.pos];
             if(parser.ifEnd(letter)){
+                throw new ParseEnd('',parser.pos)
                 break;
             }
             if(letter=='\t'||letter=='\n'||letter=="\r"||letter==' '||letter=='('){
@@ -138,7 +158,7 @@ const ListType={
                 
             }
         }
-        return nodes;
+        //return nodes;
     }
     function shiftEmpty(){
         let startPos=-1;
@@ -159,16 +179,21 @@ const ListType={
             }
         }
     }
-    function parseSym(){
+    function parseSym(pnode,itemName){
         let content='';
         shiftEmpty();
-        let startPos=parser.pos;
         let letter=parser.program[parser.pos];
         if(parser.ifEnd(letter)){
+            pnode[itemName]=null;
             return null;
         }
+        let r=new Sym();
+        pnode[itemName]=r;
+        r.startPos=parser.pos;
+        
         switch(letter){
             case '(':case ')':case '.':case '\'':case '\"':
+
                 return null;
         }
         let illegal=true;
@@ -176,11 +201,13 @@ const ListType={
         while(br==false){
             letter=parser.program[parser.pos++];
             if(parser.ifEnd(letter)){
+                parser.pos--
+                throw new ParseError('缺少闭合的括号',parser.pos);
                 break;
             }
             switch(letter){
                 case '.':case '\'':case '\"':
-                    parser.pos=startPos;
+                    parser.pos=r.startPos;
                     return null;
                     break;
                 case '\r':case '\t':case '\n':case ' ':case ')':
@@ -198,21 +225,24 @@ const ListType={
             }
         }
         if(illegal==true){
-            throw new ParseError('符号名不能全是数字',startPos);
+
+            throw new ParseError('符号名不能全是数字',r.startPos);
         }
-        let r=new Sym(content);
-        r.startPos=startPos;
+        r.value=content;
+        
         return r;
     }
-    function parseAtom(){
+    function parseAtom(pnode){
         let content='';
         shiftEmpty();
-        let startPos=parser.pos;
-        
+        let r=new Atom();
+        r.startPos=parser.pos;
+        pnode.items.push(r)
         let br=false;
         while(br==false){
             let letter=parser.program[parser.pos++];
             if(parser.ifEnd(letter)){
+                parser.pos--;
                 break;
             }
             switch(letter){
@@ -229,25 +259,27 @@ const ListType={
             }
         }
         
-        let r=new Atom(content);
-        r.startPos=startPos;
+        r.value=content;
+        
         return r;
     }
-    function parseFunName(){
+    function parseFunName(pnode){
         let content='';
         shiftEmpty();
-        let r=parseSym();
+        let r=parseSym(pnode,'funName');
 
         return r;
     }
-    function parseParamDef(){
+    function parseParamDef(pnode){
         let content='';
-        let startPos=parser.pos;
+        
         let letter='';
         let br=false;
         let temp;
         let r=new ParamDef();
-        r.array=[]
+        r.startPos=parser.pos;
+        pnode.paramDef=r;
+        //r.array=[]
         shiftEmpty();
         
         while(br==false){
@@ -259,48 +291,54 @@ const ListType={
             switch(letter){
                 
                 case '(':
-                    temp=parseList(ListType.NORMAL);
-                    r.array.push(temp);
-                    return r;
+                    parseList(r,ListType.NORMAL);
+                    
+                    return ;
                     break;
                 case ';':
-                    r.array.push(parseAnno());
+                    parseAnno(r);
+                    shiftEmpty();
                     break;
                 default:
                     throw new ParseError('非法字符-270',parser.pos);
                     break;
             }
-            if(parser.end)break;
+            //if(parser.end)break;
         }
         
         return r; 
     }
-    function parseExp(){
+    function parseExp(pnode){
         let content='';
-        let startPos=parser.pos;
+        
         let letter='';
         let r=new Exp();
-        r.funName=parseFunName();
+        r.startPos=parser.pos;
+        pnode.items.push(r);
+        parseFunName(r);
         if(parser.end)throw new ParseError('缺少 )',parser.pos-1);
         if(r.funName!=null&&r.funName.value=='defun'){
-            r.funNameDef=parseSym();
+            parseSym(r,'funNameDef');
             if(r.funNameDef==null){
                 throw new ParseError('函数名不能为空',parser.pos)
             }
-            r.paramDef=parseParamDef();
+            parseParamDef(r);
             
         }
         letter=parser.program[parser.pos];
+        if(parser.ifEnd(letter)){
+            throw new ParseError('缺少闭合的括号',parser.pos);
+        }
         switch(letter){
             case '\t':case '\r':case '\n':case ' ':case ';':case '(':
-                r.param=parseAny();
+                parseAny(r);
                 break;
             case ')':
-                r.param=[];
+                r.items=[];
                 
                 break;
             default:
-                throw new ParseError('非法字符--303',parser.pos);
+                throw new ParseError('缺少结束括号--321',parser.pos);
                 break;
         }
         
@@ -310,14 +348,15 @@ const ListType={
             throw new ParseError('这里应该有个 )',parser.pos-1);
         }
         if(parser.ifEnd(letter)){
-            throw new ParseError('缺少闭合的 )',parser.pos-1);
+            throw new ParseError('不应该运行到这里331',parser.pos-1);
         }
         return r; 
     }
-    function parseList(type){
+    function parseList(pnode,type){
         let content='';     
         
         let r=new List();
+        pnode.items.push(r);
         r.type=type;
         r.startPos=parser.pos;
         let letter=parser.program[parser.pos];
@@ -327,11 +366,11 @@ const ListType={
         switch(letter){
             
             case ')':
-                r.value=[];
+                r.items=[];
                 return r;
                 break;
             default:
-                r.value=parseAny();
+                parseAny(r);
                 break;
         }
         
@@ -341,17 +380,20 @@ const ListType={
             throw new ParseError('这里应该有个 )',parser.pos-1);
         }
         if(parser.ifEnd(letter)){
-            throw new ParseError('缺少闭合的 )',parser.pos-1);
+            throw new ParseError('不会执行到这里',parser.pos-1);
         }
         return r; 
     }
-    function parseAnno(){
+    function parseAnno(pnode){
         let content='';
         let br=false;
+        let r=new Ann(null);
+        pnode.items.push(r);
+        r.startPos=parser.pos;
         let singleLine=true;
         let letter=parser.program[parser.pos];
         if(parser.ifEnd(letter)){
-            throw new ParseEnd();
+            //throw new ParseEnd();
             return null;
         }
         if(letter=='|'){
@@ -361,7 +403,7 @@ const ListType={
         while(br==false){
             letter=parser.program[parser.pos++];
             if(parser.ifEnd(letter)){
-                throw new ParseEnd();
+                parser.pos--;
                 break;
             }
             switch(letter){
@@ -386,19 +428,22 @@ const ListType={
                     break;
             }
         }
-        let r=new Ann(content);
+        r.value=content;
         return r;
     }
 
-    function parseStr(openLetter){
+    function parseStr(pnode,openLetter){
         let content='';
-        let startPos=parser.pos;
+        
         let closeLetter=openLetter;
-       
+        let r=new Str();
+        r.startPos=parser.pos;
+        pnode.items.push(r);
         let br=false;
         while(br==false){
             let letter=parser.program[parser.pos++];
             if(parser.ifEnd(letter)){
+                throw new ParseError('字符串缺少结束引号',parser.pos-1)
                 break;
             }
             switch(letter){
@@ -408,6 +453,7 @@ const ListType={
                 case '\\':
                     let letter2=parser.program[parser.pos++]
                     if(parser.ifEnd(letter2)){
+                        r.value=content;
                         throw new ParseError('非法字符--411',parser.pos-1)
                     }
                     content+=letter+letter2;
@@ -417,20 +463,11 @@ const ListType={
                     break;
             }
         }
-        let r=new Str(content);
-        r.startPos=startPos;
+        r.value=content;
         return r;
     }
     /* Type Defination */
-    class Meta {
-        constructor(value) {            
-            this.value = value
-            if(typeof value=='undefined'){
-                this.value=null;
-            }
-            this.startPos=0;
-        }
-    }
+    
     class Atom extends Meta {
         constructor(value) {
             super(value)
@@ -484,6 +521,7 @@ const ListType={
     class List extends Meta {
         constructor(value) {
             super(value)
+            this.items=[];
         }
     }
     class Procedure {
