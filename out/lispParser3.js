@@ -50,14 +50,15 @@ const ListType={
                 this.data=null;
             }else{
                 this.data=data
-            }            
+            }   
+            parser.curNode=this.data;         
         }
     }
     class Parser{
         constructor(p){
             this.program=p
             this.pos=0;
-            this.cursorPos=-1;
+            this.cursorPos=p.length+99;
             this.curNode=null;
             this.rootNode=new Node();
         }
@@ -65,9 +66,21 @@ const ListType={
             this.end=(this.pos>=this.program.length);
             return this.end;
         }
-        ifEnd(letter){
+        ifEnd(letter,curNode){
+            
             if(letter.charCodeAt()==0){
-                throw new ParseEnd('',parser.pos);
+                if(typeof curNode!='undefined'){
+                    throw new ParseEnd('',parser.pos,curNode);
+                }else{
+                    throw new ParseEnd('',parser.pos,null);
+                }
+                
+            }else if(this.pos>this.cursorPos){
+                if(typeof curNode!='undefined'){
+                    throw new ParseEnd('',parser.pos,curNode);
+                }else{
+                    throw new ParseEnd('',parser.pos,null);
+                }
             }
             this.end=(letter.charCodeAt()==0);
             return this.end;
@@ -127,14 +140,14 @@ const ListType={
         
         let br=false;
         let letter=parser.program[parser.pos];
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,pnode)){
             throw new ParseEnd('',parser.pos);
             return null;
         }
         while(br==false){
             shiftEmpty();
             letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,pnode)){
                 //pnode.items.push(node)
                 throw new ParseEnd('',parser.pos);
                 break;
@@ -153,7 +166,7 @@ const ListType={
 
                 case '\'':case '\"': 
                     let letter2=parser.program[parser.pos];
-                    if(parser.ifEnd(letter2)){
+                    if(parser.ifEnd(letter2,pnode)){
                         throw new ParseError('非法的引号',parser.pos-1)
                     }
                     if(letter=='\''&&letter2=='('){
@@ -178,7 +191,7 @@ const ListType={
                 throw new ParseEnd('',parser.pos)
             }
             letter=parser.program[parser.pos];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,pnode)){
                 throw new ParseEnd('',parser.pos)
                 break;
             }
@@ -214,7 +227,7 @@ const ListType={
         let content='';
         shiftEmpty();
         let letter=parser.program[parser.pos];
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,pnode)){
             pnode[itemName]=null;
             return null;
         }
@@ -231,7 +244,7 @@ const ListType={
         let br=false;
         while(br==false){
             letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,r)){
                 parser.pos--
                 throw new ParseError('缺少闭合的括号',parser.pos);
                 break;
@@ -272,7 +285,7 @@ const ListType={
         let br=false;
         while(br==false){
             let letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,pnode)){
                 parser.pos--;
                 break;
             }
@@ -346,7 +359,7 @@ const ListType={
         let r=new Exp();
         r.startPos=parser.pos;
         pnode.items.push(r);
-        parser.curNode=r;
+        //parser.curNode=r;
         parseFunName(r);
         if(parser.end)throw new ParseError('缺少 )',parser.pos-1);
         if(r.funName!=null&&r.funName.value=='defun'){
@@ -358,7 +371,7 @@ const ListType={
             
         }
         letter=parser.program[parser.pos];
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,r)){
             throw new ParseError('缺少闭合的括号',parser.pos);
         }
         switch(letter){
@@ -379,14 +392,14 @@ const ListType={
         if(letter!=')'){
             throw new ParseError('这里应该有个 )',parser.pos-1);
         }
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,r)){
             throw new ParseError('不应该运行到这里331',parser.pos-1);
         }
         if(parser.pos>=parser.cursorPos){
             
             throw new ParseEnd('ok',parser.pos,r)
         }
-        parser.curNode=pnode;
+        //parser.curNode=pnode;
         return r; 
     }
     function parseList(pnode,type){
@@ -397,7 +410,7 @@ const ListType={
         r.type=type;
         r.startPos=parser.pos;
         let letter=parser.program[parser.pos];
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,r)){
             throw new ParseError('缺少闭合的 )',parser.pos);
         }
         switch(letter){
@@ -416,7 +429,7 @@ const ListType={
         if(letter!=')'){
             throw new ParseError('这里应该有个 )',parser.pos-1);
         }
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,r)){
             throw new ParseError('不会执行到这里',parser.pos-1);
         }
         return r; 
@@ -429,7 +442,7 @@ const ListType={
         r.startPos=parser.pos;
         let singleLine=true;
         let letter=parser.program[parser.pos];
-        if(parser.ifEnd(letter)){
+        if(parser.ifEnd(letter,r)){
             //throw new ParseEnd();
             return null;
         }
@@ -439,7 +452,7 @@ const ListType={
         }
         while(br==false){
             letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,r)){
                 parser.pos--;
                 break;
             }
@@ -479,7 +492,7 @@ const ListType={
         let br=false;
         while(br==false){
             let letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,r)){
                 throw new ParseError('字符串缺少结束引号',parser.pos-1)
                 break;
             }
@@ -489,7 +502,7 @@ const ListType={
                     break;
                 case '\\':
                     let letter2=parser.program[parser.pos++]
-                    if(parser.ifEnd(letter2)){
+                    if(parser.ifEnd(letter2,r)){
                         r.value=content;
                         throw new ParseError('非法字符--411',parser.pos-1)
                     }
@@ -1006,5 +1019,5 @@ const ListType={
         console.log('lispy>')
     } );*/
 
-module.exports={parseForSignature:parseForSignature,parse:parse,ann:annotation,format:format,Exp:Exp};
+module.exports={parseForSignature:parseForSignature,parse:parse,ann:annotation,format:format,Exp:Exp,Ann:Ann};
 //export {"parse":parse};
