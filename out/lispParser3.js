@@ -15,7 +15,7 @@ class MyString  {
     }
 }
     /*** Main ***/
-    class Meta {
+    class Node {
         constructor(value) {            
             this.value = value
             if(typeof value=='undefined'){
@@ -43,17 +43,23 @@ const ListType={
         }
     }
     class ParseEnd extends Error{
-        constructor(message,pos){
+        constructor(message,pos,data){
             super('parseEnd:'+message)
             this.pos=pos
-            
+            if(typeof data=='undefined'){
+                this.data=null;
+            }else{
+                this.data=data
+            }            
         }
     }
     class Parser{
         constructor(p){
             this.program=p
             this.pos=0;
-            this.rootNode=new Meta();
+            this.cursorPos=-1;
+            this.curNode=null;
+            this.rootNode=new Node();
         }
         ifEnd(){
             this.end=(this.pos>=this.program.length);
@@ -61,7 +67,7 @@ const ListType={
         }
         ifEnd(letter){
             if(letter.charCodeAt()==0){
-                throw new ParseEnd();
+                throw new ParseEnd('',parser.pos);
             }
             this.end=(letter.charCodeAt()==0);
             return this.end;
@@ -69,7 +75,33 @@ const ListType={
     }
     
     let parser={}
-    
+    function parseForSignature(program,cursorPos){
+        let r;
+        try{
+        parser=new Parser(program);
+        parser.pos=0;
+        parser.end=false;
+        parser.cursorPos=cursorPos;
+        r=parseAny(parser.rootNode);
+        
+        }catch(ex){
+            if(ex instanceof ParseEnd){
+                console.log('end')
+                if(parser.curNode instanceof Exp){
+                    return parser.curNode;
+                }
+                return null;
+                return parser.curNode;
+                if(ex.data!=null){
+                    return ex.data;
+                }
+            }
+            //showErrorMessage(ex)
+            //return r;
+        }
+        return null;
+        //return parser.rootNode;
+    }
     function parse(program){
         let r;
         try{
@@ -91,9 +123,8 @@ const ListType={
     function getChar(){
 
     }
-    function parseAny(pnode){
+    function parseAny(pnode){       
         
-        let node={}
         let br=false;
         let letter=parser.program[parser.pos];
         if(parser.ifEnd(letter)){
@@ -315,6 +346,7 @@ const ListType={
         let r=new Exp();
         r.startPos=parser.pos;
         pnode.items.push(r);
+        parser.curNode=r;
         parseFunName(r);
         if(parser.end)throw new ParseError('缺少 )',parser.pos-1);
         if(r.funName!=null&&r.funName.value=='defun'){
@@ -350,6 +382,11 @@ const ListType={
         if(parser.ifEnd(letter)){
             throw new ParseError('不应该运行到这里331',parser.pos-1);
         }
+        if(parser.pos>=parser.cursorPos){
+            
+            throw new ParseEnd('ok',parser.pos,r)
+        }
+        parser.curNode=pnode;
         return r; 
     }
     function parseList(pnode,type){
@@ -468,57 +505,57 @@ const ListType={
     }
     /* Type Defination */
     
-    class Atom extends Meta {
+    class Atom extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class Sym extends Meta {
+    class Sym extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class NewLine extends Meta {
+    class NewLine extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class Ann extends Meta {
+    class Ann extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class Literal extends Meta {
+    class Literal extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class LineAnn extends Meta {
+    class LineAnn extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class InlineAnn extends Meta {
+    class InlineAnn extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class Str extends Meta {
+    class Str extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class Exp extends Meta {
+    class Exp extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class ParamDef extends Meta {
+    class ParamDef extends Node {
         constructor(value) {
             super(value)
         }
     }
-    class List extends Meta {
+    class List extends Node {
         constructor(value) {
             super(value)
             this.items=[];
@@ -969,5 +1006,5 @@ const ListType={
         console.log('lispy>')
     } );*/
 
-module.exports={parse:parse,ann:annotation,format:format};
+module.exports={parseForSignature:parseForSignature,parse:parse,ann:annotation,format:format,Exp:Exp};
 //export {"parse":parse};

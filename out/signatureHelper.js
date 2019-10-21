@@ -2,12 +2,13 @@
 const lispParser3=require('./lispParser3')
 Object.defineProperty(exports, "__esModule", { value: true });
 class SignatureHelpProvider {
-    constructor() {
+    constructor(snippetObj) {
+        this.snippetObj=snippetObj;
         this.item = {
             id: "workspace_AutoRetreat_Add",
             name: "AutoRetreat_Add",
             filepath: "e:\\coh2_mods\\generic\\scar\\lib\\autoretreat.scar",
-            activeParameter:1,
+            activeParameter:2,
             activeSignature: 0,
             signatures: [
                 {
@@ -19,12 +20,6 @@ class SignatureHelpProvider {
                         },
                         {
                             label: "retreatLocation"
-                        },
-                        {
-                            label: "retreatCondition"
-                        },
-                        {
-                            label: "retreatThreshold"
                         }
                     ]
                 }
@@ -36,16 +31,44 @@ class SignatureHelpProvider {
     provideSignatureHelp(document, position, token) {
         //return this.item;
         let t=document.getText();
-        return genItem(t,position)
+        let offset=document.offsetAt(position)
+        return this.genItem(t,offset)
+    }
+    genItem(program,offset){
+        let a=0;
+        program+=String.fromCharCode(0);
+        let ast=lispParser3.parseForSignature(program,offset)
+        if(ast==null)return null;
+        try{
+            this.item.signatures=[];
+            let funObj=this.snippetObj[ast.funName.value];
+            let funBody=funObj.body;
+            let params=funBody.replace('(','').replace(')','').split(' ');
+            let signature={label:funBody,documentation:funObj.description}
+            this.item.signatures.push(signature)
+            signature.parameters=[];
+            if(params!=null){
+                for(let i=0;i<params.length;i++){
+                    if(params[i].length>0){
+                        signature.parameters.push({label:params[i]})
+                    }
+                }
+            }
+            let activeP=1;
+            for(let ii=0;ii<ast.items.length;ii++){
+                if(ast.items[ii] instanceof lispParser3.Exp){
+                    activeP++;
+                }
+            }
+            return this.item;
+        }catch(ex){
+
+        }
+        console.log(ast.value)
+        //return this.item
     }
 }
 
-function genItem(program,pos){
-    let a=0;
-    program+=String.fromCharCode(0);
-    let ast=lispParser3.parse(program)
-    console.log(ast.value)
-    return new SignatureHelpProvider().item
-}
+
 exports.SignatureHelpProvider = SignatureHelpProvider;
 //# sourceMappingURL=signatureHelper.js.map
