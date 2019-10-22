@@ -43,9 +43,7 @@ class SignatureHelpProvider {
         if(!(ast instanceof lispParser3.Exp))return null;
         try{
             this.item.signatures=[];
-            if(ast.funName.value==null||ast.funName.value.length==0||ast.funName.value=='defun'){
-                return null;
-            }
+            
             let funObj=this.snippetObj[ast.funName.value];
             let funBody=funObj.body;
             
@@ -54,6 +52,15 @@ class SignatureHelpProvider {
             signature.parameters=[];
 
             let activeP=0;
+            if(ast.funName.value==null||ast.funName.value.length==0||ast.funName.value=='defun'){
+                if(typeof ast.funNameDef!='undefined'&& ast.funNameDef.value!=null&& ast.funNameDef.value.length>0){
+                    activeP++;
+                    if(typeof ast.paramDef!='undefined'&&ast.paramDef!=null){
+                        activeP++;
+                    }
+                }
+
+            }
             for(let ii=0;ii<ast.items.length;ii++){
                 if(!(ast.items[ii] instanceof lispParser3.Ann)){
                     activeP++;
@@ -95,7 +102,7 @@ class SignatureHelpProvider {
             
             return this.item;
         }catch(ex){
-
+            console.log(ex)
         }
         console.log(ast.value)
         //return this.item

@@ -37,9 +37,15 @@ const ListType={
     }
 
     class ParseError extends Error{
-        constructor(message,pos){
+        constructor(message,pos,curNode){
             super('parseError:'+message)
             this.pos=pos
+            if(typeof curNode=='undefined'){
+                this.data=null;
+            }else{
+                this.data=curNode;
+            }
+            parser.curNode=this.data;
         }
     }
     class ParseEnd extends Error{
@@ -98,7 +104,7 @@ const ListType={
         r=parseAny(parser.rootNode);
         
         }catch(ex){
-            if(ex instanceof ParseEnd){
+            if(ex instanceof ParseEnd||ex instanceof ParseError){
                 console.log('end')
                 if(parser.curNode instanceof Exp){
                     return parser.curNode;
@@ -244,7 +250,7 @@ const ListType={
         let br=false;
         while(br==false){
             letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter,r)){
+            if(parser.ifEnd(letter,pnode)){
                 parser.pos--
                 throw new ParseError('缺少闭合的括号',parser.pos);
                 break;
@@ -265,6 +271,7 @@ const ListType={
                         
                     }
                     content+=letter;
+                    r.value=content;
                     break;
             }
         }
@@ -319,16 +326,23 @@ const ListType={
         
         let letter='';
         let br=false;
-        let temp;
+        
+       
+        //r.array=[]
+        shiftEmpty();
+        letter=parser.program[parser.pos];
+        if(parser.ifEnd(letter,pnode)){
+            throw new ParseEnd('',parser.pos-1,pnode)
+            return null;
+        }else if(letter!='('){
+            throw new ParseError('参数列表不能为空',parser.pos,pnode)
+        }
         let r=new ParamDef();
         r.startPos=parser.pos;
         pnode.paramDef=r;
-        //r.array=[]
-        shiftEmpty();
-        
         while(br==false){
             letter=parser.program[parser.pos++];
-            if(parser.ifEnd(letter)){
+            if(parser.ifEnd(letter,r)){
                 throw new ParseEnd('',parser.pos-1)
                 return null;
             }
@@ -364,8 +378,8 @@ const ListType={
         if(parser.end)throw new ParseError('缺少 )',parser.pos-1);
         if(r.funName!=null&&r.funName.value=='defun'){
             parseSym(r,'funNameDef');
-            if(r.funNameDef==null){
-                throw new ParseError('函数名不能为空',parser.pos)
+            if(r.funNameDef==null||r.funNameDef.value==null){
+                throw new ParseError('函数名不能为空',parser.pos,r)
             }
             parseParamDef(r);
             
@@ -417,7 +431,7 @@ const ListType={
             
             case ')':
                 r.items=[];
-                return r;
+                //return r;
                 break;
             default:
                 parseAny(r);
