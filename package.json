@@ -152,10 +152,7 @@
             }
         ],
         "snippets": [
-            {
-                "language": "autolisp",
-                "path": "./snippets/autolisp.json"
-            },
+            
             {
                 "language": "autolisp",
                 "path": "./snippets/autolisp1.json"

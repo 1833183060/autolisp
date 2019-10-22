@@ -9,7 +9,7 @@ const fs=require("fs")
 const path=require('path')
 const parser=require('./lispParser2.js')
 //import {parse} from "./lispParser"
-let snippetObj=Object.assign(require('../snippets/autolisp.json'),require('../snippets/autolisp1.json'));
+let snippetObj=require('../snippets/autolisp1.json');
 snippetObj=Object.assign(snippetObj,require('../snippets/autolisp3.json'))
 const parse=require('./lispParse')
 const LispParse=parse.LispParse;

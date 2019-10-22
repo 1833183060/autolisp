@@ -2,7 +2,7 @@
     "noteq":
     {"prefix":["/= (不等于)"],"body":"(/= ${1:numstr} ${2:numstr1}) ","description":"(/= numstr [numstr] ) \n比较参数是否值不相等 "},
     "mul":{"prefix":["*error*"],"body":"(*error* string) ","description":"(*error* string) \n可由用户定义的错误处理函数"},
-    "-":{"prefix":["- (减)"],"body":"(- ${1:number} ${0:number} )",
+    "-":{"prefix":["- (减)"],"body":"(-$0)",
         "params":[{"label":"number1","doc":"被减数"},{"label":"number2","doc":"减数"}],
         "description":"(- [number number] )\n将第一个数减去其他数的和并返回差值"},
     "1-":{"prefix":["1- (减 1)"],"body":"(1- ${1:number})","description":"(1– number)\n将参数减 1"},

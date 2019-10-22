@@ -1,4 +1,5 @@
 'use strict';
+const vscode = require("vscode");
 const lispParser3=require('./lispParser3')
 Object.defineProperty(exports, "__esModule", { value: true });
 class SignatureHelpProvider {
@@ -59,10 +60,15 @@ class SignatureHelpProvider {
                     
                 }
             }
+            //参数的第一个字符打出来后，parser认为这个参数已经解析完毕
+            //光标的前一个字符是空格，则activeParameter指向下一个参数，否则指向当前参数
+            if(program[offset-1]!=' '&&activeP>0){
+                activeP--;
+            }
             this.item.activeParameter=activeP;
 
             if(typeof funObj.params!='undefined'&&funObj.params!=null){
-                signature.label="("+funObj.funName
+                signature.label="("+ast.funName.value;
                 for(let i=0;i<funObj.params.length;i++){
                     let p=funObj.params[i]
                     signature.parameters.push({label:p.label})
@@ -70,7 +76,9 @@ class SignatureHelpProvider {
                 }
                 signature.label+=")";
                 if(activeP<funObj.params.length){
-                    signature.documentation=funObj.params[activeP].doc+'\n'+funObj.description;
+                    let d=vscode.MarkdownString("**"+funObj.params[activeP].doc+'**  '+'\n'+funObj.description)
+                    signature.documentation="**"+funObj.params[activeP].doc+'**\n'+funObj.description;
+                    signature.documentation=d;
                 }
                 
             }else{
