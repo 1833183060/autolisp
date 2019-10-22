@@ -2,7 +2,7 @@
     "name": "autolisp",
     "displayName": "autolisp助手",
     "description": "为autolisp&dcl提供的代码提示和自动完成功能",
-    "version": "0.0.11",
+    "version": "0.1.0",
     "publisher": "niaoge",
     "icon": "images/autocad-dev.jpg",
     "author": {

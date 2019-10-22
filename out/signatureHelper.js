@@ -47,17 +47,11 @@ class SignatureHelpProvider {
             }
             let funObj=this.snippetObj[ast.funName.value];
             let funBody=funObj.body;
-            let params=funBody.replace('(','').replace(')','').split(' ');
+            
             let signature={label:funBody,documentation:funObj.description}
             this.item.signatures.push(signature)
             signature.parameters=[];
-            if(params!=null){
-                for(let i=1;i<params.length;i++){
-                    if(params[i].length>0){
-                        signature.parameters.push({label:params[i]})
-                    }
-                }
-            }
+
             let activeP=0;
             for(let ii=0;ii<ast.items.length;ii++){
                 if(!(ast.items[ii] instanceof lispParser3.Ann)){
@@ -66,6 +60,31 @@ class SignatureHelpProvider {
                 }
             }
             this.item.activeParameter=activeP;
+
+            if(typeof funObj.params!='undefined'&&funObj.params!=null){
+                signature.label="("+funObj.funName
+                for(let i=0;i<funObj.params.length;i++){
+                    let p=funObj.params[i]
+                    signature.parameters.push({label:p.label})
+                    signature.label+=" "+p.label
+                }
+                signature.label+=")";
+                if(activeP<funObj.params.length){
+                    signature.documentation=funObj.params[activeP].doc+'\n'+funObj.description;
+                }
+                
+            }else{
+                let params=funBody.replace('(','').replace(')','').split(' ');
+                if(params!=null){
+                    for(let i=1;i<params.length;i++){
+                        if(params[i].length>0){
+                            signature.parameters.push({label:params[i]})
+                        }
+                    }
+                }
+            }
+            
+            
             return this.item;
         }catch(ex){
 
