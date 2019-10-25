@@ -3,7 +3,10 @@
     {"prefix":["/= (不等于)"],"body":"(/=${0}) ","description":"(/= numstr [numstr] ) \n比较参数是否值不相等 "},
     "mul":{"prefix":["*error*"],"body":"(*error* string) ","description":"(*error* string) \n可由用户定义的错误处理函数"},
     "-":{"prefix":["- (减)"],"body":"(-$0)",
-        "params":[{"label":"number1","doc":"被减数"},{"label":"number2","doc":"减数"}],
+        "params":[
+            {"label":"number1","doc":"被减数"},
+            {"label":"number2","doc":"减数"}
+        ],
         "description":"(- [number number] )\n将第一个数减去其他数的和并返回差值"},
     "1-":{"prefix":["1- (减 1)"],"body":"(1-$0)",
         "params":[{"label":"number","doc":"数字"}],
@@ -12,23 +15,70 @@
     "+":{"prefix":["+ (加)"],"body":"(+$0)",
         "params":[{"label":"number1","doc":"数字"},{"label":"number2","doc":"数字"}],
         "description":"(+ [number number] ... )\n返回所有数的和"},
-    "1+":{"prefix":["1+ (增 1)"],"body":"(1+${0}) ","description":"(1+ number) \n将参数加 1"},
+    "1+":{"prefix":["1+ (增 1)"],"body":"(1+${0}) ",
+        "params":[
+            {"label":"number","doc":"任意数字"}
+        ],
+        "description":"(1+ number) \n将参数加 1"},
     
-    ">":{"prefix":["> (大于)"],"body":"(>${0}) ","description":"(> numstr [numstr] ) \n如果每个参数值都大于它右边的参数则返回 T，否则返回 nil "},
-    ">=":{"prefix":[">= (大于或等于) "],"body":"(>=$0)","description":"(>= numstr [numstr] ) \n如果每个参数值都大于或等于它右边的参数则返回 T，否则返回 nil  "},
-    "<":{"prefix":["< (小于) "],"body":"(<${0}) ","description":"(< numstr [numstr] ) \n如果每个参数值都小于它右边的参数则返回 T，否则返回 nil  "},
-    "<=":{"prefix":["<= (小于或等于)"],"body":"(<=${0})","description":"(<= numstr [numstr] )\n如果每个参数值都小于或等于它右边的参数则返回 T，否则返回 nil "},
-    "~":{"prefix":["~ (按位非) "],"body":"(~${0})","description":"(~ int)\n返回参数的按位非（即 1 的补码）"},
-    "=":{"prefix":["= (等于) "],"body":"(=$0) ","description":"(= numstr [numstr] ) \n比较参数是否相等"},
+    ">":{"prefix":["> (大于)"],"body":"(>${0}) ",
+        "params":[
+            {"label":"numstr","doc":"数字或字符串"},
+            {"label":"numstr","doc":"数字或字符串"}
+        ],
+        "description":"(> numstr [numstr] ) \n如果每个参数值都大于它右边的参数则返回 T，否则返回 nil "},
+    ">=":{"prefix":[">= (大于或等于) "],"body":"(>=$0)",
+        "params":[
+            {"label":"numstr","doc":"数字或字符串"},
+            {"label":"numstr","doc":"数字或字符串"}
+        ],
+        "description":"(>= numstr [numstr...] ) \n如果每个参数值都大于或等于它右边的参数则返回 T，否则返回 nil  "},
+    "<":{"prefix":["< (小于) "],"body":"(<${0}) ",
+        "params":[
+            {"label":"numstr","doc":"数字或字符串"},
+            {"label":"numstr","doc":"数字或字符串"}
+        ],
+        "description":"(< numstr [numstr...] ) \n如果每个参数值都小于它右边的参数则返回 T，否则返回 nil  "},
+    "<=":{"prefix":["<= (小于或等于)"],"body":"(<=${0})",
+        "params":[
+            {"label":"numstr","doc":"数字或字符串"},
+            {"label":"numstr","doc":"数字或字符串"}
+        ],
+        "description":"(<= numstr [numstr...] )\n如果每个参数值都小于或等于它右边的参数则返回 T，否则返回 nil "},
+    "~":{"prefix":["~ (按位非) "],"body":"(~${0})",
+        "params":[
+            {"label":"int","doc":"正整数或负整数"}
+        ],
+        "description":"(~ int)\n返回参数的按位非（即 1 的补码）"},
+    "=":{"prefix":["= (等于) "],"body":"(=$0) ",
+        "params":[
+            {"label":"numstr","doc":"数字或字符串"},
+            {"label":"numstr","doc":"数字或字符串"}
+        ],
+        "description":"(= numstr [numstr...] ) \n比较参数是否相等"},
     
-    "/":{"prefix":["/ (除)"],"body":"(/$0) ","description":"(/ [number number] ) \n将第一个数除以其他数的乘积并返回商"},
-    "abs":{"prefix":["abs"],"body":"(abs$0)","description":"(abs number)\n返回参数的绝对值"},
-    "acad-pop-dbmod":{"prefix":["acad-pop-dbmod"],"body":"(acad-pop-dbmod)$0","description":"(acad-pop-dbmod)\n恢复 DBMOD 系统变量的值到最近用 acad-push-dbmod   \n保存的值"},
-    "acad-push-dbmod":{"prefix":["acad-push-dbmod"],"body":"(acad-push-dbmod)$0","description":"(acad-push-dbmod)\n储存 DBMOD 系统变量的当前值"},"acad_colordlg":{"prefix":["acad_colordlg"],"body":"(acad_colordlg$0)","description":"(acad_colordlg colornum [flag])\n显示标准的 AutoCAD 颜色选择对话框"},
-    "acad_helpdlg":{"prefix":["acad_helpdlg"],"body":"(acad_helpdlg$0) ","description":"(acad_helpdlg helpfile topic) \n启动帮助工具（已废弃）"},
+    "/":{"prefix":["/ (除)"],"body":"(/$0) ",
+        "params":[
+            {"label":"numstr","doc":"数字或字符串"},
+            {"label":"numstr","doc":"数字或字符串"}
+        ],
+        "description":"(/ [number number...] ) \n将第一个数除以其他数的乘积并返回商"},
+    "abs":{"prefix":["abs"],"body":"(abs$0)",
+        "params":[
+            {"label":"number","doc":"数字"}
+        ],
+        "description":"(abs number)\n返回参数的绝对值"},
+    "acad-pop-dbmod":{"prefix":["acad-pop-dbmod"],"body":"(acad-pop-dbmod)$0",
+
+        "description":"(acad-pop-dbmod)\n恢复 DBMOD 系统变量的值到最近用 acad-push-dbmod   \n保存的值"},
+    "acad-push-dbmod":{"prefix":["acad-push-dbmod"],"body":"(acad-push-dbmod)$0",
+
+        "description":"(acad-push-dbmod)\n储存 DBMOD 系统变量的当前值"},"acad_colordlg":{"prefix":["acad_colordlg"],"body":"(acad_colordlg$0)","description":"(acad_colordlg colornum [flag])\n显示标准的 AutoCAD 颜色选择对话框"},
+    "acad_helpdlg":{"prefix":["acad_helpdlg"],"body":"(acad_helpdlg$0) ",
+        "description":"(acad_helpdlg helpfile topic) \n启动帮助工具（已废弃）"},
         "acad_strlsort":{"prefix":["acad_strlsort"],"body":"(acad_strlsort$0) ","description":"(acad_strlsort list) \n以ASCII码字母顺序对字符串表进行排序"},
-            "Acad_TrueColorCli":{"prefix":["Acad_TrueColorCli"],"body":"(acad_truecolorcli$0)","description":"(acad_truecolorcli color [allowbylayer] [alternatePrompt])\n从命令行中选择 AutoCAD 真彩色"},
-                "Acad_TrueColorDlg":{"prefix":["Acad_TrueColorDlg"],"body":"(acad_truecolordlg$0)","description":"(acad_truecolordlg color [allowbylayer] [currentlayercolor])\n显示 AutoCAD 真彩色选择对话框"},
+    "Acad_TrueColorCli":{"prefix":["Acad_TrueColorCli"],"body":"(acad_truecolorcli$0)","description":"(acad_truecolorcli color [allowbylayer] [alternatePrompt])\n从命令行中选择 AutoCAD 真彩色"},
+    "Acad_TrueColorDlg":{"prefix":["Acad_TrueColorDlg"],"body":"(acad_truecolordlg$0)","description":"(acad_truecolordlg color [allowbylayer] [currentlayercolor])\n显示 AutoCAD 真彩色选择对话框"},
     "acdimenableupdate":{"prefix":["acdimenableupdate"],"body":"(acdimenableupdate$0) ","description":"(acdimenableupdate nil | T) \n控制关联标注的自动更新"},
     "acet-layerp-mark":{"prefix":["acet-layerp-mark"],"body":"(acet-layerp-mark status)","description":"(acet-layerp-mark [status])\n放置图层先前记录的开始和结束标记"},
     "acet-layerp-mode":{"prefix":["acet-layerp-mode"],"body":"(acet-layerp-mode$0)","description":"(acet-layerp-mode [status])\n查询和设置 LAYERPMODE 配置"},
