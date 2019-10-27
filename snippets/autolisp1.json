@@ -476,114 +476,200 @@
         "description":"(exit)\n强行使当前应用程序退出"},
     "exp":{"prefix":["exp"],"body":"(exp${0})",
         "params":[
-            {"label":"expr1","doc":"用于比较的表达式"}
+            {"label":"num","doc":"实数"}
         ],
-        "description":"(exp num)\n返回常数 e (2.718282...) 的指定次幂（自然反对数）"},
+        "description":"(exp num)\n返回常数 e (2.718282...) 的指定次幂（自然反对数）,也就是实数 (num) 的自然反对数"},
     "eval":{"prefix":["eval"],"body":"(eval${0}) ",
-        "params":[],
+        "params":[
+            {"label":"expr","doc":"要计算的表达式"}
+        ],
         "description":"(eval expr) \n返回 AutoLISP 表达式的求值结果"},
     "fill_image":{"prefix":["fill_image"],"body":"(fill_image${0})",
-        "params":[],
+        "params":[
+            {"label":"x1","doc":"矩形左上角的 X 坐标。必须为正数"},
+            {"label":"y1","doc":"矩形左上角的 Y 坐标。必须为正数"},
+            {"label":"width","doc":"矩形填充区域相对于 x1 的宽度（以像素为单位）。"},
+            {"label":"height","doc":"矩形填充区域相对于 y1 的宽度（以像素为单位）。"},
+            {"label":"color","doc":"AutoCAD 颜色代码或下表中的逻辑颜色数值之一：  \n颜色属性所用的符号名称 颜色代码 ADI 助记符 说明  \n–2 BGLCOLOR AutoCAD 图形屏幕的当前颜色  \n–15 DBGLCOLOR 当前对话框背景色  \n–16 DFGLCOLOR 当前对话框（文本）的前景色  \n–18 LINELCOLOR 当前对话框线的颜色"}
+        ],
         "description":"(fill_image x1 y1 width height color)\n在当前激活的对话框图像控件中画一个填充矩形"},
-    "expt":{"prefix":["expt"],"body":"(expt${0}) ",
-        "params":[],
-        "description":"(expt number power) \n返回以某指定数为底数的若干次幂的值"},
-    "fix":{"prefix":["fix"],"body":"(fix${0}) ",
-        "params":[],
-        "description":"(fix number) \n截去实数的小数部分，将它转换成整数后返回该整数"},
+    "expt":{"prefix":["expt"],"body":"(expt${0})",
+        "params":[
+            {"label":"number","doc":"任意数值"},
+            {"label":"power","doc":"number 的幂数"}
+        ],
+        "description":"(expt number power)  \n返回以某指定数为底数的若干次幂的值"},
+    "fix":{"prefix":["fix"],"body":"(fix${0})",
+        "params":[
+            {"label":"number","doc":"实数"}
+        ],
+        "description":"(fix number)  \n截去实数的小数部分，将它转换成整数后返回该整数"},
     "findfile":{"prefix":["findfile"],"body":"(findfile${0}) ",
-        "params":[],
-        "description":"(findfile filename) \n在 AutoCAD 库路径中搜索指定文件或目录"},"expand":{"prefix":["expand"],"body":"(expand${0})",
-        "params":[],
+        "params":[
+            {"label":"filename","doc":"要搜索的文件或目录的名称"}
+        ],
+        "description":"(findfile filename) \n在 AutoCAD 库路径中搜索指定文件或目录"},
+    "expand":{"prefix":["expand"],"body":"(expand${0})",
+        "params":[
+            {"label":"n-expand","doc":"整数，它指定要分配的附加内存数量。内存的分配如下：  \nn-alloc 自由符号  \nn-alloc 自由字符串  \nn-alloc 自由 usubr  \nn-alloc 自由实数  \nn-alloc * n-expand cons 单位  \n这里 n-alloc 为当前段大小"}
+        ],
         "description":"(expand n-expand)\n为 AutoLISP 分配附加空间"},
     "float":{"prefix":["float"],"body":"(float${0}) ",
-        "params":[],
+        "params":[{"label":"number","doc":"任意数值"}],
         "description":"(float number) \n将一个数转换为实数后返回"},
-        "foreach":{"prefix":["foreach"],"body":"(foreach${0})",
-        "params":[],
+    "foreach":{"prefix":["foreach"],"body":"(foreach${0})",
+        "params":[
+            {"label":"name","doc":"表中元素将被赋给该名称指定的变量"},
+            {"label":"list","doc":"由要求值的元素组成的表"},
+            {"label":"[expr...]","doc":"要对 list 中元素求值的表达式"}
+        ],
         "description":"(foreach name list [expr...])\n将表中的所有成员以指定变量的身份带入表达式求值"},
     "function":{"prefix":["function"],"body":"(function${0})",
-        "params":[],
+        "params":[
+            {"label":"函数名或lambda表达式","doc":"symbol 命名函数的符号。  \nlambda-expr 如下格式的表达式：  \n(LAMBDA arguments {S-expression}* ) "}
+        ],
         "description":"(function symbol | lambda-expr) \n通知 Visual LISP 编译器将参数作为内置函数进行链接和优化"},
     "getangle":{"prefix":["getangle"],"body":"(getangle${0}) ",
         "params":[],
         "description":"(getangle [pt] [msg]) \n暂停以等待用户输入角度，然后以弧度形式返回该角度"},
     "gcd":{"prefix":["gcd"],"body":"(gcd${0}) ",
-        "params":[],
-        "description":"(gcd int1 int2) \n返回两个整数的最大公约数"},
+        "params":[
+            {"label":"int1","doc":"大于 0 的整数"},
+            {"label":"int2","doc":"大于 0 的整数"}
+        ],
+        "description":"(gcd int1 int2)  \n返回两个整数的最大公约数"},
     "getcfg":{"prefix":["getcfg"],"body":"(getcfg${0}) ",
-        "params":[],
-        "description":"(getcfg cfgname) \n从 acad.cfg 文件的 AppData 段中检索应用数据"},
+        "params":[
+            {"label":"cfgname","doc":"字符串，指定要检索的段和参数值（长度不能超过 496 个字符）。"}
+        ],
+        "description":"(getcfg cfgname)  \n从 acad.cfg 文件的 AppData 段中检索应用数据"},
     "getcname ":{"prefix":["getcname "],"body":"(getcname${0}) ",
-        "params":[],
-        "description":"(getcname cname) \n获取 AutoCAD 命令的本地化名或英文名"},
+        "params":[
+            {"label":"cname","doc":"本地化命令名或带下划线的英文命令名，其长度不能超过 64 个字符"}
+        ],
+        "description":"(getcname cname)  \n获取 AutoCAD 命令的本地化名或英文名"},
     "getcorner":{"prefix":["getcorner"],"body":"(getcorner${0}) ",
-        "params":[],
-        "description":"(getcorner pt [msg]) \n暂停等待用户输入矩形第二个角点的坐标"},
+        "params":[
+            {"label":"pt","doc":"用作基点的点"},
+            {"label":"[msg]","doc":"用于提示用户的字符串"}
+        ],
+        "description":"(getcorner pt [msg])  \n暂停等待用户输入矩形第二个角点的坐标"},
     "getenv":{"prefix":["getenv"],"body":"(getenv${0}) ",
-        "params":[],
-        "description":"(getenv variable-name) \n以字符串方式返回指定的环境变量的值"},
+        "params":[
+            {"label":"variable-name","doc":"字符串，指定要读取的变量名。环境变量的拼写必须与系统注册表中的拼写完全一致（包括大小写）。"}
+        ],
+        "description":"(getenv variable-name)  \n以字符串方式返回指定的环境变量的值"},
     "getfiled":{"prefix":["getfiled"],"body":"(getfiled${0}) ",
-        "params":[],
+        "params":[
+            {"label":"title","doc":"字符串，指定对话框的标签"},
+            {"label":"default","doc":"要使用的缺省文件名；可为空字符串 (\"\")。"},
+            {"label":"ext","doc":"缺省的文件扩展名。如果 ext 为空字符串 (\"\")，则缺省值为 *（所有文件类型）。如果该参数中包含 dwg 文件类型，则 getfiled 函数在对话框中显示预览图像框"},
+            {"label":"flags","doc":"整数（按位编码），控制对话框的行为。要一次设置多个条件，可以将几个位值加在一起生成一个 0 和 15 之间的标志值（包括 0 和 15）。"}
+        ],
         "description":"(getfiled title default ext flags) \n用标准的 AutoCAD 文件对话框提示用户输入一个文件名，并返回该文件名"},
     "getdist":{"prefix":["getdist"],"body":"(getdist${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[pt]","doc":"二维或三维点。用作当前 UCS 中的基点。如果已经提供了 pt，则仅提示用户输入第二点"},
+            {"label":"[msg]","doc":"用于提示用户的字符串。如果未指定该参数，则 AutoCAD 不显示提示信息"}
+        ],
         "description":"(getdist [pt] [msg]) \n暂停以等待用户输入距离"},
     "getint":{"prefix":["getint"],"body":"(getint${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[msg]","doc":"用于提示用户的字符串。如果忽略该参数，则不显示提示信息"}
+        ],
         "description":"(getint [msg]) \n暂停以等待用户输入一个整数并返回该整数"},
     "getkword":{"prefix":["getkword"],"body":"(getkword${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[msg]","doc":"用于提示用户的字符串。如果忽略该参数，则不显示提示信息"}
+        ],
         "description":"(getkword [msg]) \n暂停以等待用户输入一个关键字并返回该关键字"},
     "gc":{"prefix":["gc"],"body":"(gc)${0}",
         "params":[],
         "description":"(gc)\n强制收集无用数据，释放不再使用的节点"},
     "getpoint":{"prefix":["getpoint"],"body":"(getpoint${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[pt]","doc":"当前 UCS 中的二维或三维基点。  \n请注意 getpoint 函数还可以接受一个整数或实数作为 pt 参数，并使用直接距离输入法来指定点。这种方法以 LASTPOINT 系统变量的值作为起点，将 pt 作为距离，根据当前光标相对于 lastpoint 的位置确定方向。其结果是在当前光标位置的方向上和上一点之间的距离为指定值的点"},
+            {"label":"[msg]","doc":"用于提示用户的字符串"}
+        ],
         "description":"(getpoint [pt] [msg]) \n暂停以等待用户输入点，并返回该点"},
     "getorient":{"prefix":["getorient"],"body":"(getorient${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[pt]","doc":"当前 UCS 中的二维基点。  \n如果指定 pt 参数，则假设其为两点中的第一点。允许用户指定另一个点来给 AutoLISP 指定角度。也可以提供三维基点，但测量角度总是在当前构造平面上进行"},
+            {"label":"[msg]","doc":"用于提示用户的字符串"}
+        ],
         "description":"(getorient [pt] [msg]) \n暂停以等待用户输入角度，并返回该角度"},
     "getreal":{"prefix":["getreal"],"body":"(getreal${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[msg]","doc":"用于提示用户的字符串"}
+        ],
         "description":"(getreal [msg]) \n暂停以让用户输入一个实数并返回该实数"},
     "getvar":{"prefix":["getvar"],"body":"(getvar${0}) ",
-        "params":[],
-        "description":"(getvar varname) \n获取一个 AutoCAD 系统变量的值"},
+        "params":[
+            {"label":"varname","doc":"指定系统变量名的字符串或符号"}
+        ],
+        "description":"(getvar varname)  \n获取一个 AutoCAD 系统变量的值"},
     "get_attr":{"prefix":["get_attr"],"body":"(get_attr${0})",
-        "params":[],
+        "params":[
+            {"label":"key","doc":"指定控件操作名的字符串，区分大小写"},
+            {"label":"attribute","doc":"指定出现在该控件的 DCL 描述中的属性"}
+        ],
         "description":"(get_attr key attribute)\n获取对话框指定控件的某个属性值"},
     "get_tile":{"prefix":["get_tile"],"body":"(get_tile${0})",
-        "params":[],
-        "description":"(get_tile key)\n获取对话框指定控件的当前运行时的值"},
+        "params":[
+            {"label":"key","doc":"指定控件操作名的字符串，区分大小写"}
+        ],
+        "description":"(get_tile key)  \n获取对话框指定控件的当前运行时的值"},
     "graphscr":{"prefix":["graphscr"],"body":"(graphscr)${0}",
         "params":[],
-        "description":"(graphscr) \n显示 AutoCAD 图形屏幕"},
+        "description":"(graphscr)  \n显示 AutoCAD 图形屏幕"},
     "grdraw":{"prefix":["grdraw"],"body":"(grdraw${0}) ",
-        "params":[],
+        "params":[
+            {"label":"from","doc":"二维或三维点（两个或三个实数的列表），指定当前 UCS 中矢量的端点。AutoCAD 剪裁该矢量以适合屏幕显示"},
+            {"label":"to","doc":"二维或三维点（两个或三个实数的列表），指定当前 UCS 中矢量的另一个端点。AutoCAD 剪裁该矢量以适合屏幕显示"},
+            {"label":"color","doc":"整数，指定绘制矢量的颜色。如果该参数为 -1，则指定为 XOR（异或）操作方式，即用当前绘图颜色与所经过位置处的当前颜色做异或操作，而不是简单地覆盖原有颜色"},
+            {"label":"[highlight]","doc":"非 0 整数，指定以显示设备的缺省亮显方式来绘制矢量（通常为虚线）。如忽略 highlight 或该参数为 0，则 grdraw 使用正常显示模式"}
+        ],
         "description":"(grdraw from to color [highlight]) \n在当前视口中的两个点之间显示一条矢量线"},
     "grclear":{"prefix":["grclear"],"body":"(grclear)${0}",
         "params":[],
-        "description":"(grclear) \n清除当前视口（已废弃）"},
+        "description":"(grclear)  \n清除当前视口（已废弃）"},
     "getstring":{"prefix":["getstring"],"body":"(getstring${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[cr]","doc":"如果提供了该参数且其值不为 nil，那么输入的字符串可以包括空格且必须按 ENTER 键结束。否则，输入的字符串以空格键或 ENTER 键结束"},
+            {"label":"[msg]","doc":"用于提示用户的字符串"}
+        ],
         "description":"(getstring [cr][msg]) \n暂停以等待用户输入字符串，并返回该字符串"},
     "grread":{"prefix":["grread"],"body":"(grread${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[track]","doc":"如果提供该参数且其值不为 nil，则输入设备移动时，本函数能从定点设备中返回坐标"},
+            {"label":"[allkeys]","doc":"整数型，决定 grread 要执行的功能。allkeys 的几个位值相加可以获得组合功能。可以指定如下值：  \n1 （位0） 返回“拖动模式”坐标。如果设置了该位，而且用户只是移动定点设备而没有按下按钮或键盘，grread 函数就返回一个表，其第一个成员是类型代码 5，第二个成员是当前定点设备（鼠标或数字化仪）的位置坐标 (X,Y)，这就是 AutoCAD 实现拖动的方法。  \n2 （位1） 返回所有的键值，包括功能键和光标键代码，用户按下光标键时并不移动光标。  \n4 （位2） 使用 curtype 参数传来的值控制光标的显示。  \n8 （位3） 在用户按下 ESC 键时不显示相应错误信息"},
+            {"label":"[curtype]","doc":"整数型，表明显示光标的类型。只有当 allkeys 参数的第二位为 1 时 curtype 参数才有效。该参数只控制当前 grread 函数调用时显示的光标类型。可以指定下列 curtype 值：  \n0 显示普通十字光标。  \n1 不显示光标（无十字光标）。  \n2 显示对象选择光标"}
+        ],
         "description":"(grread [track] [allkeys [curtype]]) \n从 AutoCAD 的任何一种输入设备中读取数值"},
     "grtext":{"prefix":["grtext"],"body":"(grtext${0})",
-        "params":[],
+        "params":[
+            {"label":"[box]","doc":"整数型，指定待写文本的位置"},
+            {"label":"[text]","doc":"要写到状态行或屏幕菜单区的字符串。如果 text 参数太长，则它将被截断"},
+            {"label":"[highlight]","doc":"整数，用于标识是否亮显屏幕菜单项"}
+        ],
         "description":"(grtext [box text [highlight]])\n将文本写到状态行或屏幕菜单区"},
     "grvecs":{"prefix":["grvecs"],"body":"(grvecs${0}) ",
-        "params":[],
+        "params":[
+            {"label":"vlist","doc":"由一系列的可选颜色代码（整数）和两个点表组成的矢量表。关于设置 vlist 格式的详细信息，请参见矢量表格式"},
+            {"label":"[trans]","doc":"转换矩阵，用来改变定义在矢量表中的矢量位置或比例。它是由四个子表组成的，每个子表又由四个实数组成"}
+        ],
         "description":"(grvecs vlist [trans]) \n在图形屏幕上绘制多个矢量"},
     "handent":{"prefix":["handent"],"body":"(handent${0}) ",
-        "params":[],
+        "params":[
+            {"label":"handle","doc":"表示图元句柄的字符串"}
+        ],
         "description":"(handent handle) \n根据对象（图元）的句柄返回它的对象（图元）名"},
     "initdia":{"prefix":["initdia"],"body":"(initdia${0})",
-        "params":[],
+        "params":[
+            {"label":"[dialogflag]","doc":"整数型。如果没有提供该参数或提供的该参数不为 0，下一个（也仅有下一个）命令将使用该命令的对话框而不是命令行提示。如果 dialogflag 参数为 0，那么该调用将清除以前对该函数的调用，恢复显示命令行界面的缺省状态"}
+        ],
         "description":"(initdia [dialogflag])\n强制显示下一个命令的对话框"},
-    "help ":{"prefix":["help "],"body":"(help${0}) ",
+    "help ":{"prefix":["help "],"body":"(help${0})",
         "params":[],
         "description":"(help [helpfile [topic [command]]]) \n调用帮助工具"},
     "if":{"prefix":["if"],"body":"(if${0}) ",
