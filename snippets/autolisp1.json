@@ -670,50 +670,96 @@
         ],
         "description":"(initdia [dialogflag])\n强制显示下一个命令的对话框"},
     "help ":{"prefix":["help "],"body":"(help${0})",
-        "params":[],
+        "params":[
+            {"label":"[helpfile]","doc":"指定帮助文件的字符串。helpfile 参数不需要指定文件扩展名。如果指定文件扩展名，则 AutoCAD 仅查找该文件。如果 helpfile 参数为空字符串 (\"\") 或被省略，则 AutoCAD 使用缺省 AutoCAD 帮助文件如果不指定扩展名，则 AutoCAD 查找带 .chm 扩展名的 helpfile，如果找不到该名称的文件，AutoCAD 查找带 .hlp 扩展名的文件"},
+            {"label":"[topic]","doc":"关键字，指定帮助显示的主题 ID。如果 topic 参数是空字符串 (\"\")，则会显示帮助文件的默认页面。如果在调用 CHM 文件中的主题，提供的文件名不需要扩展名， AutoCAD 会自动添加 .htm扩展名。"},
+            {"label":"[command]","doc":"字符串，指定帮助窗口的初始状态，command 参数是 HtmlHelp() 和 WinHelp() 函数的 uCommand(在 HTML 帮助中)或 fucommand(在 WinHelp 中)参数所使用的一个字符串，HtmlHelp() 和 WinHelp() 函数的定义可参见 Microsoft Windows SDK 中的 WinHelp API。"}
+        ],
         "description":"(help [helpfile [topic [command]]]) \n调用帮助工具"},
     "if":{"prefix":["if"],"body":"(if${0}) ",
-        "params":[],
+        "params":[
+            {"label":"testexpr","doc":"判断表达式"},
+            {"label":"thenexpr","doc":"如果 testexpr 不等于 nil 则执行该表达式"},
+            {"label":"[thenexpr]","doc":"如果 testexpr 等于 nil 则执行该表达式"}
+        ],
         "description":"(if testexpr thenexpr [elseexpr]) \n根据对条件的判断结果，对两个表达式求值"},
     "inters":{"prefix":["inters"],"body":"(inters${0}) ",
-        "params":[],
+        "params":[
+            {"label":"pt1","doc":"第一条直线的端点"},
+            {"label":"pt2","doc":"第一条直线的另一端点"},
+            {"label":"pt3","doc":"第二条直线的端点"},
+            {"label":"pt4","doc":"第二条直线的另一端点"},
+            {"label":"[onseg]","doc":"如果指定为 nil，则由四个 pt 参数定义的两条线被认为是无限长的。如果省略 onseg 参数或其值不为 nil，则交点必须同时位于两条线上，否则 inters 返回 nil"}
+        ],
         "description":"(inters pt1 pt2 pt3 pt4 [onseg]) \n求两条直线的交点"},
     "initget":{"prefix":["initget"],"body":"(initget${0})",
-        "params":[],
+        "params":[
+            {"label":"[bits]","doc":"按位编码的整数，用于控制是否允许某些类型的用户输入"},
+            {"label":"[string]","doc":"代表关键字表的字符串"}
+        ],
         "description":"(initget [bits] [string])\n为随后的用户输入函数调用创建关键字"},
-    "lambda":{"prefix":["lambda"],"body":"(lambda${0}) ",
-        "params":[],
-        "description":"(lambda arguments expr...) \n定义无名函数"},
+        "doc":"https://help.autodesk.com/view/OARX/2019/ENU/?guid=GUID-A181D474-F817-4550-86E9-87649262FA8A",
     "itoa":{"prefix":["itoa"],"body":"(itoa${0}) ",
-        "params":[],
+        "params":[
+            {"label":"int","doc":"需要转换的整数"}
+        ],
         "description":"(itoa int) \n将整数转换成字符串，并返回转换结果"},
+    "lambda":{"prefix":["lambda"],"body":"(lambda${0}) ",
+        "params":[
+            {"label":"arguments","doc":"传给表达式的参数"},
+            {"label":"expr","doc":"AutoLISP 表达式"},
+            {"label":"....","doc":"更多AutoLISP 表达式"}
+        ],
+        "description":"(lambda arguments expr...) \n定义无名函数"},
+    
     "list":{"prefix":["list"],"body":"(list${0})",
-        "params":[],
-        "description":"(list [expr...])\n将任意数目的表达式组合成一个表"},
+        "params":[
+            {"label":"[expr]","doc":"AutoLISP 表达式"},
+            {"label":"...","doc":"更多AutoLISP 表达式"}
+        ],
+        "description":"(list [expr...])  \n将任意数目的表达式组合成一个表"},
     "layoutlist":{"prefix":["layoutlist"],"body":"(layoutlist)${0}",
         "params":[],
-        "description":"(layoutlist)\n返回当前图形中所有图纸空间布局组成的表"},
+        "description":"(layoutlist)  \n返回当前图形中所有图纸空间布局组成的表"},
     "length":{"prefix":["length"],"body":"(length${0})",
-        "params":[],
+        "params":[
+            {"label":"lst","doc":"列表"}
+        ],
         "description":"(length lst)\n以整数形式返回表中元素的数目"},
     "listp":{"prefix":["listp"],"body":"(listp${0})",
-        "params":[],
-        "description":"(listp item)\n检查某个项是否是表"},
+        "params":[
+            {"label":"item","doc":"任何原子、表或表达式"}
+        ],
+        "description":"(listp item)  \n检查某个项是否是表"},
     "load":{"prefix":["load"],"body":"(load${0}) ",
-        "params":[],
+        "params":[
+            {"label":"filename","doc":"表示文件名的字符串"},
+            {"label":"[onfailure]","doc":"load 失败时返回的值"}
+        ],
         "description":"(load filename [onfailure]) \n对一个文件中的 AutoLISP 表达式求值"},
     "load_dialog":{"prefix":["load_dialog"],"body":"(load_dialog${0})",
-        "params":[],
-        "description":"(load_dialog dclfile)\n加载 DCL 文件"},
+        "params":[
+            {"label":"dclfile","doc":"指定要加载 DCL 文件的字符串。如果 dclfile 参数没有指定文件扩展名，则扩展名为 .dcl"}
+        ],
+        "description":"(load_dialog dclfile)  \n加载 DCL 文件"},
     "log":{"prefix":["log"],"body":"(log${0}) ",
-        "params":[],
+        "params":[
+            {"label":"num","doc":"正数"}
+        ],
         "description":"(log num) \n返回一个实数的自然对数"},
     "logand":{"prefix":["logand"],"body":"(logand${0}) ",
-        "params":[],
-        "description":"(logand [int int...]) \n返回一个整数表中的各数按位逻辑与 (AND) 的结果"},
+        "params":[
+            {"label":"int","doc":"正数"},
+            {"label":"int","doc":"正数"},
+            {"label":"...","doc":"更多正数"}
+        ],
+        "description":"(logand [int int...])  \n返回一个整数表中的各数按位逻辑与 (AND) 的结果"},
     "mapcar":{"prefix":["mapcar"],"body":"(mapcar${0})",
-        "params":[],
-        "description":"(mapcar functionlist1... listn)\n将作为本函数参数的一个或多个表的各个元素提供给指定函数进行求值，并将由求值结果构成的表返回"},
+        "params":[
+            {"label":"function","doc":"正数"},
+            {"label":"list1...listn","doc":"一个或多个表。表的数目必须与 function 参数中要求的参数个数相等"}
+        ],
+        "description":"(mapcar function list1...listn)\n将作为本函数参数的一个或多个表的各个元素提供给指定函数进行求值，并将由求值结果构成的表返回"},
     "logior":{"prefix":["logior"],"body":"(logior${0}) ",
         "params":[],
         "description":"(logior [intint...]) \n返回一个整数表中的各数按位逻辑或 (OR) 的结果"},
