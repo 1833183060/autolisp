@@ -761,134 +761,263 @@
         ],
         "description":"(mapcar function list1...listn)\n将作为本函数参数的一个或多个表的各个元素提供给指定函数进行求值，并将由求值结果构成的表返回"},
     "logior":{"prefix":["logior"],"body":"(logior${0}) ",
-        "params":[],
-        "description":"(logior [intint...]) \n返回一个整数表中的各数按位逻辑或 (OR) 的结果"},
+        "params":[
+            {"label":"[int]","doc":"整数"},
+            {"label":"[int]","doc":"整数"},
+            {"label":"[...]","doc":"更多整数"}
+        ],
+        "description":"(logior [int int...]) \n返回一个整数表中的各数按位逻辑或 (OR) 的结果"},
     "lsh":{"prefix":["lsh"],"body":"(lsh${0}) ",
-        "params":[],
-        "description":"(lsh intnumbits) \n返回某整数作指定次逻辑移位后的结果"},
+        "params":[
+            {"label":"int","doc":"整数"},
+            {"label":"numbits","doc":"int 移位的次数。如果 numbits 为正，int 向左移；如果 numbits 为负，int 向右移。在这两种情况下，移入位为 0，移出位丢弃如果未指定 numbits，则不发生位移"}
+        ],
+        "description":"(lsh int numbits)  \n返回某整数作指定次逻辑移位后的结果"},
+    "last":{"prefix":["last"],"body":"(last${0})",
+        "params":[
+            {"label":"lst","doc":"列表"}
+        ],
+        "description":"(last lst)  \n返回表的最后一个元素"},
     "max":{"prefix":["max"],"body":"(max${0}) ",
-        "params":[],
-        "description":"(max [number number...]) \n返回给定各数中的最大者"},
+        "params":[
+            {"label":"[number]","doc":"整数或实数"},
+            {"label":"[number]","doc":"整数或实数"},
+            {"label":"[...]","doc":"任意多个整数或实数"}
+        ],
+        "description":"(max [number number...])  \n返回给定各数中的最大者"},
     "menucmd":{"prefix":["menucmd"],"body":"(menucmd${0}) ",
-        "params":[],
-        "description":"(menucmd string) \n发出菜单命令，或设置并检索菜单项状态"},
+        "params":[
+            {"label":"string","doc":"字符串，指定菜单区和要赋给这个菜单区的值。string 参数有下列参量：  \n\"menu_area=value\""}
+        ],
+        "description":"(menucmd string)  \n发出菜单命令，或设置并检索菜单项状态"},
     "member":{"prefix":["member"],"body":"(member${0})",
-        "params":[],
-        "description":"(member expr lst)\n搜索表中是否包含某表达式，并从该表达式的第一次出现处返回表的其余部分"},
+        "params":[
+            {"label":"expr","doc":"要搜索的表达式"},
+            {"label":"lst","doc":"要在其中搜索expr的列表"}
+        ],
+        "description":"(member expr lst)  \n搜索表中是否包含某表达式，并从该表达式的第一次出现处返回表的其余部分"},
     "mem":{"prefix":["mem"],"body":"(mem)${0}",
         "params":[],
-        "description":"(mem)\n显示 AutoLISP 内存的当前状态"},
+        "description":"(mem)  \n显示 AutoLISP 内存的当前状态"},
     "menugroup":{"prefix":["menugroup"],"body":"(menugroup${0}) ",
-        "params":[],
-        "description":"(menugroup groupname) \n检查是否加载了指定的菜单组"},
-    "last":{"prefix":["last"],"body":"(last${0})",
-        "params":[],
-        "description":"(last lst)\n返回表的最后一个元素"},
+        "params":[
+            {"label":"groupname","doc":"字符串，菜单组的名称"}
+        ],
+        "description":"(menugroup groupname)  \n检查是否加载了指定的菜单组"},
+    
     "minusp":{"prefix":["minusp"],"body":"(minusp${0}) ",
-        "params":[],
-        "description":"(minusp num) \n检查某个数是否是负数"},
+        "params":[
+            {"label":"num","doc":"整数或实数"}
+        ],
+        "description":"(minusp num)  \n检查某个数是否是负数"},
     "min":{"prefix":["min"],"body":"(min${0}) ",
-        "params":[],
-        "description":"(min [number number...]) \n返回给定各数中的最小者"},
+        "params":[
+            {"label":"[number]","doc":"整数或实数"},
+            {"label":"[number]","doc":"整数或实数"},
+            {"label":"[...]","doc":"任意多个整数或实数"}
+        ],
+        "description":"(min [number number...])  \n返回给定各数中的最小者"},
     "mode_tile":{"prefix":["mode_tile"],"body":"(mode_tile${0})",
-        "params":[],
-        "description":"(mode_tile key mode)\n设置对话框控件的状态"},
+        "params":[
+            {"label":"key","doc":"指定控件操作名的字符串。区分大小写"},
+            {"label":"mode","doc":"下列整数之一：0 启用控件。1 禁用控件。2 将控件设为焦点3 选择编辑框内容4 切换图像亮显。"}
+        ],
+        "description":"(mode_tile key mode)  \n设置对话框控件的状态"},
     "nentselp":{"prefix":["nentselp"],"body":"(nentselp${0}) ",
-        "params":[],
-        "description":"(nentselp [msg] [pt]) \n在没有用户输入的情况下，本函数的功能与 nentsel 函数类似"},
+        "params":[
+            {"label":"[msg]","doc":"用作提示的字符串。如果省略该参数，则显示“选择对象”提示"},
+            {"label":"[pt]","doc":"选择点。该参数允许在没有用户输入的情况下实现对象选择"}
+        ],
+        "description":"(nentselp [msg] [pt])  \n在没有用户输入的情况下，本函数的功能与 nentsel 函数类似"},
     "new_dialog":{"prefix":["new_dialog"],"body":"(new_dialog${0})",
-        "params":[],
+        "params":[
+            {"label":"dlgname","doc":"用于标识对话框的字符串"},
+            {"label":"dcl_id","doc":"由 load_dialog 获得的 DCL 文件标识符"},
+            {"label":"[action]","doc":"字符串，包含用作缺省操作的 AutoLISP 表达式。如果不想指定缺省操作，可以将该参数指定为空字符串 (\"\")。如果指定了 screen-pt 就必须指定 action 参数。当用户拾取了某个激活的控件，而该控件没有通过 action_tile 函数或 DCL 显式指定操作或回调函数，则计算指定的缺省操作"},
+            {"label":"[screen-pt]","doc":"二维点表，用于指定屏幕上对话框位置的 X、Y 坐标。该点通常指定的是对话框的左上角，但它还与平台有关，其值通常用系统单位来表示。如果将该点指定为 '(-1 -1)，那么打开对话框时它显示在缺省位置上（AutoCAD 的图形屏幕的中心位置）。"}
+        ],
         "description":"(new_dialog dlgname dcl_id [action [screen-pt]])\n开始一个新的对话框并显示该对话框，而且能指定一个缺省操作"},
     "nentsel":{"prefix":["nentsel"],"body":"(nentsel${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[msg]","doc":"用作提示的字符串。如果省略该参数，则显示“选择对象”提示"}
+        ],
         "description":"(nentsel [msg]) \n提示用户指定点来选择对象（图元），得到这个对象所指片段的对象名"},
     "nth":{"prefix":["nth"],"body":"(nth${0})",
-        "params":[],
-        "description":"(nth n lst)\n返回表中的第 n 个元素"},
+        "params":[
+            {"label":"n","doc":"整数，第几个元素(从0开始计数)"},
+            {"label":"lst","doc":"列表"}
+        ],
+        "description":"(nth n lst)  \n返回表中的第 n 个元素"},
     "null":{"prefix":["null"],"body":"(null${0})",
-        "params":[],
-        "description":"(null item)\n检查某项的值是否设置为 nil "},
+        "params":[
+            {"label":"item","doc":"AutoLISP 表达式"}
+        ],
+        "description":"(null item)  \n检查某项的值是否设置为 nil "},
     "not":{"prefix":["not"],"body":"(not${0}) ",
-        "params":[],
-        "description":"(not item) \n检查一个项的求值结果是否为 nil "},
-    "open":{"prefix":["open"],"body":"(open${0}) ",
-        "params":[],
-        "description":"(open filename mode) \n打开一个文件，供其他 AutoLISP I/O 函数访问"},
+        "params":[
+            {"label":"item","doc":"AutoLISP 表达式"}
+        ],
+        "description":"(not item)  \n检查一个项的求值结果是否为 nil"},
+    
     "numberp":{"prefix":["numberp"],"body":"(numberp${0})",
-        "params":[],
-        "description":"(numberp item)\n检查某个项是否是实数或整数"},
+        "params":[
+            {"label":"item","doc":"AutoLISP 表达式"}
+        ],
+        "description":"(numberp item)  \n检查某个项是否是实数或整数"},
+    "open":{"prefix":["open"],"body":"(open${0}) ",
+        "params":[
+            {"label":"filename","doc":"字符串，指定要打开文件的名称和扩展名。如果没有指定文件的全部路径，则 open 假定其路径为 AutoCAD 启动目录"},
+            {"label":"mode","doc":"指明文件的状态为打开文件用于读、写或追加"}
+        ],
+        "description":"(open filename mode)  \n打开一个文件，供其他 AutoLISP I/O 函数访问"},
     "or":{"prefix":["or"],"body":"(or${0}) ",
-        "params":[],
-        "description":"(or [expr...]) \n返回对表达式进行逻辑或 (OR) 运算的结果"},
-    "polar":{"prefix":["polar"],"body":"(polar${0})",
-        "params":[],
-        "description":"(polar pt ang dist)\n在 UCS 坐标系下，求某点的指定角度和指定距离处的点，并返回该点"},
+        "params":[
+            {"label":"[expr]","doc":"AutoLISP 表达式"},
+            {"label":"[...]","doc":"任意多个AutoLISP 表达式"}
+        ],
+        "description":"(or [expr...])  \n返回对表达式进行逻辑或 (OR) 运算的结果"},
+    
     "osnap":{"prefix":["osnap"],"body":"(osnap${0}) ",
-        "params":[],
-        "description":"(osnap pt mode) \n将某种对象捕捉模式作用于指定点而获得一个点，并返回该点"},
+        "params":[
+            {"label":"pt","doc":"点"},
+            {"label":"mode","doc":"字符串，其中包含了一个或多个有效的对象捕捉模式标志符（如 mid、cen 等），各标志符之间用逗号隔开"}
+        ],
+        "description":"(osnap pt mode)  \n将某种对象捕捉模式作用于指定点而获得一个点，并返回该点"},
+    "polar":{"prefix":["polar"],"body":"(polar${0})",
+        "params":[
+            {"label":"pt","doc":"二维或三维点"},
+            {"label":"ang","doc":"以弧度为单位的角度值，它是相对于当前构造平面 X 轴按逆时针方向计算的"},
+            {"label":"dist","doc":"与指定点 pt 的距离"}
+        ],
+        "description":"(polar pt ang dist)   \n在 UCS 坐标系下，求某点的指定角度和指定距离处的点，并返回该点"},
     "prin1":{"prefix":["prin1"],"body":"(prin1${0})",
-        "params":[],
-        "description":"(prin1 [expr [file-desc]])\n在命令行打印一个表达式或将表达式写入已打开的文件中"},
+        "params":[
+            {"label":"[expr]","doc":"字符串或 AutoLISP 表达式。仅打印指定的 expr，而不包括换行或空格"},
+            {"label":"[file-desc]","doc":"以写方式打开的文件的文件描述符"}
+        ],
+        "description":"(prin1 [expr [file-desc]])  \n在命令行打印一个表达式或将表达式写入已打开的文件中"},
     "princ":{"prefix":["princ"],"body":"(princ${0})",
-        "params":[],
+        "params":[
+            {"label":"[expr]","doc":"字符串或 AutoLISP 表达式。仅打印指定的 expr，而不包括换行或空格"},
+            {"label":"[file-desc]","doc":"以写方式打开的文件的文件描述符"}
+        ],
         "description":"(princ [expr [file-desc]])\n在命令行打印表达式，或将表达式写入已打开的文件中"},
-    "progn":{"prefix":["progn"],"body":"(progn \n${0}\n)",
-        "params":[],
-        "description":"(progn [expr]...)\n顺序地对每一个表达式进行求值，并返回最后那个表达式的值"},
+    
     "print":{"prefix":["print"],"body":"(print${0})",
-        "params":[],
-        "description":"(print [expr [file-desc]])\n在命令行打印表达式，或将表达式写入已打开的文件中"},"prompt":{"prefix":["prompt"],"body":"(prompt${0})",
-        "params":[],
+        "params":[
+            {"label":"[expr]","doc":"字符串或 AutoLISP 表达式。仅打印指定的 expr，而不包括换行或空格"},
+            {"label":"[file-desc]","doc":"以写方式打开的文件的文件描述符"}
+        ],
+        "description":"(print [expr [file-desc]])\n在命令行打印表达式，或将表达式写入已打开的文件中"},
+    "prompt":{"prefix":["prompt"],"body":"(prompt${0})",
+        "params":[
+            {"label":"msg","doc":"字符串"}
+        ],
         "description":"(prompt msg)\n在屏幕提示区显示一个字符串"},
+    "progn":{"prefix":["progn"],"body":"(progn \n${0}\n)",
+        "params":[
+            {"label":"[expr]","doc":"AutoLISP 表达式"},
+            {"label":"[...]","doc":"任意多个AutoLISP 表达式"}
+        ],
+        "description":"(progn [expr]...)   \n顺序地对每一个表达式进行求值，并返回最后那个表达式的值"},
     "quit":{"prefix":["quit"],"body":"(quit)${0}",
         "params":[],
-        "description":"(quit)\n强制退出当前应用程序"},"quote":{"prefix":["quote"],"body":"(quote${0})",
-        "params":[],
-        "description":"(quote expr)\n返回表达式而不对其求值"},
+        "description":"(quit)  \n强制退出当前应用程序"},
+    "quote":{"prefix":["quote"],"body":"(quote${0})",
+        "params":[
+            {"label":"expr","doc":"AutoLISP 表达式"}
+        ],
+        "description":"(quote expr)  \n返回表达式而不对其求值"},
     "read-line":{"prefix":["read-line"],"body":"(read-line${0}) ",
-        "params":[],
-        "description":"(read-line [file-desc]) \n从键盘或已打开文件中读取行结束符前的字符串"},
+        "params":[
+            {"label":"[fie-desc]","doc":"文件描述符（来自 open），代表打开的文件。如果未指定 file-desc，则 read-line 从键盘输入缓冲区中获取输入"}
+        ],
+        "description":"(read-line [file-desc])  \n从键盘或已打开文件中读取行结束符前的字符串"},
     "read-char":{"prefix":["read-char"],"body":"(read-char${0}) ",
-        "params":[],
+        "params":[
+            {"label":"[fie-desc]","doc":"文件描述符（来自 open），代表打开的文件。如果未指定 file-desc，则 read-char 从键盘输入缓冲区中获取输入字符"}
+        ],
         "description":"(read-char [file-desc]) \n从键盘输入缓冲区或打开文件中读入一个字符，并将该字符转换成十进制的 ASCII 码值后返回"},
     "read":{"prefix":["read"],"body":"(read${0}) ",
-        "params":[],
-        "description":"(read [string]) \n返回字符串中的第一个表或第一个原子"},
+        "params":[
+            {"label":"[string]","doc":"字符串。string 参数不能在表或字符串外包含空格"}
+        ],
+        "description":"(read [string])  \n返回字符串中的第一个表或第一个原子"},
     "redraw":{"prefix":["redraw"],"body":"(redraw${0}) ",
-        "params":[],
-        "description":"(redraw [ename [mode]]) \n重画当前视口或当前视口中的一个指定对象（图元）"},
+        "params":[
+            {"label":"[ename]","doc":"要重画图元的名称"},
+            {"label":"[mode]","doc":"整数值，用于控制图元的可见性和亮显。mode 可为下列值之一：1 显示图元 2 隐藏图元（使其不可见） 3 亮显图元 4 不亮显图元  \n亮显图元模式 (mode=3) 必须与不亮显图元模式 (mode=4)协调使用"}
+        ],
+        "description":"(redraw [ename [mode]])  \n重画当前视口或当前视口中的一个指定对象（图元）"},
     "namedobjdict":{"prefix":["namedobjdict"],"body":"(namedobjdict)${0}",
         "params":[],
         "description":"(namedobjdict) \n返回当前图形的命名对象词典的图元名，它是所有非图形对象的根"},
     "rem":{"prefix":["rem"],"body":"(rem${0}) ",
-        "params":[],
-        "description":"(rem [number number...]) \n将第一个数除以第二个数，并返回余数"},
+        "params":[
+            {"label":"[number]","doc":"任意数值"},
+            {"label":"[number]","doc":"任意数值"},
+            {"label":"[...]","doc":"更多数值"}
+        ],
+        "description":"(rem [number number...])  \n将第一个数除以第二个数，并返回余数  \n如果调用本函数时提供的参数多于两个，则 rem 函数返回 (rem ... (rem (rem num1 num2) num3)... ) 的结果。如果提供的参数多于两个，rem 按从左到右的顺序计算参数。例如，如果提供了三个数值，则 rem 用第一个数除以第二个数，再用结果除以第三个数，返回最后的余数。"},
     "regapp":{"prefix":["regapp"],"body":"(regapp${0}) ",
-        "params":[],
-        "description":"(regapp application) \n为当前 AutoCAD 图形注册一个应用名，为使用扩展对象数据作准备"},
+        "params":[
+            {"label":"application","doc":"命名应用程序的字符串。名称必须为有效的符号表名称。关于 AutoLISP 确定符号名有效性的规则，请参见 snvalid 的说明"}
+        ],
+        "description":"(regapp application)  \n为当前 AutoCAD 图形注册一个应用名，为使用扩展对象数据作准备"},
     "repeat":{"prefix":["repeat"],"body":"(repeat${0})",
-        "params":[],
-        "description":"(repeat int [expr...])\n对循环体中的每一个表达式进行指定次数的求值计算，并返回最后一个表达式的值"},
-    "setcfg":{"prefix":["setcfg"],"body":"(setcfg${0}) ",
-        "params":[],
+        "params":[
+            {"label":"int","doc":"正整数"},
+            {"label":"[expr]","doc":"一个或多个原子或表达式"},
+            {"label":"[...]","doc":"更多个原子或表达式"}
+        ],
+        "description":"(repeat int [expr...])  \n对循环体中的每一个表达式进行指定次数的求值计算，并返回最后一个表达式的值"},
+    "rtos":{"prefix":["rtos"],"body":"(rtos${0}) ",
+        "params":[
+            {"label":"number","doc":"整数或实数"},
+            {"label":"[mode]","doc":"整数，指定现行单位模式。mode 的取值对应于 AutoCAD 系统变量 lunits 的允许值，如下所示  \n1 科学  \n2 小数  \n3 工程（英尺和十进制英寸）  \n4 建筑（英尺和分数英寸）  \n5 分数"},
+            {"label":"[precision]","doc":"整数，指定精度"}
+        ],
+        "description":"(rtos number [mode [precision]]) \n将数字转换成字符串"},
+    "reverse":{"prefix":["reverse"],"body":"(reverse${0})",
+        "params":[
+            {"label":"lst","doc":"列表"}
+        ],
+        "description":"(reverse lst)  \n将表的元素顺序倒置后返回"},
+    "setcfg":{"prefix":["setcfg"],"body":"(setcfg${0})",
+        "params":[
+            {"label":"cfgname","doc":"字符串，它指定段和要被设置为 cfgval 的值的参数。cfgname 参数必须是如下格式的字符串：  \nAppData/application_name/section_name/.../param_name"},
+            {"label":"cfgval","doc":"字符串。最长可达 512 个字符。setcfg 接受较大的字符串，但不能被 getcfg 返回"}
+        ],
         "description":"(setcfg cfgname cfgval) \n将应用数据写到 acad.cfg 文件的 AppData 段中"},
     "setenv":{"prefix":["setenv"],"body":"(setenv${0}) ",
-        "params":[],
-        "description":"(setenv varname value) \n将系统环境变量设为指定值"},
+        "params":[
+            {"label":"varname","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
+            {"label":"value","doc":"字符串，指定要给 varname 设置的值"}
+        ],
+        "description":"(setenv varname value)  \n将系统环境变量设为指定值"},
     "set":{"prefix":["set"],"body":"(set${0}) ",
-        "params":[],
+        "params":[
+            {"label":"sym","doc":"符号"},
+            {"label":"expr","doc":"AutoLISP 表达式"}
+        ],
         "description":"(set sym expr) \n将引号中的符号名的值设置成一个表达式的值"},
-    "rtos":{"prefix":["rtos"],"body":"(rtos${0}) ",
-        "params":[],
-        "description":"(rtos number [mode [precision]]) \n将数字转换成字符串"},
+    
     "setfunhelp":{"prefix":["setfunhelp"],"body":"(setfunhelp${0})",
-        "params":[],
+        "params":[
+            {"label":"c:fname","doc":"字符串，指定用户定义命令（C:XXX 函数）其中必须包含 c: 前缀"},
+            {"label":"[helpfile]","doc":"字符串，命名帮助文件。在 helpfile 参数中不需要指定文件扩展名。如果指定了扩展名，则 AutoCAD 仅查找完全匹配的文件。如果不指定文件扩展名，AutoCAD 在查找 helpfile 时自动添加扩展名 .hlp。如果未找到同名文件，AutoCAD 继续查找扩展名为 .ahp 的文件。如果仍未找到，则 AutoCAD 搜索不含扩展名的 helpfile"},
+            {"label":"[topic]","doc":"字符串，指定帮助文件的主题标识符"},
+            {"label":"[command]","doc":"字符串，指定帮助窗口的初始状态，command 参数是 HtmlHelp() 和 WinHelp() 函数的 uCommand(在 HTML 帮助中)或 fucommand(在 WinHelp 中)参数所使用的一个字符串，HtmlHelp() 和 WinHelp() 函数的定义可参见 Microsoft Windows SDK 中的 WinHelp API"}
+        ],
         "description":"(setfunhelp c:fname [helpfile [topic [command]]])\n给帮助工具注册一个用户定义函数，这样，用户在请求该命令的帮助时，就会调用正确的帮助文件和主题"},
-    "reverse":{"prefix":["reverse"],"body":"(reverse${0})",
-        "params":[],
-        "description":"(reverse lst)\n将表的元素顺序倒置后返回"},
-    "setq":{"prefix":["setq"],"body":"(setq${0} ) ",
-        "params":[],
+    
+    "setq":{"prefix":["setq"],"body":"(setq${0})",
+        "params":[
+            {"label":"sym","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
+            {"label":"expr","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
+            {"label":"[sym]","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
+            {"label":"[expr]","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"}
+        ],
         "description":"(setq sym expr [sym expr]...) \n将一个或多个符号的值设置为相应表达式的值"},
     "setview":{"prefix":["setview"],"body":"(setview${0}) ",
         "params":[],
