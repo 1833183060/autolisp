@@ -11,10 +11,21 @@ const parser=require('./lispParser2.js')
 //import {parse} from "./lispParser"
 let snippetObj=require('../snippets/autolisp1.json');
 snippetObj=Object.assign(snippetObj,require('../snippets/autolisp3.json'))
+
+let userSnippetObj=null;
+try{
+	let userSnippetPath = vscode.workspace.getConfiguration('autolisp')['usersnippet'];
+	userSnippetObj=require(userSnippetPath,{encoding:'utf-8'})
+	snippetObj=Object.assign(snippetObj,userSnippetObj);
+}catch(ex){
+
+}
+
+
 const parse=require('./lispParse')
 const LispParse=parse.LispParse;
 const SystemParse=parse.SystemParse;
-const acip=require('./autolispCompletion')
+const acip=require('./autolispCompletion2')
 const AutoLispCompletionItemProvider=acip.AutoLispCompletionItemProvider;
 
 const AUTOLISP_MODE=require( "./autolispMode").AUTOLISP_MODE;
@@ -65,7 +76,7 @@ function activate(context) {
 	let system = new SystemParse();
     let completions = Object.assign(complet, system.parse());
 
-	//context.subscriptions.push(vscode.languages.registerCompletionItemProvider(AUTOLISP_MODE, new AutoLispCompletionItemProvider(completions), '.', '/'," "));
+	context.subscriptions.push(vscode.languages.registerCompletionItemProvider(AUTOLISP_MODE, new AutoLispCompletionItemProvider(completions,userSnippetObj), '.', '/'," "));
 
 	context.subscriptions.push(vscode.languages.registerSignatureHelpProvider('autolisp', new SignatureHelpProvider(snippetObj),' '));
     // The command has been defined in the package.json file
@@ -81,8 +92,13 @@ function activate(context) {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
 		vscode.window.showInformationMessage('Hello World!');
+		let ret=null;
+		try{		
 		let content=fs.readFileSync("D:/mywork/acad二次开发/我写的工具/autolisp/a.lsp",{encoding:'utf-8'})
-		let ret=parser.parse(content)
+		ret=parser.parse(content)
+		}catch(ex){
+
+		}
     });
 	context.subscriptions.push(format);
 

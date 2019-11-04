@@ -31,6 +31,7 @@
     ],
     "activationEvents": [
         "onCommand:extension.sayHello",
+        
         "onLanguage:autolisp",
         "*"
     ],
@@ -105,8 +106,8 @@
                 },
                 "autolisp.usersnippet": {
                     "type": "string",
-                    "default": "d:/autolisp助手/自定义代码片段.json",
-                    "description": "用户自定义代码片段"
+                    "default": "",
+                    "description": "用户代码段"
                 }
             }
         },
@@ -155,7 +156,7 @@
                 ]
             }
         ],
-        "snippets": [
+        "snippets": [            
             {
                 "language": "autolisp",
                 "path": "./snippets/autolisp1.json"
@@ -197,21 +198,27 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
+        "vscode:prepublish": "npm run compile",       
+    
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "@types/mocha": "^5.2.7",
-        "mocha": "^6.2.0",
+        "@types/mocha": "^5.2.7",        
+    "mocha": "^6.2.0",
         "@types/node": "^12.12.5",
         "tslint": "^5.8.0",
         "typescript": "^3.6.4",
-        "@types/vscode": "^1.25.0",
-        "vscode-test": "^1.2.0"
+        
+    "@types/vscode": "^1.25.0",
+        
+    "vscode-test": "^1.2.0"
     },
     "dependencies": {
+        "vscode-extension-telemetry": "^0.1.2",
+        "vscode-languageclient": "~5.2.1",
         "iconv-lite": "^0.5.0"
     }
 }

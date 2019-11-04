@@ -47,7 +47,7 @@ class SignatureHelpProvider {
             let funObj=this.snippetObj[ast.funName.value];
             let funBody=funObj.body;
             
-            let signature={label:funBody,documentation:funObj.description}
+            let signature={label:'('+ast.funName+')',documentation:funObj.description}
             this.item.signatures.push(signature)
             signature.parameters=[];
 
@@ -75,28 +75,37 @@ class SignatureHelpProvider {
             this.item.activeParameter=activeP;
 
             if(typeof funObj.params!='undefined'&&funObj.params!=null){
-                signature.label="("+ast.funName.value;
-                for(let i=0;i<funObj.params.length;i++){
-                    let p=funObj.params[i]
-                    signature.parameters.push({label:p.label})
-                    signature.label+=" "+p.label
-                }
-                signature.label+=")";
-                if(activeP<funObj.params.length){
-                    let d=vscode.MarkdownString("**"+funObj.params[activeP].doc+'**  '+'\n'+funObj.description)
-                    signature.documentation="**"+funObj.params[activeP].doc+'**\n'+funObj.description;
+                this.item.parameterCount=funObj.params.length;
+                if(ast.funName.value=='ssget'){
+                    //let d=vscode.MarkdownString("**"+funObj.params[activeP].doc+'**  '+'\n'+funObj.description)
+                    //signature.documentation="**"+funObj.params[activeP].doc+'**\n'+funObj.description;
+                    let d=vscode.MarkdownString("具体用法请参考：[ssget文档](https://help.autodesk.com/view/OARX/2019/ENU/?guid=GUID-0F37CC5E-1559-4011-B8CF-A3BA0973B2C3)")
                     signature.documentation=d;
+                }else{
+                    signature.label="("+ast.funName.value;
+                    for(let i=0;i<funObj.params.length;i++){
+                        let p=funObj.params[i]
+                        signature.parameters.push({label:p.label})
+                        
+                        signature.label+=" "+p.label
+                    }
+                    signature.label+=")";
+                    if(activeP<funObj.params.length){
+                        let d=vscode.MarkdownString("**"+funObj.params[activeP].doc+'**  '+'\n'+funObj.description)
+                        signature.documentation="**"+funObj.params[activeP].doc+'**\n'+funObj.description;
+                        signature.documentation=d;
+                    }
                 }
                 
             }else{
-                let params=funBody.replace('(','').replace(')','').split(' ');
+                /*let params=funBody.replace('(','').replace(')','').split(' ');
                 if(params!=null){
                     for(let i=1;i<params.length;i++){
                         if(params[i].length>0){
                             signature.parameters.push({label:params[i]})
                         }
                     }
-                }
+                }*/
             }
             
             

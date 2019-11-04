@@ -12,6 +12,16 @@ export interface functions {
     pos?: number[]
 }
 
+export interface UserSnippet {
+    type: FunctionType ,
+    description: string,
+    parameter?: string[],
+    text?: string,
+    filename?: string,
+    pos?: number[],
+    body?:string
+}
+
 export const enum FunctionType {
     SystemFunction = 0,
     UserFunction = 1,
@@ -74,11 +84,43 @@ export function isPositionInBrackets(document: TextDocument, position: Position)
     }
 }
 
+export function isPositionInBrackets2(document: TextDocument, position: Position): boolean {
+    let indent:number[]= [];
+    let zuo = 0;
+    for (const item of document.getText().split('\r\n')) {
+        indent.push(zuo+=LeftBracket(item));
+    }
+    if (indent[position.line] !== 0) {
+        return true;
+    }else{
+        let linetext = document.lineAt(position.line).text;
+        if (linetext.trim().startsWith(';')) {
+            return false;
+        }
+        let num = linetext.search(/\)(?=[^\)]*?$)/ig);
+        if (num === -1) {
+            return false;
+        }else if (num < position.character){
+            return false;
+        }else{
+            return true;
+        }
+    }
+}
 
-
-
-
-
+export function getLastToken(document:TextDocument,position:Position): string{
+    let linetext = document.lineAt(position.line).text;
+    linetext=linetext.substring(0,position.character);
+    //linetext=linetext.split("").reverse().join("");
+    if (linetext.trim().startsWith(';')) {
+        return "";
+    }
+    
+    let reg=/[\s\(\)]*(\S*?)[\(\)\s\"\;]*$/ig;
+    let m = reg.exec(linetext);
+    if(m==null||m.length<2)return "";
+    return m[1];
+}
 export function readFileSync_encoding(filename: string, encoding: string): string {
     
     let content = readFileSync(filename);

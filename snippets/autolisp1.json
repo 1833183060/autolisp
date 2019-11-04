@@ -115,7 +115,7 @@
             {"label":"value","doc":"要转换的实数值。"},
             {"label":"viewport","doc":"视口图元名称(ads_name)。"}
         ],
-        "description":"(acet-ms-to-ps [value][viewport])\n从模型空间单位转换实数值到图纸空间单位"},
+        "description":"(acet-ms-to-ps [value][viewport])  \n从模型空间单位转换实数值到图纸空间单位"},
     "acet-ps-to-ms":{"prefix":["acet-ps-to-ms"],"body":"(acet-ps-to-ms$0)",
         "params":[
             {"label":"value","doc":"要转换的实数值。"},
@@ -1010,42 +1010,73 @@
             {"label":"[command]","doc":"字符串，指定帮助窗口的初始状态，command 参数是 HtmlHelp() 和 WinHelp() 函数的 uCommand(在 HTML 帮助中)或 fucommand(在 WinHelp 中)参数所使用的一个字符串，HtmlHelp() 和 WinHelp() 函数的定义可参见 Microsoft Windows SDK 中的 WinHelp API"}
         ],
         "description":"(setfunhelp c:fname [helpfile [topic [command]]])\n给帮助工具注册一个用户定义函数，这样，用户在请求该命令的帮助时，就会调用正确的帮助文件和主题"},
-    
     "setq":{"prefix":["setq"],"body":"(setq${0})",
         "params":[
-            {"label":"sym","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
-            {"label":"expr","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
-            {"label":"[sym]","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"},
-            {"label":"[expr]","doc":"字符串，指定要设置的环境变量的名称。环境变量名的拼写和大小写必须与系统注册表中一致"}
+            {"label":"sym","doc":"符号。 不计算该参数"},
+            {"label":"expr","doc":"表达式"},
+            {"label":"[symbol]","doc":"符号。 不计算该参数"},
+            {"label":"[expression]","doc":"表达式"},{"label":"[...]","doc":"更多任意 sym expr对"}
         ],
-        "description":"(setq sym expr [sym expr]...) \n将一个或多个符号的值设置为相应表达式的值"},
+        "description":"(setq sym expr [sym1 expr1]...) \n将一个或多个符号的值设置为相应表达式的值"},
+
     "setview":{"prefix":["setview"],"body":"(setview${0}) ",
-        "params":[],
+        "params":[
+            {"label":"view_descriptor","doc":"图元定义表，与对 VIEW 符号表使用 tblsearch 函数返回的表类似"},
+            {"label":"[vport_id]","doc":"整数，指定获得新视图的视口。如果 vport_id 为 0，则当前视口获得新视图。  \n可以从 CVPORT 系统变量中获取 vport_id 数"}
+        ],
         "description":"(setview view_descriptor [vport_id]) \n为指定视口建立一个视图"},
     "sin":{"prefix":["sin"],"body":"(sin${0})",
-        "params":[],
-        "description":"(sin ang)\n以实数形式返回角度的正弦值（以弧度为单位）"},
+        "params":[
+            {"label":"ang","doc":"以弧度为单位的角度"}
+        ],
+        "description":"(sin ang)  \n以实数形式返回角度的正弦值（以弧度为单位）"},
     "set_tile":{"prefix":["set_tile"],"body":"(set_tile${0})",
-        "params":[],
+        "params":[
+            {"label":"key","doc":"指定控件操作名的字符串"},
+            {"label":"value","doc":"字符串，指定控件的新值（初始值由 value 属性设定）。"}
+        ],
         "description":"(set_tile key value)\n设置对话框控件的值"},
     "slide_image":{"prefix":["slide_image"],"body":"(slide_image${0})",
-        "params":[],
+        "params":[
+            {"label":"x1","doc":"距控件左上角的 X 偏移量（以像素为单位）。必须为正值"},
+            {"label":"y1","doc":"距控件左上角的 Y偏移量（以像素为单位）。必须为正值"},
+            {"label":"width","doc":"图像宽度（以像素为单位）。"},
+            {"label":"height","doc":"图像高度（以像素为单位）。"},
+            {"label":"sldname","doc":"幻灯片。该参数可以是幻灯文件 (.sld) 或幻灯库文件 (.slb) 中的一个幻灯片。指定 sldname 的方式和在 VSLIDE 命令或菜单文件中指定幻灯片的方法一样"}
+        ],
         "description":"(slide_image x1 y1 width height sldname)\n在当前激活的对话框图像控件中显示 AutoCAD 幻灯片"},
-    "sqrt":{"prefix":["sqrt"],"body":"(sqrt${0}) ",
-        "params":[],
-        "description":"(sqrt num) \n以实数形式返回一个数的平方根"},
+    "sqrt":{"prefix":["sqrt"],"body":"(sqrt${0})",
+        "params":[
+            {"label":"num","doc":"整数或实数"}
+        ],
+        "description":"(sqrt num)  \n以实数形式返回一个数的平方根"},
     "snvalid":{"prefix":["snvalid"],"body":"(snvalid${0}) ",
-        "params":[],
-        "description":"(snvalid sym_name [flag]) \n检查组成符号表名的各字符的有效性"},
+        "params":[
+            {"label":"sym_name","doc":"符号表名称"},
+            {"label":"[flag]","doc":"整数，指定 sym_name.中是否可以包含竖线 (|)，它可以是:  \n0 在 sym_name 中不能包含竖线。（缺省值）  \n1 在 sym_name 中可以包含竖线（但不能是第一个或最后一个字符）"}
+        ],
+        "description":"(snvalid sym_name [flag])  \n检查组成符号表名称的各字符的有效性"},
     "ssdel":{"prefix":["ssdel"],"body":"(ssdel${0})",
-        "params":[],
-        "description":"(ssdel enamess)\n从选择集中撤消对象（图元）"},
+        "params":[
+            {"label":"ename","doc":"图元名称"},
+            {"label":"ss","doc":"选择集"}
+        ],
+        "description":"(ssdel ename ss)  \n从选择集中删除对象（图元）"},
     "ssadd":{"prefix":["ssadd"],"body":"(ssadd${0})",
-        "params":[],
-        "description":"(ssadd [ename [ss]])\n将对象（图元）加入到选择集中，或创建新的选择集"},
+        "params":[
+            {"label":"[ename]","doc":"对象名称"},
+            {"label":"[ss]","doc":"选择集"}
+        ],
+        "description":"(ssadd [ename [ss]])  \n将对象（图元）加入到选择集中，或创建新的选择集"},
     "ssget":{"prefix":["ssget"],"body":"(ssget${0})",
-        "params":[],
-        "description":"(ssget [sel-method] [pt1 [pt2]] [pt-list] [filter-list])\n根据选定对象创建选择集"},
+        "params":[
+            {"label":"[sel-method]","doc":"选择集"},
+            {"label":"[pt1]","doc":"选择集"},
+            {"label":"[pt2]","doc":"选择集"},
+            {"label":"[pt-list]","doc":"选择集"},
+            {"label":"[filter-list]","doc":"选择集"}
+        ],
+        "description":"(ssget [sel-method] [pt1 [pt2]] [pt-list] [filter-list])  \n根据选定对象创建选择集"},
     "ssgetfirst ":{"prefix":["ssgetfirst "],"body":"(ssgetfirst)",
         "params":[],
         "description":"(ssgetfirst)\n判断哪些对象是被选取的和被夹取的"},

@@ -53,6 +53,47 @@ function isPositionInBrackets(document, position) {
     }
 }
 exports.isPositionInBrackets = isPositionInBrackets;
+function isPositionInBrackets2(document, position) {
+    let indent = [];
+    let zuo = 0;
+    for (const item of document.getText().split('\r\n')) {
+        indent.push(zuo += LeftBracket(item));
+    }
+    if (indent[position.line] !== 0) {
+        return true;
+    }
+    else {
+        let linetext = document.lineAt(position.line).text;
+        if (linetext.trim().startsWith(';')) {
+            return false;
+        }
+        let num = linetext.search(/\)(?=[^\)]*?$)/ig);
+        if (num === -1) {
+            return false;
+        }
+        else if (num < position.character) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+}
+exports.isPositionInBrackets2 = isPositionInBrackets2;
+function getLastToken(document, position) {
+    let linetext = document.lineAt(position.line).text;
+    linetext = linetext.substring(0, position.character);
+    //linetext=linetext.split("").reverse().join("");
+    if (linetext.trim().startsWith(';')) {
+        return "";
+    }
+    let reg = /[\s\(\)]*(\S*?)[\(\)\s\"\;]*$/ig;
+    let m = reg.exec(linetext);
+    if (m == null || m.length < 2)
+        return "";
+    return m[1];
+}
+exports.getLastToken = getLastToken;
 function readFileSync_encoding(filename, encoding) {
     let content = fs_1.readFileSync(filename);
     return iconv_lite_1.decode(content, encoding);
