@@ -56,10 +56,10 @@
         "description":"(~ int)\n返回参数的按位非（即 1 的补码）"},
     "=":{"prefix":["= (等于) "],"body":"(=$0) ",
         "params":[
-            {"label":"numstr","doc":"数字或字符串"},
-            {"label":"numstr","doc":"数字或字符串"}
+            {"label":"1numstr","doc":"数字或字符串"},
+            {"label":"2numstr","doc":"数字或字符串"}
         ],
-        "description":"(= numstr [numstr...] ) \n比较参数是否相等"},
+        "description":"(= 1numstr [2numstr...] ) \n比较参数是否相等"},
     
     "/":{"prefix":["/ (除)"],"body":"(/$0) ",
         "params":[
@@ -1012,12 +1012,12 @@
         "description":"(setfunhelp c:fname [helpfile [topic [command]]])\n给帮助工具注册一个用户定义函数，这样，用户在请求该命令的帮助时，就会调用正确的帮助文件和主题"},
     "setq":{"prefix":["setq"],"body":"(setq${0})",
         "params":[
-            {"label":"sym","doc":"符号。 不计算该参数"},
+            {"label":"sym","doc":"符号。不计算该参数"},
             {"label":"expr","doc":"表达式"},
-            {"label":"[symbol]","doc":"符号。 不计算该参数"},
-            {"label":"[expression]","doc":"表达式"},{"label":"[...]","doc":"更多任意 sym expr对"}
+            {"label":"[2sym]","doc":"符号。不计算该参数"},
+            {"label":"[2expr]","doc":"表达式"},{"label":"[...]","doc":"更多任意 sym expr对"}
         ],
-        "description":"(setq sym expr [sym1 expr1]...) \n将一个或多个符号的值设置为相应表达式的值"},
+        "description":"(setq sym expr [2sym 2expr]...) \n将一个或多个符号的值设置为相应表达式的值"},
 
     "setview":{"prefix":["setview"],"body":"(setview${0}) ",
         "params":[
@@ -1081,46 +1081,89 @@
         "params":[],
         "description":"(ssgetfirst)\n判断哪些对象是被选取的和被夹取的"},
     "sslength":{"prefix":["sslength"],"body":"(sslength${0})",
-        "params":[],
-        "description":"(sslength ss)\n求出一个选择集中的对象（图元）数目，并将其作为一个整数返回"},
+        "params":[
+            {"label":"ss","doc":"选择集"}
+        ],
+        "description":"(sslength ss)  \n求出一个选择集中的对象（图元）数目，并将其作为一个整数返回"},
     "ssmemb":{"prefix":["ssmemb"],"body":"(ssmemb${0})",
-        "params":[],
-        "description":"(ssmemb enamess)\n测试某对象（图元）是否是选择集的成员"},
+        "params":[
+            {"label":"ename","doc":"图元名称"},
+            {"label":"ss","doc":"选择集"}
+        ],
+        "description":"(ssmemb ename ss)  \n测试某对象（图元）是否是选择集的成员"},
     "ssname":{"prefix":["ssname"],"body":"(ssname${0})",
-        "params":[],
-        "description":"(ssname ssindex)\n返回选择集中由序号指定的那个对象（图元）的图元名"},
-    "ssnamex ":{"prefix":["ssnamex "],"body":"(ssnamex${0}) ",
-        "params":[],
-        "description":"(ssnamex ss [index]) \n获取关于选择集创建方式的信息"},
+        "params":[
+            {"label":"ss","doc":"选择集"},
+            {"label":"index","doc":"整数（或实数），指定选择集中的一个元素。选择集中的第一个元素的序号为零 (0)。要获得选择集中第 32767 个以后的图元，必须提供实数形式的 index 参数"}
+        ],
+        "description":"(ssname ss index)  \n返回选择集中由序号指定的那个对象（图元）的图元名"},
+    "ssnamex ":{"prefix":["ssnamex"],"body":"(ssnamex${0}) ",
+        "params":[
+            {"label":"ss","doc":"选择集"},
+            {"label":"[index]","doc":"整数（或实数），指定选择集中的一个元素。选择集中的第一个元素的序号为零 (0)。"}
+        ],
+        "description":"(ssnamex ss [index])  \n获取关于选择集创建方式的信息"},
     "sssetfirst ":{"prefix":["sssetfirst "],"body":"(sssetfirst${0}) ",
-        "params":[],
-        "description":"(sssetfirst gripset[pickset]) \n设置哪些对象既是被选取的又是被夹取的"},
+        "params":[
+            {"label":"gripset","doc":"要夹取的选择集。如果 gripset 为 nil 且已指定 pickset，则 sssetfirst 夹取并选择 pickset。如果 gripset 为 nil 且未指定 pickset，则 sssetfirst 关闭原来打开的夹点句柄和选择集"},
+            {"label":"[pickset]","doc":"将被选择的选择集"}
+        ],
+        "description":"(sssetfirst gripset [pickset]) \n设置哪些对象既是被选取的又是被夹取的"},
     "startapp":{"prefix":["startapp"],"body":"(startapp${0}) ",
-        "params":[],
-        "description":"(startapp appcmd[file]) \n启动 Windows 应用程序"},
+        "params":[
+            {"label":"appcmd","doc":"字符串，指定要执行的应用程序描述字串。如果 appcmd 没有包含全路径名，startapp 将按照环境变量 PATH 设置的路径来搜索该应用程序"},
+            {"label":"[file]","doc":"字符串，指定要打开的文件的名称"}
+        ],
+        "description":"(startapp appcmd [file]) \n启动 Windows 应用程序"},
     "start_dialog":{"prefix":["start_dialog"],"body":"(start_dialog)${0}",
-        "params":[],
-        "description":"(start_dialog)\n显示对话框并将控制交给对话框"},
+        "params":[
+
+        ],
+        "description":"(start_dialog)  \n显示对话框并将控制交给对话框"},
     "start_image":{"prefix":["start_image"],"body":"(start_image${0})",
-        "params":[],
-        "description":"(start_image key)\n开始对对话框控件中的一个图像控件进行操作"},
+        "params":[
+            {"label":"key","doc":"字符串，指定对话框控件。key 参数区分大小写"}
+        ],
+        "description":"(start_image key)  \n开始对对话框控件中的一个图像控件进行操作"},
     "start_list":{"prefix":["start_list"],"body":"(start_list${0})",
-        "params":[],
-        "description":"(start_list key [operation [index]])\n开始处理对话框中的列表框或弹出式列表框中的列表"},
+        "params":[
+            {"label":"key","doc":"字符串，指定对话框控件。key 参数区分大小写"},
+            {"label":"[operation]","doc":"整数，指定要执行的列表操作的类型。可以指定下列值之一：  \n1 修改选定列表的内容  \n2 附加新的列表项  \n3 删除旧列表，创建新列表（缺省设置）"},
+            {"label":"[index]","doc":"整数，指定后续 add_list 调用要修改的列表项。列表中的第一项序号为 0。如果未指定该参数，则 index 的缺省值为 0。如果 start_list 不执行修改操作，则忽略 index 参数"}
+        ],
+        "description":"(start_list key [operation [index]])  \n开始处理对话框中的列表框或弹出式列表框中的列表"},
     "strcase":{"prefix":["strcase"],"body":"(strcase${0}) ",
-        "params":[],
-        "description":"(strcase string [which]) \n将字符串中的所有字母转换成大写或小写后返回"},
+        "params":[
+            {"label":"string","doc":"字符串"},
+            {"label":"[which]","doc":"如果提供该参数且其值不为 nil，string 中的所有字符将被转换成小写，否则将字符转换为大写"}
+        ],
+        "description":"(strcase string [which])  \n将字符串中的所有字母转换成大写或小写后返回"},
     "strcat":{"prefix":["strcat"],"body":"(strcat${0}) ",
-        "params":[],
-        "description":"(strcat [string[string]...]) \n将多个字符串拼接成一个长字符串后返回"},
+        "params":[
+            {"label":"string","doc":"字符串"},
+            {"label":"[2string]","doc":"字符串"},
+            {"label":"[...]","doc":"字符串"}
+        ],
+        "description":"(strcat [string [2string]...])  \n将多个字符串拼接成一个长字符串后返回"},
     "strlen":{"prefix":["strlen"],"body":"(strlen${0})",
-        "params":[],
-        "description":"(strlen [string]...)\n以整数形式返回一个字符串中字符的个数"},
+        "params":[
+            {"label":"[string]","doc":"字符串"},
+            {"label":"[...]","doc":"字符串"}
+        ],
+        "description":"(strlen [string]...) \n以整数形式返回一个字符串中字符的个数.如果指定多个 string 参数，strlen 返回所有参数的总长度。如果省略参数或输入空字符串，strlen 返回 0"},
     "subst":{"prefix":["subst"],"body":"(subst${0})",
-        "params":[],
-        "description":"(subst newitem olditem lst)\n在表中搜索某旧项，并将表中出现的每一个旧项用新项代替，然后返回修改后所得的表"},
+        "params":[
+            {"label":"newitem","doc":"原子或表"},
+            {"label":"olditem","doc":"原子或表"},
+            {"label":"lst","doc":"表"}
+        ],
+        "description":"(subst newitem olditem lst)  \n在表中搜索某旧项，并将表中出现的每一个旧项用新项代替，然后返回修改后所得的表"},
     "substr":{"prefix":["substr"],"body":"(substr${0})",
-        "params":[],
+        "params":[
+            {"label":"string","doc":"字符串"},
+            {"label":"start","doc":"正整数，指定 string 中的开始位置。字符串中的第一个字符的位置为 1"},
+            {"label":"[length]","doc":"正整数，指定在 string 中进行搜索的字符的长度。如果未指定 length，则子字符串延续到 string 的结尾"}
+        ],
         "description":"(substr string start [length])\n返回字符串中的一个子字符串"},
     "tablet":{"prefix":["tablet"],"body":"(tablet${0}) ",
         "params":[],

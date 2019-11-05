@@ -112,15 +112,16 @@ function activate(context) {
 			let range=new vscode.Range(sel.start,sel.end)	
 		
 			let program=textEditor.document.getText(range)
+			program='';//暂时仅支持全部格式化
 			if(program===''){
 				program=textEditor.document.getText();
-				let ret=parser.format(program);
+				let ret=parser.format(program,'indent');
 				const end = new vscode.Position(textEditor.document.lineCount + 1, 0);
 	
 				edit.replace(new vscode.Range(new vscode.Position(0, 0), end), ret);
 				
 			}else{
-				let ret=parser.format(program);
+				let ret=parser.format(program,'indent');
 				edit.replace(range,ret);
 			}
 			
@@ -140,6 +141,7 @@ function activate(context) {
 			let range=new vscode.Range(sel.start,sel.end)	
 		
 			let program=textEditor.document.getText(range)
+			program='';//暂时仅支持全部格式化
 			if(program===''){
 				program=textEditor.document.getText();
 				let ret=parser.format(program,"all");
