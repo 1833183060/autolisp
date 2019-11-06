@@ -2,7 +2,7 @@
     "name": "autolisp",
     "displayName": "autolisp助手",
     "description": "为autolisp&dcl提供的代码提示和自动完成功能",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "niaoge",
     "icon": "images/autocad-dev.jpg",
     "author": {
@@ -106,7 +106,12 @@
                 "autolisp.usersnippet": {
                     "type": "string",
                     "default": "d:/autolisp助手/自定义代码片段.json",
-                    "description": "用户自定义代码片段"
+                    "description": "用户自定义代码片段文件"
+                },
+                "autolisp.格式化.最大长度":{
+                    "type":"integer",
+                    "default":60,
+                    "description": "格式化后每行的最大长度"
                 }
             }
         },

@@ -37,6 +37,7 @@ class MyString  {
     class Sym extends Meta {
         constructor(value) {
             super(value)
+            this.strLength=value.length;
         }
     }
     class NewLine extends Meta {
@@ -52,21 +53,25 @@ class MyString  {
     class Literal extends Meta {
         constructor(value) {
             super(value)
+            this.strLength=value.length;
         }
     }
     class LineAnn extends Meta {
         constructor(value) {
             super(value)
+            this.strLength=value.length;
         }
     }
     class InlineAnn extends Meta {
         constructor(value) {
             super(value)
+            this.strLength=value.length;
         }
     }
     class Str extends Meta {
         constructor(value) {
             super(value)
+            this.strLength=value.length;
         }
     }
     class Procedure {
@@ -150,7 +155,8 @@ class MyString  {
     function parse(program) {
         let tokens=tokenize(program)
         let L=[];
-        L.childrenCount=0
+        L.childrenCount=0;//
+        L.strLength=0;
         while(tokens.length>0){
             let r=read_from_tokens(tokens)
             if(r===undefined||(!(r instanceof Array) &&r.value===undefined))break;
@@ -159,6 +165,11 @@ class MyString  {
                 r.childrenCount=1
             }
             L.childrenCount+=r.childrenCount;
+
+            if(typeof r.strLength=='undefined'){
+                r.strLength=1
+            }
+            L.strLength+=r.strLength;
         }
         return L;
     }
@@ -205,6 +216,8 @@ class MyString  {
         program=processAnnotation(program)
         program=processStr(program)
         program= program.replace(/(\'\(|\()/g, ' $1 ').replace(/\)/g, ' ) ');
+        program=program.replace(/\r\n/g,'\n')
+        program=program.replace(/\r/g,'\n')
         program=program.replace(/[\t ]*\n[\t ]*/g,' \n ')
         program=program.replace(/[\t ]{1,}/g,' ')
         return program.split(' ')
@@ -251,6 +264,9 @@ class MyString  {
         while (token === '') {
             token = tokens.shift()
         }
+        if(typeof token=='undefined'){//解析结束
+            return new Sym('');
+        }
         if ('(' === token||"'("===token) {
             let L = []
             if('('===token){
@@ -259,6 +275,7 @@ class MyString  {
                 L.type='quote'
             }
             L.childrenCount=0
+            L.strLength=1;
             while (tokens[0] === '') {
                 tokens.shift()
             }
@@ -270,34 +287,43 @@ class MyString  {
                 }
                 
                 if(typeof r.childrenCount=='undefined'){
-                    r.childrenCount=1
-                    
+                    r.childrenCount=1                    
+                }
+                if(typeof r.strLength=='undefined'){
+                    r.strLength=1                    
                 }
                 if(isNaN(r.childrenCount)){
                     console.log('aa'+r.childrenCount)
                 }
+                if(isNaN(r.strLength)){
+                    console.log('bb'+r.strLength)
+                }
                 L.childrenCount+=r.childrenCount;
+                L.strLength+=r.strLength+1;
                 while (tokens[0] === '') {
                     tokens.shift()
                 }
             }
             tokens.shift()
+            L.strLength++;//')'
             return L
         } else if (')' === token) {
             return new ParseError('unexpected )')
             ;;throw new Error('unexpected )')
         } else {
+            
             return atom(token)
         }
     }
     function atom(token) {
         let temp = parseInt(token)
         if (isNaN(temp)) { 
-            if(typeof annotation[token]!='undefined'){
-                if(annotation[token].startsWith(';|')){
-                    return new InlineAnn(annotation[token])
+            let anno=annotation[token]
+            if(typeof anno!='undefined'){
+                if(anno.startsWith(';|')){
+                    return new InlineAnn(anno)
                 }else {
-                    return new LineAnn(annotation[token])
+                    return new LineAnn(anno)
                 }
                 
             }else if(typeof string0[token]!='undefined'){                
@@ -309,13 +335,14 @@ class MyString  {
             }
             
         } else if (token - temp === 0) {
-            return new Literal( temp)
+            //return new Literal( temp)
+            return new Literal(token)
         } else {
             return new Literal(token)
         }
     }
 
-    function format(program,formatType){ 
+    function format(program,formatType,maxLineLength){ 
         let resultCode="";
         function reset(){
             MyString.lastString=null;
@@ -375,7 +402,7 @@ class MyString  {
             }
             
             let childArrangement=ArrangeMentType.LEFTRIGHT;
-            if(list.childrenCount>6){
+            if(/*list.childrenCount>6*/list.strLength>maxLineLength){
                 childArrangement=ArrangeMentType.TOPBOTTOM;
             }else {
                 childArrangement=ArrangeMentType.LEFTRIGHT;
@@ -429,6 +456,8 @@ class MyString  {
             }else if(p instanceof NewLine){
                 if(formatType=='indent'){
                     result.append(p.value);
+                }else{
+                    //result.append(p.value);
                 }
                 
             }else{
@@ -441,7 +470,7 @@ class MyString  {
         function printSetq(i,p,indent,arrangement){
             let code=new MyString();
             if(i%2==0){
-                code.append(printList(p,indent,0))
+                code.append(printList(p,indent,ArrangeMentType.LEFTRIGHT))
             }else{
                 code.append(printList(p,indent,arrangement))
             }
@@ -460,9 +489,14 @@ class MyString  {
         reset();
         let ast=parse(program);
         
+
         for(let i=0;i<ast.length;i++){
             //resultCode+=printList(ast[i],0,0)+'\r\n'
+
             resultCode+=printList(ast[i],0,0);
+            if(formatType=='all'&&!(ast[i] instanceof NewLine)){
+                resultCode+='\n';
+            }
         }
         return resultCode;
     }

@@ -21,6 +21,8 @@ try{
 
 }
 
+let maxLineLength = vscode.workspace.getConfiguration('autolisp')['格式化']['最大长度'];
+
 
 const parse=require('./lispParse')
 const LispParse=parse.LispParse;
@@ -144,13 +146,13 @@ function activate(context) {
 			program='';//暂时仅支持全部格式化
 			if(program===''){
 				program=textEditor.document.getText();
-				let ret=parser.format(program,"all");
+				let ret=parser.format(program,"all",maxLineLength);
 				const end = new vscode.Position(textEditor.document.lineCount + 1, 0);
 	
 				edit.replace(new vscode.Range(new vscode.Position(0, 0), end), ret);
 				
 			}else{
-				let ret=parser.format(program,"all");
+				let ret=parser.format(program,"all",maxLineLength);
 				edit.replace(range,ret);
 			}
 			
